@@ -162,7 +162,7 @@ const MODEL = {
   fmvToday: 3100000,             // Property A estimated value Nov 2026 (user-provided, rounded)
   fmvSf: 1800000,                // Property B estimated value Nov 2026
   assessed2026: 550540,
-  taxRateA: 0.0133,              // implied from ledger (1.32–1.36%); TRA lookup pending (Flagged #3)
+  taxRateA: 0.0134,              // implied from ledger (1.32–1.36%); TRA lookup pending (Flagged #3)
   commission: 0.05,              // 5.0% sell-side cost assumption (range 4.5–6%)
   sczTransfer: 0.0011,           // Santa Clara County $1.10 per $1,000
   miscSell: 15000,               // escrow/title/repairs allowance, rounded
@@ -249,9 +249,9 @@ function renderCompare(){
   const FMV_2040 = 5368200, NET_2040 = 5078880;
   const data = {
     0:  { live: 0, sell: NET_2040, rent: 0, label:'at inheritance (2040)' },
-    10: { live: (120000-27000-1500*1.34-1500-15000)*10*1.35 + FMV_2040*0.0, sell: NET_2040*Math.pow(1.07,10), rent: 50900*10*1.35, label:'10 years later (2050)' },
-    25: { live: (120000-27000-1500*1.34-1500-15000)*25*2.0,  sell: NET_2040*Math.pow(1.07,25), rent: 50900*25*2.2, label:'25 years later (2065)' },
-    50: { live: (120000-27000-1500*1.34-1500-15000)*50*3.1,  sell: NET_2040*Math.pow(1.07,50), rent: 50900*50*3.6, label:'50 years later (2090)' },
+    10: { live: (120000-27000-1500*1.34-1500-15000)*10*1.35 + FMV_2040*0.0, sell: NET_2040*Math.pow(1.07,10), rent: 53390*10*1.35, label:'10 years later (2050)' },
+    25: { live: (120000-27000-1500*1.34-1500-15000)*25*2.0,  sell: NET_2040*Math.pow(1.07,25), rent: 53390*25*2.2, label:'25 years later (2065)' },
+    50: { live: (120000-27000-1500*1.34-1500-15000)*50*3.1,  sell: NET_2040*Math.pow(1.07,50), rent: 53390*50*3.6, label:'50 years later (2090)' },
   };
   function apply(h){
     btns.forEach(b=>b.classList.toggle('ghost', b.dataset.horizon!==String(h)));
