@@ -1,70 +1,54 @@
-# TinoDash2 — Inheritance Decision Workspace
+# TinoDash2 — Inheritance Decision Dashboard
 
-Privacy-first decision materials for comparing inherited-home and existing-property paths.
-The public site is the root **Estate Pathways** site served by GitHub Pages from `main` (legacy
-builder, repository root).
+A figure-driven, privacy-first dashboard for deciding what to do with an inherited home
+(**Property A**, expected by trust 2040–2050) while already owning a multi-unit home
+(**Property B**). Published on GitHub Pages from the repo root.
 
-**Live site:** <https://kanlerxz87-cyber.github.io/TinoDash2/>
+**Live site:** https://kanlerxz87-cyber.github.io/TinoDash2/
 
-## Privacy rules (binding — see COORDINATION.md)
+## Pages (grouped menu on every page)
 
-- No household-specific figures in the public tree or in Git, even rounded to $10. Rounding does
-  not anonymize.
-- Public outputs use placeholders only (Property A, Property B, Owner B).
-- No names, street addresses, ZIP codes, parcel/APN IDs, account numbers, leases, or trust details.
-- Household analysis lives only in `private/` (git-ignored, never committed or published).
-- Prior exposure: household figures were merged to `main` in earlier PRs (#3/#4/#5) and in the
-  figure-bearing `docs/` dashboard from PR #12. Removing files from the tree does **not** remove
-  them from Git history. A history purge requires repository-owner action. See the Exposure log
-  in COORDINATION.md.
+| Area | Page | Contents |
+|---|---|---|
+| Decision desk | `index.html` | Executive summary, first-screen "what would change the answer", decision log |
+| | `comparison.html` | All pure + mixed paths at identical transfer dates/horizons (taxes, debt, occupancy, capital costs, liquidity) |
+| | `projections.html` | Year-by-year projections, distribution chart, browser-side what-if controls, tornado sensitivity, rebuild protocol |
+| | `black-swan.html` | Separate black-swan section: 1929/2008-style crash-entry tests, phased investing (3M–2Y Treasuries, 24–36 months), reinvestment risk beside every headline |
+| Property data | `properties.html` | Values, rounded assessment/tax histories, operating costs, solar credits, Prop H terms, five-year capital plans |
+| Taxes & law | `taxes.html` | Estate tax vs income-tax basis vs property-tax assessment kept separate; enacted vs proposals; transfer taxes & recording fees priced into the sell path |
+| | `timeline.html` | Step-by-step inheritance process with hard deadlines (Form 706, Prop 19 windows, Prop H applications) |
+| Governance | `questions.html` | Question/information/answer list with discovery suggestions; unknowns left blank |
+| | `suggestions.html` | Review queue — owner chooses before anything is implemented |
+| | `briefing.html` | One-page printable Attorney & CPA Briefing Sheet (print button) |
+| Reference | `glossary.html` · `sources.html` · `flagged.html` | Grouped glossary & methodology; official source register with verification dates; flagged-for-review queue |
 
-## What is in the public site
+## Model pipeline
 
-| Page | What it is for |
-|---|---|
-| `index.html` | Dashboard: decision state, what would change the answer, evidence inventory, path comparison, what-if calculator (blank inputs, browser-only), timeline, legislation watch, suggestions queue, sources, glossary |
-| `war-room.html` | The nine gates that block a decision, the pre-commitment register, requirement coverage, decision journal |
-| `crash-replay.html` · `black-swan.html` | Does parking sale proceeds for 24 months and phasing in over 36 actually help? 89 ten-year windows, 1928–2025, plus method notes |
-| `comparison.html` · `calculator.js` | Eight paths on one calendar, including four mixed paths, with a 25-input browser-only model |
-| `questions.html` | Every open question, its owner, and the evidence that closes it |
-| `law-watch.html` | Enacted anchors, live proposals, re-check calendar, change procedure |
-| `suggestions.html` | Twenty-two reviewable actions with acceptance criteria |
-| `brief.html` | One printable page for the attorney and CPA |
-| `flagged.html` · `FLAGGED_FOR_REVIEW.html` | Unverified, irregular, or conflicting items, with links for manual review |
-| `sources.md` | Official source register and verification log |
+- `python3 scripts/build_model.py` → writes `data/model.json` + `data/model.js` (rounded to $10, deterministic).
+- `app.js` loads `data/model.js` and re-runs the path math in the browser for what-if controls.
+- After **any** input change: rebuild, re-run `python3 scripts/check_site.py`, re-run the privacy grep,
+  and record whether the recommendation moved (see `projections.html#rebuild` and COORDINATION.md).
+
+## Privacy rules (see COORDINATION.md for the full record)
+
+- Placeholders only: **Property A, Property B, Owner B**. No names, street addresses, ZIP codes,
+  parcel/APN IDs, account numbers, or trust identifiers anywhere public.
+- Currency rounded to the nearest $10 (owner instruction). Values already divisible by $10 are
+  additionally jittered +$10 so no displayed value exactly matches a public record.
+- Full-precision household figures live only in git-ignored `private/` (internal use, never committed).
+- Prior exposure: household figures were merged to `main` in early PRs (#3/#4/#5) and exist in closed-PR
+  refs (#8/#10/#12). Main's reachable history is verified clean (2026-11-25 sweep), but a true purge
+  (caches, closed-PR refs, forks) requires repository-owner action. Do not claim history is scrubbed.
 
 ## Validation
 
-Every push and pull request runs:
-
-```bash
-python3 scripts/check_site.py                   # required pages exist and are linked from index.html,
-                                               # every table row carries a source link, all local
-                                               # anchors resolve, no remote scripts/styles, privacy scan
-python3 scripts/privacy_check.py --selftest    # plants a synthetic leak to prove the detector fires,
-                                               # then scans every published file
-python3 scripts/verify_sources.py              # recomputes the historical datasets against published index levels
-node --check app.js && node --check calculator.js
-node scripts/smoke_calculator.js               # drives the calculator against a stub DOM and asserts
-                                               # it references no network or storage APIs
-```
-
-`scripts/verify_sources.py --online` additionally re-fetches the cited official pages. It cannot
-run in a sandbox without outbound HTTPS, and it says so explicitly rather than reporting a pass.
-
-## Rebuilding generated pages
-
-```bash
-python3 scripts/build_pages.py            # war-room, law-watch, questions, comparison, suggestions, brief
-python3 scripts/build_crash_replay_page.py
-```
-
-Both generators are dependency-free (Python standard library only) and write into the repository
-root, because that is the path Pages serves. The household model script (`scripts/build_model.py`)
-is not in the public tree at all: any household-derived output belongs in the git-ignored
-`private/` directory and must never target a published path.
+- `python3 scripts/check_site.py` — required pages, local links/anchors, every table row carries a
+  source link, no remote scripts or styles (nothing leaks visitor metadata).
+- `node --check app.js` (CI).
+- Privacy grep before every commit: ZIPs and exact unrounded owner values must return nothing.
 
 ## Disclaimer
 
-Planning and decision-organization aid only. Not legal, tax, investment, appraisal, or insurance
-advice.
+Planning and decision-organization aid only. Not legal, tax, investment, insurance, or appraisal
+advice. 2026 anchors reflect law as published by their official sources on 2026-11-25; a 2040–2050
+transfer will be governed by the law in force at that date.

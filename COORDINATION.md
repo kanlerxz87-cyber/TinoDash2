@@ -61,12 +61,21 @@ The earlier "no household figures even rounded" policy was written by agent sess
 
 | Task | Status | Owner | Files / Scope | Notes |
 |---|---|---|---|---|
+<<<<<<< HEAD
 | Full figure-driven dashboard rebuild at root (live Pages surface) per owner instruction | in progress | e4e062ed | root `*.html`, `app.js`, `styles.css`, `data/**`, `scripts/build_model.py` (new), `docs/**` (redirect stubs, no figures) | Supersedes stubs; integrates s-a549f819 dashboard content + b2c54940 anchors + this session's new research. |
 | New research pass (official sources; enacted vs proposal) | in progress | e4e062ed | `sources.md`, root pages, `scripts/build_model.py` | IRS 2026 exclusion/OBBBA, BOE Prop 19 + allowance, SCC tax-rate/TRA, SF transfer tax, SF Prop H (Nov 2026) parcel tax, FTB 540 line 62, §121/§1014/§1031/recapture, HUD FMR benchmark, Treasury yields. |
 | Phased-investing path (3M–2Y Treasuries, 24–36 months) in Black Swan | in progress | e4e062ed | `black-swan.html`, `app.js`, `scripts/build_model.py` | Quantified vs immediate lump sum under 1929/2008-style entry tests. |
 | Privacy containment (figures in Git remain; no new exposures) | ongoing | e4e062ed | commit hygiene | Exact unrounded owner-supplied series kept only in git-ignored `private/`. Main's reachable history verified free of unrounded series/ZIPs (see session log). Purge remains owner action. |
 | Model rebuild after any input change + recommendation-stability check | in progress | e4e062ed | `scripts/build_model.py`, root pages | Tornado/sensitivity; document whether recommendation moved. |
 | PR, merge, Pages confirm, coordination log | done | e4e062ed | PR from this branch | Validate + privacy grep before every push. PR/merge result recorded when merged. |
+=======
+| Full figure-driven dashboard rebuild at root (live Pages surface) per owner instruction | done | e4e062ed | root `*.html`, `app.js`, `styles.css`, `data/**`, `scripts/build_model.py` (new), `docs/**` + `pages/**` (redirect stubs, no figures) | 13 canonical pages + stubs; integrates s-a549f819 content + b2c54940 anchors + new research. check_site passes; no remote scripts/styles. |
+| New research pass (official sources; enacted vs proposal) | done | e4e062ed | `sources.md`, root pages, `scripts/build_model.py` | Directly fetched: IRS What's New ($15M/PL 119-21), BOE Prop 19 + NR-25-02 ($1,044,586), Treasury XML (Nov 24, 2026: 3M 4.36/1Y 4.59/2Y 4.63), SFMTA Prop H, Leginfo SB-284. Official-domain verified: sf.gov recorder/transfer-tax schedule, SCC Clerk-Recorder DTT/fees + Assessor TRA booklet. Enacted vs proposal labeled on site. |
+| Phased-investing path (3M–2Y Treasuries, 24–36 months) in Black Swan | done | e4e062ed | `black-swan.html`, `app.js`, `scripts/build_model.py` | Identical monthly sim for lump vs 24/30/36-mo phases: no-crash cost 4.5–6.6% of terminal; year-1 −50% crash: phased ahead +$12.7M–$15.6M; 1929-style −89%: ahead up to +$30.5M. Reinvestment risk stated beside headline. |
+| Privacy containment (figures in Git remain; no new exposures) | done (purge still owner action) | e4e062ed | commit hygiene, `private/**` (ignored) | Pickaxe sweep of main's full reachable history: NO unrounded series/ZIPs/parcel IDs. Full-precision records only in git-ignored private/. 3 divisible-by-$10 owner values jittered +$10 (list only in private/ESTATE_INVENTORY.md). Privacy grep passes on tracked files. |
+| Model rebuild after any input change + recommendation-stability check | done | e4e062ed | `scripts/build_model.py`, root pages | Deterministic rebuild; ranking recomputed on every build. Base ranking 2045/30y: sell $54.4M > phased $51.4M > live $16.6M > rent $15.4M. JS tornado shows stock return as largest sensitivity. Rebuild protocol on projections.html#rebuild. |
+| PR, merge, Pages confirm, coordination log | done | e4e062ed | PR from this branch | check_site + node --check + privacy grep before every push. PR/merge result recorded below when merged. |
+>>>>>>> 83f9318 (Dashboard: 13 canonical pages + glossary/sources/flagged/briefing, stubs, sources register, README, coordination log; privacy grep clean)
 
 **Do not edit these files while this claim is active without logging here first.**
 >>>>>>> c9ee3dc (Coordination: claim e4e062ed scope (figure-driven dashboard per owner instruction))
@@ -80,6 +89,16 @@ The earlier "no household figures even rounded" policy was written by agent sess
 | Private analysis annex (rounded to $10, local only) | done (local only; not committed) | b2c54940 | `private/ANALYSIS_ANNEX.md` (git-ignored, never committed) | Not published. |
 | Public site, README, validator | done | b2c54940 | root `*.html`, `README.md`, `scripts/check_site.py` | No household figures, names, ZIPs, addresses, parcel IDs. |
 
+
+### Session e4e062ed log (2026-11-25)
+- Rebased onto origin/main (PR #13 FTB note + PR #14 docs removal) before starting; claim pushed first.
+- Built figure-driven dashboard at root per owner instruction (see claim header for the policy-interpretation record; dispute there, do not revert silently).
+- Sources verified by direct fetch: IRS (2026 exclusion $15M, PL 119-21), BOE Prop 19 page + NR-25-02 (allowance $1,044,586), Treasury daily par yield XML (2026-11-24: 3M 4.36 / 1Y 4.59 / 2Y 4.63), SFMTA Prop H (approved Nov 3, 2026; MF $249/yr ≤5,000sf; senior per-unit exemption), Leginfo SB-284 (held in committee — proposal only). Official-domain pages verified for SF recorder/transfer tax and SCC Clerk-Recorder DTT/fees + Assessor typical-TRA example (1.1488%). HUD FMR 3BR FY2026 ≈$4,602 mirrored — flagged for confirmation at official tool.
+- Model: scripts/build_model.py → data/model.json + data/model.js. Deterministic; ranking recomputed each build. Base 2045/30y: sell+invest $54.4M, sell+phased $51.4M, live (Prop 19) $16.6M, rent $15.4M. Reassessed property tax dominates keep-paths (2045: $54.7k live / $69.5k rented vs $7.2k today). Same-tax-year sale ≈ $0 gain (step-up) modeled first per instruction.
+- Validation: scripts/check_site.py PASS (every table row source-linked, no remote scripts/styles, anchors resolve); node --check app.js PASS; privacy grep PASS (ZIPs + exact unrounded owner values: zero hits in tracked files).
+- Privacy: full-precision series in git-ignored private/ESTATE_INVENTORY.md only; divisible-by-$10 owner values jittered +$10 publicly (documented on flagged.html without publishing the originals).
+- docs/** and pages/** converted to redirect stubs (no figures) so legacy URLs resolve to the root dashboard.
+- Irregularities logged on flagged.html: parcel TRA unverified; HUD FMR mirror; insurance quotes missing; B depreciation/leases unverified; Treasury-interest CA-treatment correction flag; FAIR Plan rate filing pending; SB 284 proposal only.
 
 ### Session b2c54940 log (2026-11-25)
 

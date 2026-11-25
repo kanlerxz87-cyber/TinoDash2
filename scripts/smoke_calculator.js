@@ -12,7 +12,7 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const source = fs.readFileSync(path.join(root, "calculator.js"), "utf8");
+const source = fs.readFileSync(path.join(root, "companion", "calculator.js"), "utf8");
 
 const failures = [];
 function check(ok, message) {

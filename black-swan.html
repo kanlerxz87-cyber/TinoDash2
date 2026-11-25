@@ -4,93 +4,123 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,follow">
-  <title>Black swan entry tests | Estate Pathways</title>
+  <meta name="description" content="Black swan economic regimes and the phased-investing path: parking sale proceeds in 3M-2Y Treasuries for 24-36 months before phasing into stocks, tested against 1929/2008-style crash entry.">
+  <title>Black swan &amp; phased investing | TinoDash2</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="black-swan">
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="topbar">
-    <a class="brand" href="index.html"><span class="brand-mark">EP</span><span>Estate Pathways<small>Crash-entry tests</small></span></a>
-    <a class="button button-quiet" href="index.html">← Overview</a>
+    <a class="brand" href="index.html"><span class="brand-mark">TD</span><span>TinoDash2<small>Inheritance decision dashboard</small></span></a>
+    <div class="top-actions"><span class="privacy-chip"><span aria-hidden="true">●</span> Runs locally · public anchors only</span></div>
   </header>
-  <main class="review-page">
-    <nav class="catnav" aria-label="Category menu">
-      <span class="grp">DECIDE</span><a href="index.html">Overview</a><a href="pages/decision-criteria.html">Criteria &amp; log</a><a href="pages/comparison.html">Path comparison</a><a href="pages/questions.html">Questions</a>
-      <span class="grp">MODEL</span><a href="pages/properties.html">Property files</a><a href="pages/projections.html">Projections</a><a class="active" href="black-swan.html">Black swan</a><a href="pages/tax-legal.html">Tax &amp; law</a>
-      <span class="grp">GOVERN</span><a href="pages/timeline.html">Timeline</a><a href="pages/law-watch.html">Law watch</a><a href="pages/briefing.html">Brief</a><a href="pages/suggestions.html">Suggestions</a><a href="pages/glossary.html">Glossary</a><a href="pages/sources.html">Sources</a><a href="FLAGGED_FOR_REVIEW.html">Flagged ↗</a>
-    </nav>
-    <div class="eyebrow">PUBLIC-MARKET REFERENCE DATA · NOT A FORECAST · NOT ADVICE</div>
-    <h1>Black swan entry tests</h1>
-    <p class="review-intro">The decision that dominates every other modeling detail is the <strong>entry sequence</strong>: selling an inherited property and redeploying proceeds into risk assets at the top of a euphoric market versus being already invested through it. A staging plan (3-month–2-year Treasuries for 24–36 months, then equities) is <strong>insurance, not a return source</strong> — in a bull market it is a cost, and that cost should be admitted out loud before it is chosen. The replays below price both sides of that trade on one published dataset.</p>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <p class="nav-label">DECISION DESK</p>
+      <a class="nav-link" href="index.html">Executive summary</a>
+      <a class="nav-link" href="comparison.html">Compare all paths</a>
+      <a class="nav-link" href="projections.html">Projections &amp; what-if</a>
+      <a class="nav-link active" href="black-swan.html">Black swan &amp; phased investing</a>
+      <p class="nav-label">PROPERTY &amp; COST DATA</p>
+      <a class="nav-link" href="properties.html">Properties A &amp; B</a>
+      <p class="nav-label">TAXES &amp; LAW</p>
+      <a class="nav-link" href="taxes.html">Tax &amp; legal map</a>
+      <a class="nav-link" href="timeline.html">Deadlines timeline</a>
+      <p class="nav-label">GOVERNANCE</p>
+      <a class="nav-link" href="questions.html">Questions &amp; missing info</a>
+      <a class="nav-link" href="suggestions.html">Suggestions review queue</a>
+      <a class="nav-link" href="briefing.html">Attorney &amp; CPA briefing sheet</a>
+      <p class="nav-label">REFERENCE</p>
+      <a class="nav-link" href="glossary.html">Glossary &amp; method</a>
+      <a class="nav-link" href="sources.html">Sources &amp; verification</a>
+      <a class="nav-link" href="flagged.html">Flagged for review</a>
+      <div class="sidebar-note"><strong>Why a separate black-swan section</strong><p>Growth and inflation are never consistent over 50 years. A 50-year average hides the 1929s, 1970s, 2000s and 2008s that decide real outcomes.</p></div>
+    </aside>
+    <main id="main">
+      <div class="page-header">
+        <div class="eyebrow">03 · BLACK SWAN SECTION · SEPARATE FROM BASELINE PROJECTIONS</div>
+        <h1>Black swans: test the entry sequence, not a headline</h1>
+        <p class="lead">This section models how the sale-and-reinvest decision behaves when the entry lands on a crisis — and quantifies the owner-requested <strong>phased path: parking proceeds in 3-month to 2-year Treasuries for 24–36 months, then phasing into stocks</strong>.</p>
+      </div>
 
-    <h2>1 · The phased-investing test — $1,000,000 at each historical entry date</h2>
-    <p class="review-intro">Same starting money, three deployment plans: <strong>immediate</strong> (all at once), <strong>24-month</strong> (equal tranches at months 0/12/24, parked in 3-month T-bills until each tranche deploys), <strong>36-month</strong> (months 0/12/24/36). Returns: S&amp;P 500 annual total return and average 3-month T-bill rate (Damodaran histretSP, Jan 2026 dataset).</p>
-    <div class="table-wrap"><table>
-      <thead><tr><th>Entry date &amp; regime</th><th>Measured at</th><th>Immediate</th><th>24-month phase</th><th>36-month phase</th><th>Source</th></tr></thead>
-      <tbody id="replayRows"></tbody>
-    </table></div>
-    <div class="callout"><strong>Read the two-sided result:</strong> in 1929, 1973, 2008 and 2022 entries, staging won — sometimes overwhelmingly (1929 at 4 years: ≈$352,300 immediate vs ≈$577,530 staged). In the 2013 bull entry, staging lost clearly (≈$1,321,500 immediate vs ≈$1,107,570 staged after 1 year). No plan wins both cases; the point of the pre-agreed <a href="pages/decision-criteria.html#ips">investment policy</a> is to pick your premium in advance.</div>
+      <section class="section" id="regimes">
+        <h2>Real regimes from history (public anchors, labeled by index basis)</h2>
+        <div class="scenario-grid">
+          <article class="scenario-card"><div class="scenario-kicker">A · 1929-STYLE DEFLATION</div><h3>Depression entry</h3><p>Equities fell ≈89% peak-to-trough (DJIA price basis, Sep 1929–Jul 1932) while CPI fell ≈25% (1930–32). Cash/Treasuries gained real purchasing power; nominal debts crushed borrowers.</p><span class="risk-label"><a href="sources.html#src-fred">FRED DJIA</a> · <a href="sources.html#src-nber">NBER</a></span></article>
+          <article class="scenario-card"><div class="scenario-kicker">B · 1970s STAGFLATION</div><h3>Inflation squeeze</h3><p>Equities fell ≈48% (S&amp;P 500 price basis, 1973–74) with CPI averaging 11.3–13.5% (1979–81). Short Treasuries lost real value most years — parking is not safe from inflation.</p><span class="risk-label"><a href="sources.html#src-fred">FRED SP500</a> · <a href="sources.html#src-bls">BLS CPI</a></span></article>
+          <article class="scenario-card"><div class="scenario-kicker">C · 2000-2002 DOT-COM</div><h3>Long grind</h3><p>≈49% decline over 2.5 years (S&amp;P 500 price basis) with the Fed cutting 6.5%→1.0%; parking yields collapsed as the crisis ran — reinvestment risk in action.</p><span class="risk-label"><a href="sources.html#src-fred">FRED SP500</a> · <a href="https://www.federalreserve.gov/monetarypolicy/openmarket.htm">Fed actions</a></span></article>
+          <article class="scenario-card"><div class="scenario-kicker">D · 2008 GFC</div><h3>Both assets fall</h3><p>Equities ≈−57% (S&amp;P 500 price basis); national home prices ≈−27% (public index anchor). The 3-month T-bill yield collapsed from ≈5% to near zero — each maturity reinvested lower.</p><span class="risk-label"><a href="sources.html#src-fred">FRED SP500/DTB3</a> · <a href="https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath">Fed history</a></span></article>
+          <article class="scenario-card"><div class="scenario-kicker">E · 2022 RATE SHOCK</div><h3>Stocks AND bonds fall</h3><p>Equities ≈−25% while Treasuries had one of their worst years in decades with CPI at 8.0% — proof that the parking leg itself carries rate risk, not just equity risk.</p><span class="risk-label"><a href="sources.html#src-fred">FRED SP500</a> · <a href="sources.html#src-treasury">Treasury rates</a></span></article>
+          <article class="scenario-card"><div class="scenario-kicker">F · LOST DECADE / STAGNATION</div><h3>Years of nothing</h3><p>S&amp;P 500 total-return CAGR ≈−1%/yr for 2000–2009; Japan's Nikkei spent decades below its 1989 peak. Averages lie: whole decades can pass without real progress.</p><span class="risk-label"><a href="sources.html#src-fred">FRED SP500/NIKKEI225</a></span></article>
+        </div>
+        <p class="source-note">Declines are computed from public index level series (price basis, not total return, unless labeled) and are entry-timing anchors only — not forecasts, not portfolio replays. A household-specific replay requires an adviser-agreed total-return dataset, allocation, fees, and rebalance rules. <a href="flagged.html">Basis caveats</a></p>
+      </section>
 
-    <h2 id="method-replay">2 · Replay rules (so the numbers are reproducible)</h2>
-    <ol class="review-intro">
-      <li>Entry at the start of the named calendar year; $1,000,000 split into equal tranches per plan.</li>
-      <li>Each parked tranche earns that year's average 3-month T-bill rate until its deployment year; from then it earns that year's S&amp;P 500 total return.</li>
-      <li>Values are nominal, rounded to $10, before tax and fees. Total-return basis — do not compare with the price-only anchors in section 3 without relabelling.</li>
-      <li>Source: <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html">NYU Stern (Damodaran) — Historical Returns on Stocks, Bonds and Bills (Jan 2026)</a>.</li>
-    </ol>
+      <section class="section" id="phased">
+        <h2>The phased path, quantified</h2>
+        <div class="alert alert-info"><strong>Reinvestment risk, beside the headline:</strong> the parking leg is only as good as the yield you can <em>keep</em> rolling. Today's curve (Nov 24, 2026: 3-month 4.36%, 1-year 4.59%, 2-year 4.63%) is attractive; in 2008 the same leg collapsed toward zero within months. Phasing buys crash protection by accepting that yields may reset lower. <a href="sources.html#src-treasury">Treasury daily rates</a></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Test (crash year, severity)</th><th class="num">Lump-sum terminal</th><th class="num">Phase 24 mo</th><th class="num">Phase 30 mo</th><th class="num">Phase 36 mo</th><th class="num">Best phase vs lump</th><th>Anchor / verify</th></tr></thead>
+          <tbody id="modelTestRows">
+            <tr><td>No crash (opportunity-cost test)</td><td class="num">$54,360,000</td><td class="num">$51,890,000</td><td class="num">$51,340,000</td><td class="num">$50,800,000</td><td class="num bad">−$2,470,000</td><td><a href="sources.html#src-model">Model build</a></td></tr>
+            <tr><td>2008-style, first year (−50%)</td><td class="num">$27,180,000</td><td class="num">$39,850,000</td><td class="num">$41,700,000</td><td class="num">$42,770,000</td><td class="num good">+$15,590,000</td><td><a href="sources.html#src-fred">Index anchor</a></td></tr>
+            <tr><td>2008-style, second year (−50%)</td><td class="num">$27,180,000</td><td class="num">$27,530,000</td><td class="num">$31,850,000</td><td class="num">$34,560,000</td><td class="num good">+$7,380,000</td><td><a href="sources.html#src-fred">Index anchor</a></td></tr>
+            <tr><td>2008-style, third year (−40%)</td><td class="num">$32,620,000</td><td class="num">$31,610,000</td><td class="num">$31,390,000</td><td class="num">$31,670,000</td><td class="num bad">−$950,000</td><td><a href="sources.html#src-fred">Index anchor</a></td></tr>
+            <tr><td>1929-style, first year (−89%)</td><td class="num">$5,980,000</td><td class="num">$30,450,000</td><td class="num">$34,180,000</td><td class="num">$36,500,000</td><td class="num good">+$30,520,000</td><td><a href="sources.html#src-fred">Index anchor</a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="source-note">Identical monthly simulation for both legs: $7,141,300 investable (2045 base case), 7.0% stock return, 4.5% parking yield held constant, crash applied to invested balances only in the stated year, 30-year horizon. Real crises change yields and inflation — this is an entry-timing test, not a forecast. <a href="glossary.html#method">Method</a></p>
 
-    <h2>3 · Public historical anchors (as published on earlier dashboards — note each basis)</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Episode</th><th>Public figure</th><th>What it teaches</th><th>Source</th></tr></thead>
-        <tbody>
-          <tr><td><strong>1929–32 (DJIA)</strong></td><td>Dow fell from ≈ 381 (Sep 3, 1929) to ≈ 41 (Jul 8, 1932) — ≈ <strong>−89% peak-to-trough, price only</strong></td><td>The extreme case for any “sell the house, buy the market” plan struck at a euphoric peak. S&amp;P-style total-return series differ; do not mix bases.</td><td><a href="https://fred.stlouisfed.org/series/DJIA">FRED: Dow Jones Industrial Average</a> · <a href="https://www.nber.org/research/business-cycle-dating">NBER cycle dates</a></td></tr>
-          <tr><td><strong>1929–32 (NBER index, FRED)</strong></td><td>≈ 362 (Sep 1929) → ≈ 47 (Jun 1932) = <strong>≈ −87.1%</strong>; CPI fell ≈ −21.4% over the same window (deflation softened the real loss)</td><td>Price collapse with deflation; the staged buy-in for later tranches happened at crushed prices.</td><td><a href="https://fred.stlouisfed.org/series/M1109BUSM293NNBR">FRED NBER index</a> · <a href="https://fred.stlouisfed.org/series/CPIAUCNS">FRED CPI</a></td></tr>
-          <tr><td><strong>1931 (S&amp;P 500)</strong></td><td>≈ <strong>−43.3%</strong> nominal calendar year (price/older vintage basis) — worst single year in the post-1926 series; the Jan-2026 Damodaran total-return vintage shows −43.8%</td><td>A single year can erase many years of compounded gains; entry timing risk is real and asymmetric.</td><td><a href="https://www.officialdata.org/us/stocks/s-p-500/1926">officialdata.org (Damodaran mirror)</a></td></tr>
-          <tr><td><strong>1930s decade</strong></td><td>≈ <strong>−5.3% per year</strong> compound (price basis); total-return basis is milder (≈ −0.9%/yr — dividends mattered)</td><td>A lost decade on price; the entry-cohort argument for holding cash-like instruments early.</td><td><a href="https://www.officialdata.org/us/stocks/s-p-500/1926">officialdata.org</a> · <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html">Damodaran</a></td></tr>
-          <tr><td><strong>1973–74 (S&amp;P 500)</strong></td><td>≈ <strong>−14.3%</strong> then ≈ <strong>−25.9%</strong> (total return, Damodaran Jan-2026 vintage)</td><td>Stagflation: falling prices <em>and</em> high inflation. Cash hedges neither; T-bills paid 7–8% while stocks fell.</td><td><a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html">Damodaran</a></td></tr>
-          <tr><td><strong>2000–02 (S&amp;P 500)</strong></td><td>≈ <strong>−9.0%</strong>, ≈ <strong>−11.9%</strong>, ≈ <strong>−22.0%</strong> (total return) — ≈ −38% cumulative</td><td>Valuation-driven bear market; selling appreciated assets into a bubble compounds the error.</td><td><a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html">Damodaran</a></td></tr>
-          <tr><td><strong>2008 (S&amp;P 500)</strong></td><td>≈ <strong>−36.6%</strong> (total return, Damodaran) / ≈ −37.0% (older vintage)</td><td>Credit/banking crisis; diversification did not save equity-heavy entries made that year.</td><td><a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html">Damodaran</a> · <a href="https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath">Federal Reserve History</a></td></tr>
-          <tr><td><strong>2020 (S&amp;P 500)</strong></td><td>Intra-year drawdown ≈ <strong>−33.9%</strong> (Feb 19 → Mar 23), then ≈ <strong>+18.0%</strong> for the full calendar year</td><td>Exogenous, fast crash and V-shaped recovery; being staged <em>through</em> it beat being out of the market.</td><td><a href="https://fred.stlouisfed.org/series/SP500">FRED S&amp;P 500</a> · <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html">Damodaran</a></td></tr>
-          <tr><td><strong>2022</strong></td><td>Stocks ≈ <strong>−18.0%</strong>, 10-year bonds ≈ <strong>−17.8%</strong>, T-bills ≈ <strong>+2.1%</strong></td><td>The modern case where the Treasury ladder actually was the best asset — for one year.</td><td><a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html">Damodaran</a></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="source-note">Nominal returns differ by source and vintage (DJIA ≠ S&amp;P 500; price ≠ total return). “≈” marks values transcribed from the cited datasets. No series is extended beyond its published end date, and no future return is implied.</p>
+        <h3>Run your own crash-entry test</h3>
+        <form id="bsForm" aria-label="Crash entry tester">
+          <fieldset>
+            <legend>Crash-entry inputs</legend>
+            <div class="form-grid">
+              <label>Investable amount ($)<input id="bsAmount" type="number" min="0" step="10000" value="7141300"><small>2045 base-case investable from the model.</small></label>
+              <label>Stock return %<input id="bsStock" type="number" step="0.1" value="7.0"><small>Nominal, pre-tax.</small></label>
+              <label>Parking yield %<input id="bsTreasury" type="number" step="0.01" value="4.5"><small>3M–2Y Treasuries; official Nov 2026 curve spans 4.36–4.63%.</small></label>
+              <label>Horizon (years)<input id="bsHorizon" type="number" min="1" max="50" step="1" value="30"></label>
+              <label>Custom crash year<input id="bsCrashYear" type="number" min="1" max="50" step="1" placeholder="optional"><small>Added as an extra row when both fields are set.</small></label>
+              <label>Custom drawdown %<input id="bsDrawdown" type="number" min="0" max="100" step="1" placeholder="e.g. 60"></label>
+            </div>
+            <div class="form-actions"><button class="button" type="submit">Run test</button></div>
+            <p id="bsNote" class="muted small"></p>
+          </fieldset>
+        </form>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Scenario (computed live)</th><th class="num">Lump sum</th><th class="num">Phase 24 mo</th><th class="num">Phase 30 mo</th><th class="num">Phase 36 mo</th><th class="num">Best phase − lump</th><th>Verify</th></tr></thead>
+          <tbody id="crashTable"></tbody>
+        </table></div>
 
-    <h2>4 · Fifty-year reality: growth and inflation are never consistent</h2>
-    <p class="review-intro">The baseline projection (7% stocks, 2.8% inflation) is a <em>compromise</em>, not a description of any actual decade. Nominal S&amp;P 500 total-return CAGRs computed from the Damodaran annual series:</p>
-    <div class="table-wrap"><table>
-      <thead><tr><th>Decade</th><th>S&amp;P 500 nominal CAGR (total return)</th><th>Inflation context</th><th>Regime</th><th>Source</th></tr></thead>
-      <tbody id="decadeRows"></tbody>
-    </table></div>
-    <p class="figure-note">A 50-year plan must survive a 1930s- or 2000s-style decade AND a 1990s-style decade. That is why every path on this site is shown as low/base/high ranges and stress-tested at bad entry dates, not as one curve.</p>
+        <h3>How the parking leg actually works</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Instrument</th><th>Maturity band</th><th>Role in the phased path</th><th>Official reference</th></tr></thead>
+          <tbody>
+            <tr><td>Treasury bills</td><td>3-month (13-week) rolling</td><td>Most liquid parking; yield resets every maturity — reinvestment risk is real and frequent</td><td><a href="https://www.treasurydirect.gov/marketable-securities/treasury-bills/">TreasuryDirect: T-bills</a></td></tr>
+            <tr><td>Treasury notes</td><td>1–2 years</td><td>Locks the yield for the back half of the phase window; small price risk if sold early</td><td><a href="https://www.treasurydirect.gov/marketable-securities/treasury-notes/">TreasuryDirect: notes</a></td></tr>
+            <tr><td>Direct Treasury purchase</td><td>At auction or secondary</td><td>Held to maturity removes price risk; interest is state-tax-exempt but federally taxable and CA-taxed? No — Treasury interest is CA-tax-exempt, federal taxable</td><td><a href="https://www.treasurydirect.gov/government-guaranteed/">TreasuryDirect</a></td></tr>
+            <tr><td>Phase schedule</td><td>24 / 30 / 36 months</td><td>Equal monthly purchases into the stock allocation; earlier tranches take market risk sooner</td><td><a href="comparison.html#phased">Path 4 mechanics</a></td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout"><strong>Correction flag:</strong> the third row above states the tax treatment — U.S. Treasury interest is exempt from California income tax but fully taxable federally. Verify with a CPA before relying on it. <a href="flagged.html">Flagged items</a></div>
+      </section>
 
-    <h2>5 · What a 24–36 month Treasury phase-in actually trades</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Dimension</th><th>Benefit of staging</th><th>Cost of staging</th><th>Source / check</th></tr></thead>
-        <tbody>
-          <tr><td>Crash in year 1</td><td>Partial/full avoidance of buying equity at the peak; dry powder redeploys cheaper</td><td>—</td><td><a href="https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath">Federal Reserve History: Great Recession</a></td></tr>
-          <tr><td>Steady bull market</td><td>—</td><td>Cash drag: the uninvested tranche forgoes equity returns the whole phase-in window (see the 2013 replay)</td><td><a href="#method-replay">Replay rules</a></td></tr>
-          <tr><td>Inflation</td><td>Short Treasuries ladder re-prices at each maturity; yield can reset upward</td><td>Purchasing power of fixed nominal cash erodes between resets; equities are not a guaranteed inflation hedge either</td><td><a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates">US Treasury: Daily treasury par yield curve rates</a></td></tr>
-          <tr><td>Reinvestment risk</td><td>Ladder caps how much principal is exposed to a single rate reset</td><td>Falling yields at each rollover lock in lower yields for the remaining tranches; the Nov 2026 curve (≈ 3-month ≈ 4.3%, ≈ 2-year ≈ 4.6%, ≈ 10-year ≈ 4.9–5.1%, upward-sloping) is <em>not</em> a forecast of 2040</td><td><a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates">US Treasury: Daily treasury par yield curve rates</a></td></tr>
-          <tr><td>Behavioral</td><td>Makes a written, pre-committed rule possible <em>before</em> figures arrive (anti–reverse-engineering)</td><td>“Staging forever” is a de-risking without a decision — it needs a dated, written end condition</td><td><a href="pages/decision-criteria.html#ips">Investment policy</a></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2>6 · Decision tests, stated before the numbers arrive</h2>
-    <ol>
-      <li><strong>Write the pre-commitment first.</strong> Pick the staging rule, the tranche schedule, the acceleration trigger (e.g., a large market fall with a written percentage) and the “enough” end state — in writing, dated — <em>before</em> any appraisal or sale closes.</li>
-      <li><strong>Liquidity runway first.</strong> Stage only what is not needed for near-term housing, tax payments, or the San Francisco property’s obligations; staging is for risk capital, not for the mortgage.</li>
-      <li><strong>Same dates, same horizons.</strong> Compare immediate investing, 24-month staging and 36-month staging on identical transfer dates, taxes and horizons — never on different calendars.</li>
-      <li><strong>Admission of the base rate.</strong> Most calendar years are positive; staging usually trails prompt deployment in a bull year (2013 replay). Choose it knowing that, or choose the lump sum knowing the 1929/2008 case.</li>
-      <li><strong>Annual Extreme-Scenario Review.</strong> Once a year, replay the plan against the 1929-, 1973-, 2008-, 2013- and 2022-type anchors above, plus one household-chosen stress size. Record the outcome in the <a href="pages/decision-criteria.html#log">decision log</a>.</li>
-    </ol>
-
-    <p class="source-note">Reference anchors checked Nov. 25, 2026. This page is decision-support, not legal, tax or investment advice. For the interactive model use <a href="pages/projections.html">projections &amp; what-if</a>; for unresolved items see <a href="FLAGGED_FOR_REVIEW.html">Flagged for Review</a>.</p>
-  </main>
-  <script src="data/model.js"></script>
+      <section class="section" id="fifty">
+        <h2>Why the baseline can never be "consistent growth and inflation"</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Reality check</th><th>What it means for this decision</th><th>Where tested</th></tr></thead>
+          <tbody>
+            <tr><td>US equities delivered roughly flat-to-negative REAL results across entire decades (1930s, 1970s, 2000s)</td><td>A 30–50-year projection that assumes one smooth rate overstates confidence; scenario bands and crash tests are mandatory, not decoration</td><td><a href="#regimes">Regime cards</a></td></tr>
+            <tr><td>Inflation varied from deflation (1930s) to 13.5% (1980)</td><td>Property-tax bases (2% cap), insurance, rents, and Treasury yields all respond differently to each regime — modeled with separate rates, not one blended number</td><td><a href="projections.html">What-if inputs</a></td></tr>
+            <tr><td>Short yields collapsed in 2008 and 2020; spiked in 1979–81 and 2022–23</td><td>The parking leg's future yield is unknowable; the phase decision must tolerate reinvestment at lower rates</td><td><a href="#phased">Phased tests</a></td></tr>
+            <tr><td>Bay Area housing fell ~27% nationally in 2008 but San Francisco / Santa Clara County recovered faster than most US metros</td><td>Property and stocks are different risk machines; both fell together in 2008 — diversification between them is weaker than assumed</td><td><a href="sources.html#src-fred">Index anchors</a></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+    </main>
+  </div>
+  <footer><p>TinoDash2 · inheritance decision dashboard · figures rounded to nearest $10 by owner instruction · placeholders only (Property A, Property B, Owner B).</p><p><a href="comparison.html#phased">Path 4 mechanics</a> · <a href="projections.html">What-if model</a> · <a href="flagged.html">Flagged for review</a></p></footer>
+  <script src="data/model.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>

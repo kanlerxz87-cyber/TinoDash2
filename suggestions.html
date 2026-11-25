@@ -1,32 +1,95 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,follow">
-<title>Suggested improvements | Estate Pathways</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="Suggestions review queue: proposed improvements and decisions, each with rationale and status, so the owner chooses the best path before any change is implemented.">
+  <title>Suggestions review queue | TinoDash2</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="topbar">
-  <a class="brand" href="index.html"><span class="brand-mark">EP</span><span>Estate Pathways<small>Private decision workspace</small></span></a>
-  <div class="top-actions">
-    <span class="privacy-chip"><span aria-hidden="true">●</span> Browser-only model · no analytics</span>
-    <a class="button button-quiet" href="brief.html">Print the brief</a>
+<body data-page="suggestions">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">TD</span><span>TinoDash2<small>Inheritance decision dashboard</small></span></a>
+    <div class="top-actions"><span class="privacy-chip"><span aria-hidden="true">●</span> Owner decides before implementation</span></div>
+  </header>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <p class="nav-label">DECISION DESK</p>
+      <a class="nav-link" href="index.html">Executive summary</a>
+      <a class="nav-link" href="comparison.html">Compare all paths</a>
+      <a class="nav-link" href="projections.html">Projections &amp; what-if</a>
+      <a class="nav-link" href="black-swan.html">Black swan &amp; phased investing</a>
+      <p class="nav-label">PROPERTY &amp; COST DATA</p>
+      <a class="nav-link" href="properties.html">Properties A &amp; B</a>
+      <p class="nav-label">TAXES &amp; LAW</p>
+      <a class="nav-link" href="taxes.html">Tax &amp; legal map</a>
+      <a class="nav-link" href="timeline.html">Deadlines timeline</a>
+      <p class="nav-label">GOVERNANCE</p>
+      <a class="nav-link" href="questions.html">Questions &amp; missing info</a>
+      <a class="nav-link active" href="suggestions.html">Suggestions review queue</a>
+      <a class="nav-link" href="briefing.html">Attorney &amp; CPA briefing sheet</a>
+      <p class="nav-label">REFERENCE</p>
+      <a class="nav-link" href="glossary.html">Glossary &amp; method</a>
+      <a class="nav-link" href="sources.html">Sources &amp; verification</a>
+      <a class="nav-link" href="flagged.html">Flagged for review</a>
+      <div class="sidebar-note"><strong>Queue rule</strong><p>Nothing here is implemented automatically. The owner reviews, chooses, and records the decision; only then does it change the model or the site.</p></div>
+    </aside>
+    <main id="main">
+      <div class="page-header">
+        <div class="eyebrow">07 · REVIEW QUEUE</div>
+        <h1>Suggestions — choose before anything is implemented</h1>
+        <p class="lead">Each suggestion states its rationale and what would change if adopted. Status moves <strong>proposed → accepted → implemented</strong> (or rejected) only by owner decision, recorded with a date in the decision log.</p>
+      </div>
+
+      <section class="section" id="decisions">
+        <h2>A · Decision suggestions (the household chooses a path)</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>ID</th><th>Suggestion</th><th>Rationale</th><th>If adopted, what changes</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>S-A1</td><td>Adopt <strong>sell-at-transfer with phased reinvestment</strong> as the default path (24–36 months, 3M–2Y Treasuries first)</td><td>Base case ranks it near the lump-sum optimum while cutting year-1 crash exposure by up to $30.5M of downside in a 1929-style entry</td><td>Decision log records the default; comparison page marks Path 4 as adopted baseline</td><td><span class="status warn">Proposed</span> · <a href="black-swan.html#phased">Evidence</a></td></tr>
+            <tr><td>S-A2</td><td>Keep the lump-sum option open if Owner B accepts sequence risk</td><td>Worth ≈$3.0M more terminal value (30y base) if no early crash occurs</td><td>Phase window shortened in the what-if; risk tolerance recorded</td><td><span class="status warn">Proposed</span> · <a href="projections.html">Test it</a></td></tr>
+            <tr><td>S-A3</td><td>Treat <strong>live-in as a lifestyle decision</strong> priced at ≈$203,250/yr (2045 base gap), not a financial recommendation</td><td>Only a deliberate premium justifies the gap; prevents post-hoc rationalization</td><td>Live path kept in the model but labeled lifestyle</td><td><span class="status warn">Proposed</span> · <a href="comparison.html#live">Occupancy math</a></td></tr>
+            <tr><td>S-A4</td><td>Drop the rent-A path unless verified comps exceed ≈$10,700/mo (2045 terms)</td><td>NOI is negative after full reassessment at benchmark-derived rents</td><td>Rent path kept as floor-ranked only</td><td><span class="status warn">Proposed</span> · <a href="properties.html#rent-evidence">Rent evidence</a></td></tr>
+            <tr><td>S-A5</td><td>Model Property B's eventual sale separately (with §1031 option) — do not couple it to A's decision</td><td>B's Prop 13 base ($2,440 tax) makes holding B uniquely cheap; sale triggers recapture + SF transfer tax</td><td>B gets its own decision gate in the annual review</td><td><span class="status warn">Proposed</span> · <a href="taxes.html#exchange">§1031 item</a></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="section" id="policy">
+        <h2>B · Investing policy draft (for adviser review — nothing final without the CPA/attorney)</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Clause</th><th>Draft provision</th><th>Purpose</th><th>Reference</th></tr></thead>
+          <tbody>
+            <tr><td>P1 · Purpose</td><td>Deploy inherited proceeds per the written policy; no speculation, no leverage, no illiquid commitments in year 1</td><td>Prevents ad-hoc decisions at a stressful time</td><td><a href="timeline.html#execute">Execution phase</a></td></tr>
+            <tr><td>P2 · Liquidity floor</td><td>Keep 12–24 months of both properties' carrying costs + estate-admin reserve in cash/T-bills before phasing</td><td>Never a forced sale during a drawdown</td><td><a href="taxes.html#estate-math">Liquidity trigger</a></td></tr>
+            <tr><td>P3 · Phase schedule</td><td>Equal monthly buys over 24–36 months from 3M–2Y Treasuries; log each reinvestment yield</td><td>Crash-entry protection; audit trail</td><td><a href="black-swan.html#phased">Tests</a></td></tr>
+            <tr><td>P4 · Allocation bands</td><td>Diversified stock allocation within agreed bands; rebalance annually or ±5pts drift</td><td>Discipline over timing</td><td><a href="projections.html">What-if</a></td></tr>
+            <tr><td>P5 · Tax coordination</td><td>Coordinate tranche sales/gains with the CPA (bracket + line-62 threshold + NIIT)</td><td>Avoid stepping into the 1% tax unintentionally</td><td><a href="taxes.html#income-tax">Line-62 sensitivity</a></td></tr>
+            <tr><td>P6 · Review</td><td>Annual review each November: black-swan re-test, cost refresh, law recheck; record whether the recommendation moved</td><td>Keeps the model honest</td><td><a href="projections.html#rebuild">Rebuild protocol</a></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="section" id="site">
+        <h2>C · Site and process improvement suggestions</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>ID</th><th>Suggestion</th><th>Rationale</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>S-C1</td><td>Add a real Monte Carlo distribution (1,000 paths, adviser-agreed return/inflation models) to replace the illustrative band</td><td>The current p10/p50/p90 band is scenario-derived, not statistical</td><td><span class="status warn">Proposed</span> · <a href="sources.html#src-model">Model register</a></td></tr>
+            <tr><td>S-C2</td><td>Add a private CSV export (browser-side) for the estate inventory and decision log</td><td>Owner keeps full-precision records locally without publishing them</td><td><span class="status warn">Proposed</span> · <a href="flagged.html">Privacy rules</a></td></tr>
+            <tr><td>S-C3</td><td>Add a "verified figures" mode that grays every planning value still missing an official source</td><td>Makes the evidence gap visible on every screen</td><td><span class="status warn">Proposed</span> · <a href="sources.html">Sources page</a></td></tr>
+            <tr><td>S-C4</td><td>Auto-refresh the annual recheck list with a checklist page for the November review</td><td>Turns the recheck protocol into a repeatable workflow</td><td><span class="status warn">Proposed</span> · <a href="taxes.html#enacted-vs-proposed">Recheck list</a></td></tr>
+            <tr><td>S-C5</td><td>Add per-path "who to call" action chips (escrow, insurer, intermediary)</td><td>Shortens execution once a path is chosen</td><td><span class="status warn">Proposed</span> · <a href="timeline.html">Timeline</a></td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout"><strong>How to work this queue:</strong> pick items, write the choice and date into the <a href="index.html#decision-log">decision log</a>, then rebuild the model and site (<a href="projections.html#rebuild">protocol</a>). Rejected items stay listed with the rejection reason — never deleted silently.</div>
+      </section>
+    </main>
   </div>
-</header>
-<div class="app-shell">
-<aside class="sidebar" aria-label="Main navigation"><p class="nav-label">DECIDE</p><a class="nav-link" href="war-room.html">War room &amp; decision gates</a><a class="nav-link" href="comparison.html">Compare every path</a><a class="nav-link" href="crash-replay.html">Crash-entry replay</a><a class="nav-link" href="crash-replay.html#how-to-use">Reinvestment risk</a><a class="nav-link" href="worksheets.html">Tax worksheets</a><p class="nav-label">EVIDENCE</p><a class="nav-link" href="questions.html">Questions &amp; missing data</a><a class="nav-link" href="law-watch.html">Law watch: enacted vs proposed</a><a class="nav-link" href="index.html#facts">Evidence inventory</a><a class="nav-link" href="FLAGGED_FOR_REVIEW.html">Flagged for review</a><p class="nav-label">ACT</p><a class="nav-link" href="brief.html">Printable attorney &amp; CPA brief</a><a class="nav-link" href="index.html#timeline">Deadlines timeline</a><a class="nav-link active" href="suggestions.html">Suggested improvements</a><a class="nav-link" href="index.html#glossary">Glossary</a><div class="sidebar-note"><strong>Privacy first</strong><p>No names, addresses, ZIP codes, parcel numbers, trust terms, or household values appear on this site. Anything entered in the calculator stays in your browser.</p></div></aside>
-<main id="main">
-  <div class="eyebrow">REVIEW QUEUE · ADOPT, REJECT OR DEFER</div>
-  <h1 style="font:800 clamp(30px,3.6vw,44px)/1.12 Manrope,sans-serif;letter-spacing:-1.4px;margin:0 0 12px;color:#123040">Improvements, each with a test you can apply before adopting it.</h1>
-  <p class="hero-sub">A standing queue so that ideas can be reviewed and selected deliberately rather than merged on impulse. Status reflects this build only.</p>
-<div class="callout"><strong>How to review this page.</strong> Each item states what it changes, how you would know it worked, and where it lives. Adopt, reject or defer each one; nothing here is presented as already decided.</div><section class="content-section"><div class="section-heading"><div><div class="eyebrow">01 · QUEUE</div><h2>Twenty-two reviewed improvements</h2></div><p>Twenty-two proposals, their acceptance criteria, and whether they are built, blocked on evidence, or only proposed.</p></div><div class="table-wrap"><table><thead><tr><th>#</th><th>Suggestion</th><th>What it changes</th><th>How you would know it worked</th><th>Status</th><th>Impact</th><th>Open it</th></tr></thead><tbody><tr><td>S1</td><td>Make the first screen answer &ldquo;what would change the answer?&rdquo;</td><td>Nine gates with the consequence of each answer, the status, and the person who can close it.</td><td>A reader can name the three facts that block a decision within thirty seconds of landing.</td><td>Done</td><td>High</td><td><a href="war-room.html">War room</a></td></tr><tr><td>S2</td><td>Replace round-number assumptions with ranges</td><td>Every estimate is entered as a low/high pair; the calculator reports a range and never a single point.</td><td>No page shows one number where the evidence supports only a band.</td><td>Partly done</td><td>High</td><td><a href="comparison.html#calculator">Calculator</a></td></tr><tr><td>S3</td><td>Test the phased-investing idea against real history rather than intuition</td><td>Replay every historical start date for lump sum versus 24–36 months of bills then a 24–36 month phase-in.</td><td>A stated win rate, a median cost, and the episodes where it wins and loses.</td><td>Done</td><td>High</td><td><a href="crash-replay.html">Crash replay</a></td></tr><tr><td>S4</td><td>Show reinvestment risk next to every staged headline</td><td>Cash drag, reinvestment yield, delay to full exposure and behaviour risk are reported with the result, not after it.</td><td>No staged figure appears without its cost.</td><td>Done</td><td>High</td><td><a href="crash-replay.html#how-to-use">Reinvestment risk</a></td></tr><tr><td>S5</td><td>Model mixed paths beside the pure choices</td><td>Live-then-sell, rent-then-sell, keep-half and staged deployment all appear in the same comparison at the same dates.</td><td>A reader can see that the best option may be a combination.</td><td>Done</td><td>High</td><td><a href="comparison.html#mixed">Mixed paths</a></td></tr><tr><td>S6</td><td>Separate estate tax, income-tax basis and property-tax assessment</td><td>Three columns, three clocks, three citations — never one blended &ldquo;tax&rdquo; line.</td><td>No reader confuses assessed value with basis or basis with market value.</td><td>Done</td><td>High</td><td><a href="https://www.irs.gov/instructions/i706">Form 706</a> · <a href="https://www.irs.gov/publications/p551">Pub 551</a> · <a href="https://www.boe.ca.gov/proptaxes/pdf/pub29.pdf">Pub 29</a></td></tr><tr><td>S7</td><td>Put a market rent on the inherited home</td><td>Rent stays blank until a licensed opinion and comparable leases exist; the calculator accepts a low/high band only.</td><td>The rent path is either evidenced or visibly marked unverified.</td><td>Blocked on evidence</td><td>High</td><td><a href="questions.html">Questions</a></td></tr><tr><td>S8</td><td>Build a five-year maintenance and capital plan for both buildings</td><td>The calculator separates routine maintenance from capital reserve; the plan itself must come from inspections and bids.</td><td>A single capital event can be priced into every path.</td><td>Blocked on evidence</td><td>Medium</td><td><a href="https://www.cslb.ca.gov/">CSLB</a></td></tr><tr><td>S9</td><td>Print a one-page brief for the attorney and the tax adviser</td><td>A single page with facts, gates, the eight paths, and the exact questions to ask each professional.</td><td>A meeting can start from one sheet instead of a dashboard tour.</td><td>Done</td><td>High</td><td><a href="brief.html">Briefing sheet</a></td></tr><tr><td>S10</td><td>Show the deadlines as a timeline</td><td>Process checkpoints from pre-transfer to annual review, each with its statutory anchor.</td><td>No deadline is discovered after it has passed.</td><td>Done</td><td>High</td><td><a href="index.html#timeline">Timeline</a></td></tr><tr><td>S11</td><td>Group the menu and add a glossary</td><td>Navigation grouped Decide / Evidence / Act; a glossary of the eight terms that are most often confused.</td><td>A first-time reader is not lost, and does not conflate basis with assessment.</td><td>Done</td><td>Medium</td><td><a href="index.html#glossary">Glossary</a></td></tr><tr><td>S12</td><td>Distinguish enacted law from proposals</td><td>Two separate registers with effective dates and official status pages, plus a dated recheck calendar.</td><td>No proposal is silently baked into a projection.</td><td>Done</td><td>High</td><td><a href="law-watch.html">Law watch</a></td></tr><tr><td>S13</td><td>Add a distribution chart rather than a single projection</td><td>Ten-year real outcomes shown as percentiles and per-start-year bars.</td><td>The reader sees the shape of the risk, not one CAGR.</td><td>Done</td><td>Medium</td><td><a href="crash-replay.html#distribution">Distribution</a></td></tr><tr><td>S14</td><td>Add what-if controls</td><td>A browser-only calculator with low/high inputs for every material assumption and no prefilled values.</td><td>Sensitivity is explored without transmitting anything.</td><td>Done</td><td>High</td><td><a href="comparison.html#calculator">Calculator</a></td></tr><tr><td>S15</td><td>Dedicate a page to suggestions so they can be reviewed before implementation</td><td>This page, with acceptance criteria and status for each idea.</td><td>A proposal can be judged on its own terms before it changes the site.</td><td>Done</td><td>Medium</td><td><a href="suggestions.html">Suggestions</a></td></tr><tr><td>S16</td><td>Rebuild the model and the site after any input change</td><td>Deterministic scripts plus a verifier that refuses to pass when it compares nothing.</td><td>The published figures can never drift from the data.</td><td>Done</td><td>High</td><td><a href="https://github.com/kanlerxz87-cyber/TinoDash2/blob/main/scripts/verify_sources.py">verify_sources.py</a></td></tr><tr><td>S17</td><td>Contain the prior public-data exposure</td><td>Working tree is clean of household figures; history and closed pull-request refs still contain them.</td><td>Repository-owner action: history purge, cache and index removal, fork review.</td><td>Owner action</td><td>Critical</td><td><a href="FLAGGED_FOR_REVIEW.html">Flagged for review</a></td></tr><tr><td>S18</td><td>Add a private, offline estate inventory</td><td>A structured template that never enters this repository: assets, values, basis, titling, beneficiaries, debts, insurance, documents.</td><td>Estate questions can be answered from one private file.</td><td>Not built (must stay private)</td><td>High</td><td><a href="https://www.ftc.gov/business-guidance/privacy-security">FTC privacy guidance</a></td></tr><tr><td>S19</td><td>Wire the replay into the calculator</td><td>Let a user compare their own horizon against the historical distribution of windows of that length.</td><td>Ranges and history land in the same view. Requires a generated distribution file and careful framing to avoid implying prediction.</td><td>Proposed</td><td>Medium</td><td><a href="crash-replay.html">Crash replay</a></td></tr><tr><td>S20</td><td>Add a depreciation and recapture module</td><td>CPA-grade schedule for rented years, with basis reduction and recapture on exit.</td><td>The rent-then-sell path stops being optimistic. Requires professional sign-off before publication.</td><td>Proposed (needs CPA)</td><td>High</td><td><a href="https://www.irs.gov/publications/p527">IRS Pub 527</a></td></tr><tr><td>S21</td><td>Add a per-start-year heat map</td><td>Colour the full cohort grid so the reader can see clusters rather than reading a table.</td><td>Faster recognition of which regimes phasing protects against.</td><td>Proposed</td><td>Low</td><td><a href="crash-replay.html#distribution">Distribution</a></td></tr><tr><td>S22</td><td>Add an inflation-adjusted property-tax projection</td><td>Model the assessed value under both Prop 19 outcomes and both inflation factors.</td><td>The largest recurring cost becomes visible on every hold path. Blocked on the parcel&rsquo;s tax rate area.</td><td>Blocked on evidence</td><td>High</td><td><a href="https://controller.santaclaracounty.gov/property-tax-distribution/property-tax-rate-book">SCC rate book</a></td></tr></tbody></table></div></section><section class="content-section"><div class="section-heading"><div><div class="eyebrow">02 · ADMISSION TEST</div><h2>What a change has to pass before it goes on the site</h2></div><p>Six criteria, applied to every item above.</p></div><div class="table-wrap"><table><thead><tr><th>Criterion</th><th>Question to ask before adopting</th><th>Anchor</th></tr></thead><tbody><tr><td>Does it change a decision?</td><td>Would a reasonable reader choose differently because of it?</td><td><a href="war-room.html">Decision gates</a></td></tr><tr><td>Is it sourced?</td><td>Does every figure trace to an official or clearly-labelled public source?</td><td><a href="law-watch.html">Law watch</a></td></tr><tr><td>Is it honest about uncertainty?</td><td>Does it show a range and name what it excludes?</td><td><a href="crash-replay.html">Crash replay</a></td></tr><tr><td>Does it protect privacy?</td><td>Does it avoid household figures, identifiers and third-party requests?</td><td><a href="https://www.ftc.gov/business-guidance/privacy-security">FTC guidance</a></td></tr><tr><td>Is it reproducible?</td><td>Can someone else rebuild the number from the repository?</td><td><a href="https://github.com/kanlerxz87-cyber/TinoDash2">Repository</a></td></tr><tr><td>Does it stay readable?</td><td>Can a non-specialist follow it in one pass?</td><td><a href="index.html#glossary">Glossary</a></td></tr></tbody></table></div></section>
-  <footer><p>Estate Pathways · evidence-led planning workspace · not legal, tax, insurance, appraisal, or investment advice.</p>
-  <p>Public anchors re-checked 2026-11-25. Never put parcel numbers, addresses, account numbers, or private documents in this repository.</p>
-  <p><a href="index.html">Dashboard</a> · <a href="https://github.com/kanlerxz87-cyber/TinoDash2">Repository</a> · <a href="FLAGGED_FOR_REVIEW.html">Flagged for review</a></p></footer>
-</main>
-</div>
+  <footer><p>TinoDash2 · inheritance decision dashboard · figures rounded to nearest $10 by owner instruction · placeholders only (Property A, Property B, Owner B).</p><p><a href="questions.html">Question list</a> · <a href="briefing.html">Briefing sheet</a> · <a href="flagged.html">Flagged for review</a></p></footer>
+  <script src="data/model.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
