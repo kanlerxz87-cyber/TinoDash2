@@ -1,534 +1,176 @@
 {
-  "generated_at": "2026-11-25T12:54:32.335802+00:00",
-  "assumptions": {
-    "as_of_date": "2026-11-25",
-    "rounding_rule": "All displayed currency values rounded to nearest $10; rates shown as percentages with up to 2 decimals. Historical source-table values are rounded before display.",
-    "privacy_rule": "No personal names, street addresses, ZIP codes, parcel/APN IDs, account numbers, or exact traceable public-record values in public outputs.",
-    "properties": {
-      "A": {
-        "label": "Property A (Santa Clara County, CA) \u2014 inherited by trust",
-        "role": "Inherited property; not currently owned by Owner B before transfer",
-        "estimated_value_2026_low": 2950000,
-        "estimated_value_2026_base": 3100000,
-        "estimated_value_2026_high": 3250000,
-        "value_note": "Planning range around a 2026 estimate; obtain independent date-of-death/appraisal comps before decisions."
+  "as_of": "2026-11-25",
+  "privacy": "No household values published. Figures here are official anchors, rates, ratios, and index moves only.",
+  "rounding_rule": "Any currency amount shown on this site is rounded to the nearest $10. This file contains no currency amounts for households.",
+  "official_anchors": [
+    {
+      "item": "Federal estate & gift basic exclusion, CY2026",
+      "value": "$15,000,000",
+      "source": "https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax",
+      "status": "enacted"
+    },
+    {
+      "item": "Federal estate filing threshold, year of death 2026",
+      "value": "$15,000,000",
+      "source": "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax",
+      "status": "enacted"
+    },
+    {
+      "item": "CA Prop 19 parent-child value allowance (2/16/2025–2/15/2027)",
+      "value": "$1,044,586",
+      "source": "https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf",
+      "status": "enacted"
+    },
+    {
+      "item": "CA state estate/inheritance return required for deaths on/after 1/1/2005",
+      "value": "No",
+      "source": "https://www.sco.ca.gov/ardtax_estate_tax.html",
+      "status": "enacted"
+    },
+    {
+      "item": "CA homeowners' exemption reduction",
+      "value": "$7,000 (taxable value)",
+      "source": "https://www.boe.ca.gov/proptaxes/pdf/pub29.pdf",
+      "status": "enacted"
+    },
+    {
+      "item": "CA property tax base rate (Prop 13 1% general levy)",
+      "value": "1% plus voter-approved bonds/special taxes",
+      "source": "https://www.boe.ca.gov/proptaxes/pdf/pub29.pdf",
+      "status": "enacted"
+    },
+    {
+      "item": "Prop 13 annual base-year value inflation cap",
+      "value": "2% maximum",
+      "source": "https://www.boe.ca.gov/proptaxes/pdf/pub29.pdf",
+      "status": "enacted"
+    },
+    {
+      "item": "Federal LTCG 0% bracket top (single, 2025)",
+      "value": "$48,350",
+      "source": "https://www.irs.gov/taxtopics/tc409",
+      "status": "enacted"
+    },
+    {
+      "item": "Federal NIIT rate / threshold (single, MAGI)",
+      "value": "3.8% / $200,000",
+      "source": "https://www.irs.gov/taxtopics/tc559",
+      "status": "enacted"
+    },
+    {
+      "item": "CA Mental Health Services surtax (line 62)",
+      "value": "1% of taxable income over $1,000,000",
+      "source": "https://www.ftb.ca.gov/forms/2025/2025-540-booklet.html",
+      "status": "enacted"
+    },
+    {
+      "item": "CA 2025 top marginal rate (Schedule X, single)",
+      "value": "12.3% above $742,953 (+1% BHS)",
+      "source": "https://www.ftb.ca.gov/forms/2025/2025-540-tax-rate-schedules.pdf",
+      "status": "enacted"
+    }
+  ],
+  "pending_or_proposed": [
+    {
+      "item": "SB 284 (Property taxation: change in ownership: family homes and farms)",
+      "status": "Active bill — in committee process; NOT law",
+      "source": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB284"
+    },
+    {
+      "item": "SB 293 (generational transfers / base-year value; chaptered as Stats. 2025 ch. 539, eff. 1/1/2026)",
+      "status": "ENACTED — the amended RTC 63.2 applies; not a proposal",
+      "source": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB293"
+    }
+  ],
+  "macro_baseline_refs": [
+    {
+      "item": "Fed Dec-2025 SEP median PCE inflation: 2026 / 2027 / longer run",
+      "value": "2.4% / 2.1% / 2.0%",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20251210.htm"
+    },
+    {
+      "item": "Fed Dec-2025 SEP median real GDP growth: 2026 / longer run",
+      "value": "2.3% / 1.8%",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20251210.htm"
+    },
+    {
+      "item": "Fed Dec-2025 SEP median fed funds, longer run",
+      "value": "3.0%",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20251210.htm"
+    },
+    {
+      "item": "CBO (Jan 2025) real GDP growth, 2027–2035 average",
+      "value": "~1.8% per year",
+      "source": "https://www.cbo.gov/publication/61189"
+    },
+    {
+      "item": "SSA 2025 Trustees Report — referenced for long-run benefit/tax context (values not extracted)",
+      "value": "[flagged — not extracted]",
+      "source": "https://www.ssa.gov/oact/TR/2025/trTOC.html"
+    }
+  ],
+  "black_swan": {
+    "description": "Official-data crash moves used as stress inputs. Not forecasts. Replays use percent moves only; no household dollar outcomes are published.",
+    "equity_crashes": [
+      {
+        "id": "1929-1932-equity",
+        "label": "1929–1932 US equity (NBER monthly index, via FRED)",
+        "source": "https://fred.stlouisfed.org/series/M1109BUSM293NNBR",
+        "peak_date": "1929-09",
+        "peak_level": 362.35,
+        "trough_date": "1932-06",
+        "trough_level": 46.85,
+        "drawdown_pct": -87.1,
+        "status": "verified-fetch"
       },
-      "B": {
-        "label": "Property B (San Francisco, CA) \u2014 already owned",
-        "role": "Already owned by Owner B; primary residence with rental units",
-        "estimated_value_2026_low": 1700000,
-        "estimated_value_2026_base": 1800000,
-        "estimated_value_2026_high": 1900000,
-        "rental_income_monthly_low": 6800,
-        "rental_income_monthly_base": 7150,
-        "rental_income_monthly_high": 7500,
-        "units_rented": 2,
-        "units_total_livable": 3,
-        "owner_can_live_without_losing_rental_income": true
+      {
+        "id": "2007-2009-equity",
+        "label": "2007–2009 Nasdaq Composite (daily close, via FRED)",
+        "source": "https://fred.stlouisfed.org/series/NASDAQCOM",
+        "peak_date": "2007-10-31",
+        "peak_level": 2859.12,
+        "trough_date": "2009-03-09",
+        "trough_level": 1268.64,
+        "drawdown_pct": -55.6,
+        "status": "verified-fetch",
+        "note": "Nasdaq used because the S&P 500 FRED graph endpoint returned only 2016+ data in this session."
       }
-    },
-    "transfer_window": [
-      2040,
-      2045,
-      2050
     ],
-    "projection_horizons_years": [
-      5,
-      10,
-      20,
-      30
+    "price_level_1929_1933": {
+      "id": "1929-1933-cpi",
+      "label": "US CPI-U (all items, NSA), Sep 1929 → Jun 1932 (via FRED)",
+      "source": "https://fred.stlouisfed.org/series/CPIAUCNS",
+      "from_date": "1929-09",
+      "from_level": 17.3,
+      "to_date": "1932-06",
+      "to_level": 13.6,
+      "change_pct": -21.4
+    },
+    "treasury_bill_3m_ranges": [
+      {
+        "period": "2007-10 to 2008-12",
+        "tb3ms_low_pct": 0.03,
+        "tb3ms_high_pct": 3.9,
+        "low_month": "2008-12",
+        "high_month": "2007-09",
+        "source": "https://fred.stlouisfed.org/series/TB3MS"
+      },
+      {
+        "period": "1934-01 to 1940-12",
+        "tb3ms_low_pct": 0.01,
+        "tb3ms_high_pct": 0.72,
+        "low_month": "1940-01",
+        "high_month": "1934-01",
+        "source": "https://fred.stlouisfed.org/series/TB3MS"
+      }
     ],
-    "appreciation_scenarios": {
-      "low": 0.02,
-      "base": 0.035,
-      "high": 0.055
-    },
-    "inflation_scenarios": {
-      "low": 0.02,
-      "base": 0.028,
-      "high": 0.04
-    },
-    "stock_return_scenarios_nominal": {
-      "conservative": 0.05,
-      "base": 0.07,
-      "optimistic": 0.09
-    },
-    "savings_return_nominal": {
-      "low": 0.025,
-      "base": 0.035,
-      "high": 0.045
-    },
-    "property_a_costs_annual": {
-      "water_monthly_low": 100,
-      "water_monthly_base": 130,
-      "water_monthly_high": 150,
-      "electricity_net_monthly_low": -20,
-      "electricity_net_monthly_base": -15,
-      "electricity_net_monthly_high": 0,
-      "insurance_annual_low": 1200,
-      "insurance_annual_base": 1500,
-      "insurance_annual_high": 2200,
-      "maintenance_annual_pct_low": 0.005,
-      "maintenance_annual_pct_base": 0.008,
-      "maintenance_annual_pct_high": 0.012,
-      "capital_reserve_annual_pct": 0.005
-    },
-    "property_b_costs_annual": {
-      "water_monthly_low": 330,
-      "water_monthly_base": 360,
-      "water_monthly_high": 400,
-      "electricity_monthly_low": 30,
-      "electricity_monthly_base": 50,
-      "electricity_monthly_high": 70,
-      "insurance_annual_low": 1800,
-      "insurance_annual_base": 2600,
-      "insurance_annual_high": 3600,
-      "maintenance_annual_pct_low": 0.008,
-      "maintenance_annual_pct_base": 0.012,
-      "maintenance_annual_pct_high": 0.018,
-      "capital_reserve_annual_pct": 0.008
-    },
-    "tax_assumptions": {
-      "federal_ltcg_rate_base": 0.2,
-      "federal_niit_rate": 0.038,
-      "ca_top_marginal_rate": 0.133,
-      "ca_mental_health_threshold": 1000000,
-      "ca_capital_gains_treated_as_ordinary": true,
-      "federal_estate_exemption_2026_per_person": 15000000,
-      "federal_estate_exemption_portability_couple": 30000000,
-      "federal_estate_top_rate": 0.4,
-      "annual_gift_exclusion_2026": 19000,
-      "step_up_basis_general_rule": true,
-      "property_tax_base_rate_estimate": 0.0118,
-      "prop13_annual_assessed_increase_cap": 0.02,
-      "prop19_value_limit_over_fbyv": 1000000,
-      "prop19_filing_homeowner_exemption_days": 365,
-      "prop19_claim_filing_years": 3
-    }
+    "reinvestment_risk_note": "3-month bill yields fell from ~3.9% (Sep 2007) to ~0.03% (Dec 2008); a 3M–2Y ladder reprices each rollover, so a staged cash position earns whatever rate exists at each rollover date."
   },
-  "property_a_history_rounded": [
-    {
-      "year": 2026,
-      "property_taxes": null,
-      "tax_assessment": 550540,
-      "note": "Property tax not provided"
-    },
-    {
-      "year": 2025,
-      "property_taxes": 7210,
-      "tax_assessment": 539740,
-      "note": ""
-    },
-    {
-      "year": 2024,
-      "property_taxes": 7000,
-      "tax_assessment": 529160,
-      "note": ""
-    },
-    {
-      "year": 2023,
-      "property_taxes": 6920,
-      "tax_assessment": 518790,
-      "note": ""
-    },
-    {
-      "year": 2022,
-      "property_taxes": 6760,
-      "tax_assessment": 508610,
-      "note": ""
-    },
-    {
-      "year": 2021,
-      "property_taxes": 6660,
-      "tax_assessment": 498640,
-      "note": ""
-    },
-    {
-      "year": 2020,
-      "property_taxes": 6570,
-      "tax_assessment": 493530,
-      "note": ""
-    },
-    {
-      "year": 2019,
-      "property_taxes": 6570,
-      "tax_assessment": 483850,
-      "note": ""
-    },
-    {
-      "year": 2018,
-      "property_taxes": 6380,
-      "tax_assessment": 474370,
-      "note": ""
-    },
-    {
-      "year": 2017,
-      "property_taxes": 6380,
-      "tax_assessment": 465070,
-      "note": ""
-    },
-    {
-      "year": 2016,
-      "property_taxes": 6410,
-      "tax_assessment": 455950,
-      "note": ""
-    },
-    {
-      "year": 2015,
-      "property_taxes": 6130,
-      "tax_assessment": 449100,
-      "note": ""
-    },
-    {
-      "year": 2014,
-      "property_taxes": 5970,
-      "tax_assessment": 440310,
-      "note": ""
-    }
-  ],
-  "property_b_history_rounded": [
-    {
-      "year": 2025,
-      "property_taxes": 2440,
-      "tax_assessment": 114250,
-      "note": ""
-    },
-    {
-      "year": 2024,
-      "property_taxes": 2320,
-      "tax_assessment": 112010,
-      "note": ""
-    },
-    {
-      "year": 2023,
-      "property_taxes": 2180,
-      "tax_assessment": 109810,
-      "note": ""
-    },
-    {
-      "year": 2022,
-      "property_taxes": 2110,
-      "tax_assessment": 107660,
-      "note": ""
-    },
-    {
-      "year": 2021,
-      "property_taxes": 2070,
-      "tax_assessment": 105600,
-      "note": ""
-    },
-    {
-      "year": 2020,
-      "property_taxes": 2200,
-      "tax_assessment": 104510,
-      "note": ""
-    },
-    {
-      "year": 2019,
-      "property_taxes": 2130,
-      "tax_assessment": 102470,
-      "note": ""
-    },
-    {
-      "year": 2018,
-      "property_taxes": 2060,
-      "tax_assessment": 100460,
-      "note": ""
-    },
-    {
-      "year": 2017,
-      "property_taxes": 1740,
-      "tax_assessment": 98490,
-      "note": ""
-    },
-    {
-      "year": 2016,
-      "property_taxes": 1680,
-      "tax_assessment": 96560,
-      "note": ""
-    }
-  ],
-  "transfer_scenarios": [
-    {
-      "transfer_year": 2040,
-      "appreciation": "low",
-      "appreciation_rate": 0.02,
-      "property_a_value": 4090380,
-      "property_a_prop13_assessed_est": 726430
-    },
-    {
-      "transfer_year": 2040,
-      "appreciation": "base",
-      "appreciation_rate": 0.035,
-      "property_a_value": 5017950,
-      "property_a_prop13_assessed_est": 726430
-    },
-    {
-      "transfer_year": 2040,
-      "appreciation": "high",
-      "appreciation_rate": 0.055,
-      "property_a_value": 6559880,
-      "property_a_prop13_assessed_est": 726430
-    },
-    {
-      "transfer_year": 2045,
-      "appreciation": "low",
-      "appreciation_rate": 0.02,
-      "property_a_value": 4516110,
-      "property_a_prop13_assessed_est": 802030
-    },
-    {
-      "transfer_year": 2045,
-      "appreciation": "base",
-      "appreciation_rate": 0.035,
-      "property_a_value": 5959750,
-      "property_a_prop13_assessed_est": 802030
-    },
-    {
-      "transfer_year": 2045,
-      "appreciation": "high",
-      "appreciation_rate": 0.055,
-      "property_a_value": 8573510,
-      "property_a_prop13_assessed_est": 802030
-    },
-    {
-      "transfer_year": 2050,
-      "appreciation": "low",
-      "appreciation_rate": 0.02,
-      "property_a_value": 4986160,
-      "property_a_prop13_assessed_est": 885510
-    },
-    {
-      "transfer_year": 2050,
-      "appreciation": "base",
-      "appreciation_rate": 0.035,
-      "property_a_value": 7078320,
-      "property_a_prop13_assessed_est": 885510
-    },
-    {
-      "transfer_year": 2050,
-      "appreciation": "high",
-      "appreciation_rate": 0.055,
-      "property_a_value": 11205230,
-      "property_a_prop13_assessed_est": 885510
-    }
-  ],
-  "path_comparison_base": [
-    {
-      "id": "live_a",
-      "name": "Live in Property A (primary residence)",
-      "transfer_year": 2045,
-      "horizon_years": 10,
-      "end_asset_value": 8406820,
-      "cumulative_cash_cost": 1186990,
-      "net_position_est": 7219830,
-      "liquidity": "Low (wealth tied in home)",
-      "key_risks": "Prop 19 eligibility/file deadlines; maintenance/capex shocks; concentration risk; opportunity cost vs. reinvestment",
-      "tax_notes": "If Prop 19 exclusion applies, assessed value may carry over within value cap; primary residence exclusion may apply on later sale if ownership/use tests met. Verify eligibility."
-    },
-    {
-      "id": "rent_a",
-      "name": "Rent Property A; live in Property B",
-      "transfer_year": 2045,
-      "horizon_years": 10,
-      "end_asset_value": 8406820,
-      "cumulative_cash_flow_after_costs": -406480,
-      "net_position_est": 8000340,
-      "liquidity": "Medium (rental income, illiquid equity)",
-      "key_risks": "Rent estimate unverified; vacancy; tenant/lease/legal risk; depreciation recapture; property-tax reassessment if Prop 19 not applicable; capex shocks",
-      "tax_notes": "Rental income taxable; depreciation may apply but creates recapture on sale; Prop 19 parent-child exclusion generally not available if not owner-occupied as primary residence. Verify with CPA."
-    },
-    {
-      "id": "sell_reinvest",
-      "name": "Sell Property A near transfer; reinvest proceeds",
-      "transfer_year": 2045,
-      "horizon_years": 10,
-      "sale_price_est": 5959750,
-      "sale_costs_est": 328290,
-      "net_proceeds_est": 5631470,
-      "end_portfolio_value": 11077950,
-      "net_position_est": 11077950,
-      "liquidity": "High (liquid portfolio, subject to market/tax)",
-      "key_risks": "Market sequence risk; reinvestment risk; tax drag; behavioral risk; loss of real-asset/inflation hedge; transaction costs",
-      "tax_notes": "Step-up in basis may reduce/eliminate capital gain if sold soon after death; state/federal taxes still depend on timing, income, and basis documentation. Price transfer tax/recording fees into net."
-    },
-    {
-      "id": "live_then_sell",
-      "name": "Live in Property A 2 years, then sell and reinvest",
-      "transfer_year": 2045,
-      "horizon_years": 10,
-      "live_years_before_sale": 2,
-      "sale_price_est": 6384240,
-      "sale_costs_est": 351630,
-      "cumulative_holding_cost_before_sale": 211720,
-      "end_portfolio_value": 10001370,
-      "net_position_est": 10001370,
-      "liquidity": "Low then high after sale",
-      "key_risks": "Timing risk; eligibility for primary-residence exclusion depends on ownership/use tests; Prop 19 implications; sequence risk after sale",
-      "tax_notes": "Primary-residence exclusion rules (IRC 121) require meeting ownership and use tests; confirm with CPA. Step-up basis and holding period matter."
-    },
-    {
-      "id": "sell_phased",
-      "name": "Sell, park proceeds in 3M\u20132Y Treasuries 24 months, then phase into stocks over 36 months",
-      "transfer_year": 2045,
-      "horizon_years": 10,
-      "sale_price_est": 5959750,
-      "net_proceeds_est": 5631470,
-      "end_portfolio_value": 10174780,
-      "net_position_est": 10174780,
-      "liquidity": "High (liquid; staged market exposure)",
-      "key_risks": "Cash drag/reinvestment risk during holding period; inflation erosion; missed upside if markets rise; still exposed to market risk after phasing",
-      "tax_notes": "Treasury interest taxable; capital gains/dividends taxed as realized. Reinvestment and yield changes are material risks."
-    }
-  ],
-  "black_swan_scenarios": [
-    {
-      "id": "1929_analog",
-      "name": "1929-style crash analog (illustrative)",
-      "description": "Severe equity drawdown early in holding period, slow recovery, deflationary shock then policy response. Used to stress sequence-of-returns risk for sell-and-reinvest path.",
-      "assumed_path_nominal_stock_returns": [
-        -0.2,
-        -0.3,
-        -0.15,
-        0.05,
-        0.2,
-        0.15,
-        0.1,
-        0.08,
-        0.07,
-        0.07
-      ],
-      "assumed_inflation": [
-        -0.02,
-        -0.05,
-        -0.03,
-        0.0,
-        0.02,
-        0.03,
-        0.03,
-        0.03,
-        0.03,
-        0.03
-      ],
-      "notes": "Illustrative stress scenario only; not a forecast. Sequence risk is highest when large lump sum enters near peak."
-    },
-    {
-      "id": "2008_analog",
-      "name": "2008-style financial crisis analog (illustrative)",
-      "description": "Sharp equity decline, credit stress, housing weakness, then recovery supported by policy.",
-      "assumed_path_nominal_stock_returns": [
-        -0.38,
-        0.26,
-        0.15,
-        0.02,
-        0.16,
-        0.32,
-        0.14,
-        0.01,
-        0.12,
-        0.21
-      ],
-      "assumed_inflation": [
-        0.03,
-        -0.01,
-        0.02,
-        0.03,
-        0.02,
-        0.02,
-        0.01,
-        0.02,
-        0.02,
-        0.02
-      ],
-      "notes": "Illustrative stress scenario only; highlights drawdown + recovery and housing/equity correlation risk."
-    },
-    {
-      "id": "stagflation_analog",
-      "name": "1970s-style stagflation analog (illustrative)",
-      "description": "High inflation, weak real returns, rising rates, uneven equity performance.",
-      "assumed_path_nominal_stock_returns": [
-        0.04,
-        -0.15,
-        -0.27,
-        0.37,
-        0.24,
-        -0.07,
-        0.06,
-        0.18,
-        0.32,
-        -0.05
-      ],
-      "assumed_inflation": [
-        0.06,
-        0.08,
-        0.12,
-        0.07,
-        0.05,
-        0.06,
-        0.09,
-        0.11,
-        0.13,
-        0.11
-      ],
-      "notes": "Illustrative stress scenario only; real (inflation-adjusted) outcomes can be much worse than nominal."
-    }
-  ],
-  "deadlines": [
-    {
-      "date_or_window": "Date of death / trust transfer event",
-      "item": "Obtain written date-of-death valuation for Property A",
-      "who": "Trustee/executor/appraiser",
-      "why": "Establishes fair market value for basis and reporting; supports step-up basis documentation.",
-      "source_type": "IRS/valuation practice"
-    },
-    {
-      "date_or_window": "Within 1 year of transfer (Prop 19)",
-      "item": "If claiming parent-child exclusion, transferee must occupy Property A as primary residence and file homeowner's/disabled veteran's exemption",
-      "who": "Heir/Owner B",
-      "why": "Prop 19 requires primary-residence occupancy and timely exemption filing for exclusion.",
-      "source_type": "CA BOE Prop 19"
-    },
-    {
-      "date_or_window": "Within 3 years of transfer, or before transfer to 3rd party (earlier)",
-      "item": "File Prop 19 claim form (BOE-19-P/BOE-19-G as applicable)",
-      "who": "Heir/Owner B",
-      "why": "Required to claim intergenerational transfer exclusion; late filing may limit relief.",
-      "source_type": "CA BOE Prop 19"
-    },
-    {
-      "date_or_window": "9 months after death (plus extensions if applicable)",
-      "item": "Federal estate tax return (Form 706) if required or if portability election desired",
-      "who": "Executor/trustee/CPA",
-      "why": "Required when gross estate exceeds filing threshold; portability election must be timely made on complete Form 706.",
-      "source_type": "IRS Estate Tax / Form 706"
-    },
-    {
-      "date_or_window": "Same tax year as inheritance (if considering sale)",
-      "item": "Model sale-in-same-tax-year scenario before deciding",
-      "who": "Owner B + CPA",
-      "why": "Timing affects gain, basis documentation, CA taxable income, and 1% Mental Health Services Tax exposure above $1M.",
-      "source_type": "FTB/IRS planning"
-    },
-    {
-      "date_or_window": "Before sale/listing",
-      "item": "Price transfer tax, recording fees, broker/closing costs, and repairs",
-      "who": "Owner B + agent/attorney",
-      "why": "Net proceeds can differ materially from gross sale price.",
-      "source_type": "Local recorder/treasurer"
-    },
-    {
-      "date_or_window": "Before receiving proceeds",
-      "item": "Write investment policy statement (IPS) for sale proceeds",
-      "who": "Owner B + adviser",
-      "why": "Prevents ad hoc allocation and manages sequence/reinvestment risk.",
-      "source_type": "Planning practice"
-    },
-    {
-      "date_or_window": "Annual",
-      "item": "Re-run model with updated valuations, tax law, insurance, rents, and spending",
-      "who": "Owner B",
-      "why": "Assumptions drift; laws change; decisions should be refreshed.",
-      "source_type": "Planning practice"
-    }
+  "flagged": [
+    "Full monthly 1929–1932 equity path not reproduced: only peak and trough values were fetched; phased-entry path results are therefore NOT published.",
+    "SF transfer-tax rate schedule: official pages failed to load in this session. Not published.",
+    "Santa Clara assessor Prop 13 / Prop 19 guidance pages: not reached. Not published.",
+    "Treasury daily par yield curve, SF Rent Board allowable increase, HUD FMR SF, insurance and rent comparables: not verified. Not published.",
+    "Git history contains pre-policy commits with household figures (PR #12 era). History rewrite NOT performed; owner decision required."
   ]
 }

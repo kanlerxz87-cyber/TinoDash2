@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
 """Small dependency-free checks for the static Pages site."""
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html"))
+PAGES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html")) + sorted((ROOT / "docs").glob("*.html"))
+
+# Privacy guard: household figures and identifiers must never be published.
+PRIVACY_PATTERNS = [
+    r"2,950,000", r"3,100,000", r"3,250,000", r"1,700,000", r"1,800,000", r"1,900,000",
+    r"7,150", r"6,800", r"7,500", r"550,5\d\d", r"539,7\d\d", r"114,2\d\d", r"\b95014\b", r"\b94122\b",
+    r"3\.1M\b", r"1\.8M\b", r"2\.95M\b", r"3\.25M\b",
+]
+PRIVACY_FILES = [p for p in list(ROOT.rglob("*.html")) + list(ROOT.rglob("*.js")) + list(ROOT.rglob("*.json")) + list(ROOT.rglob("*.css")) + list(ROOT.rglob("*.md")) if ".git" not in p.parts and "node_modules" not in p.parts]
 
 class Scanner(HTMLParser):
     def __init__(self):
@@ -42,6 +51,11 @@ class Scanner(HTMLParser):
             self.row_has_link = False
 
 errors=[]
+for f in PRIVACY_FILES:
+    txt=f.read_text(encoding="utf-8",errors="ignore")
+    for pat in PRIVACY_PATTERNS:
+        if re.search(pat, txt):
+            errors.append(f"{f.relative_to(ROOT).as_posix()}: privacy pattern {pat} found")
 scanners={}
 for page in PAGES:
     if not page.exists():

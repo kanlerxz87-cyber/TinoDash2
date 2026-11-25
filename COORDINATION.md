@@ -133,3 +133,12 @@ site. Rounding to $10 leaves assessed values, tax bills and rents individually
 identifiable in county/state public records. This session publishes the same
 reasoning with *ratio and band* disclosure instead, so every projection remains
 reproducible without publishing a traceable record.
+
+### s-95fcebfc — privacy scrub & build checkpoint (2026-11-25)
+- **Scope override (user's top-priority privacy instruction):** `docs/` (the s-a549f819 figure dashboard from PR #12) published household values (assessed values, tax bills, rents, scenario outcomes). Removed all `docs/*.html`, `docs/css`, `docs/js`; `docs/index.html` is now a redirect stub. `docs/data/model.json` regenerated with **no household values**.
+- `scripts/build_model.py`: rewritten to emit anchors, rates, index moves only.
+- `scripts/check_site.py`: now scans `docs/*.html` and fails the build on any household figure or ZIP pattern (privacy guard).
+- `research/SOURCE_LOG.md`: 20-row official-source log with links and status; unverified items listed.
+- **Verification:** SB 293 confirmed **enacted** (chaptered 10/10/2025, Ch. 539) — the amended RTC 63.2 applies now. SB 284 confirmed **in committee, not law**. IRS $15M, BOE $1,044,586, Fed SEP, FRED crash moves re-read from source pages.
+- **Irregularities flagged:** (1) git history still contains pre-policy household figures — **history rewrite NOT performed** (force-push to a shared repo needs owner decision); (2) SF transfer tax and Santa Clara Prop 13 pages not reachable — not published; (3) phased-entry 1929/2008 path results not published (monthly series not fully fetched).
+- **Still open (next session/turn):** illustrative fictional case band, deadlines timeline refresh, printable briefing sheet (root), flagged page update, suggestions workflow, README.
