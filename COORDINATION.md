@@ -196,3 +196,38 @@ reproducible without publishing a traceable record.
 - **Verification:** SB 293 confirmed **enacted** (chaptered 10/10/2025, Ch. 539) — the amended RTC 63.2 applies now. SB 284 confirmed **in committee, not law**. IRS $15M, BOE $1,044,586, Fed SEP, FRED crash moves re-read from source pages.
 - **Irregularities flagged:** (1) git history still contains pre-policy household figures — **history rewrite NOT performed** (force-push to a shared repo needs owner decision); (2) SF transfer tax and Santa Clara Prop 13 pages not reachable — not published; (3) phased-entry 1929/2008 path results not published (monthly series not fully fetched).
 - **Still open (next session/turn):** illustrative fictional case band, deadlines timeline refresh, printable briefing sheet (root), flagged page update, suggestions workflow, README.
+
+
+---
+
+# Shared coordination board
+
+Last updated: 2026-11-25 (UTC). Session: `arena-c5500fac`.
+
+## Branch rule and collision containment
+
+This Arena session is fixed to `arena/c5500fac-tinodash2`, based on `1d0fd60`. No other branch or worktree will be created. Never put household identifiers, original assessment histories, private documents, parcel IDs, or exact household figures in this board, Git, issues, or Actions logs.
+
+The initial local checkout contained only README.md. After the initial claim push, a remote audit discovered simultaneous claims on three other Arena branches. Their boards were read through the GitHub API. **The broad initial claim in this branch is withdrawn.** To avoid overwriting active work, this session owns only the additive `decision-lab/**` directory plus its own entries in this board. It will not edit README.md, root index/navigation, other site files, or other sessions' deployment workflows. Root navigation integration is requested from the existing integration owners, not performed here.
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Existing root landing/site/integration claim (remote board observed) | in progress | arena/3ba11c7d-tinodash2 | Root site and configuration; do not edit from this session |
+| Existing root static site/source/deploy claim (remote board observed) | in progress | arena/57bd7c20-tinodash2 | index.html, styles.css, app.js, sources.md, FLAGGED_FOR_REVIEW.md, .gitignore, .github/workflows/pages.yml, README.md |
+| Existing initial-site claim (remote board observed) | in progress | arena/20a7e00d-tinodash2 | Broad root-site claim; must be coordinated by root integration owner |
+| Additive advanced decision lab: verified authority ledger, questions, mixed-path model, phased Treasuries/crash lab, printable professional brief, tests | in progress | arena-c5500fac | decision-lab/** only |
+| Root menu link to decision-lab/index.html and inclusion in Pages artifact | needs review | Request to root integration owner | No root file edits authorized for arena-c5500fac |
+
+## Session log
+
+- 2026-11-25: Initial tracked-file/history audit: only an initial README commit in local main, no private assessment dataset. Claim recorded and pushed before implementation.
+- 2026-11-25: Remote audit: repository is public; legacy GitHub Pages is enabled from main /. Three concurrent remote claim commits were discovered. Read all their COORDINATION.md boards; narrowed this session to an additive directory to avoid conflicts. No other branch will be edited, deleted, rewritten, or pushed by this session. No claim of complete historical erasure is made. GitHub cached views, forks, clones and unreachable objects cannot be purged by rounding or a normal commit.
+- Privacy: public outputs contain only synthetic scenario bands and official public-law amounts. Actual household inputs and documents remain absent. Private parcel rate, appraisal, leases, insurance, trust eligibility, debt and estate inventory are unverified and will remain blank with acquisition instructions. Rounding is not anonymization.
+- No household path has been selected. Suggestions and professional actions will not be silently marked approved.
+
+- Rebase collision 2026-11-25: main acquired another session's completed root build while this session was recording its scope. Both coordination histories were preserved; this session retains decision-lab/** only. No root code was discarded.
+
+- 2026-11-25 13:15 UTC: Rebase encountered COORDINATION.md content conflict after PR #5 replaced the root integration board. Preserved origin/main’s entire current board plus this session’s isolated-scope log; no root implementation edits. Root current-tree sanitization and artifact allowlist observed in PR #5; historical exposure remains unresolved.
+- 2026-11-25: Persisted 32 official-authority entries with sections read and limitations, synthetic seven-path annual engine, monthly Treasury ladder/crash engine. Implementation only: formal tests, UI, build and release checks still in progress. No household path or professional decision approved. Source details: decision-lab/data.js. Cross-scope deployment/menu/CI request: issue #2 comment 7163489296; latest root allowlist excludes decision-lab until the integration owner includes its built public files.
+
+- Rebase note: an accidental pull of the old own remote base was aborted without retaining its root changes; latest main board preserved again after concurrent update. Only this session’s branch will be updated with an explicit lease after its main rebase.
