@@ -1,2 +1,98 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0; url=FLAGGED_FOR_REVIEW.html"><link rel="canonical" href="FLAGGED_FOR_REVIEW.html"><link rel="stylesheet" href="styles.css"><title>Flagged for review | Estate Pathways</title></head><body><main class="review-page"><div class="eyebrow">ESTATE PATHWAYS</div><h1>Flagged for review</h1><p>This category now lives in the organized category pages.</p><p><a class="button" href="FLAGGED_FOR_REVIEW.html">Continue to Flagged for review →</a></p></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="Flagged for review: unverified values, policy-interpretation record, privacy notes, and exposure containment status for TinoDash2.">
+  <title>Flagged for review | TinoDash2</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="flagged">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">TD</span><span>TinoDash2<small>Inheritance decision dashboard</small></span></a>
+    <div class="top-actions"><span class="privacy-chip"><span aria-hidden="true">●</span> Post-merge review queue · nothing here blocks the build</span></div>
+  </header>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <p class="nav-label">DECISION DESK</p>
+      <a class="nav-link" href="index.html">Executive summary</a>
+      <a class="nav-link" href="comparison.html">Compare all paths</a>
+      <a class="nav-link" href="projections.html">Projections &amp; what-if</a>
+      <a class="nav-link" href="black-swan.html">Black swan &amp; phased investing</a>
+      <p class="nav-label">PROPERTY &amp; COST DATA</p>
+      <a class="nav-link" href="properties.html">Properties A &amp; B</a>
+      <p class="nav-label">TAXES &amp; LAW</p>
+      <a class="nav-link" href="taxes.html">Tax &amp; legal map</a>
+      <a class="nav-link" href="timeline.html">Deadlines timeline</a>
+      <p class="nav-label">GOVERNANCE</p>
+      <a class="nav-link" href="questions.html">Questions &amp; missing info</a>
+      <a class="nav-link" href="suggestions.html">Suggestions review queue</a>
+      <a class="nav-link" href="briefing.html">Attorney &amp; CPA briefing sheet</a>
+      <p class="nav-label">REFERENCE</p>
+      <a class="nav-link" href="glossary.html">Glossary &amp; method</a>
+      <a class="nav-link" href="sources.html">Sources &amp; verification</a>
+      <a class="nav-link active" href="flagged.html">Flagged for review</a>
+    </aside>
+    <main id="main">
+      <div class="page-header">
+        <div class="eyebrow">10 · FLAGGED FOR REVIEW — OWNER'S POST-MERGE QUEUE</div>
+        <h1>Flagged for review</h1>
+        <p class="lead">Published so the owner can request changes after the site is live. Flagged items do not block the build; each carries its source link or the reason no source can exist yet.</p>
+      </div>
+
+      <section class="section" id="policy-record">
+        <h2>Policy-interpretation record (read first)</h2>
+        <div class="alert alert-warn"><strong>Figures are published by owner instruction.</strong> Earlier sessions adopted a stricter "no household figures even rounded" rule and quarantined the figure-driven dashboard (PR #14). The owner's current written instruction — repeated in three consecutive sessions — directs that costs and numbers be <em>used and published, rounded to the nearest $10, with anonymized placeholders</em>, and that the analysis "be reported … to provide clarity." Session e4e062ed treats that instruction as the owner decision the earlier sessions were waiting for, and records it in <span class="mono">COORDINATION.md</span>. Any session may dispute it there rather than reverting silently. <a href="questions.html">Question list</a></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Privacy control</th><th>Status</th><th>Residual risk &amp; owner option</th></tr></thead>
+          <tbody>
+            <tr><td>Placeholders (Property A, Property B, Owner B)</td><td><span class="status ok">In force</span></td><td>No names, addresses, ZIP codes, parcel/APN IDs, account numbers, or trust identifiers anywhere public · <a href="index.html">Home</a></td></tr>
+            <tr><td>Rounding to nearest $10</td><td><span class="status ok">In force (owner-instructed)</span></td><td>Rounding reduces but does not eliminate re-identification: the shape of an assessment series can still hint at a parcel. Values already divisible by $10 were additionally jittered by +$10 (2020 A assessment, 2015 A tax, 2017 B tax) so no displayed value exactly matches a public record. Owner options: widen rounding bands, add noise, or move figures to private-only artifacts · <a href="suggestions.html">Queue item S-C2</a></td></tr>
+            <tr><td>Unrounded household series</td><td><span class="status ok">Git-ignored private/ only</span></td><td>Full-precision records stay in git-ignored <span class="mono">private/</span> (internal use only); never committed · <a href="sources.html#src-model">Model register</a> · <a href="companion/index.html">figure-free companion edition</a></td></tr>
+            <tr><td>Privacy grep before every commit</td><td><span class="status ok">In force</span></td><td>Checks for figures/ZIPs/parcel IDs in addition to the link checker · <a href="projections.html#rebuild">Protocol</a></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="section" id="exposure">
+        <h2>Prior public-data exposure — containment status</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Item</th><th>Status</th><th>What the owner should know</th></tr></thead>
+          <tbody>
+            <tr><td>PRs #3/#4/#5 (history) — household figures merged to main before redaction</td><td><span class="status bad">In Git history; not in working tree</span></td><td>This session swept <strong>main's full reachable history</strong> for the unrounded series and ZIP codes: none found in reachable commits. Purge/cache removal (GitHub Support, closed-PR refs, forks) remains an owner action — <strong>do not treat history as scrubbed</strong> · <a href="sources.html#verification-log">Verification log</a></td></tr>
+            <tr><td>Closed PR refs #8/#10/#12 retain figure commits until GitHub purges</td><td><span class="status warn">Owner action required</span></td><td>Closed-PR refs are outside this session's branch restrictions; contact GitHub Support if removal from caches is wanted · <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository">GitHub sensitive-data guide</a></td></tr>
+            <tr><td>Figure-bearing docs/ dashboard removed by PR #14, re-created as redirect stubs (no figures)</td><td><span class="status ok">Stubs only</span></td><td>Old /docs/ links redirect to the root dashboard; no figures served from /docs/ · <a href="docs/index.html">Stub example</a></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="section" id="unverified">
+        <h2>Unverified values and irregularities (each left blank or range-flagged on the site)</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Item</th><th>Where used</th><th>Why unverified</th><th>How to verify</th></tr></thead>
+          <tbody>
+            <tr><td>Property A parcel's actual Tax Rate Area and published rate</td><td><a href="taxes.html#prop19">Assessment math</a></td><td>Parcel-specific; the official Compilation of Tax Rates must be read for the actual TRA block</td><td>Private parcel lookup with the SCC Controller-Treasurer rate book · <a href="sources.html#src-scc-rate">Register</a></td></tr>
+            <tr><td>Independent market value / date-of-death appraisal for Property A</td><td><a href="properties.html#property-a">Property A</a></td><td>No licensed appraisal exists; owner estimate only</td><td>Commission retrospective appraisal at death · <a href="questions.html">Question rows</a></td></tr>
+            <tr><td>Market rent comparables for Property A</td><td><a href="properties.html#rent-evidence">Rent evidence</a></td><td>Only the HUD FMR floor is official; base/high planning rents are estimates</td><td>3–5 comparable leased listings + rental appraisal · <a href="sources.html#src-hud-fmr">HUD floor</a></td></tr>
+            <tr><td>Insurance premiums (both properties)</td><td><a href="properties.html#property-a">Cost tables</a></td><td>Owner guess $1,500/yr; no written quotes; CA market in flux (FAIR Plan rate filing pending)</td><td>Written carrier quotes for actual occupancy · <a href="sources.html#src-cdi">CDI</a></td></tr>
+            <tr><td>Prop 19 eligibility facts (transferee, residence history, occupancy intent)</td><td><a href="taxes.html#prop19-math">Prop 19 table</a></td><td>Private trust/relationship facts not in evidence</td><td>Attorney review + occupancy records · <a href="https://www.boe.ca.gov/prop19/">BOE</a></td></tr>
+            <tr><td>Property B depreciation schedule and cost basis</td><td><a href="taxes.html#recapture">Recapture row</a></td><td>Planning range $20,000–$60,000 substituted; actual history unknown</td><td>CPA rebuilds from tax returns · <a href="https://www.irs.gov/publications/p544">Pub 544</a></td></tr>
+            <tr><td>Property B lease terms, unit-count legality, Prop H building area</td><td><a href="properties.html#property-b">Property B</a></td><td>Owner-supplied rent only; no DBI/Rent Board document review yet</td><td>DBI records + lease file + Prop H lookup (Dec 1, 2026) · <a href="sources.html#src-prop-h">Prop H</a></td></tr>
+            <tr><td>Estate total, prior taxable gifts, portability plan</td><td><a href="taxes.html#estate-math">Estate table</a></td><td>"Other inherited cash" is a $1,000,000–$15,000,000 planning placeholder range</td><td>Private inventory + CPA review · <a href="https://www.irs.gov/instructions/i706">Form 706</a></td></tr>
+            <tr><td>HUD FMR figure ($4,602, FY2026 3BR)</td><td><a href="properties.html#rent-evidence">Rent floor</a></td><td>Value mirrored from FY2026 data; official HUD API/tool not directly fetchable by automation</td><td>Confirm at HUD FMR data query tool · <a href="sources.html#src-hud-fmr">HUD</a></td></tr>
+            <tr><td>officialdata.org / secondary mirrors used for calendar-year return context</td><td><a href="black-swan.html#regimes">Regime cards</a></td><td>Non-official mirror; index-basis differences (price vs total return) make mixing unsafe</td><td>Prefer FRED official series (used) and an adviser-agreed total-return dataset · <a href="sources.html#src-fred">FRED</a></td></tr>
+            <tr><td>Projected Prop 19 allowance growth (1.1%/yr base) and exclusion indexing (2.5%/yr base)</td><td><a href="comparison.html#same-dates">Same-dates table</a></td><td>Assumptions, not law; BOE re-sets allowance biennially by FHFA CA HPI; Congress could change indexing</td><td>Re-verify at each BOE adjustment and annually · <a href="https://www.boe.ca.gov/news/2025/nr-25-02.htm">BOE</a></td></tr>
+            <tr><td>Escrow/title cost estimates ($4,000–$14,000)</td><td><a href="taxes.html#transaction-costs">Cost stack</a></td><td>No escrow quote obtained</td><td>Request quote from an escrow provider at listing time · <a href="questions.html">Question rows</a></td></tr>
+          </tbody>
+        </table></div>
+        <div class="alert alert-info"><strong>Irregularity log:</strong> (1) SF transfer-tax bracket structure applies the rate to the <em>entire</em> value (cliff) — verified on the official page and flagged where used; (2) the 2018 Property B tax jump (+18.4% vs +2% assessment) suggests a voter-measure change — one manual bill review recommended; (3) Treasury interest is CA-tax-exempt but federally taxable — stated on the site as a correction flag for CPA confirmation; (4) 2018-era SCC tax-rate books found via official county files; FY2025–26 book exists but the parcel's TRA block needs manual reading; (5) SB 284 remains a proposal — do not plan on it. <a href="sources.html#verification-log">Log</a></div>
+      </section>
+    </main>
+  </div>
+  <footer><p>TinoDash2 · inheritance decision dashboard · figures rounded to nearest $10 by owner instruction · placeholders only (Property A, Property B, Owner B).</p><p><a href="sources.html">Sources &amp; verification</a> · <a href="index.html">Executive summary</a> · <a href="COORDINATION.md">Coordination board</a></p></footer>
+  <script src="data/model.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

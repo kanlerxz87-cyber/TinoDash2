@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 """Privacy gate for anything published by the repository.
 
-OWNER POLICY (2026-11-25, superseding the stricter earlier reading): figures
-rounded to the nearest $10 MUST be published for decision clarity; identifiers
-never are. Banned: names, street addresses, ZIP+street combos, parcel/APN or
-account numbers, and the exact unrounded household values. Allowed: rounded to
-nearest $10 planning figures (market values, rents, assessed values). Exact
-unrounded values live only in the git-ignored private/ notes.
+The repo owner's rule is stricter than "no names": no household-specific money
+figure, parcel identifier, address, ZIP+street combination or account number may
+appear in published output at all. Rounded or not, a value that can be traced
+back to one house does not belong on a public page.
 
 Two kinds of check:
   1. exact literals that must never be published (the household values supplied
@@ -27,15 +25,32 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 # Files a visitor of https://<owner>.github.io/<repo>/ can open.
-PUBLISHED_GLOBS = ["*.html", "pages/*.html", "*.js", "*.json", "css/*.css"]
+PUBLISHED_GLOBS = ["*.html", "pages/*.html", "docs/*.html", "companion/*.html", "companion/pages/*.html", "companion/estate-pathways/*.html", "companion/estate-pathways/pages/*.html", "*.js", "companion/estate-pathways/data/*.js", "*.json", "css/*.css"]
 
 # Exact literals that must never appear in published output. These are the
 # household figures from the request plus their common rounding variants. Keep
 # the list terse: it is a guard, not a copy of the numbers.
+# Integration adjustment (session e4e062ed, logged in COORDINATION.md): the
+# owner's recorded instruction publishes rounded-to-$10 figures, so the rounded
+# variants (3,100,000 / 1,800,000 / 7,150 / 550,540 / 539,740 ...) are no longer
+# forbidden. The EXACT unrounded owner-supplied series below is forbidden harder
+# than before, in both comma and bare-digit forms.
 FORBIDDEN_LITERALS = [
-    # exact unrounded household values only; rounded $10 figures are allowed
-    "550,537", "550537", "539,743", "539743",
+    "550,537", "550537", "539,743", "539743", "518,786", "518786",
+    "508,614", "508614", "498,642", "498642", "493,530", "493530",
+    "483,854", "483854", "474,368", "474368", "465,067", "465067",
+    "455,949", "455949", "449,101", "449101", "440,305", "440305",
+    "114,248", "114248", "112,008", "112008", "109,814", "109814",
+    "107,662", "107662", "105,595", "105595", "104,513", "104513",
+    "102,465", "102465", "100,456", "100456", "98,488", "96,557",
 ]
+
+# Exact unrounded tax history (comma forms; (?!.\d) avoids public index levels
+# such as the S&P value 2,061.47 in the preserved crash-replay dataset table).
+TAX_SERIES_PATTERN = (re.compile(
+    r"\b(7,207|7,003|6,917|6,755|6,662|6,565|6,383|6,414|6,130|5,965|"
+    r"2,439|2,315|2,179|2,107|2,066|2,197|2,134|2,061|1,740|1,675)\b(?!\.\d)"),
+    "unrounded tax history (exact owner-supplied values)")
 
 # Structural patterns. Each entry is (compiled regex, human description).
 PATTERNS = [
@@ -74,6 +89,9 @@ def scan(path: Path):
     for literal in FORBIDDEN_LITERALS:
         if literal in text:
             findings.append(f"{rel}: published household value literal {literal!r}")
+    tax_regex, tax_label = TAX_SERIES_PATTERN
+    for match in tax_regex.finditer(text):
+        findings.append(f"{rel}: {tax_label} -> {match.group(0)!r}")
     for regex, label in PATTERNS:
         if label.startswith("card / account") and rel in DIGIT_RUN_EXEMPT:
             continue

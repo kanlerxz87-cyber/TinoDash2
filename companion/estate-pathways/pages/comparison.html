@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Path comparison | Estate Pathways</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">EP</span><span>Estate Pathways<small>Path comparison</small></span></a><a class="button button-quiet" href="../index.html">← Overview</a></header>
+  <main class="review-page">
+    <nav class="catnav" aria-label="Category menu">
+      <span class="grp">DECIDE</span><a href="../index.html">Overview</a><a href="decision-criteria.html">Criteria &amp; log</a><a class="active" href="comparison.html">Path comparison</a><a href="questions.html">Questions</a>
+      <span class="grp">MODEL</span><a href="properties.html">Property files</a><a href="projections.html">Projections</a><a href="../black-swan.html">Black swan</a><a href="tax-legal.html">Tax &amp; law</a>
+      <span class="grp">GOVERN</span><a href="timeline.html">Timeline</a><a href="law-watch.html">Law watch</a><a href="briefing.html">Brief</a><a href="suggestions.html">Suggestions</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="../FLAGGED_FOR_REVIEW.html">Flagged ↗</a>
+    </nav>
+    <div class="eyebrow">SAME TRANSFER DATES · SAME HORIZONS · RANGES NOT POINTS</div>
+    <h1>Compare the actual menu, including mixed paths</h1>
+    <p class="review-intro">Property A (the inheritance) and Property B (already owned) are modelled separately. Every path starts at the transfer date and is measured at one shared horizon. The same-tax-year sale is priced first because it is the benchmark all holds must beat. Values are rounded to $10 and exclude what the model cannot compute — see the <a href="#method">method</a>.</p>
+
+    <h2 id="sameyear">1 · First: model a sale in the same tax year as the inheritance</h2>
+    <p class="review-intro">The date-of-death step-up (IRC 1014) resets basis to fair market value at death, so a same-year sale realizes ≈ $0 capital gain. This is the cleanest benchmark in the whole analysis — everything else must beat it.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Sale stack (illustrative rounded price $3,100,000)</th><th>Amount</th><th>Basis</th><th>Source</th></tr></thead>
+      <tbody id="saleStack"></tbody>
+    </table></div>
+    <div class="callout"><strong>Reinvestment risk beside the headline:</strong> net proceeds of ≈ $2,908,590 only keep their value if invested. Parking in 3-month–2-year Treasuries for 24–36 months protects against buying at a crash peak but resets yields at every maturity (Nov 2026 curve: ≈4.3% 3M / ≈4.6% 2Y / ≈4.9–5.1% 10Y — <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates">Treasury</a>) and lags in bull years. See the <a href="../black-swan.html">crash replays</a>.</div>
+
+    <h2>2 · All paths, one grid</h2>
+    <div class="callout"><strong>Controls:</strong>
+      Transfer year <select id="cmpYear" aria-label="Transfer year"><option>2040</option><option selected>2045</option><option>2050</option></select>
+      Horizon <select id="cmpHorizon" aria-label="Horizon years"><option>5</option><option selected>10</option><option>20</option><option>30</option></select>
+      Case <select id="cmpCase" aria-label="Assumption case"><option>low</option><option selected>base</option><option>high</option></select>
+    </div>
+    <p class="figure-note" id="cmpMeta"></p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Path</th><th>Terminal position (nominal)</th><th>Real (inflation-adjusted)</th><th>Source / method</th></tr></thead>
+      <tbody id="comparisonRows"></tbody>
+    </table></div>
+    <h3>Distribution of modelled outcomes (this grid cell)</h3>
+    <div id="cmpDistribution" role="img" aria-label="Terminal value ranges by path"></div>
+    <p class="figure-note">Bars show the modelled range endpoints for the selected case — not probabilities or confidence intervals.</p>
+
+    <h2>3 · What each path trades</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Path family</th><th>Property A treatment</th><th>Property B consequences</th><th>Taxes &amp; costs priced</th><th>Decision test</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sell (immediate / phased / mixed)</strong></td><td>Same-year sale; proceeds invested or laddered per a written policy.</td><td>Unchanged — the household keeps living at B and collecting rent; unit 3 remains available.</td><td>Transfer tax 0.11%, ~6% sale friction (assumption), ≈$0 gain tax via step-up. <a href="#sameyear">Stack</a></td><td>Does any hold beat ≈$2,908,590 compounding at the stock range after its own costs and taxes?</td></tr>
+        <tr><td><strong>Live in A</strong></td><td>Owner-occupied; Prop 19 claim only if genuinely occupying long term.</td><td>Unit 3 could be rented (≈$36,000/yr base, unverified — lawful use and lease rules first).</td><td>Carrying costs ≈$26,000+$/yr base; imputed rent ≈$60,000/yr base. <a href="properties.html#costs">Costs</a></td><td>Does occupancy value + Prop 19 relief exceed the sell-and-invest gap of ≈$1,700,000 over 10 years?</td></tr>
+        <tr><td><strong>Rent A out</strong></td><td>Landlord; depreciation schedule starts; no Prop 19.</td><td>Unchanged; landlord workload stacks on top of B's units.</td><td>Market rent (HUD-benchmarked), vacancy 5%, landlord costs, eventual recapture up to 25% federal. <a href="tax-legal.html#recapture">Recapture</a></td><td>Do real comparables lift net rent enough to beat the stock range? Today the FMR anchor says no.</td></tr>
+        <tr><td><strong>Live-then-sell / rent-then-sell</strong></td><td>Occupancy or letting for 2–5 years, then sale.</td><td>Follows the A choice (unit-3 rent if owner leaves B empty no longer applies).</td><td>IRC 121 exclusion ($250k/$500k) if use tests met; recapture on rental depreciation. <a href="https://www.irs.gov/publications/p523">Pub 523</a></td><td>Does the option value of waiting outweigh added tax/legal/market risk?</td></tr>
+        <tr><td><strong>Mixed timing/allocation</strong></td><td>Partial liquidity sleeves (e.g., 70/30 equities/Treasuries) or staged exits.</td><td>Unchanged.</td><td>Same sell stack; Treasury sleeve earns ladder yield with reinvestment resets. <a href="../black-swan.html">Stress tests</a></td><td>Is the sleeve's crash protection worth its bull-market drag? Write the rule first.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="method">4 · Method and what the model excludes</h2>
+    <details open><summary>Arithmetic (illustrative, pre-tax, rounded to $10)</summary>
+      <p class="mini">Property values compound at the case's appreciation range from the 2026 estimate; assessed values follow Proposition 13's 2% cap until the transfer changes ownership (<a href="https://www.boe.ca.gov/proptaxes/pub29.htm">BOE property-tax overview</a>); property tax uses the effective rate implied by household bill history (A ≈1.33%, B ≈2.13%) — the actual tax rate area and direct assessments are unverified. Cash flows (rent, imputed rent, costs) are escalated at the case inflation rate and compounded at the case investment return as if reinvested. The phase-in plans invest equal tranches at months 0/12/24(/36), each earning the Treasury yield until its final tranche deploys. The optional crash stress applies once to invested balances in the chosen year.</p>
+      <p class="mini"><strong>Excluded</strong> (get adviser figures before deciding): federal and state income tax on invested returns and rents; estate tax; parcel reassessment results under Prop 19; depreciation/recapture on each specific schedule; debt and financing; rent-control limits and lease terms; insurance renewal changes; transaction fees beyond the stack; behaviour and spending policy. The CA 1% Behavioral Health Services Tax sensitivity is on the <a href="tax-legal.html#bhs">tax page</a> and does not alter proceeds here.</p>
+      <p class="mini">Sources for assumptions: <a href="projections.html#method">assumption table with links</a> · <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html">Damodaran historical returns</a> · <a href="https://www.huduser.gov/portal/datasets/fmr.html">HUD FMR</a> · <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates">Treasury yields</a>.</p>
+    </details>
+    <footer><p><a href="../index.html">← Overview</a> · Not legal, tax, or investment advice.</p></footer>
+  </main>
+  <script src="../data/model.js"></script><script src="../data/render.js" defer></script>
+</body>
+</html>

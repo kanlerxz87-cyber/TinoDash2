@@ -12,7 +12,7 @@ every step below is verified.
 1. **Inventory the exposure** (do not paste outputs anywhere public):
    ```bash
    git log --all --oneline
-   git rev-list --all | while read c; do git grep -l -E "95014|94122" $c -- 2>/dev/null; done | sort -u
+   git rev-list --all | while read c; do git grep -l -E "$ZIP_A|$ZIP_B"   # set to the two property ZIPs from private/ESTATE_INVENTORY.md $c -- 2>/dev/null; done | sort -u
    gh api repos/kanlerxz87-cyber/TinoDash2/pulls?state=closed --jq '.[].number'
    ```
 2. **Rewrite history** with `git filter-repo` (or BFG) to strip/redact the offending files
@@ -34,7 +34,7 @@ every step below is verified.
 6. **Verify:**
    ```bash
    git clone git@github.com:kanlerxz87-cyber/TinoDash2.git verify && cd verify
-   git rev-list --all | while read c; do git grep -l -E "95014|94122" $c -- 2>/dev/null; done   # expect empty
+   git rev-list --all | while read c; do git grep -l -E "$ZIP_A|$ZIP_B"   # set to the two property ZIPs from private/ESTATE_INVENTORY.md $c -- 2>/dev/null; done   # expect empty
    ```
    Confirm the closed PR commits no longer resolve (e.g. `git fetch origin refs/pull/8/head`).
 7. **Record completion** in `COORDINATION.md` (append-only exposure log) with the date.
