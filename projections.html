@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Projections — TinoDash2</title><link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><span class="brand">TinoDash2</span><nav>
+<a href="index.html">Dashboard</a><a href="properties.html">Properties</a><a class="on" href="projections.html">Projections</a><a href="paths.html">Paths Compared</a><a href="black-swan.html">Black Swan</a><a href="taxes.html">Taxes &amp; Law</a><a href="verification.html">Verification</a><a href="questions.html">Questions &amp; Missing Info</a><a href="suggestions.html">Suggestions</a><a href="briefing.html">Attorney &amp; CPA Brief</a><a href="flagged.html">Flagged for Review</a><a href="glossary.html">Glossary</a>
+</nav></header>
+<div class="wrap">
+<h1>50-year projections (ranges, not points)</h1>
+<p class="mut">Base case: home growth 3%/yr, inflation 2.5%, factored base +2%/yr (Prop 13 cap — Official). Low/high: 1%/5% growth. All dollars rounded to $10. Change assumptions on the <a href="index.html">Dashboard</a> — this page rebuilds from the same model.</p>
+<div class="card"><h2>Year-by-year — live path (base)</h2><div class="scroll"><table id="projTable"><thead><tr><th>Year</th><th class="num">A market</th><th class="num">B market</th><th class="num">A tax</th><th class="num">B tax</th><th class="num">Net cash</th><th>Cumulative</th><th>Note</th></tr></thead><tbody></tbody></table></div>
+<p class="mut small">A tax uses Prop 19 new base (occupancy assumed) factored at 2%/yr. If occupancy fails, A tax jumps to market × rate — see Taxes for the sensitivity. B tax uses user-bill implied rate (flagged F-02).</p></div>
+<div class="card" style="margin-top:14px"><h2>How projections handle inconsistency</h2>
+<ul>
+<li>Growth and inflation are <em>never constant</em> over 50 years — Black Swan page stress-tests stagflation, crashes, and housing drawdowns. Baseline is a planning anchor, not a promise.</li>
+<li>Property tax is <em>not</em> projected as % of market (Prop 13 decouples them). It is projected from the factored base.</li>
+<li>Insurance, water, maintenance inflate at CPI (2.5% base). Solar credit on A is modeled as a small negative utility cost.</li>
+<li>Rent growth is capped at min(5%+CPI, 10%) per CA Tenant Protection Act (Official — CA AG), and SF Rent Ordinance may be lower. Model uses home-growth rate capped at 5%.</li>
+</ul></div>
+</div>
+<footer>Model assumptions labeled; official caps sourced on Verification.</footer>
+<script src="assets/model.js"></script>
+<script>
+(function(){
+  var p = JSON.parse(JSON.stringify(window.TinoModel.DEFAULTS));
+  var r = window.TinoModel.projectPath('live', p, 'base');
+  var tb = document.querySelector('#projTable tbody');
+  r.rows.forEach(function(row){
+    var tr = document.createElement('tr');
+    tr.innerHTML = "<td>"+row.year+"</td><td class='num'>"+row.mktA.toLocaleString()+"</td><td class='num'>"+row.mktB.toLocaleString()+"</td><td class='num'>"+row.taxA.toLocaleString()+"</td><td class='num'>"+row.taxB.toLocaleString()+"</td><td class='num'>"+row.net.toLocaleString()+"</td><td class='num'>"+row.cash.toLocaleString()+"</td><td>"+row.note+"</td>";
+    tb.appendChild(tr);
+  });
+})();
+</script>
+</body></html>

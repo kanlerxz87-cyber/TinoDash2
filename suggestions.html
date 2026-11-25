@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suggestions — TinoDash2</title><link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><span class="brand">TinoDash2</span><nav>
+<a href="index.html">Dashboard</a><a href="properties.html">Properties</a><a href="projections.html">Projections</a><a href="paths.html">Paths Compared</a><a href="black-swan.html">Black Swan</a><a href="taxes.html">Taxes &amp; Law</a><a href="verification.html">Verification</a><a href="questions.html">Questions &amp; Missing Info</a><a class="on" href="suggestions.html">Suggestions</a><a href="briefing.html">Attorney &amp; CPA Brief</a><a href="flagged.html">Flagged for Review</a><a href="glossary.html">Glossary</a>
+</nav></header>
+<div class="wrap">
+<h1>Suggestions — review and choose the best path before implementing</h1>
+<p class="mut">Nothing here is implemented until the household chooses. Click <strong>Choose this</strong> to record your pick (stored locally in your browser only — no tracking, no personal data leaves the device). Chosen: <span id="chosenOut">none yet</span>.</p>
+<div class="grid g2">
+<div class="card"><h3>S-01 · Monte Carlo fan chart (1,000 runs)</h3><p>Replace low/base/high with 1,000 randomized runs (growth, returns, inflation correlated). Shows probability each path wins. <em>Effort: medium. Value: high for ranking confidence.</em></p><button class="btn" data-vote="S-01">Choose this</button></div>
+<div class="card"><h3>S-02 · Debt + mortgage module</h3><p>Add balances/rates for A/B; model refinance, payoff, and leverage effects. <em>Effort: low. Value: blocking if debt exists (Q-01).</em></p><button class="btn" data-vote="S-02">Choose this</button></div>
+<div class="card"><h3>S-03 · CPA tax engine (Form 540 line-by-line)</h3><p>Replace simplified 9.3% CA rate with full bracket + MHST stacking + installment-sale modeling. <em>Effort: high. Value: high for sell-year accuracy.</em></p><button class="btn" data-vote="S-03">Choose this</button></div>
+<div class="card"><h3>S-04 · Prop 19 calculator (BOE-19-P walkthrough)</h3><p>Step-by-step new-base calculator with the biennial cap update. <em>Effort: low. Value: medium.</em></p><button class="btn" data-vote="S-04">Choose this</button></div>
+<div class="card"><h3>S-05 · Rent comparables board</h3><p>Attach 3–5 Cupertino comps with adjustments; replace floor benchmark. <em>Effort: medium. Value: high (closes F-04).</em></p><button class="btn" data-vote="S-05">Choose this</button></div>
+<div class="card"><h3>S-06 · Annual re-run checklist + legislation tracker</h3><p>Calendar reminders + IRS/BOE/FTB change log. <em>Effort: low. Value: medium (Q-14/Q-15).</em></p><button class="btn" data-vote="S-06">Choose this</button></div>
+<div class="card"><h3>S-07 · Plain-language dashboard explanations</h3><p>Tooltips + "why this matters" on every KPI. <em>Effort: low. Value: medium for non-expert readers.</em></p><button class="btn" data-vote="S-07">Choose this</button></div>
+<div class="card"><h3>S-08 · PDF export (brief + charts)</h3><p>One-click PDF of briefing sheet + ranking + distribution. <em>Effort: medium. Value: medium for advisers.</em></p><button class="btn" data-vote="S-08">Choose this</button></div>
+</div>
+<div class="card" style="margin-top:14px"><h2>How suggestions are adopted</h2>
+<ol><li>Household reviews this page and chooses (above).</li><li>Chosen item is added to COORDINATION.md as a task with owner + files.</li><li>Implemented on a branch, verified line-by-line, then merged.</li><li>Dashboard is rebuilt and the recommendation is re-checked (did it move?).</li></ol>
+<p class="mut small">Decision + date for chosen suggestion: __________</p></div>
+</div>
+<footer>Choices stored locally only. No personal data collected.</footer>
+<script src="assets/model.js"></script><script src="assets/app.js"></script>
+</body></html>
