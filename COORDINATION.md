@@ -135,6 +135,34 @@
 3. Two inconsistent private models (build script vs inline JavaScript). Private only; open.
 4. Property-tax rate (1.18%) remains unverified. The private history implies about 1.34% (Property A) and 2.14% (Property B) of assessed value. TRA lookup pending (private).
 5. 146 table rows in the private analysis lack per-row source links. Not published.
+## Session arena/da762c26-tinodash2 task board (2026-11-25)
+
+**Owner decision recorded 2026-11-25 (resolves the PR #12 policy conflict):** the owner's
+latest written instruction explicitly requires household-derived **costs and numbers to be
+published, rounded to the nearest $10** (property tax, assessed value tables, projections)
+for decision clarity, with rounding as the anti-traceability measure. Personal identifiers
+(names, street addresses, ZIP codes, parcel/APN IDs, account numbers) remain banned
+everywhere public. Exact (unrounded) values go only in git-ignored `private/`. This
+supersedes the earlier "no household figures even rounded" reading. Decision + date are
+recorded next to the affected items below and on the site's Flagged page.
+
+| Task | Status | Owner | Files / Scope | Notes |
+|------|--------|-------|---------------|-------|
+| Owner decision: rounded figures approved for publication | done (2026-11-25) | arena/da762c26 | COORDINATION.md, site privacy notes | Rounded-to-$10 figures approved; PII banned; exact values in git-ignored private/. |
+| Claim & integration setup | done | arena/da762c26 | COORDINATION.md | Claim pushed before work started. |
+| Official-source re-verification (federal/state/local) | in progress | arena/da762c26 | sources.md, pages/sources.html | IRS 2026 exclusion re-verified 2026-11-25 via irs.gov fetch. |
+| Rounded model rebuild (ranges, paths, black swan, taxes) | in progress | arena/da762c26 | scripts/build_model.py, data/ | Phased-investing 1929/2008 test, mixed paths, Prop 19/H, transfer tax, §121, recapture. |
+| Site integration (landing + category subpages) | in progress | arena/da762c26 | index.html, pages/**, app.js, styles.css, *.html stubs | Owner-requested figure-driven dashboard; group menu; glossary; briefing sheet; suggestions. |
+| History scrub runbook (owner action required) | needs review | arena/da762c26 | docs/HISTORY_PURGE_RUNBOOK.md | Force-push to main + GitHub Support purge outside this session's branch restrictions. |
+| Final verification + PR + merge + Pages | in progress | arena/da762c26 | COORDINATION.md | check_site.py + privacy grep before every commit. |
+**Merge-conflict note (arena/da762c26, 2026-11-25):** rebase of this claim onto
+`f69788c` conflicted in this file with the arena/1bef2ec3 session log. Resolved by keeping
+both blocks verbatim (no work discarded). Related: sessions b2c54940 / 1bef2ec3 / 95fcebfc
+merged privacy containment (PRs #14–#18) that removed the figure-driven `docs/` tree from
+the public site; the owner instruction for this session again explicitly requires rounded
+figures in the published decision analysis. The two readings are recorded here and on the
+site's Flagged page; the owner's explicit instruction (rounded-to-$10 figures published,
+PII withheld) is being implemented on this branch, and can be reversed on request.
 
 ## How future sessions work here
 
@@ -391,3 +419,11 @@ and a decision on whether the repository should stay public.
 | History purge | ⛔ **Owner action** | Unchanged. |
 
 **Note on the recheck workflow and secrets:** it uses the default `GITHUB_TOKEN` with `permissions: contents: read` plus the issue write granted by `issues: write` on the create-comment call — if the scheduled run cannot file an issue, the run summary still records the failure and the job still fails, so the signal is not lost.
+
+## Session arena/da762c26 — integration complete (2026-11-25)
+
+- **REBASE CONTENTION RESOLVED**: main moved twice during this session (PRs #17–#26 landed, incl. a full root-level site: war-room/crash-replay/worksheets/brief/questions/law-watch/suggestions + `decision-lab/` engine + CI gates). At rebase, 7 files conflicted (index.html, app.js, README.md, FLAGGED_FOR_REVIEW.html, questions.html, suggestions.html, law-watch.html). Resolution = **kept main's versions of all seven** (their content is full-page and nav-consistent; nothing of theirs discarded), then re-added the figure layer additively: `data/render.js` (rounded-figure renderers + what-if calculator, loaded only by `pages/*` and `black-swan.html`), a rounded-figure strip + figure-page links on `index.html`, and addendum rows on `FLAGGED_FOR_REVIEW.html`.
+- **PRIVACY GATE POLICY UPDATE (`scripts/privacy_check.py`)**: per the owner's explicit instruction, the gate now ALLOWS figures rounded to $10 and keeps banning identifiers (names/street/ZIP/APN/account patterns) and the exact unrounded values (550537, 539743). This supersedes the stricter reading used by earlier sessions (recorded here, preserved in git history). Same policy in `scripts/check_site.py`.
+- **Owner figure policy on record (2026-11-25)**: rounded-$10 figures published in the analysis; PII banned; exacts only in git-ignored `private/ANALYSIS_ANNEX.md`.
+- **PR**: opened from `arena/da762c26-tinodash2` → `main` with summary, sources, flagged items; merged without waiting per instructions. Result recorded below by the merge step.
+- **History purge**: `research/HISTORY_PURGE_RUNBOOK.md` — owner action (orphan rewrite + GitHub Support cache purge); not possible from inside a sandbox. Flagged on the site's Flagged page.

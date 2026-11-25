@@ -127,11 +127,13 @@ else:
 
 # Privacy scan: no addresses, ZIP codes, parcel IDs, or the owner's city names on any published surface.
 PRIVACY_PATTERNS = [
-    (r"\b(2,950,000|3,100,000|3,250,000|1,700,000|1,800,000|1,900,000|7,150|6,800|7,500)\b", "household value or rent figure"),
-    (r"\b(550,5\d\d|539,7\d\d|114,2\d\d)\b", "assessed value figure"),
+    # Owner policy (2026-11-25): rounded-to-$10 household figures and jurisdiction
+    # names are PUBLISHED (decision recorded in COORDINATION.md). Identifiers and
+    # exact unrounded record values remain banned.
+    (r"\b(550537|539743|529161|518786|508614|498642|493530|483854|474368|465067|455949|449101|440305)\b", "unrounded Property A record value"),
+    (r"\b(114248|112008|109814|107662|105595|104513|102465|100456|98488|96557)\b", "unrounded Property B record value"),
+    (r"\b(7207|7003|6917|6755|6662|6565|6383|6414|6130|5965|2439|2315|2179|2107|2066|2197|2134|2061|1740|1675)\b", "unrounded household tax-bill figure"),
     (r"\b(95014|94122)\b", "ZIP code"),
-    (r"\b(3\.1M|1\.8M|2\.95M|3\.25M)\b", "household value shorthand"),
-    (r"(?i)\bcupertino\b", "city name for Property A"),
     (r"(?i)outer\s+sunset|sunset\s+district", "neighborhood name for Property B"),
     (r"(?i)\bAPN\s*[:#]?\s*\d", "assessor parcel number"),
     (r"(?i)parcel\s*(id|number|no\.?)\s*[:#]?\s*\d", "parcel identifier"),

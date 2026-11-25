@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Tax &amp; legal map | Estate Pathways</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">EP</span><span>Estate Pathways<small>Tax &amp; legal map</small></span></a><a class="button button-quiet" href="../index.html">← Overview</a></header>
+  <main class="review-page">
+    <nav class="catnav" aria-label="Category menu">
+      <span class="grp">DECIDE</span><a href="../index.html">Overview</a><a href="decision-criteria.html">Criteria &amp; log</a><a href="comparison.html">Path comparison</a><a href="questions.html">Questions</a>
+      <span class="grp">MODEL</span><a href="properties.html">Property files</a><a href="projections.html">Projections</a><a href="../black-swan.html">Black swan</a><a class="active" href="tax-legal.html">Tax &amp; law</a>
+      <span class="grp">GOVERN</span><a href="timeline.html">Timeline</a><a href="law-watch.html">Law watch</a><a href="briefing.html">Brief</a><a href="suggestions.html">Suggestions</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="../FLAGGED_FOR_REVIEW.html">Flagged ↗</a>
+    </nav>
+    <div class="eyebrow">THREE SEPARATE SYSTEMS · NEVER CONFLATE THEM</div>
+    <h1>Tax &amp; legal map</h1>
+    <div class="callout"><strong>Separate three ledgers:</strong> (1) <strong>estate tax</strong> — a federal transfer-tax question on the whole estate; (2) <strong>income-tax basis</strong> — what a future sale gains or loses, set by date-of-death value; (3) <strong>property-tax assessment</strong> — what the county bills annually under Prop 13/Prop 19. Different numbers, different deadlines, different advisers.</div>
+
+    <h2 id="estate">Ledger 1 · Estate tax (federal) and inheritance tax</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Rule</th><th>Current figure / status</th><th>What it means here</th><th>Official source</th></tr></thead>
+      <tbody>
+        <tr><td>Federal basic exclusion, CY2026</td><td>$15,000,000 per person ($30,000,000 married with portability)</td><td>Only the estate above this is exposed to federal estate tax (graduated to 40%). The estate here may exceed it once cash and investments are included.</td><td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax">IRS: What's new — estate and gift tax</a></td></tr>
+        <tr><td>2027+ indexing</td><td><span class="warn-chip">unpublished</span></td><td>Chained-CPI indexing begins 2027; any 2040–2050 exclusion figure is a modelling assumption only.</td><td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax">IRS estate tax</a></td></tr>
+        <tr><td>Form 706 filing</td><td>Generally due 9 months after death (6-month extension available)</td><td>Required above the exclusion; also advisable below it to elect portability (DSUE). Ask about prior taxable gifts now.</td><td><a href="https://www.irs.gov/instructions/i706">Form 706 instructions</a></td></tr>
+        <tr><td>Annual gift exclusion</td><td>$19,000 (2026)</td><td>Lifetime gifting can trim a taxable estate; verify the current amount before use.</td><td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/gift-tax">IRS gift tax</a></td></tr>
+        <tr><td>California estate / inheritance tax</td><td>None for deaths on/after Jan 1, 2005</td><td>No CA estate return under the current framework; recheck law at death — proposals to create one exist (see <a href="law-watch.html">law watch</a>).</td><td><a href="https://www.sco.ca.gov/ardtax_estate_tax.html">CA State Controller</a></td></tr>
+        <tr><td>State inheritance taxes elsewhere</td><td>Not applicable to CA residents' CA property</td><td>Only relevant if a beneficiary or asset sits in an inheritance-tax state (IA/NE/KY/MD etc.).</td><td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax">IRS estate tax overview</a></td></tr>
+      </tbody>
+    </table></div>
+    <h3>Estate tax sensitivity (2026 law, rounded, simplified graduated computation)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Gross estate</th><th>Filing basis</th><th>Exclusion used</th><th>Estimated federal estate tax</th><th>Effective rate</th><th>Source</th></tr></thead>
+      <tbody id="estateRows"></tbody>
+    </table></div>
+    <p class="figure-note">Portability requires a timely Form 706 election at the first death. Deductions (marital, charitable, debts, expenses) can reduce these figures substantially — this is a threshold illustration, not a return.</p>
+
+    <h2 id="basis">Ledger 2 · Income-tax basis, capital gain, recapture</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Rule</th><th>Figure / status</th><th>Application</th><th>Official source</th></tr></thead>
+      <tbody>
+        <tr><td>Step-up at death (IRC 1014)</td><td>Basis = FMV at date of death (or 6-month alternate valuation)</td><td>Why the <a href="comparison.html#sameyear">same-tax-year sale</a> shows ≈$0 gain: basis resets to the inherited value. Obtain a written date-of-death valuation.</td><td><a href="https://www.irs.gov/faqs/interest-dividends-other-types-of-income/gifts-inheritances/gifts-inheritances">IRS inherited-property basis FAQ</a></td></tr>
+        <tr><td id="s121">Primary-residence exclusion (IRC 121)</td><td>$250,000 single / $500,000 joint</td><td>Switch on <em>only</em> for live-then-sell paths meeting the 2-of-5-years ownership+use test. Inherited property gets the holding period automatically — the use test is earned by living there. <strong>Switch: only if the heir will genuinely occupy.</strong></td><td><a href="https://www.irs.gov/publications/p523">IRS Pub 523</a></td></tr>
+        <tr><td id="recapture">Depreciation &amp; recapture</td><td>27.5-yr straight line; unrecaptured §1250 gain up to 25% federal + CA ordinary rates</td><td>Only rental periods create depreciation. Any rent path must keep a schedule from day one; sale after letting pays recapture on depreciation allowed <em>or allowable</em>. CA has no preferential capital-gain rate.</td><td><a href="https://www.irs.gov/publications/p544">IRS Pub 544</a></td></tr>
+        <tr><td>Federal long-term gain rate</td><td>Up to 20% + 3.8% NIIT</td><td>Applies to post-inheritance appreciation beyond basis on any delayed sale.</td><td><a href="https://www.irs.gov/taxtopics/tc409">IRS Topic 409</a></td></tr>
+        <tr><td id="bhs">California 1% Behavioral Health Services Tax</td><td>1% of CA taxable income over $1,000,000 (Form 540 line 62)</td><td>Raised from 1% to… still 1%: whole dollars, <strong>not indexed</strong>. A large sale gain stacks on other income; CA taxes capital gain as ordinary income (top rate 12.3%). Renamed from "Mental Health Services Tax" for TY2025+ (Prop 1, 2024).</td><td><a href="https://www.ftb.ca.gov/forms/2025/2025-540-booklet.html">FTB 2025 Form 540 booklet</a></td></tr>
+        <tr><td>§1031 like-kind exchange</td><td>Investment/business property only</td><td>Decide <em>before</em> selling, with advice. A personal residence cannot simply be exchanged; a rental Property A could qualify later if held for investment.</td><td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/like-kind-exchanges-real-estate-tax-tips">IRS §1031 guidance</a></td></tr>
+      </tbody>
+    </table></div>
+    <h3>CA 1% surtax sensitivity (rounded)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>CA taxable income (incl. any sale gain)</th><th>1% tax due</th><th>Rule</th><th>Source</th></tr></thead>
+      <tbody id="bhsRows"></tbody>
+    </table></div>
+
+    <h2 id="prop19">Ledger 3a · Proposition 19 (parent-child family-home exclusion) — official terms</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Term</th><th>Official rule</th><th>Decision use</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>What it does</td><td>Excludes a transfer of the transferor's <em>family home</em> (principal residence eligible for the homeowners'/veterans' exemption) between parent and child from reassessment, up to a value cap.</td><td>Keeps the old, low assessed value — a large annual property-tax saving vs full reassessment to market.</td><td><a href="https://www.boe.ca.gov/prop19/">BOE Proposition 19</a></td></tr>
+        <tr><td>Value cap</td><td>Factored base-year value + $1,000,000 (inflation-adjusted). Current adjusted amount <strong>$1,044,586</strong> for transfers Feb 16, 2025–Feb 15, 2027; prior periods $1,022,600 / $1,000,000; adjusted every other Feb 16 by the FHFA California House Price Index. Next adjustment Feb 2027.</td><td>If the home's taxable value exceeds the cap, the excess is added to the parent's base-year value. The 2040–2050 amount is unknown — model it as a range.</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf">BOE LTA 2025/009</a></td></tr>
+        <tr><td>Occupancy requirement</td><td>The transferee must occupy the home as <em>their</em> principal residence; establish the homeowners' exemption (file within one year of transfer, with limited relief under SB 293).</td><td><strong>Claim the exclusion only if the heir will occupy long term.</strong> Renting it out or selling it early forfeits the benefit (and can trigger escape assessments).</td><td><a href="https://www.boe.ca.gov/prop19/">BOE Prop 19</a> · <a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB293">SB 293 (2025, chaptered)</a></td></tr>
+        <tr><td>Claim filing deadline</td><td>File the exclusion claim (BOE-19-P) within three years of the transfer, or before a third-party transfer, whichever is earlier; late claims within 6 months of a supplemental/escape assessment notice (3 years for specified 2025 wildfire cases per SB 293).</td><td>Put both clocks on the <a href="timeline.html">timeline</a> at the moment of transfer.</td><td><a href="https://www.boe.ca.gov/prop19/">BOE Prop 19 forms</a></td></tr>
+        <tr><td id="carry">Carry-forward (portable base year)</td><td>If the heir later sells the Prop 19 home and buys a replacement California principal residence within the statutory period, the parent's factored base-year value (and remaining value-cap headroom) can transfer to the replacement, subject to the rules then in force.</td><td>Model live-then-sell paths with this option: it can preserve low assessments after a move. Rules come from the Constitution art. XIII A §2.1 and BOE guidance — confirm the operative version at the time.</td><td><a href="https://www.boe.ca.gov/prop19/">BOE Prop 19</a> · <a href="https://www.boe.ca.gov/proptaxes/pdf/pub29.pdf">BOE Pub 29</a></td></tr>
+        <tr><td>If NOT eligible / not occupying</td><td>Full reassessment to current market value (the date-of-death value) — new base year, then +2%/yr.</td><td>This is the model's default assumption for rent/sell paths: assessed ≈ market at transfer.</td><td><a href="https://www.boe.ca.gov/proptaxes/pub29.htm">BOE property-tax overview</a></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="proph">Ledger 3b · San Francisco Proposition H — official terms (affects Property B)</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Measure</th><th>Official terms</th><th>Decision use</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Prop H — "Stronger Muni for All" parcel tax (Nov 3, 2026, approved ≈72.5%)</strong></td><td>FY2027-28 through FY2041-42. Single-family $129/yr (+$0.42/sf over 3,000 sf; +$1.99/sf over 5,000 sf, uncapped). Multifamily $249/yr (+$0.195/sf over 5,000 sf, cap $50,000). Indexed from FY2028-29. First billed on the fall 2027 secured-tax bill. 65+ principal-residence exemptions (full for single-family; $249 off per qualifying multifamily unit). Landlords may pass ≤50% (≤$65/unit/yr) to rent-controlled tenants; SROs exempt. Parcel-area lookup and applications open Dec 1, 2026; exemption/adjustment requests due Jun 1, 2027.</td><td>Model ≈$250/yr on Property B from FY2027-28 (a 3-unit building is multifamily), with the pass-through modelled separately from base rent. Confirm the parcel's building area and type at the official lookup; file any 65+ exemption by Jun 1, 2027.</td><td><a href="https://www.sfmta.com/getting-around/muni/parcel">SFMTA parcel tax</a> · <a href="https://www.sfmta.com/getting-around/muni/parcel/frequently-asked-questions">SFMTA FAQ</a></td></tr>
+        <tr><td>Prop H (Nov 2020) — neighborhood commercial districts / permitting</td><td>Voter-approved commercial-use and small-business permitting measure.</td><td>Not a transfer tax, not Prop 19, not a residential property-tax rule. Relevant only if an actual permitted commercial use exists — none is assumed.</td><td><a href="https://sfelections.org/results/20201103/index.html">SF Elections 2020 results</a> · <a href="https://www.sf.gov/news--mayor-london-breed-announces-small-business-permitting-support-services">SF.gov summary</a></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="transfer">Ledger 3c · Transfer taxes &amp; recording fees (sell paths)</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Charge</th><th>Rate / figure</th><th>Applies to</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>County documentary transfer tax (Property A)</td><td>$0.55 per $500 = <strong>0.11%</strong> (≈$3,410 on $3,100,000)</td><td>Sell/transfer of Property A. Modeled as a seller cost (custom varies — in many Northern California counties the buyer pays; confirm in the contract).</td><td><a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=11911.">R&amp;T §11911</a> · <a href="https://www.sccassessor.org/">SCC</a></td></tr>
+        <tr><td>City conveyance tax (Cupertino)</td><td>None identified — <span class="warn-chip">confirm before sale</span></td><td>Cupertino is a general-law city; no additional city transfer tax was identified in this review.</td><td><a href="https://www.sccassessor.org/">Santa Clara County</a></td></tr>
+        <tr><td>Recording / notary / prelim change-of-ownership report</td><td>≈$2,000 allowance (assumption)</td><td>Both counties; use the county fee schedule at sale.</td><td><a href="https://www.sccassessor.org/">SCC Clerk-Recorder</a></td></tr>
+        <tr><td>SF real property transfer tax (Property B, if ever sold)</td><td><span class="danger-chip">official schedule unverified this session</span> — tiered (2020 Prop I: 5.5% $10–25M, 6% ≥$25M on the entire price; lower tiers exist); 2026 legislative flux</td><td>Only if Property B is ever sold. Obtain the consolidated schedule from the SF Treasurer immediately before any sale.</td><td><a href="https://sf.gov/information--real-property-transfer-tax">SF transfer tax (sf.gov)</a></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Tax-aware sensitivities checklist</h2>
+    <ul class="review-intro">
+      <li>Same-year sale vs +1-year sale vs +5-year sale — recompute gain each way. <a href="comparison.html#sameyear">Stack</a></li>
+      <li>Prop 19 claimed (occupancy) vs not claimed (reassessment to market). <a href="#prop19">Terms</a></li>
+      <li>§121 on/off for live-then-sell (only with genuine 2-of-5-year occupancy). <a href="#basis">Ledger 2</a></li>
+      <li>Depreciation started vs not (rent paths) and recapture at each exit year. <a href="#recapture">Recapture</a></li>
+      <li>Estate exclusion scenarios single/married × current-law vs lower future exclusion. <a href="#estate">Ledger 1</a></li>
+      <li>CA 1% surtax triggered vs not, depending on other income in the sale year. <a href="#bhs">Ledger 2</a></li>
+    </ul>
+    <footer><p><a href="../index.html">← Overview</a> · Not legal or tax advice. Verify at the transfer date.</p></footer>
+  </main>
+  <script src="../data/model.js"></script><script src="../data/render.js" defer></script>
+</body>
+</html>
