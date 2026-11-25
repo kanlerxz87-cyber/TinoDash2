@@ -1,0 +1,13 @@
+node_modules/
+.cache/
+artifacts/
+private/
+*.private.*
+.env*
+!.env.example
+*.pdf
+*.csv
+*.xlsx
+*.pem
+*.key
+.DS_Store
