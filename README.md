@@ -1,32 +1,28 @@
 # TinoDash2 — Inheritance Decision Workspace
 
-This repository contains privacy-first planning materials for comparing inherited-home and existing-property paths. It currently includes two static site surfaces:
+Privacy-first planning materials for comparing inherited-home and existing-property paths.
+The public site is the root **Estate Pathways** site (`index.html` and subpages), served by GitHub Pages from `main`.
 
-1. **Root site (Estate Pathways)** — plain HTML/CSS/JS at repo root, served by legacy GitHub Pages from `main` root. Browser-only what-if tools; no embedded household values.
-2. **Docs dashboard (`docs/`)** — static dashboard added in session `s-a549f819` with executive summary, decision criteria, timelines, scenarios, black-swan/phased-investing analysis, tax/legal map, questions, printable attorney/CPA briefing sheet, sources, and flagged-for-review pages. Values displayed are anonymized placeholders and rounded to nearest $10 per user request; see privacy notes below.
+## Privacy rules (binding — see COORDINATION.md)
 
-## Privacy
+- No household-specific figures in the public tree or Git, even rounded to $10. Rounding does not anonymize.
+- Public outputs use placeholders only (Property A, Property B, Owner B).
+- No names, street addresses, ZIP codes, parcel/APN IDs, account numbers, leases, or trust details.
+- Household analysis lives only in `private/` (git-ignored, never committed or published).
+- Prior exposure: household figures were merged to `main` in earlier PRs (#3/#4/#5 and the figure-bearing `docs/` dashboard from PR #12). Removing files from the tree does **not** remove them from Git history. A history purge requires repository-owner action. See the Exposure log in COORDINATION.md.
 
-- Public outputs should use placeholders only (Property A, Property B, Owner B).
-- No names, street addresses, ZIP codes, parcel/APN IDs, account numbers, or exact traceable public-record values should be published.
-- Sensitive details discovered during research are for internal use only.
-- `private/` and other ignored private paths are guardrails, not security boundaries; check staged files before every commit.
-- Prior public-data exposure exists in repository history/closed PR refs (see `COORDINATION.md` Exposure log). Do not claim history is scrubbed.
+## What is in the public site
 
-## Docs dashboard (s-a549f819)
+- `index.html` — executive summary, "what would change the answer", path comparison (pure and mixed), what-if calculator with blank inputs (browser-only, nothing stored), Prop 19 / estate / California checks, timeline, legislation watch, suggestions review queue, official sources, glossary.
+- `flagged.html` / `FLAGGED_FOR_REVIEW.html` — unverified, irregular, or conflicting items with links for manual review.
+- `sources.md` — official source register and the 2026-11-25 verification log.
+- Subpages (`black-swan.html`, `briefing.html`, `glossary.html`, `questions.html`, `suggestions.html`, `verification.html`, and redirect stubs) — redirects or narrow pages into the sections above.
 
-- Landing page: `docs/index.html`
-- Model build: `python3 scripts/build_model.py` -> `docs/data/model.json`
-- Verification: `docs/sources.html`, `docs/flagged.html`
+## Validation
 
-## Root site
-
-- Open `index.html` in a modern browser for the root Estate Pathways site.
-- Validation: `python3 scripts/check_site.py` (if present on branch).
-
-## GitHub Pages
-
-Legacy Pages currently serves `main` root. If the `docs/` dashboard should be published, configure Pages source accordingly or integrate into the root site; confirm with repository owner.
+- `python3 scripts/check_site.py` — required pages, local links, anchors, every table row has a link, no remote scripts.
+- `node --check app.js`
+- Privacy check before every commit: `git grep` for dollar figures, ZIP codes, parcel IDs and names must return nothing household-specific.
 
 ## Disclaimer
 
