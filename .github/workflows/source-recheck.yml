@@ -1,0 +1,107 @@
+name: Source re-check
+
+# The site's published anchors are law, rates and index data that change on a
+# schedule. This workflow re-fetches the official pages and re-verifies the
+# historical dataset on that schedule, so a stale page shows up as a failed run
+# rather than as a quiet inaccuracy.
+
+on:
+  schedule:
+    # Monthly, on the 2nd at 14:10 UTC — after the BLS CPI release window and
+    # after the county tax-rate books are normally posted.
+    - cron: "10 14 2 * *"
+  workflow_dispatch:
+    inputs:
+      strict:
+        description: "Fail the run if any published claim cannot be confirmed"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Offline dataset integrity (must always pass)
+        run: python3 scripts/verify_sources.py
+
+      - name: Online re-fetch of every cited official page
+        id: online
+        continue-on-error: true
+        run: python3 scripts/verify_sources.py --online
+
+      - name: Summarise the outcome
+        if: always()
+        run: |
+          if [ "${{ steps.online.outcome }}" = "success" ]; then
+            echo "### Source re-check: all cited claims confirmed" >> "$GITHUB_STEP_SUMMARY"
+            echo "Every anchor on the site was re-fetched and matched." >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo "### Source re-check: some cited claims could not be confirmed"
+              echo ""
+              echo "This is a **review task**, not necessarily a broken citation. A claim can fail because:"
+              echo ""
+              echo "- the official page was reorganised or renamed;"
+              echo "- an indexed amount (exclusion, Prop 19 allowance, parcel-tax tier) was updated for a new year;"
+              echo "- the publisher blocked the automated request."
+              echo ""
+              echo "Open `scripts/verify_sources.py --online` output in the run log, check each MISSING item"
+              echo "against the official page, and update the claim or the link. Items that need a human"
+              echo "decision belong on the flagged list."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Open or update a tracking issue when a claim is stale
+        if: steps.online.outcome != 'success' && github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = "Monthly source re-check found unconfirmed claims";
+            const body = [
+              "The scheduled re-check could not confirm every published official claim.",
+              "",
+              `Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              "",
+              "Review each MISSING item against the official page, then update the claim or the",
+              "link. Anything that changes a legal conclusion must be reflected on `law-watch.html`",
+              "and, if it blocks a decision, on `FLAGGED_FOR_REVIEW.html`.",
+              "",
+              "Do not close this issue by editing the verifier to skip the claim: the point of the",
+              "check is that a human confirms the new value.",
+            ].join("\n");
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "source-recheck",
+            });
+            if (existing.data.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ["source-recheck"],
+              });
+            }
+
+      - name: Fail only when strict
+        if: steps.online.outcome != 'success' && (github.event_name == 'schedule' || inputs.strict)
+        run: |
+          echo "Unconfirmed claims remain; see the run summary above."
+          exit 1
