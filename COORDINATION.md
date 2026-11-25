@@ -122,6 +122,11 @@
 | Privacy scan in `check_site.py` | done | Blocks city/neighborhood names, ZIPs, street addresses, APN/parcel IDs on public files. |
 | Pages source | unchanged | Legacy Pages keeps serving `main` root (Estate Pathways). The `docs/` dashboard is NOT published. |
 
+**Merge and deploy record (arena/1bef2ec3):**
+- PR #15 (`arena/1bef2ec3-tinodash2` → `main`) merged with a merge commit (`6b9d27c`) on 2026-11-25. The first merge attempt failed because `main` had moved after PR #14. Resolved as described above and pushed.
+- Validate site: `pass` (run 45625194192). Pages build for `6b9d27c`: `built`. Live check (cache-busted fetch) shows the Property A wording and no Cupertino text.
+- Pages source is unchanged: legacy build from `main /`. The `docs/` dashboard is not published.
+
 **Irregularities / open items (arena/1bef2ec3):**
 1. **Owner decision (unchanged):** the household dashboard with rounded-to-$10 figures remains in git-ignored `private/` only. The owner's latest instruction asked for rounded figures on the site, which conflicts with the privacy containment merged in PR #14. Not resolved here; requires owner decision.
 2. Model sale cost omitted the county transfer tax (0.11%). Corrected in the private model copy. Impact on private static table ≈ $12,900 at the 2045 / 10-year base; ranking unchanged.
