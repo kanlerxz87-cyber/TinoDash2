@@ -512,3 +512,63 @@ The repository owner has instructed, again and explicitly: household **costs and
 - Every published table row carries a link to an official source (or an explicit "household estimate — UNVERIFIED" label plus an official starting point).
 - Values that cannot be confirmed from an official source are labelled unverified and listed on the Flagged for Review page; no value is inferred or invented.
 - Official anchors re-checked in this session are recorded in `research/SOURCE_LOG.md` with fetch date.
+
+## Final integration record — session `a69037f0` (task complete, 2026-11-25)
+
+**Outcome: the figure-driven planning layer is built, verified, and integrated.** Research phase
+closed every open anchor; build phase delivered the rounded-figure site layer under the owner's
+publishing policy.
+
+**What shipped (this session's branch):**
+- `figures.html` + `scripts/build_figures.py` (reproducible generator): executive summary; rounded
+  ($10) Property A/B history tables with computed effective rates; cost register with V/H/C/A
+  status tags; same-tax-year sale model (2040/2045/2050, basis = DOD value, gain ≈ $0) — the
+  baseline every hold path must beat; 8-path comparison on 5/10/20/30-year horizons with
+  low/base/high bands, transfer-date sensitivity and risk notes; Prop 19 mechanics including the
+  allowance carry-forward placeholder (+2.15%/biennium from the last two BOE windows, labelled);
+  post-transfer scenario table (reassessed ≈ $79,260/yr at 2045 base vs ≈ $10,670/yr with the
+  exclusion); federal estate-tax examples against the $15,000,000 2026 exclusion + liquidity
+  worksheet; depreciation/recapture on the verified 27.5-yr GDS basis; 5-year capital plan; market
+  rent comps band $5,150–$8,400/mo; pre-commitment criteria; decision log with dates; decade
+  regime table + irregular-sequence tests + outcome-distribution chart (fig block also injected
+  into black-swan.html between FIG-BLOCK markers). Every table row carries a source link.
+- Checker re-scope for the owner's rounded-figure policy: `scripts/check_site.py` now blocks
+  unrounded household values and identifiers (previously blocked all values), enforces
+  $10-rounding for any published dollar amount ≥ $1,000 with a short statutory whitelist
+  ($1,044,586 Prop 19 allowance), requires figures.html; `scripts/privacy_check.py` blocks the
+  raw literals with decimal guards (public market data like "2,061.47" is not a hit), and the
+  selftest now proves both that leaks are caught AND that compliant rounded output passes.
+- Calculator: §121 exclusion switch ($250k/$500k, live-then-sell path only) added to
+  calculator.js + comparison.html inputs; sale-cost input now tells the user to price commission
+  4–6% + county DTT 0.11% (RTC 11911) + city add-on (flagged) + title/recording.
+- Integration edits (in-scope per the merge instruction): index.html (nav link, executive-summary
+  band, indicative-leader decision state, rounded-figure card, privacy wording), comparison.html
+  (privacy callout + sidebar wording now consistent with the rounded-figure policy), brief.html
+  (key figures block), FLAGGED_FOR_REVIEW.html (8 new rows: TRA gap, Property B rate anomaly,
+  insurance, rent comps, sell-path blanks, projection assumptions, depreciation, capital plan;
+  plus gift-exclusion row updated to VERIFIED $19,000 for 2025 and 2026 from the official IRS
+  annual-exclusion table — resolves the 1bef2ec3 open flag), README.md, sources.md
+  (verification log), research/SOURCE_LOG.md (entries 21–28 + flagged list).
+- decision-lab untouched (owned by `arena-c5500fac`); its 55/55 tests pass.
+
+**Verification policy recorded as directed (owner chat):** unverifiable values stay blank and
+get flagged; if values are unverified they never become fact through inference; every number is
+labelled V/H/C/A; the model is re-run each year and the decision log records whether the
+recommendation moved; the pre-commitment criteria are signed before the household runs figures.
+
+**All checks green:** check_site (11 required pages, row-source rule, anchors, privacy, $10 rule);
+node --check app.js/calculator.js; smoke_calculator (7 ranked paths); verify_sources (offline);
+decision-lab node --test 55/55; privacy_check --selftest (3/3 planted leaks caught, compliant
+rounded output clean).
+
+**Policy reconciliation for the record:** the earlier binding line "no household-specific figures,
+even rounded to $10" (superseded by the owner's own later instruction) is replaced everywhere by
+the owner's decision of 2026-11-25: rounded-to-$10 figures with placeholders are published on the
+figures layer; identifiers and unrounded values remain absolutely banned and CI-enforced. README
+updated accordingly. Exposure log entries (#3/#4/#5/#8/#10/#12) are unaffected and remain open for
+owner action.
+
+**Still open (owner actions, non-blocking):** git history purge / GitHub Support (incl. closed
+PRs #8/#10 and PR #12 merge commit); confirm live site serves no /docs/; insurance quotes; title/
+escrow/recording quotes; the parcel's tax bill TRA line; Property B bill-line reconciliation;
+licensed rent appraisal; CPA depreciation schedules. All recorded on the Flagged page.
