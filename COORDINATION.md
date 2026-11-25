@@ -286,3 +286,85 @@ The initial local checkout contained only README.md. After the initial claim pus
 - **Remaining needs review, not falsely completed:** administrator-coordinated public-history/PR-ref/cache/fork cleanup (prior 403 permission failures); root home-menu/module-CI handoff in issue #2; actual appraisals/rents/TRA/costs/debt/trust/estate/gifts/portability/eligibility and signed household criteria/path/why. No actual household recommendation, filing or investment policy is approved. Legacy Pages emitted an upstream Node-20-action deprecation warning, but all jobs succeeded; no root workflow changed from this scope.
 
 - Release-log rebase note: concurrent PR #20 appended a separate session checkpoint at the same end-of-file location. Kept its complete entry unchanged and this session’s complete release receipt; resolved append-only collision without root code changes.
+
+## Session `arena/e0eabcec-tinodash2` (2026-11-25)
+
+Branch `arena/e0eabcec-tinodash2`, from `5560f3d` on `main`. Scope: run and harden the
+verification scripts, build the decision-support pages that were still missing, and repair the
+policy conflict left by PR #12.
+
+### Decisions taken this session
+
+1. **`docs/` removed from the published tree.** The PR #12 dashboard in `docs/` embedded
+   household-derived values (property value bands, assessed values, rent, annual tax) even
+   though the repository policy forbids them even rounded. Since `main` is served by the
+   legacy Pages builder from the repository root, that content was publishable and the earlier
+   note that "`docs/` is not served" was not a mitigation. The directory is deleted in this
+   branch; a permanent privacy gate now runs in CI (`scripts/privacy_check.py --selftest`).
+   No value from it is reproduced here. `scripts/build_model.py` (the household model) is also
+   out of the public tree, matching the containment `b2c54940` had already applied on `main`;
+   this branch simply arrived at the same place independently and keeps the gate that stops it
+   coming back.
+2. **Nothing household-specific is published.** The six new pages carry public-law anchors,
+   protocol, ranges of required evidence, and a browser-only calculator whose inputs are blank
+   and never leave the page. Confirmed by the privacy gate.
+3. **Failed verification is reported as failed.** `scripts/verify_sources.py --online` cannot
+   reach the network from this sandbox; offline mode now prints an explicit "online
+   verification was NOT run" banner rather than a pass that could be mistaken for a full check.
+   A silent-pass bug (string/int year comparison meant zero checkpoints were compared) was
+   found and fixed; the script now fails if nothing was actually compared.
+
+### Task board
+
+| Task | Status | Files |
+|---|---|---|
+| Verify historical datasets | ✅ 22 checkpoints, worst relative error 0.0344% (offline) | `scripts/verify_sources.py`, `data/` |
+| Online re-fetch of cited pages | ⛔ Blocked: no outbound HTTPS in this environment; CI step added | `.github/workflows/pages.yml` |
+| War room / decision gates | ✅ | `war-room.html` |
+| Law watch (enacted + proposals + recheck calendar) | ✅ | `law-watch.html` |
+| Questions and missing data | ✅ | `questions.html` |
+| Path comparison + calculator | ✅ 8 paths, 25 blank inputs, browser-only | `comparison.html`, `calculator.js` |
+| Suggestions queue | ✅ S1–S22 with acceptance criteria | `suggestions.html` |
+| Printable attorney/CPA brief | ✅ | `brief.html` |
+| Crash-entry replay | ✅ 89 ten-year windows, 1928–2025 | `crash-replay.html` |
+| Site integrity check | ✅ 10 required pages present and linked from `index.html` | `scripts/check_site.py` |
+| Calculator smoke test in CI | ✅ stub-DOM test, no network APIs referenced | `scripts/smoke_calculator.js` |
+| Privacy gate in CI | ✅ self-test catches 3/3 planted findings; live tree 0 findings | `scripts/privacy_check.py` |
+| Prop H (Nov 2026) tier schedule | ✅ verified against SFMTA page | `law-watch.html` |
+| Depreciation / recapture model | ⬜ Not built — needs CPA-grade assumptions the evidence does not support yet; scoped on `war-room.html` | — |
+| Estate-liquidity / portability worksheet | ⬜ Not built — depends on the 706 gate | — |
+| Multi-scenario value/property-tax projection | ⬜ Deliberately withheld: publishing value bands would breach the privacy policy | — |
+| History purge of PRs #3/#4/#5/#8/#10/#12 | ⛔ **Owner action** — shallow clone here; see Exposure log | — |
+
+### Exposure log addition
+
+6. **PR #12 `docs/` dashboard (removal, 2026-11-25):** discovered to be publishable through the
+   legacy root Pages build. Deleted from the working tree in this branch. The merged commit on
+   `main` still contains the files until this branch lands, and git history retains them after
+   that. **Owner action:** after merge, extend the history purge to the PR #12 merge commit and
+   confirm the served site no longer exposes those pages.
+
+### Merge with `main` (PR #20 / `1c9e6f1e`) — consolidation
+
+`main` moved substantially while this session worked: `docs/` and `scripts/build_model.py` had
+already been removed for containment by `b2c54940` (PR #14), and a second public-safe surface
+`decision-lab/` (55 tests) was merged. This branch was merged with `main` rather than replayed,
+and the resolution keeps both surfaces:
+
+- **Containment is now doubly enforced.** `docs/` stays deleted; `build_model.py` stays out of the
+  public tree (this branch reached the same conclusion independently and removed it too). The
+  replacement for "show the numbers" is the blank-input browser calculator plus public-law
+  anchors, which both surfaces now share as a principle.
+- **`scripts/check_site.py`** now carries both guards: `main`'s inline privacy patterns
+  (household values, assessed values, ZIPs, city/neighbourhood names, parcel IDs, street
+  addresses) and this branch's required-page/linked-from-`index.html` check. The inline scan
+  immediately caught one real finding in `sources.md` (a city name used as a contrast case);
+  changed to "a Santa Clara County parcel".
+- **`scripts/privacy_check.py`** remains as the deeper, self-testing gate (24 literals,
+  6 structural patterns, synthetic leak proof), because a pattern list that can silently stop
+  matching is the failure mode this repository has already suffered twice.
+- **`decision-lab` tests pass unchanged** (`npm test` → 55/55).
+
+Outstanding owner actions are unchanged and still need a human: history purge covering
+PRs #3/#4/#5/#8/#10 and the PR #12 merge commit, cache and search-index removal, fork review,
+and a decision on whether the repository should stay public.
