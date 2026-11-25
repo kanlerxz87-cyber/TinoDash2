@@ -1,4 +1,4 @@
-import { defaultInputs, gainTaxes } from './model.js';
+import { defaultInputs, validateInputs, gainTaxes, annualTaxLedger } from './model.js';
 import { equityMonthlyReturn, inflationAt, treasuryYieldAt } from './economy.js';
 
 /** Synthetic monthly investment-only comparison. The 3/6/12/24-month tenors
@@ -11,8 +11,8 @@ import { equityMonthlyReturn, inflationAt, treasuryYieldAt } from './economy.js'
 export function simulateCrash({initial=1000000,months=360,parkMonths=24,phaseMonths=12,inputs=defaultInputs()}={}) {
   if(initial<=0||!Number.isFinite(initial)||!Number.isInteger(months)||months<1||months>600) throw new Error('Invalid investment example.');
   if(![0,24,36].includes(parkMonths)||![12,24].includes(phaseMonths)) throw new Error('Invalid staging schedule.');
-  const i=inputs;
-  const ordinaryTaxRate=i.federalOrdinary+(i.niitExposed?.038:0);
+  const i=validateInputs(inputs);
+  let ledger=annualTaxLedger(i);
   let stock=parkMonths===0?initial*i.stockTarget:0,stockBasis=stock;
   let freeCash=initial-stock,phaseCash=0,phaseBudget=0,phaseDeployed=0,interestTax=0,dividendTax=0;
   let holdings=[],priceIndex=1,peak=initial,maxDrawdown=0;
@@ -30,7 +30,7 @@ export function simulateCrash({initial=1000000,months=360,parkMonths=24,phaseMon
     for(const h of holdings) {
       const coupon=h.term===24&&(month-h.start)%6===0&&month>h.start;
       if(h.maturity===month||coupon) {
-        const tax=h.accrued*ordinaryTaxRate;
+        const tax=ledger.charge('treasury',h.accrued);
         freeCash+=h.accrued-tax;interestTax+=tax;h.accrued=0;
       }
       if(h.maturity===month) freeCash+=h.principal;else remain.push(h);
@@ -38,6 +38,7 @@ export function simulateCrash({initial=1000000,months=360,parkMonths=24,phaseMon
     holdings=remain;
   }
   for(let m=0;m<months;m++) {
+    if(m>0&&m%12===0)ledger=annualTaxLedger(i);
     settle(m);
     if(parkMonths>0&&m===parkMonths) {
       // All parked ladder principal is maturity-matched to the phase date.
@@ -49,17 +50,21 @@ export function simulateCrash({initial=1000000,months=360,parkMonths=24,phaseMon
     }
     buyLadder(m);
     const dividend=stock*.018/12;
-    const divTax=dividend*(i.federalGains+i.californiaRate+(i.niitExposed?.038:0));
+    const divTax=ledger.charge('dividend',dividend);
     stock=Math.max(0,stock*(1+equityMonthlyReturn(m,i))-divTax);
     stockBasis+=Math.max(0,dividend-divTax);dividendTax+=divTax;
     for(const h of holdings) h.accrued+=h.principal*h.rate/12;
     priceIndex*=Math.pow(1+inflationAt(Math.floor(m/12),i),1/12);
-    const treasury=freeCash+phaseCash+holdings.reduce((s,h)=>s+h.principal+h.accrued*(1-ordinaryTaxRate),0);
+    const accrued=holdings.reduce((s,h)=>s+h.accrued,0);
+    const treasury=freeCash+phaseCash+holdings.reduce((s,h)=>s+h.principal,0)+accrued-ledger.quote('treasury',accrued);
     const value=stock+treasury;peak=Math.max(peak,value);const drawdown=value/peak-1;maxDrawdown=Math.min(maxDrawdown,drawdown);
     rows.push({month:m+1,value,real:value/priceIndex,stock,treasury,cash:freeCash+phaseCash,drawdown});
   }
-  const end=rows.at(-1),exitTax=gainTaxes(Math.max(0,stock-stockBasis),0,0,i).tax;
-  return {initial,parkMonths,phaseMonths,rows,maxDrawdown,interestTax,dividendTax,exitTax,
+  const accrued=holdings.reduce((s,h)=>s+h.accrued,0),context=ledger.context();
+  const accruedInterestTax=ledger.quote('treasury',accrued);
+  context.nii+=accrued;context.magi+=accrued;
+  const end=rows.at(-1),exitTax=gainTaxes(Math.max(0,stock-stockBasis),0,0,i,context).tax;
+  return {initial,parkMonths,phaseMonths,rows,maxDrawdown,interestTax,dividendTax,exitTax,accruedInterestTax,
     end:{...end,afterTax:end.value-exitTax,realAfterTax:(end.value-exitTax)/priceIndex},phaseBudget,phaseDeployed,
     finalHoldings:holdings.map(h=>({...h})),method:'Hypothetical monthly shape; not a historical backtest or guaranteed ladder return.'};
 }

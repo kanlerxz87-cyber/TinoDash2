@@ -11,3 +11,6 @@ private/
 *.pem
 *.key
 .DS_Store
+
+# Reproducible public output and browser-only test dependencies
+dist/
