@@ -639,3 +639,23 @@ All gates green on the merged tree: check_site (15 required pages, 98 scanned, p
 warnings only), privacy gate (101 files, 0 findings; selftest 3/3 + clean-check), node --check
 (app.js, data/render.js, data/model.js, companion/calculator.js, companion/estate-pathways app +
 render), smoke_calculator, verify_sources (offline), decision-lab 55/55.
+
+### Prop 19 formula correction — a69037f0 (2026-11-25)
+
+The full text of RTC 63.2 was fetched from leginfo and settles the new-taxable-value computation
+(subdivision (d)): **new taxable value = the transferor's factored value immediately before the
+transfer PLUS, where market value at transfer reaches factored + adjusted allowance, the excess of
+market value over that sum.** Consequences, all recorded on the site:
+
+- The audit model (figures.html §05/§06) previously held the factored base flat under the
+  exclusion (≈$10,670/yr at 2045 base) — **corrected**: RTC 63.2(d) gives ≈$62,440/yr (placeholder
+  2045 allowance) / ≈$65,370/yr (current allowance), i.e. the exclusion saves the allowance slice
+  (≈$16,820/yr) while the bill still multiplies ~6× (≈$10,670 → ≈$62,440). Exec summary, summary
+  card, §05 table and companion/brief.html figures updated to the statute.
+- The canonical model's headline (≈$54,700/yr, `A_property_tax_if_live_prop19`) appears to tax
+  only the excess component (market value − factored − allowance) without adding the factored
+  base. Their model and pages are preserved unchanged; the divergence is recorded on the Flagged
+  page ("confirm the enrolled-value computation with the County Assessor") and named in the
+  figures.html two-model reconciliation callout. NOT corrected in their files by this session.
+- research/SOURCE_LOG.md entry 37 records the verified statutory text and filing deadlines
+  (1-year exemption, 3-year claim, late-claim lien-date rule).
