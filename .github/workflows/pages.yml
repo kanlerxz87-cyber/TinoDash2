@@ -1,4 +1,4 @@
-name: Validate and deploy Estate Pathways
+name: Validate site
 
 on:
   pull_request:
@@ -8,12 +8,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   validate:
@@ -25,28 +19,10 @@ jobs:
         run: python3 scripts/check_site.py
       - name: Check JavaScript syntax
         run: node --check app.js
-
-  deploy:
-    if: github.event_name != 'pull_request'
-    needs: validate
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Assemble public pages only
-        run: |
-          mkdir -p _site
-          cp ./*.html styles.css app.js _site/
-          cp -R pages _site/pages
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+# NOTE: GitHub Pages for this repository is served by the *legacy* builder
+# (build_type=legacy, source = main branch root), not by this workflow.
+# The deploy job was removed 2026-11-25 because actions/deploy-pages cannot
+# publish a legacy-built Pages site: it failed on push (run 45620071167).
+# If the repository owner switches Pages to "GitHub Actions" in Settings → Pages,
+# restore an actions/deploy-pages job. Until then, merging to main updates the
+# live site via the legacy builder automatically.

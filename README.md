@@ -4,7 +4,7 @@ A privacy-first, static decision workspace for comparing possible inherited-home
 
 ## Preview locally
 
-Open `index.html` in a modern browser. No build dependencies, trackers, external fonts, or third-party scripts are used. The printable attorney and CPA briefing sheet is available from the top-right print button.
+Open `index.html` in a modern browser. No build dependencies, trackers, external fonts, or third-party scripts are used. The printable attorney and CPA briefing sheet is available from the top-right print button. `black-swan.html` publishes cited public-market stress anchors (no household figures).
 
 ## Privacy boundary
 
@@ -14,7 +14,7 @@ Open `index.html` in a modern browser. No build dependencies, trackers, external
 
 ## GitHub Pages
 
-The GitHub Actions workflow in `.github/workflows/pages.yml` validates local links on pull requests and deploys the root static site from `main`. The site does not include a backend. If Pages has not been enabled for GitHub Actions on the repository, select **Settings → Pages → Build and deployment → GitHub Actions** after merging.
+Pages is served by the **legacy builder** (source: `main` branch, root). Merging to `main` updates the live site automatically (`https://kanlerxz87-cyber.github.io/TinoDash2/`). The GitHub Actions workflow only **validates** the site (local links, JS syntax); its former deploy job was removed in Nov 2026 because a legacy-built Pages site cannot be deployed by `actions/deploy-pages`. If Pages is switched to “GitHub Actions” in Settings → Pages, restore a deploy job. The site does not include a backend.
 
 ## Evidence limitations
 
