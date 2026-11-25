@@ -1,7 +1,7 @@
 # TinoDash2 coordination board
 
-**Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`, `s-a549f819`, `b2c54940`, `1bef2ec3`)
-**Current branch (this session):** `arena/1bef2ec3-tinodash2` — Arena-assigned; do not rename; do not push elsewhere.
+**Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`, `s-a549f819`, `b2c54940`, `1bef2ec3`, `arena/a865176a-tinodash2`)
+**Current branch (this session):** `arena/a865176a-tinodash2` — Arena-assigned; do not rename; do not push elsewhere.
 
 ## Non-negotiable privacy policy (read first)
 
@@ -25,12 +25,13 @@
 
 | Item | Status | Notes |
 |---|---|---|
-| Legacy Pages serving `main` root | ✅ Live (as of prior check) | `https://kanlerxz87-cyber.github.io/TinoDash2/`; legacy builder from main root |
+| Legacy Pages serving `main` root | ✅ Live | `https://kanlerxz87-cyber.github.io/TinoDash2/`; legacy builder from main root; index.html, black-swan.html, FLAGGED_FOR_REVIEW.html confirmed live after PR #13 merge (main now 69323cd) |
 | `Validate site` workflow | ✅ Fixed | Deploy job removed (legacy Pages cannot be deployed by `actions/deploy-pages`) |
 | PR #8 (figure-driven site) | ❌ Closed unmerged | Household figures in commits `993b85a`, `e0adbc6`; exposure remains via closed-PR refs; owner decision needed |
 | PR #10 (figure-driven site) | ❌ Closed unmerged | Figure-driven site; closed per privacy policy; closed-PR refs retain commits until purge |
 | PR #12 (s-a549f819 docs dashboard) | ✅ Merged to main (figure-bearing `docs/`); removed from public tree by b2c54940 | Contains user-requested rounded/anonymized planning figures in `docs/`; **owner/privacy-policy review required** before treating as policy-compliant |
 | Root site (Estate Pathways) | ✅ On main | Browser-only/blank worksheets; no embedded household values |
+| Session `arena/a865176a-tinodash2` | done | PR #13 created/merged (fast-forward, main 69323cd); FTB Form 540 line-62 sensitivity refined in app.js; scripts/check_site.py and node --check app.js pass; GitHub Pages live at https://kanlerxz87-cyber.github.io/TinoDash2/ |
 | Docs dashboard (`docs/`) | ⚠️ Added by s-a549f819 | User explicitly requested rounded-to-$10 anonymized figures and projections; published in `docs/`. This conflicts with the "no household figures even rounded" policy above. Flagged for owner decision. |
 | History purge (PRs #3/#4/#5/#8/#10/#12 refs as applicable) | ⛔ **Owner action** | See Exposure log |
 
@@ -88,15 +89,16 @@
 - 2026-11-25: Internal link check passed.
 - 2026-11-25: Official sources cited: IRS Estate Tax, IRS Form 706 instructions, IRS Pub 551, CA BOE Prop 19, CA BOE Pub 29, CA FTB capital gains, CA FTB 2025 540 booklet, SCC DTAC portal, SF Assessor-Recorder transfer tax portal, SF Rent Board portal.
 - 2026-11-25: Merge conflict with origin/main resolved by combining .gitignore/README/COORDINATION; main root site preserved.
+- 2026-11-25 (session arena/a865176a-tinodash2): Verified official sources — IRS WFTC/P.L. 119-21 2026 basic exclusion $15,000,000; FTB 2025 Form 540 line 62 Behavioral Health Services Tax = 1% of taxable income above $1,000,000 (whole dollars, renamed for tax years beginning on/after Jan 1, 2025); CA BOE Prop 19 intergenerational exclusion (transferor + transferee principal residence, value limit = taxable value + $1,000,000 biennially adjusted, homeowners' exemption within 1 year, exclusion claim within 3 years). Refined app.js FTB sensitivity note accordingly. scripts/check_site.py and node --check app.js pass. PR #13 merged to main; GitHub Pages live at https://kanlerxz87-cyber.github.io/TinoDash2/ (index.html, black-swan.html, FLAGGED_FOR_REVIEW.html confirmed). No household-specific figures added to public site.
 
-## Irregularities / Flagged (s-a549f819)
+## Irregularities / Flagged
 - Policy conflict: docs/ contains rounded planning figures per user request; main policy forbids household figures even rounded. Owner decision required.
 - Property A TRA/published property tax rate: unverified (parcel-specific). Model uses 1.18% estimate.
 - Property A market rent comps: missing/unverified.
 - Date-of-death FMV appraisal: missing.
 - Estate size/prior taxable gifts/portability plan: missing.
 - Prop 19 eligibility/occupancy intent: unverified.
-- CA 1% over $1M taxable income surtax: filing-year line confirmation needed.
+- CA 1% over $1M taxable income surtax: VERIFIED via FTB 2025 Form 540 line 62 (Behavioral Health Services Tax, whole dollars); still filing-year dependent.
 - SF "Prop H" identity/applicability: ambiguous.
 - SF transfer tax current rates: manual confirmation needed.
 - SCC documentary transfer/recording fees: manual confirmation needed.
