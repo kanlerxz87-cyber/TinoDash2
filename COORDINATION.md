@@ -215,8 +215,8 @@ The initial local checkout contained only README.md. After the initial claim pus
 | Existing root landing/site/integration claim (remote board observed) | in progress | arena/3ba11c7d-tinodash2 | Root site and configuration; do not edit from this session |
 | Existing root static site/source/deploy claim (remote board observed) | in progress | arena/57bd7c20-tinodash2 | index.html, styles.css, app.js, sources.md, FLAGGED_FOR_REVIEW.md, .gitignore, .github/workflows/pages.yml, README.md |
 | Existing initial-site claim (remote board observed) | in progress | arena/20a7e00d-tinodash2 | Broad root-site claim; must be coordinated by root integration owner |
-| Additive advanced decision lab: verified authority ledger, questions, mixed-path model, phased Treasuries/crash lab, printable professional brief, tests | in progress | arena-c5500fac | decision-lab/** only |
-| Root menu link to decision-lab/index.html and inclusion in Pages artifact | needs review | Request to root integration owner | No root file edits authorized for arena-c5500fac |
+| Additive advanced decision lab: verified authority ledger, questions, mixed-path model, phased Treasuries/crash lab, printable professional brief, tests | done — PR #19 merged, Pages verified | arena-c5500fac | decision-lab/** only |
+| Root menu link to decision-lab/ and ongoing module CI | needs review | Request to root integration owner | Direct module publication is verified; no root file edits authorized for arena-c5500fac |
 
 ## Session log
 
@@ -273,3 +273,16 @@ The initial local checkout contained only README.md. After the initial claim pus
 - Claim: complete (coordination only). Household-analysis publication: **blocked pending owner decision**.
 
 - PR link (session 1c9e6f1e, coordination checkpoint): https://github.com/kanlerxz87-cyber/TinoDash2/pull/20
+
+---
+
+## Release receipt — arena-c5500fac
+
+- **PR #19 merged** 2026-11-25 13:44:08 UTC: https://github.com/kanlerxz87-cyber/TinoDash2/pull/19 ; merge commit `4585e89bd9fbda7694a2f5b8ee277c3f15206cd0`. No root implementation changes in this PR.
+- **Pages build + deployment succeeded** for that exact commit: https://github.com/kanlerxz87-cyber/TinoDash2/actions/runs/45626607758 (build/report/deploy all success). Pages API latest build status `built`, error null, commit matched. Combined root validation run https://github.com/kanlerxz87-cyber/TinoDash2/actions/runs/45626608403 also succeeded.
+- **Live module:** https://kanlerxz87-cyber.github.io/TinoDash2/decision-lab/ — external fetch rendered the real JavaScript landing page with ownership distinction, source links, synthetic chart and privacy warning. Public README.md and docs/RESEARCH.md fetched successfully. The fetch service strips fragment URLs, so separate live hash-route verification is not asserted; all 15 hash routes were browser-tested at desktop/mobile locally against identical built runtime assets.
+- After merge, fast-forwarded this same session branch to merged main and re-ran combined root static/privacy scanner, root JS syntax, module 55-test build and whitespace check successfully. Local briefing PDF normalized/text-checked (font ligatures), visually rendered, one readable Letter page with all five sections/footer. No generated PDF/screenshots/dependencies committed.
+- Finished software tasks: authority ledger (32), source-linked records (85), working menu/routes, 7-path model and 81-point sensitivity grid, monthly stress/staging counterexamples, five-year capital templates + ongoing renewals, deadline/evidence/suggestions/glossary/flags, privacy/methodology docs, exports and professional brief. Verification details: decision-lab/docs/VERIFICATION.md.
+- **Remaining needs review, not falsely completed:** administrator-coordinated public-history/PR-ref/cache/fork cleanup (prior 403 permission failures); root home-menu/module-CI handoff in issue #2; actual appraisals/rents/TRA/costs/debt/trust/estate/gifts/portability/eligibility and signed household criteria/path/why. No actual household recommendation, filing or investment policy is approved. Legacy Pages emitted an upstream Node-20-action deprecation warning, but all jobs succeeded; no root workflow changed from this scope.
+
+- Release-log rebase note: concurrent PR #20 appended a separate session checkpoint at the same end-of-file location. Kept its complete entry unchanged and this session’s complete release receipt; resolved append-only collision without root code changes.
