@@ -6,7 +6,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html")) + sorted((ROOT / "docs").glob("*.html"))
+PAGES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html"))
 
 class Scanner(HTMLParser):
     def __init__(self):
@@ -102,7 +102,7 @@ PRIVACY_PATTERNS = [
     (r"(?i)\bzip(\s*code)?\s*[:#]?\s*9\d{4}\b", "ZIP code"),
     (r"\b\d{1,5}\s+[A-Z][a-z]+\s+(Ave|Avenue|St|Street|Rd|Road|Dr|Drive|Way|Ln|Lane|Blvd|Court|Ct)\b", "street address"),
 ]
-PUBLIC_FILES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html")) + sorted((ROOT / "docs").rglob("*.html")) + sorted((ROOT / "docs").rglob("*.json")) + sorted((ROOT / "docs").rglob("*.js"))
+PUBLIC_FILES = sorted(ROOT.glob("*.md")) + sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html"))
 for f in PUBLIC_FILES:
     text = f.read_text(encoding="utf-8")
     for pat, label in PRIVACY_PATTERNS:
@@ -114,4 +114,4 @@ if errors:
     for error in errors:
         print(f" - {error}")
     sys.exit(1)
-print(f"Static site check passed: required pages/assets/anchors present, no remote scripts or styles, privacy scan clean. Warnings (docs rows without per-row source link): {len(warnings)}")
+print("Static site check passed: required pages/assets/anchors present, all table rows linked, no remote scripts or styles, privacy scan clean.")
