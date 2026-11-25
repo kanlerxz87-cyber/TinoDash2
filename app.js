@@ -20,14 +20,15 @@
 
   function errorsFrom(data) {
     const errors = [];
-    const required = ['years', 'homeValue', 'netProceeds', 'liquidAssets', 'homeLow', 'homeHigh', 'stockLow', 'stockHigh', 'inflation', 'imputedRent', 'grossRent', 'homeTax', 'homeInsurance', 'homeUtilities', 'homeMaintenance', 'homeCapital', 'rentalOther', 'sfNet', 'sfUseChange', 'keepShare', 'treasuryYield'];
+    const required = ['years', 'homeValue', 'netProceeds', 'liquidAssets', 'homeLow', 'homeHigh', 'stockLow', 'stockHigh', 'inflation', 'imputedRent', 'grossRent', 'homeTax', 'homeInsurance', 'homeUtilities', 'homeMaintenance', 'homeCapital', 'rentalOther', 'sfValue', 'sfLow', 'sfHigh', 'sfGrossRent', 'sfTax', 'sfInsurance', 'sfUtilities', 'sfMaintenance', 'sfCapital', 'sfOther', 'sfUseChange', 'keepShare', 'treasuryYield'];
     for (const id of required) {
       if (data[id] === null || !validNumber(data[id])) errors.push(`Enter a valid ${id === 'years' ? 'comparison horizon' : id === 'homeValue' ? 'date-of-death property value' : id === 'netProceeds' ? 'same-year net sale proceeds' : id.replace(/([A-Z])/g, ' $1').toLowerCase()}.`);
     }
     if (data.years !== null && (!Number.isInteger(data.years) || data.years < 1 || data.years > 50)) errors.push('Comparison horizon must be a whole number from 1 to 50 years.');
-    for (const id of ['homeValue', 'netProceeds', 'liquidAssets']) if (data[id] !== null && data[id] < 0) errors.push('Property value, net proceeds, and liquid assets cannot be negative.');
+    for (const id of ['homeValue', 'netProceeds', 'liquidAssets', 'sfValue']) if (data[id] !== null && data[id] < 0) errors.push('Property value, net proceeds, and liquid assets cannot be negative.');
     if (data.homeLow !== null && data.homeHigh !== null && data.homeLow > data.homeHigh) errors.push('Home growth low must be no higher than home growth high.');
     if (data.stockLow !== null && data.stockHigh !== null && data.stockLow > data.stockHigh) errors.push('Investment return low must be no higher than investment return high.');
+    if (data.sfLow !== null && data.sfHigh !== null && data.sfLow > data.sfHigh) errors.push('Existing SF property growth low must be no higher than high.');
     if (data.phaseMonths !== null && (!Number.isInteger(data.phaseMonths) || data.phaseMonths < 24 || data.phaseMonths > 36)) errors.push('Phase-in period must be between 24 and 36 whole months; immediate investment is a separate path.');
     if (data.keepShare !== null && (data.keepShare < 0 || data.keepShare > 100)) errors.push('Retained share must be between 0% and 100%.');
     if (data.drawdown !== null && (data.drawdown < 0 || data.drawdown > 100)) errors.push('Drawdown must be between 0% and 100%.');
@@ -37,9 +38,9 @@
     if (data.delayedProceeds !== null && (data.saleYear === null || data.saleYear === 0)) errors.push('Enter a delayed sale year before adding future after-tax sale proceeds.');
     if (data.delayedProceeds !== null && data.delayedProceeds < 0) errors.push('Delayed sale proceeds cannot be negative.');
     if (data.caTaxableIncome !== null && data.caTaxableIncome < 0) errors.push('California taxable income sensitivity cannot be negative.');
-    for (const id of ['homeLow','homeHigh','stockLow','stockHigh','treasuryYield']) if (data[id] !== null && data[id] <= -100) errors.push('Growth, investment and Treasury rates must be greater than -100%.');
+    for (const id of ['homeLow','homeHigh','stockLow','stockHigh','sfLow','sfHigh','treasuryYield']) if (data[id] !== null && data[id] <= -100) errors.push('Growth, investment and Treasury rates must be greater than -100%.');
     if (data.inflation !== null && data.inflation <= -100) errors.push('Inflation must be greater than -100%.');
-    for (const id of ['imputedRent','grossRent','homeTax','homeInsurance','homeMaintenance','homeCapital','rentalOther']) if (data[id] !== null && data[id] < 0) errors.push('Rent, tax, insurance, maintenance, capital reserve and rental cost inputs cannot be negative.');
+    for (const id of ['imputedRent','grossRent','homeTax','homeInsurance','homeMaintenance','homeCapital','rentalOther','sfGrossRent','sfTax','sfInsurance','sfMaintenance','sfCapital','sfOther']) if (data[id] !== null && data[id] < 0) errors.push('Rent, tax, insurance, maintenance, capital reserve and rental cost inputs cannot be negative.');
     return errors;
   }
 
@@ -85,7 +86,7 @@
   }
 
   function readData() {
-    const keys = ['years','homeValue','netProceeds','liquidAssets','homeLow','homeHigh','stockLow','stockHigh','inflation','imputedRent','grossRent','homeTax','homeInsurance','homeUtilities','homeMaintenance','homeCapital','rentalOther','sfNet','sfUseChange','keepShare','phaseMonths','treasuryYield','caTaxableIncome','crashYear','drawdown','saleYear','delayedProceeds'];
+    const keys = ['years','homeValue','netProceeds','liquidAssets','homeLow','homeHigh','stockLow','stockHigh','inflation','imputedRent','grossRent','homeTax','homeInsurance','homeUtilities','homeMaintenance','homeCapital','rentalOther','sfValue','sfLow','sfHigh','sfGrossRent','sfTax','sfInsurance','sfUtilities','sfMaintenance','sfCapital','sfOther','sfUseChange','keepShare','phaseMonths','treasuryYield','caTaxableIncome','crashYear','drawdown','saleYear','delayedProceeds'];
     const data = Object.fromEntries(keys.map((key) => [key, number(key)]));
     data.phaseMonths ??= 24;
     data.crashYear ??= null;
@@ -97,6 +98,8 @@
     const inheritedCosts = data.homeTax + data.homeInsurance + data.homeUtilities + data.homeMaintenance + data.homeCapital;
     data.liveBenefit = data.imputedRent - inheritedCosts + data.sfUseChange;
     data.rentalCash = data.grossRent - inheritedCosts - data.rentalOther;
+    const sfCosts = data.sfTax + data.sfInsurance + data.sfUtilities + data.sfMaintenance + data.sfCapital + data.sfOther;
+    data.sfNet = data.sfGrossRent - sfCosts;
     return data;
   }
 
@@ -121,10 +124,13 @@
         const keptHome = data.homeValue * path.retain * Math.pow(1 + homeRate / 100, n);
         const benefit = futureValueOfFlow(path.homeFlow * path.retain, stockRate, n, data.inflation);
         const baseLiquid = compound(data.liquidAssets, stockRate, n, shockYear, shock);
+        const sfRate = tag === 'low' ? data.sfLow : data.sfHigh;
+        const sfHomeTerminal = data.sfValue * Math.pow(1 + sfRate / 100, n);
+        const sfCash = futureValueOfFlow(data.sfNet, stockRate, n, data.inflation);
         let invest;
         if (path.phased) invest = phasedValue(path.sale, stockRate, data.treasuryYield, n, data.phaseMonths, shockYear, shock);
         else invest = compound(path.sale ?? 0, stockRate, n, shockYear, shock);
-        const nominal = keptHome + benefit + baseLiquid + invest;
+        const nominal = keptHome + benefit + baseLiquid + invest + sfHomeTerminal + sfCash;
         const real = nominal / Math.pow(1 + data.inflation / 100, n);
         cases.push({nominal, real});
       }
@@ -138,7 +144,10 @@
         const proceedsAtHorizon = adviserNet === null ? null : compound(adviserNet, stockRate, remaining, shockYear !== null && shockYear > data.saleYear ? shockYear - data.saleYear : null, shock);
         const holdingFlows = futureValueOfFlow(data.rentalCash, stockRate, data.saleYear, data.inflation);
         const otherLiquid = compound(data.liquidAssets, stockRate, n, shockYear, shock);
-        const terminal = adviserNet === null ? null : proceedsAtHorizon + holdingFlows + otherLiquid;
+        const sfRate = tag === 'low' ? data.sfLow : data.sfHigh;
+        const sfHomeTerminal = data.sfValue * Math.pow(1 + sfRate / 100, n);
+        const sfCash = futureValueOfFlow(data.sfNet, stockRate, n, data.inflation);
+        const terminal = adviserNet === null ? null : proceedsAtHorizon + holdingFlows + otherLiquid + sfHomeTerminal + sfCash;
         if (tag === 'low') rows.push({label:`Hold / rent then sell in year ${data.saleYear}`,low:terminal,high:null,realLow:terminal === null ? null : terminal/Math.pow(1+data.inflation/100,n),realHigh:null,source: adviserNet === null ? 'Unpriced: future after-tax proceeds not provided. See IRS basis / home-sale rules.' : 'Delayed net proceeds entered by user; verify home-sale exclusion, basis, depreciation and sale-year tax.' , pendingFuture:adviserNet===null});
         else if (adviserNet !== null) {
           const r=rows[rows.length-1];r.high=terminal;r.realHigh=terminal/Math.pow(1+data.inflation/100,n);
@@ -163,17 +172,22 @@
     const annualRows = $('annualProjectionRows');
     annualRows.replaceChildren();
     const operatingCostBase = data.homeTax + data.homeInsurance + data.homeUtilities + data.homeMaintenance + data.homeCapital;
+    const sfOperatingCostBase = data.sfTax + data.sfInsurance + data.sfUtilities + data.sfMaintenance + data.sfCapital + data.sfOther;
     for (let year = 0; year <= data.years; year += 1) {
       const row = document.createElement('tr');
       const lowValue = data.homeValue * Math.pow(1 + data.homeLow / 100, year);
       const highValue = data.homeValue * Math.pow(1 + data.homeHigh / 100, year);
+      const sfLowValue = data.sfValue * Math.pow(1 + data.sfLow / 100, year);
+      const sfHighValue = data.sfValue * Math.pow(1 + data.sfHigh / 100, year);
       const costValue = operatingCostBase * Math.pow(1 + data.inflation / 100, year);
-      const items = [year === 0 ? 'Transfer date' : `Year ${year}`, displayMoney(lowValue), displayMoney(highValue), displayMoney(costValue), 'Not modeled — parcel / Prop 19 required'];
+      const sfCostValue = sfOperatingCostBase * Math.pow(1 + data.inflation / 100, year);
+      const items = [year === 0 ? 'Transfer date' : `Year ${year}`, `${displayMoney(lowValue)} / ${displayMoney(highValue)}`, `${displayMoney(sfLowValue)} / ${displayMoney(sfHighValue)}`, displayMoney(costValue), displayMoney(sfCostValue), 'Not modeled — parcel / Prop 19 required'];
       for (const value of items) { const cell=document.createElement('td');cell.textContent=value;row.append(cell); }
       const sourceCell=document.createElement('td');
-      const assessorLink=document.createElement('a');assessorLink.href='https://www.sccassessor.org/';assessorLink.textContent='County assessor';
+      const assessorLink=document.createElement('a');assessorLink.href='https://www.sccassessor.org/';assessorLink.textContent='Santa Clara assessor';
+      const sfLink=document.createElement('a');sfLink.href='https://www.sftreasurer.org/property';sfLink.textContent='SF Treasurer';
       const propLink=document.createElement('a');propLink.href='#src-boe-prop19';propLink.textContent='BOE Prop 19';
-      sourceCell.append(assessorLink,document.createTextNode(' · '),propLink);row.append(sourceCell);
+      sourceCell.append(assessorLink,document.createTextNode(' · '),sfLink,document.createTextNode(' · '),propLink);row.append(sourceCell);
       annualRows.append(row);
     }
     const maxValue = Math.max(1, ...rows.flatMap(r => [r.low, r.high].filter(v => Number.isFinite(v))));
@@ -205,7 +219,7 @@
       wrap.append(label,track,val);distribution.append(wrap);
     }
     const realIntro = $('resultDisclaimer');
-    realIntro.textContent = `Common ${data.years}-year horizon; selected low/high assumptions; ${data.phaseMonths}-month phase-in using the ${data.treasuryTenor} Treasury yield; optional ${data.drawdown === null ? 'no' : `${data.drawdown}%`} shock in year ${data.crashYear ?? '—'}. Displayed amounts are rounded to the nearest $10 and stay in this browser only. These are arithmetic scenarios, not probabilities. SF net annual cash flow is ${displayMoney(data.sfNet)} and is shown separately; the SF property's principal value is not included.`;
+    realIntro.textContent = `Common ${data.years}-year horizon; selected low/high assumptions; ${data.phaseMonths}-month phase-in using the ${data.treasuryTenor} Treasury yield; optional ${data.drawdown === null ? 'no' : `${data.drawdown}%`} shock in year ${data.crashYear ?? '—'}. Displayed amounts are rounded to the nearest $10 and stay in this browser only. These are arithmetic scenarios, not probabilities. SF net annual cash flow is ${displayMoney(data.sfNet)} after entered costs; SF market-value range is included as a shared existing asset.`;
     const taxNote = $('taxSensitivity');
     taxNote.replaceChildren();
     if (data.caTaxableIncome === null) {

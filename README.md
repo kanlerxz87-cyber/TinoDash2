@@ -10,7 +10,7 @@ Open `index.html` in a modern browser. No build dependencies, trackers, external
 
 - The public site intentionally omits household identifiers and the submitted exact property figures. Current local-law and federal-law references are official source links, not personalized conclusions.
 - `private/estate-inventory-template.md` is a blank working template, ignored by Git and not part of the Pages deployment artifact. Keep any completed inventory encrypted and outside the repository. `.gitignore` is a guardrail, not a security boundary; check staged files before every commit.
-- The initial repository history consisted of a README only. No household values were in the history to scrub. Do not add source documents or private inputs in future commits.
+- A privacy audit after other session PRs merged found user-submitted property figures and ZIP codes in earlier public `main` commits and pages. This branch redacts the current pages, but public `main` still exposes the earlier versions until the change merges, and prior commits retain the data; a normal PR cannot erase them. The repository owner must decide on a history rewrite and cache/index purge. See `COORDINATION.md` before treating the history as cleaned.
 
 ## GitHub Pages
 

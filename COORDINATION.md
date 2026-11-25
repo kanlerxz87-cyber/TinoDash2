@@ -9,15 +9,15 @@ Current integration work belongs to `arena/57bd7c20-tinodash2` and remains on th
 | Task | Status | Owner | Scope / note |
 |---|---|---|---|
 | Official tax and law research | needs review | `arena/c059149b` | Prior research merged in PR #4. Current integration checked IRS / BOE / FTB / SCO / official Legislature sources; stale or overbroad prior conclusions are not reused without review. |
-| Core dashboard and what-if model | needs review | `arena/c059149b` | Prior work merged in PR #4. New landing page replaces household-specific public defaults with browser-only inputs; old model data files must be removed or quarantined before publication. |
-| Subpages (comparison, properties, black swan, timeline, briefing, flagged, suggestions) | needs review | `arena/c059149b` | Prior pages merged in PR #4. Useful categories are represented in the new safe dashboard; old pages with user figures / unsupported scenarios must not be published. |
-| Privacy remediation / safe public site integration | in progress | `arena/57bd7c20-tinodash2` | Current branch; dashboard, sources, private template, flags, static checks and Pages artifact. |
-| Final verification, PR #5, Pages deploy | in progress | `arena/57bd7c20-tinodash2` | Rebase in progress against latest main; re-run all checks, privacy audit, PR checks and deploy confirmation. |
+| Core dashboard and what-if model | needs review | `arena/c059149b` | Prior work merged in PR #4. New landing page replaces household-specific defaults with browser-only inputs; prior model scripts were removed and older URLs now redirect to safe sections. |
+| Subpages (comparison, properties, black swan, timeline, briefing, flagged, suggestions) | needs review | `arena/c059149b` | Prior pages merged in PR #4. Useful categories are represented in the new safe dashboard; old URLs are now generic redirects with no user figures or unsupported scenario outputs. |
+| Privacy remediation / safe public site integration | done on branch; deploy pending | `arena/57bd7c20-tinodash2` | Current branch redacts the public working tree, removes old models/styles containing figures, and keeps safe section redirects plus source links. Prior commit history is not scrubbed. |
+| Final verification, PR #5, Pages deploy | in progress | `arena/57bd7c20-tinodash2` | Rebased on latest main; local checks/privacy grep pass. Commit, update PR, verify CI, merge, and confirm Pages deployment remain. |
 
 ## Privacy and verification policy
 
 - Never commit identifiable names, trust details, street addresses, parcel/APN IDs, account numbers, exact household values, leases or private tax records.
-- Public site must not publish user-submitted property prices, tax bills, rents, utility figures or ZIP codes. Earlier merged pages are treated as a privacy incident and are being removed from the current tree before the new site is deployed.
+- Public site must not publish user-submitted property prices, tax bills, rents, utility figures or ZIP codes. Earlier merged pages are treated as a privacy incident and have been redacted or replaced with safe redirects in this branch; the deployment must not use stale main files.
 - What-if calculations run only in browser memory, transmit nothing, and display values rounded to the nearest $10. No remote fonts, scripts, analytics or network submission.
 - The empty estate-inventory template is Git-ignored under `private/` and excluded from the Pages artifact. Completed inventories must remain encrypted and outside Git.
 - Public facts are linked to official sources; current law, proposals and unverifiable household facts are distinguished.
@@ -42,7 +42,7 @@ PRs #3 and #4 merged to the public `main` before this integration. The `main` tr
 - `python3 scripts/check_site.py`: local pages/assets/anchors exist, every data row in public tables is source-linked, no remote scripts/styles.
 - `node --check app.js`, `git diff --check`: passed.
 - Synthetic browser-model smoke test: comparison paths, year-by-year projections and CA surtax sensitivity rendered; test values were not saved.
-- Privacy grep was clean before rebase; it must be repeated against the integrated tree before any push.
+- Post-rebase privacy grep against the working tree is clean: submitted prices, rents, tax-bill amounts and ZIP codes do not appear in current files. Prior Git history still contains them; a PR does not scrub history.
 - Local HTTP preview returned 200 for dashboard and Flagged for Review pages.
 
 ## Known limitations / flagged items

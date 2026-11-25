@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = [ROOT / "index.html", ROOT / "FLAGGED_FOR_REVIEW.html"]
+PAGES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html"))
 
 class Scanner(HTMLParser):
     def __init__(self):
@@ -49,9 +49,10 @@ for page in PAGES:
         continue
     parser=Scanner()
     parser.feed(page.read_text(encoding="utf-8"))
-    scanners[page.name]=parser
+    page_name=page.relative_to(ROOT).as_posix()
+    scanners[page_name]=parser
     for issue in parser.table_rows_without_links:
-        errors.append(f"{page.name}: {issue}")
+        errors.append(f"{page_name}: {issue}")
 
 for name, parser in scanners.items():
     for tag, url in parser.links:
@@ -70,7 +71,7 @@ for name, parser in scanners.items():
             errors.append(f"{name}: missing local target {url}")
             continue
         if fragment:
-            target_name = target.name if path_part else name
+            target_name = target.relative_to(ROOT).as_posix() if path_part else name
             target_parser = scanners.get(target_name)
             if target_parser is None and target.exists() and target.suffix.lower()==".html":
                 target_parser=Scanner(); target_parser.feed(target.read_text(encoding="utf-8"))
