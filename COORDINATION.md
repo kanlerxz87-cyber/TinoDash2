@@ -48,3 +48,6 @@ Status key: `unclaimed | in progress | done | needs review` (needs review = publ
 ## Handoff log
 
 - 2026-11-25 arena-78b5ae8f: Claimed all tasks (single-session repo, no competing sessions found). Built model + site. Pushing for Pages deploy.
+
+## Handoff log (continued)
+- 2026-11-25 arena-78b5ae8f: Site built, PR #1 opened and merged to main. GitHub Pages deployment triggered (action run in progress). All initial requirements satisfied.
