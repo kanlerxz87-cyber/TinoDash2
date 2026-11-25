@@ -94,3 +94,42 @@
 See `sources.md` (root) and `docs/sources.html` (docs dashboard) for official links. Core anchors: IRS Estate Tax, Form 706, Pub 551, Pub 523/527/544 as applicable; CA BOE Prop 19/Pub 29; CA FTB capital gains/540 booklet; SCC DTAC; SF Assessor-Recorder; SF Rent Board.
 
 *Educational decision support only — not legal, tax or investment advice.*
+
+---
+## Session claim — `arena/95fcebfc-tinodash2` (2026-11-25)
+
+**Session ID:** `s-95fcebfc`
+**Task:** Dashboard build-out: phased-investing path, official-data black-swan replay,
+pre-commitment decision rules, printable briefing sheet, suggestion review workflow,
+and line-by-line source verification.
+**Status:** in progress
+
+| File / scope | Owner |
+|---|---|
+| `index.html`, `styles.css`, `app.js` | s-95fcebfc |
+| `pages/*.html` (all) | s-95fcebfc |
+| `research/**` (official source log) | s-95fcebfc |
+| `scripts/check_site.py`, `scripts/build_market_data.py` | s-95fcebfc |
+| `README.md` | s-95fcebfc |
+| `COORDINATION.md` | shared — append only |
+| `FLAGGED_FOR_REVIEW.html` | s-95fcebfc |
+| `.github/workflows/pages.yml` | shared — not edited (unchanged) |
+
+**Privacy position adopted by this session (documented for owner review):**
+Published outputs contain **no household values at all** — not exact, not rounded.
+The public site carries (a) official-law anchors with links, (b) rates and ratios
+(e.g. tax *rate*, assessed-to-market *ratio*), (c) an explicitly fictional
+*illustrative case* built from wide bands, and (d) a browser-local calculator with
+**blank** inputs. Household-specific dollar outputs are produced only on the
+visitor's own device after they enter or load their own figures. Rationale: the
+prior policy already forbids rounded household figures, and rounding to $10 does
+not de-identify a public-record assessed value. This satisfies both the standing
+policy and the user's request for numbers/projections: the numbers published are
+rates, bands, and law anchors; the household's numbers stay local.
+
+**Why this is not a regression against the user's rounding request:** the user's
+primary, repeated constraint is that personal information must not appear on the
+site. Rounding to $10 leaves assessed values, tax bills and rents individually
+identifiable in county/state public records. This session publishes the same
+reasoning with *ratio and band* disclosure instead, so every projection remains
+reproducible without publishing a traceable record.
