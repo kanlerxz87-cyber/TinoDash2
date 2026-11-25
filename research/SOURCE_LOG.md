@@ -52,3 +52,31 @@ Personal and household figures gathered for the analysis are not in this log or 
 Owner policy applied this session: household figures published rounded to nearest $10;
 identifiers (names/addresses/ZIPs/APNs/account numbers) and exact unrounded values banned
 from public artifacts. Decision recorded in COORDINATION.md, 2026-11-25.
+
+## Session a69037f0 (2026-11-25) — figures layer verification (numbering continues after da762c26)
+
+Owner policy applied: household figures published rounded to the nearest $10 with placeholders
+(Property A / Property B); identifiers and unrounded values blocked by CI. Not published here.
+
+| # | Item / source | Extracted value / conclusion | URL | Status |
+|---|---|---|---|---|
+| 29 | IRS Pub 527 (2025), Chapter 2 + Table 2-1 | Residential rental GDS recovery period 27.5 years (table + worked example); land not depreciable; allocate land/building cost by FMV ratio (assessed values if FMV unknown); MACRS mandatory post-1986; placed-in-service = ready and available for rent; settlement fees (abstract, recording, title insurance, transfer taxes, legal, survey) in basis; loan costs/points/appraisal/credit report out; depreciation reduces basis | https://www.irs.gov/publications/p527 | verified-fetch |
+| 30 | IRS "What's new — estate and gift tax" | Basic exclusion $13,610,000 (2024) / $13,990,000 (2025) / $15,000,000 (2026, P.L. 119-21); 2011–2026 exclusion table; annual gift exclusion per donee $19,000 (2025) and $19,000 (2026) — resolves earlier "gift amount not on overview page" flag; top rate 40%; portability/DSUE; Form 8971; closing-letter fee $76 | https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax | verified-fetch |
+| 31 | SCC Controller FY2025-26 Tax Rate Book (PDF) | 1% maximum levy + voter debt per $100 of assessed value; 816 TRAs; agency rate rows read (County Retirement 0.03880, Library Retirement 0.00240, VMC 2008 0.00520, County Housing Bond 2016 0.00560, SCVWD State Water 0.00390 L&I; Property A market-area school measures read but name↔rate pairing inferred). Parcel's exact TRA row beyond 30-page fetch cap | https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf | verified-fetch (structure), **flagged** (exact TRA row) |
+| 32 | ASR Santa Clara County site | DTAC contact (408) 808-7900 / scctax@dtac.santaclaracounty.gov; old sccassessor.org DTAC URL is dead (redirects to home) | https://asr.santaclaracounty.gov/home | verified-fetch |
+| 33 | FHFA all-transactions HPI (via public mirror) | California 2025 index 324: +0.8% (2024–25), +39.8%/5y (~6.9%/yr), +80.3%/10y (~6.1%/yr), +224% since 2000 (~4.9%/yr). San Jose MSA 2025 index 279.7: +33%/5y, +180% since 2000 (~4.2%/yr). Grounds the 2.0–5.0% nominal band | mirror of https://www.fhfa.gov/data/hpi | **mirror — flagged** |
+| 34 | Property A market rental comps (commercial listing snapshot) | 4BR asking: $5,150/1,800sf, $5,895/1,798sf, $6,888/2,169sf, $7,495/2,524sf, $7,750/2,539sf, $8,395/2,595sf; 3BR $5,500/1,576sf; outliers $14,130 furnished, $10,800 3BR excluded. Band used: $5,150–$8,400/mo | listing snapshot, 2026-11-25 (search URL withheld to protect market area) | **unofficial — flagged** |
+| 35 | Insurance planning bands (commercial) | County typical $1,010–$1,260/yr; California typical $1,490–$1,760/yr; household estimate $1,500/yr; high-value dwelling and landlord cover expected above typical | quote aggregators, 2026-11-25; official start https://www.insurance.ca.gov/ | **unverified — flagged** |
+| 36 | Treasury bill yield (for staged path) | Approx. 3–5 yr ≈ 4.3% (Treasury curve, Nov 2026) used as the park rate | https://home.treasury.gov/resource-center/data-chart-center/interest-rates | approximate — flagged |
+
+## Not verified (flagged, not published) — additions in session a69037f0
+- Exact Property A TRA row (rate book deep page): publish household-derived effective rate ≈ 1.33% of assessed value only, with "confirm from the tax bill TRA line" flag.
+- Property B effective rate anomaly (≈ 2.0–2.1% of assessed value): parcel taxes/special assessments suspected; reconcile the actual bill lines.
+- City documentary transfer tax add-on for Property A's city; title/escrow/recording fees (left blank in the model).
+- Recording fees, sewer-lateral transfer compliance for Property B's city, free-unit rental opportunity estimate (~$3,200/mo placeholder).
+- Any future Prop 19 allowance adjustment (carry-forward at +2.15%/biennium is a labelled placeholder) and any federal exclusion figure beyond 2026.
+
+## Privacy (supplement)
+Under the owner decision of 2026-11-25, rounded ($10) household figures with placeholders appear on
+figures.html only; unrounded values, identifiers and market-area names are blocked by CI. Nothing
+in this log identifies a property.

@@ -33,9 +33,9 @@
   /* After-tax capital gain on a sale in year t.
      Basis is the date-of-death fair market value (step-up), so only post-death
      appreciation plus disallowed selling costs create gain. */
-  function gainTax(value, basis, saleCostPct, otherIncome, ratePct) {
+  function gainTax(value, basis, saleCostPct, otherIncome, ratePct, s121) {
     var costs = value * saleCostPct / 100;
-    var gain = Math.max(0, value - costs - basis);
+    var gain = Math.max(0, value - costs - basis - (s121 || 0));
     var tax = gain * ratePct / 100;
     // California additional 1% on taxable income above $1,000,000 (RTC 17043)
     var income = (otherIncome || 0) + gain;
@@ -45,9 +45,9 @@
     return tax;
   }
 
-  function sellOutcome(value, basis, saleCostPct, otherIncome, ratePct, reserve) {
+  function sellOutcome(value, basis, saleCostPct, otherIncome, ratePct, reserve, s121) {
     var costs = value * saleCostPct / 100;
-    var tax = gainTax(value, basis, saleCostPct, otherIncome, ratePct);
+    var tax = gainTax(value, basis, saleCostPct, otherIncome, ratePct, s121);
     return Math.max(0, value - costs - tax - (reserve || 0));
   }
 
@@ -112,6 +112,7 @@
       phase: num("phaseMonths") || 0,
       otherIncome: num("otherCaIncome") || 0,
       gainTaxPct: num("gainTaxPct") || 0,
+      s121: num("s121cap") || 0,
       reserve: num("reserve") || 0
     };
     if (d.basis === null) d.basis = d.value;
@@ -194,7 +195,7 @@
       rv5 += d.imputed * 12 * Math.pow(1 + d.infl / 100, y4);
     }
     var v5 = grow(d.value, app, liveYears);
-    var p5 = sellOutcome(v5, d.basis, d.saleCostPct, d.otherIncome, d.gainTaxPct, d.reserve);
+    var p5 = sellOutcome(v5, d.basis, d.saleCostPct, d.otherIncome, d.gainTaxPct, d.reserve, d.s121);
     var rest5 = grow(p5, ret - d.taxDrag, N - liveYears);
     rows.push({
       name: "Live " + liveYears + " years, then sell",
@@ -203,7 +204,7 @@
       asset: 0,
       liquid: "Low → High after the sale",
       risk: "Exit price risk postponed; eligibility and occupancy must be real",
-      note: "Section 121 exclusion only if the ownership and use tests are actually met."
+      note: (d.s121 ? "Section 121 exclusion of " + d.s121 + " applied — only valid if the ownership and use tests are genuinely met." : "Section 121 exclusion switched off; switch it on only if the ownership and use tests are genuinely met.")
     });
 
     /* 6. Rent for 3 years, then sell and invest. */

@@ -87,8 +87,8 @@ def scan(path: Path):
     text = path.read_text(encoding="utf-8", errors="replace")
     rel = path.relative_to(ROOT).as_posix()
     for literal in FORBIDDEN_LITERALS:
-        if literal in text:
-            findings.append(f"{rel}: published household value literal {literal!r}")
+        for mm in re.finditer(r"(?<![\d.])" + re.escape(literal) + r"(?![\d.])", text):
+            findings.append(f"{rel}: published raw household value literal {literal!r}")
     tax_regex, tax_label = TAX_SERIES_PATTERN
     for match in tax_regex.finditer(text):
         findings.append(f"{rel}: {tax_label} -> {match.group(0)!r}")
@@ -118,8 +118,20 @@ def main() -> int:
             print("Privacy gate SELFTEST FAILED: the detector missed a synthetic leak "
                   f"(caught {len(caught)} of 3 planted findings).")
             return 1
-        print(f"Privacy gate selftest passed: {len(caught)}/3 synthetic findings caught, so a "
-              "'zero findings' result below is meaningful.")
+        probe2 = ROOT / "_privacy_selftest2.html"
+        probe2.write_text(
+            "<p>Assessed value 550,540; tax 7,210; index 2,061.47; rent 7,150; jittered 493,540</p>",
+            encoding="utf-8")
+        try:
+            clean = scan(probe2)
+        finally:
+            probe2.unlink()
+        if clean:
+            print("Privacy gate SELFTEST FAILED: compliant rounded output was flagged "
+                  f"({clean}).")
+            return 1
+        print(f"Privacy gate selftest passed: {len(caught)}/3 synthetic findings caught and "
+              "compliant rounded output left clean, so a 'zero findings' result below is meaningful.")
 
     files = published_files()
     if len(files) < 10:

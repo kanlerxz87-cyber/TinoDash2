@@ -50,6 +50,7 @@ REQUIRED = [
     "sources.html",
     "flagged.html",
     "FLAGGED_FOR_REVIEW.html",
+    "figures.html",
 ]
 
 # index.html must link every REQUIRED page except itself and the redirect stub.
@@ -186,6 +187,34 @@ for f in PUBLIC_FILES:
     for pat, label in PRIVACY_PATTERNS:
         for m in re.finditer(pat, text):
             errors.append(f"{f.relative_to(ROOT).as_posix()}: privacy scan hit ({label}): {m.group(0)[:40]!r}")
+
+# Owner rounding rule: published dollar amounts of $1,000 or more must be a
+# multiple of $10 unless the authority publishes them exactly (short whitelist).
+LAW_VALUES_ALLOWED = {
+    1044586,  # BOE LTA 2025/009 Proposition 19 adjusted allowance (published exact)
+    4602,     # HUD FY2026 FMR, Santa Clara County 3BR (published exact)
+    5010,     # HUD FY2026 FMR, Santa Clara County 4BR (published exact)
+}
+DOLLAR_RE = re.compile(r"\$\s?([0-9][0-9,]*(?:\.[0-9]+)?)(?![0-9Mk])")
+for f in PUBLIC_FILES:
+    text = f.read_text(encoding="utf-8", errors="replace")
+    for m in DOLLAR_RE.finditer(text):
+        raw = m.group(1).replace(",", "")
+        try:
+            val = float(raw)
+        except ValueError:
+            continue
+        if val < 1000:
+            continue
+        relname = f.relative_to(ROOT).as_posix()
+        preserved = relname.startswith(("docs/", "companion/"))
+        sink = warnings.append if preserved else errors.append
+        if abs(val - round(val)) > 1e-9:
+            sink(f"{relname}: dollar amount with cents \u2265 $1,000 (round to $10): {m.group(0)!r}")
+            continue
+        ival = int(round(val))
+        if ival % 10 != 0 and ival not in LAW_VALUES_ALLOWED:
+            sink(f"{relname}: dollar amount \u2265 $1,000 not rounded to $10: {m.group(0)!r}")
 
 if errors:
     print("Static site check failed:")

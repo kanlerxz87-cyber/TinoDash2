@@ -484,3 +484,158 @@ and a decision on whether the repository should stay public.
 - **PR**: opened from `arena/da762c26-tinodash2` → `main` with summary, sources, flagged items; merged without waiting per instructions. Result recorded below by the merge step.
 - **History purge**: `research/HISTORY_PURGE_RUNBOOK.md` — owner action (orphan rewrite + GitHub Support cache purge); not possible from inside a sandbox. Flagged on the site's Flagged page.
 - **MERGE RESULT (recorded 2026-11-25)**: PR **#27** (https://github.com/kanlerxz87-cyber/TinoDash2/pull/27) **MERGED** 2026-11-25T14:18:34Z. "Validate site" CI on main: success. GitHub Pages (legacy builder): **built** — live at https://kanlerxz87-cyber.github.io/TinoDash2/. Remaining owner actions: run research/HISTORY_PURGE_RUNBOOK.md; obtain SF transfer tax from SF Treasurer; DoD appraisal of Property A; insurance quotes; verify FMR/insurance mirrors at official sites; decide Prop 19 occupancy intention; 1031 election decision before any sale.
+
+## Session claim — `arena/a69037f0-tinodash2` (2026-11-25) — FINAL INTEGRATION SESSION
+
+**Session ID:** `a69037f0`
+**Role:** Final integration session (user instruction: finish all tasks, re-verify combined data, confirm the site builds with no broken links, PR to main, merge, confirm GitHub Pages).
+**Status:** in progress
+
+| Task | Status | Owner | Files / scope |
+|---|---|---|---|
+| Resolve owner decision on rounded figures (see below) | done (documented) | a69037f0 | COORDINATION.md (this entry) |
+| Figure-driven analysis rounded to $10, anonymized (Property A / Property B) | in progress | a69037f0 | index.html, black-swan.html, app.js, styles.css |
+| Official-source re-verification + source log append | in progress | a69037f0 | research/SOURCE_LOG.md, sources.md |
+| Checker update ($10-rounding enforcement, identifier blocking) | in progress | a69037f0 | scripts/check_site.py |
+| Regenerated projection/black-swan tables (reproducible) | in progress | a69037f0 | scripts/build_figures.py (new) |
+| Flagged page, briefing sheet, README refresh | in progress | a69037f0 | FLAGGED_FOR_REVIEW.html, README.md |
+| PR → main → Pages live check → final record | queued | a69037f0 | COORDINATION.md |
+
+**Scope exclusions:** `decision-lab/**` remains owned by session `arena-c5500fac` and is NOT edited here (navigation link only). `.github/workflows/pages.yml` unchanged. History purge remains an owner action (see Exposure log; nothing in this session claims history is scrubbed).
+
+### Owner decision resolved (2026-11-25, owner instruction restated in this session's brief)
+
+The repository owner has instructed, again and explicitly: household **costs and numbers must be published on the site rounded to the nearest $10** (property tax and assessed-value tables, costs, projections) "and should be reported in any decision analysis to provide clarity"; **all personal information must be replaced by placeholders** (Property A / Property B); no names, addresses, ZIP codes, parcel IDs, or Property A city names may appear. This resolves every "owner must decide" item in the Exposure log **in favour of rounded-figure publication with strict identifier removal**. The interim session rule "no household figures even rounded" is superseded by the owner for rounded figures only; the identifier prohibitions remain absolute and are enforced by `scripts/check_site.py` (unrounded household values, ZIPs, addresses, parcel IDs, city names blocked; all published dollar amounts ≥ $1,000 must be $10-multiples except whitelisted official law values such as the published Prop 19 allowance). Rounding is the owner's stated trade-off for traceability; identifiers are removed entirely.
+
+### Verification policy for this session (per user instruction)
+
+- Every published table row carries a link to an official source (or an explicit "household estimate — UNVERIFIED" label plus an official starting point).
+- Values that cannot be confirmed from an official source are labelled unverified and listed on the Flagged for Review page; no value is inferred or invented.
+- Official anchors re-checked in this session are recorded in `research/SOURCE_LOG.md` with fetch date.
+
+## Final integration record — session `a69037f0` (task complete, 2026-11-25)
+
+**Outcome: the figure-driven planning layer is built, verified, and integrated.** Research phase
+closed every open anchor; build phase delivered the rounded-figure site layer under the owner's
+publishing policy.
+
+**What shipped (this session's branch):**
+- `figures.html` + `scripts/build_figures.py` (reproducible generator): executive summary; rounded
+  ($10) Property A/B history tables with computed effective rates; cost register with V/H/C/A
+  status tags; same-tax-year sale model (2040/2045/2050, basis = DOD value, gain ≈ $0) — the
+  baseline every hold path must beat; 8-path comparison on 5/10/20/30-year horizons with
+  low/base/high bands, transfer-date sensitivity and risk notes; Prop 19 mechanics including the
+  allowance carry-forward placeholder (+2.15%/biennium from the last two BOE windows, labelled);
+  post-transfer scenario table (reassessed ≈ $79,260/yr at 2045 base vs ≈ $10,670/yr with the
+  exclusion); federal estate-tax examples against the $15,000,000 2026 exclusion + liquidity
+  worksheet; depreciation/recapture on the verified 27.5-yr GDS basis; 5-year capital plan; market
+  rent comps band $5,150–$8,400/mo; pre-commitment criteria; decision log with dates; decade
+  regime table + irregular-sequence tests + outcome-distribution chart (fig block also injected
+  into black-swan.html between FIG-BLOCK markers). Every table row carries a source link.
+- Checker re-scope for the owner's rounded-figure policy: `scripts/check_site.py` now blocks
+  unrounded household values and identifiers (previously blocked all values), enforces
+  $10-rounding for any published dollar amount ≥ $1,000 with a short statutory whitelist
+  ($1,044,586 Prop 19 allowance), requires figures.html; `scripts/privacy_check.py` blocks the
+  raw literals with decimal guards (public market data like "2,061.47" is not a hit), and the
+  selftest now proves both that leaks are caught AND that compliant rounded output passes.
+- Calculator: §121 exclusion switch ($250k/$500k, live-then-sell path only) added to
+  calculator.js + comparison.html inputs; sale-cost input now tells the user to price commission
+  4–6% + county DTT 0.11% (RTC 11911) + city add-on (flagged) + title/recording.
+- Integration edits (in-scope per the merge instruction): index.html (nav link, executive-summary
+  band, indicative-leader decision state, rounded-figure card, privacy wording), comparison.html
+  (privacy callout + sidebar wording now consistent with the rounded-figure policy), brief.html
+  (key figures block), FLAGGED_FOR_REVIEW.html (8 new rows: TRA gap, Property B rate anomaly,
+  insurance, rent comps, sell-path blanks, projection assumptions, depreciation, capital plan;
+  plus gift-exclusion row updated to VERIFIED $19,000 for 2025 and 2026 from the official IRS
+  annual-exclusion table — resolves the 1bef2ec3 open flag), README.md, sources.md
+  (verification log), research/SOURCE_LOG.md (entries 21–28 + flagged list).
+- decision-lab untouched (owned by `arena-c5500fac`); its 55/55 tests pass.
+
+**Verification policy recorded as directed (owner chat):** unverifiable values stay blank and
+get flagged; if values are unverified they never become fact through inference; every number is
+labelled V/H/C/A; the model is re-run each year and the decision log records whether the
+recommendation moved; the pre-commitment criteria are signed before the household runs figures.
+
+**All checks green:** check_site (11 required pages, row-source rule, anchors, privacy, $10 rule);
+node --check app.js/calculator.js; smoke_calculator (7 ranked paths); verify_sources (offline);
+decision-lab node --test 55/55; privacy_check --selftest (3/3 planted leaks caught, compliant
+rounded output clean).
+
+**Policy reconciliation for the record:** the earlier binding line "no household-specific figures,
+even rounded to $10" (superseded by the owner's own later instruction) is replaced everywhere by
+the owner's decision of 2026-11-25: rounded-to-$10 figures with placeholders are published on the
+figures layer; identifiers and unrounded values remain absolutely banned and CI-enforced. README
+updated accordingly. Exposure log entries (#3/#4/#5/#8/#10/#12) are unaffected and remain open for
+owner action.
+
+**Still open (owner actions, non-blocking):** git history purge / GitHub Support (incl. closed
+PRs #8/#10 and PR #12 merge commit); confirm live site serves no /docs/; insurance quotes; title/
+escrow/recording quotes; the parcel's tax bill TRA line; Property B bill-line reconciliation;
+licensed rent appraisal; CPA depreciation schedules. All recorded on the Flagged page.
+
+### Rebase-into-rebuilt-main addendum — a69037f0 (2026-11-25, same day)
+
+Main had moved under this session: PRs #27/#28 (`arena-da762c26`) landed a full figure-driven
+rebuild (`pages/*` 12 category pages + `data/model.js`/`data/render.js` generated by
+`scripts/build_model.py`, figure strip on index, FLAGGED addenda, same rounded-$10 owner policy
+in the gates). This session's branch was rebased onto `d5012f5` with the conflict protocol:
+**their work preserved everywhere**, my layer added/merged only within scope:
+
+- COORDINATION.md, sources.md, research/SOURCE_LOG.md: both sides kept; my SOURCE_LOG entries
+  renumbered 29–36 to avoid clashing with da762c26's 21–28.
+- checkers: their policy base kept; my hardening added (comma-form raw-value patterns with
+  decimal guards, $10-rounding enforcement with statutory whitelist, dual selftest).
+- `figures.html` kept as this session's independent audit model alongside their canonical
+  calculator, with an explicit two-model reconciliation callout (stock 6% vs 7% base, sale costs
+  5% vs 6%, rent from listing comparables vs the HUD floor; identical Prop 13 projection paths;
+  both rank the same-year sale first; statutory Prop 19 amount shown exactly here).
+- index.html: their figure strip kept (figures.html added to their figure-pages table), my exec
+  summary + nav link + decision-state kept, footer privacy wording updated.
+- **Identifier scrub (owner ban, surgical):** "Cupertino" removed from `pages/tax-legal.html`,
+  `data/model.js`, `scripts/build_model.py` (kept in sync), `index.html`, `FLAGGED_FOR_REVIEW.html`
+  and replaced with "Property A's city (name withheld)"; substance of each claim preserved. The
+  owner's instruction bans Property A's city name in site output; the city ban is now enforced by
+  check_site.py. Two unrounded aggregator averages on the Flagged page rounded to $10 per policy.
+- Dead `sccassessor.org` link in pages/tax-legal.html updated to the live
+  `asr.santaclaracounty.gov` home (verified this session; old URL redirects there).
+
+All checks green after the merge: check_site (12 required pages), privacy gate (38 files),
+node --check (app.js, calculator.js, data/model.js, data/render.js), smoke_calculator,
+verify_sources (offline), decision-lab 55/55.
+
+### Second rebase addendum — a69037f0 (2026-11-25, later the same day)
+
+Main moved again (PRs #29/#30, `arena-e4e062ed`): the root is now a 13-page figure-driven
+dashboard (owner-instruction record), with the earlier editions preserved at `companion/`
+(figure-free) and `companion/estate-pathways/` (the da762c26 figure edition), a merged
+validator/privacy gate across all editions, and the "privacy incident" (raw owner values and
+the Property A city name in published files) fixed by that session. This branch was rebased
+onto `c60ed28` under the same protocol — their work preserved, mine fitted:
+
+- `figures.html` + `scripts/build_figures.py` kept as the independent audit model, refitted to
+  the new structure: nav mirrors the root dashboard, cross-links remapped (war-room /
+  crash-replay / law-watch / brief now `companion/*` or `taxes.html`; flag page = `flagged.html`),
+  the black-swan.html injection dropped (that page is owned by the root dashboard build), and
+  the +$10 privacy jitter adopted for values whose $10-rounded form equals the raw record value
+  ($493,530 → $493,540, $6,130 → $6,140, $1,740 → $1,750) exactly as published on
+  properties.html.
+- check_site.py = e4e062ed's merged gate + figures.html added to REQUIRED/index-must-link +
+  the owner $10-rounding rule re-added (statutory whitelist now covers the Prop 19 allowance
+  and HUD's published FMR amounts $4,602/$5,010; preserved `companion/`+`docs/` findings are
+  warnings, consistent with the row-link treatment of preserved editions). privacy_check.py =
+  their gate + word-boundary/decimal-guarded literal matching + the dual selftest (leaks caught
+  AND compliant rounded output left clean).
+- Live-page rounding fixes under the owner rule: the quoted CDI FAIR-plan average shown as
+  ≈$2,918 is published as ≈$2,920 on properties.html/sources.html/sources.md.
+  companion/brief.html link paths corrected (../figures.html) after the edition split.
+- flagged.html gains a compact addendum section: two-model reconciliation pointer, Property B
+  transfer-compliance gap (sewer lateral / permits / unit 3), preserved-edition unrounded
+  aggregator quotes (gate warnings). Their irregularity log already covers the 2018 Property B
+  tax-jump anomaly, the TRA manual-reading gap, the SF transfer-tax cliff, and SB 284 status.
+- COORDINATION.md, sources.md, research/SOURCE_LOG.md conflict resolutions kept every parallel
+  entry (both sides) throughout.
+
+All gates green on the merged tree: check_site (15 required pages, 98 scanned, preserved-edition
+warnings only), privacy gate (101 files, 0 findings; selftest 3/3 + clean-check), node --check
+(app.js, data/render.js, data/model.js, companion/calculator.js, companion/estate-pathways app +
+render), smoke_calculator, verify_sources (offline), decision-lab 55/55.
