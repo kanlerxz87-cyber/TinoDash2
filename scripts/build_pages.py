@@ -4,6 +4,7 @@ Generate the decision-support pages from one consistent template.
 
 Pages produced
     war-room.html    cockpit: first-screen gates, pre-commitment, requirement coverage, decision journal
+    worksheets.html  blank depreciation/recapture and estate-liquidity/portability worksheets
     law-watch.html   enacted law vs proposals, recheck calendar
     questions.html   every open question, its status, and how to close it
     comparison.html  all choices on identical dates/horizons + reinvestment risk + browser calculator
@@ -36,6 +37,11 @@ S = {
     "irs_527": "https://www.irs.gov/publications/p527",
     "irs_544": "https://www.irs.gov/publications/p544",
     "irs_1031": "https://www.irs.gov/businesses/small-businesses-self-employed/like-kind-exchanges-real-estate-tax-tips",
+    "irs_409": "https://www.irs.gov/taxtopics/tc409",
+    "irs_4562": "https://www.irs.gov/forms-pubs/about-form-4562",
+    "irs_4797": "https://www.irs.gov/forms-pubs/about-form-4797",
+    "irs_4768": "https://www.irs.gov/forms-pubs/about-form-4768",
+    "irs_nd": "https://www.irs.gov/businesses/small-businesses-self-employed/how-to-close-a-business",
     "rtc17043": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=17043",
     "rtc632": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=63.2",
     "rtc11911": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=11911",
@@ -50,7 +56,7 @@ S = {
     "scc_dtac": "https://www.sccdtac.org/",
     "sf_transfer": "https://www.sf.gov/transfer-tax",
     "sf_rent": "https://www.sf.gov/departments--rent-board",
-    "sf_dbi": "https://www.sf.gov/departments/department-building-inspection",
+    "sf_dbi": "https://www.sf.gov/departments--department-building-inspection",
     "sfmta_proph": "https://www.sfmta.com/getting-around/muni/parcel",
     "sco_estate": "https://www.sco.ca.gov/ardtax_estate_tax.html",
     "treasury": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates",
@@ -87,6 +93,7 @@ GROUPS = [
         ("comparison.html", "Compare every path"),
         ("crash-replay.html", "Crash-entry replay"),
         ("crash-replay.html#how-to-use", "Reinvestment risk"),
+        ("worksheets.html", "Tax worksheets"),
     ]),
     ("Evidence", [
         ("questions.html", "Questions &amp; missing data"),
@@ -280,9 +287,9 @@ def build_war_room() -> str:
         ("Transfer tax and recording fees priced into the sell path",
          "County documentary transfer tax is a statutory rate; the city tier applies separately and must be confirmed at closing.",
          BADGE["verified"], a("rtc11911", "RTC 11911") + " · " + a("sf_transfer", "SF transfer tax")),
-        ("Depreciation and recapture modelled",
-         "Not yet modelled numerically; the protocol requires a CPA to rebuild basis and depreciation allowed or allowable before any rent-path number is treated as net.",
-         BADGE["missing"], a("irs_527", "IRS Pub 527") + " · " + a("irs_544", "IRS Pub 544")),
+        ("Depreciation and recapture worksheet",
+         "Every input is named with its official rule, so a CPA can rebuild basis, allowed or allowable depreciation and the recapture exposure. No figure is published or assumed: the numbers are property-specific facts.",
+         BADGE["done"], '<a href="worksheets.html">Tax worksheets</a> · ' + a("irs_527", "IRS Pub 527")),
         ("Estate tax, income-tax basis and property-tax assessment separated",
          "Three separate systems with three separate numbers and clocks, each carried in its own column and its own source.",
          BADGE["done"], a("irs_706", "Form 706") + " · " + a("irs_551", "Pub 551") + " · " + a("boe_pub29", "BOE Pub 29")),
@@ -301,9 +308,9 @@ def build_war_room() -> str:
         ("Written choice rule agreed before the figures arrive",
          "The pre-commitment register above is filled in and dated before any appraisal or rent opinion is ordered.",
          BADGE["protocol"], '<a href="war-room.html#precommit">Pre-commitment</a>'),
-        ("Private estate inventory",
-         "Cannot be built on a public site. The protocol is listed; the artifact must stay outside this repository.",
-         BADGE["missing"], a("ftc", "FTC privacy guidance")),
+        ("Estate liquidity and portability worksheet",
+         "Five-step order of operations with the eleven questions a CPA must answer, including the nine-month clock, the extension that does not extend payment, and the portability election that is lost by inaction. The inventory itself stays private.",
+         BADGE["done"], '<a href="worksheets.html">Tax worksheets</a> · ' + a("irs_706", "Form 706")),
         ("Independent property and rental estimates",
          "Not obtained. The site deliberately shows no value or rent figure for either property.",
          BADGE["missing"], a("scc_assessor", "Assessor records") + " · " + a("cslb", "Licensed appraisers")),
@@ -1077,7 +1084,169 @@ def build_brief() -> str:
 
 
 # ==================================================================== main ====
+
+# ============================================================ worksheets =====
+def build_worksheets() -> str:
+    """Two blank worksheets: depreciation/recapture, and estate liquidity/portability.
+
+    Both are deliberately empty. They publish the rule and the arithmetic so a CPA can
+    fill them in with the household's own numbers, on paper or in the browser.
+    """
+
+    depr_rows = [
+        ("Value of the improvements alone at the applicable starting point",
+         "Depreciation applies to the building, never the land. Split the basis between land and improvements from the appraisal; the land share is not depreciable.",
+         a("irs_527", "IRS Pub 527") + " · " + a("irs_551", "IRS Pub 551")),
+        ("The correct starting value: inherited basis or carryover basis",
+         "Inherited property generally starts at date-of-death fair market value; a gift, a trust with carryover basis, or a non-qualifying transfer does not. The wrong starting value misstates every later year.",
+         a("irs_551", "IRS Pub 551") + " · " + a("irs_706", "Form 706")),
+        ("Residential rental recovery period and convention",
+         "Residential rental real property is recovered over 27.5 years, straight line, mid-month convention. Non-residential or mixed-use portions differ, which is why the allocation matters.",
+         a("irs_4562", "Form 4562") + " · " + a("irs_527", "Pub 527")),
+        ("Placed-in-service date when the home converts to a rental",
+         "Depreciation starts when the property is ready and available for rent, not when the first tenant signs. Vacancy before that date is handled differently from vacancy after it.",
+         a("irs_527", "Pub 527: placed in service")),
+        ("Improvements capitalised, and repairs deducted",
+         "A new roof, a system replacement or a structural repair is capitalised and recovered over time; routine maintenance is deducted. Misclassifying either side distorts current income and later recapture.",
+         a("irs_527", "Pub 527: repairs vs improvements")),
+        ("Depreciation actually allowed or allowable in every rental year",
+         "Recapture is computed on the greater of allowed or allowable, so a year that was missed on the return is still recaptured. Reconstruct it from returns, not memory.",
+         a("irs_523", "Pub 523: recapturing depreciation") + " · " + a("irs_4797", "Form 4797")),
+        ("Section 121 exclusion available, and the depreciation carve-out inside it",
+         "If the home later qualifies as a main home, the exclusion can still apply — but the depreciation taken after 1997 is not sheltered by it and is recaptured separately.",
+         a("irs_t701", "Topic 701") + " · " + a("irs_523", "Pub 523")),
+        ("Rate on unrecaptured section 1250 gain",
+         "Unrecaptured section 1250 gain is taxed at a maximum 25% federal rate, separate from the 0/15/20% long-term capital-gain brackets, and California does not give it preferential treatment.",
+         a("irs_409", "Topic 409") + " · " + a("ftb_capgain", "FTB: no CA preference")),
+        ("State treatment of the recapture and of the remaining gain",
+         "California conforms to the federal depreciation mechanics but has no capital-gain rate preference, so the state cost of a sale can be materially higher than a federal-only estimate suggests.",
+         a("ftb_capgain", "FTB capital gains") + " · " + a("ftb540_2025", "2025 Form 540")),
+        ("Suspended or passive losses released on sale",
+         "Passive losses suspended in earlier years are generally released when the property is fully disposed of. That can offset part of the gain — or none of it, if the activity was never passive.",
+         a("irs_527", "Pub 527") + " · " + a("irs_4797", "Form 4797")),
+        ("The 1% California surtax on taxable income above $1,000,000",
+         "A sale can push a single year over the threshold. The surtax applies to taxable income above the threshold, not to the gain as such, so the rest of the year's income matters.",
+         a("rtc17043", "RTC 17043") + " · " + a("ftb540_2025", "Form 540 line 62")),
+        ("Net investment income tax, where it applies",
+         "A 3.8% surtax can apply to net investment income above the statutory threshold. Whether a particular sale is inside it depends on the year's income, not on the property.",
+         a("irs_409", "Topic 409: NIIT")),
+    ]
+
+    liq_rows = [
+        ("Aggregate gross estate, not just these two properties",
+         "The estate tax question is asked at the level of the whole estate, including life insurance, retirement accounts, joint property, prior taxable gifts and business interests. Two houses alone do not answer it.",
+         a("irs_706", "Form 706 instructions") + " · " + a("irs_estate", "IRS estate tax")),
+        ("Whether a return is required at all",
+         "For 2026 the basic exclusion is $15,000,000 per person. A return is required when the gross estate plus adjusted taxable gifts plus specific exemption exceeds that amount — but a return may still be worth filing to elect portability.",
+         a("irs_706", "Form 706: who must file") + " · " + a("irs_excl", "IRS 2026 amount")),
+        ("The nine-month clock, and the automatic six-month extension",
+         "A Form 706 is due nine months after the date of death. Form 4768 carries an automatic six-month extension <em>to file</em>; an extension of time to <em>pay</em> under section 6161 is a separate, discretionary request on the same form.",
+         a("irs_706", "Form 706: when to file") + " · " + a("irs_4768", "Form 4768")),
+        ("Portability: what it is, and why a timely return matters",
+         "Portability transfers a deceased spouse's unused exclusion to the survivor, but only if the estate elects it on a timely filed return. The election is not automatic.",
+         a("irs_706", "Form 706: portability election")),
+        ("Late portability, and its limits",
+         "A surviving spouse may be able to obtain portability after the deadline under the revenue procedure that allows a late election up to the fifth anniversary of death, subject to its conditions.",
+         a("irs_706", "Form 706: late portability")),
+        ("Liquidity: which assets can actually pay a tax bill",
+         "A house cannot pay an estate tax bill without being sold, borrowed against, or distributed in kind. Cash, marketable securities and life insurance are liquid; real property is not.",
+         a("irs_estate", "IRS estate tax") + " · " + a("investor", "Investor.gov")),
+        ("Deferral and installment options, and their eligibility conditions",
+         "Closely held business interests can qualify for installment payment of estate tax over an extended period. Whether a rental property qualifies depends on the estate's composition, not on the owner's preference.",
+         a("irs_706", "Form 706: section 6166")),
+        ("Deductions and credits that reduce the bill",
+         "Administration expenses, debts, charitable bequests, the marital deduction and state death-tax credits all change the number. California has no estate tax, but other states may.",
+         a("irs_706", "Form 706: deductions") + " · " + a("sco_estate", "CA State Controller")),
+        ("Basis consistency between the return and the heirs",
+         "Heirs must use a basis consistent with the value reported on the estate return, and the executor must furnish the statement. An appraisal that is never filed is not automatically the basis.",
+         a("irs_551", "Pub 551: consistent basis") + " · " + a("irs_706", "Form 706")),
+        ("A reserve policy, written before the tax is due",
+         "The plan should state how much cash or marketable securities stays liquid, who can authorise a sale, and what happens if a sale is needed in a bad market. That is a decision, not a projection.",
+         a("investor", "Investor.gov") + " · " + a("tbill", "Treasury bills")),
+    ]
+
+    worksheet = (
+        '<div class="callout" style="max-width:980px"><strong>How to use these two worksheets.</strong> '
+        "They are empty on purpose. Each line names the rule, the official anchor, and the question a CPA or "
+        "estate attorney has to answer. Fill them in privately, on paper or in a local copy; nothing here asks "
+        "for, stores, or transmits a figure.</div>"
+        + section(
+            "01", "DEPRECIATION AND RECAPTURE",
+            "The rent path creates a tax bill you cannot see until you sell",
+            "Every year of rental produces a deduction now and a recapture liability later. Both sides have to be in the same comparison or the rent path looks better than it is.",
+            table(["Line", "What the rule says", "Official anchor"], [
+                (f"<strong>{i+1}. {q}</strong>", why, src) for i, (q, why, src) in enumerate(depr_rows)
+            ]),
+        )
+        + section(
+            "02", "ESTATE LIQUIDITY AND PORTABILITY",
+            "A tax bill is a cash problem before it is a tax problem",
+            "The estate question is asked once, at death, across everything. The liquidity question is asked on the same day, and it is the one that forces sales.",
+            table(["Line", "What the rule says", "Official anchor"], [
+                (f"<strong>{i+1}. {q}</strong>", why, src) for i, (q, why, src) in enumerate(liq_rows)
+            ]),
+        )
+        + section(
+            "03", "WHAT THESE WORKSHEETS DO NOT DO",
+            "No number, no projection, no ranking",
+            "A worksheet is a checklist of rules, not a tax computation. The arithmetic depends on facts that are not public and must not be.",
+            table(["Limitation", "Why it is deliberate", "What would close it"], [
+                ("No dollar figures are published",
+                 "Any household value, even rounded, is traceable through county records. Publishing it would breach the repository's privacy policy.",
+                 "A CPA completes the worksheet privately and returns a reviewed estimate. See also "
+                 + a("irs_551", "Pub 551") + " and " + '<a href="FLAGGED_FOR_REVIEW.html">flagged items</a>.'),
+                ("No depreciation schedule is assumed",
+                 "The recovery period, the placed-in-service date and the improvement/land split all change the answer, and all three are facts about one property.",
+                 a("irs_527", "Pub 527") + " · an appraisal that splits land from improvements"),
+                ("No estate-tax liability is estimated",
+                 "The 2026 exclusion is $15,000,000 per person, which is an anchor, not a forecast of the law at the relevant date, and not a statement about this estate.",
+                 a("irs_706", "Year-of-death Form 706 instructions")),
+                ("No state estate tax is assumed",
+                 "California requires no estate return for deaths after 2004 under current law; residence, situs of property, and future law can change that.",
+                 a("sco_estate", "CA State Controller")),
+                ("No portability outcome is predicted",
+                 "Portability depends on a timely election, a surviving spouse, and the deceased spouse's remaining exclusion — all facts outside a public page.",
+                 a("irs_706", "Form 706: portability")),
+            ]),
+        )
+        + section(
+            "04", "ORDER OF OPERATIONS",
+            "Do these in this order, not in the order they become urgent",
+            "Most expensive mistakes in an inherited-property decision come from doing the arithmetic before the facts, or the sale before the tax.",
+            table(["Step", "Action", "Why it comes here", "Anchor"], [
+                ("1", "Fix the date-of-death value and the land/improvement split",
+                 "It sets basis, the estate return, the Prop 19 calculation and every later gain figure. Everything downstream moves if this is wrong.",
+                 a("irs_551", "Pub 551")),
+                ("2", "Determine whether a Form 706 is required or merely advisable",
+                 "The nine-month clock starts at death, not at the decision. Portability can be lost by inaction.",
+                 a("irs_706", "Form 706")),
+                ("3", "Build the household's liquidity need before deciding on the house",
+                 "The reserve requirement can rule out a hold path regardless of its projected return.",
+                 a("investor", "Investor.gov")),
+                ("4", "Compute the rent path with depreciation and recapture in the same column",
+                 "A pre-tax rent comparison systematically overstates the rent path.",
+                 a("irs_527", "Pub 527")),
+                ("5", "Only then compare the paths on identical dates",
+                 "With the first four settled, the comparison page becomes usable rather than decorative.",
+                 '<a href="comparison.html">Comparison</a> · ' + a("irs_706", "Form 706")),
+            ]),
+        )
+    )
+
+    return page(
+        "worksheets.html",
+        "Depreciation, recapture, estate liquidity and portability worksheets",
+        "TWO BLANK WORKSHEETS · RULES AND ANCHORS ONLY · NO HOUSEHOLD FIGURES",
+        "The two tax questions that decide the answer, as blank worksheets.",
+        "Rent builds a recapture liability you only meet at sale; the estate builds a cash requirement you "
+        "only meet at death. Both are checklists of law here, not numbers. A CPA fills them in privately.",
+        worksheet,
+    )
+
+
+
 BUILDERS = {
+    "worksheets.html": build_worksheets,
     "war-room.html": build_war_room,
     "law-watch.html": build_law_watch,
     "questions.html": build_questions,
