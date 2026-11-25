@@ -659,3 +659,25 @@ market value over that sum.** Consequences, all recorded on the site:
   figures.html two-model reconciliation callout. NOT corrected in their files by this session.
 - research/SOURCE_LOG.md entry 37 records the verified statutory text and filing deadlines
   (1-year exemption, 3-year claim, late-claim lien-date rule).
+
+### MERGE RESULT (recorded 2026-11-25) — a69037f0 session closed
+
+- **PR #31** (https://github.com/kanlerxz87-cyber/TinoDash2/pull/31) **MERGED** 2026-11-25: the
+  rounded-figure planning layer (figures.html + scripts/build_figures.py), checker re-scope with
+  $10-rounding enforcement, two-model reconciliation, integration into the e4e062ed root
+  dashboard. "Validate site" CI on the PR and on main: success. GitHub Pages (legacy builder):
+  built — figures.html confirmed live.
+- **PR #32** (https://github.com/kanlerxz87-cyber/TinoDash2/pull/32) **MERGED** 2026-11-25: the
+  RTC 63.2(d) Prop 19 formula correction (audit model ≈$62,440/yr at 2045 base with the
+  exclusion; divergence with the canonical model flagged for Assessor confirmation). Validate CI
+  + Pages build: success, live verified.
+- Session scope complete: every deliverable in the final-integration brief is either built by this
+  session (figures layer, exec summary, same-year-sale-first modelling, cost register, projections,
+  Prop 19 math, path comparison, estate-tax worked examples + liquidity worksheet, 27.5-yr
+  depreciation/recapture, rental comparables with the HUD floor, five-year capital plans,
+  pre-commitment criteria, dated decision log, regime evidence, §121 switch + transfer-tax fee
+  breakdown in the calculator, reproducible generators) or preserved from the parallel sessions'
+  merged work, cross-linked and reconciliation-noted.
+- Remaining items are owner actions (history purge runbook; quotes; bill TRA line; Property B bill
+  reconciliation; rent appraisal; CPA schedules; Assessor confirmation of the Prop 19 enrolled
+  computation) — all on the Flagged page. Nothing in this session claims git history is scrubbed.

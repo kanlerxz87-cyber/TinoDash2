@@ -444,7 +444,7 @@ def build() -> str:
         sy_rows.append(row(
             f"<td><strong>{yr}</strong></td><td>{m(v)}</td><td>{m(comm)}</td><td>{m(dtt)}</td>"
             f"<td>blank — unverified</td><td>≈ $0</td><td><strong>{m(base)}</strong></td>"
-            f"<td>{m(lo)} – {m(hi)}</td>",
+            f"<td>{m(min(lo, hi))} – {m(max(lo, hi))}</td>",
             f'{a(S["rtc11911"], "RTC 11911 (county DTT)")} · {a(S["irs_551"], "Pub 551 (basis at death)")} · <span class="flag">C</span>'))
 
     # ---------- path comparison ----------
