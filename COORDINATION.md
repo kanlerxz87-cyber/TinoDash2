@@ -237,3 +237,37 @@ The initial local checkout contained only README.md. After the initial claim pus
 - 2026-11-25: Browser/release QA complete for the additive lab: 55 Node tests; 15 desktop + 15 mobile routes, 207 source-linked table rows, controls/filters/exports/tab-only reset, no runtime/resource/external-network errors; zero automated axe WCAG 2/2.1 A/AA findings across routes, dialogs and mobile menu. Readable one-page Letter Attorney & CPA Briefing Sheet rendered/text-checked. Fixed native step constraints, off-screen navigation focus isolation, contrast and print font legibility. Pinned test-only browser packages and generated artifacts are ignored; public build now has 12 explicit files. Detailed sources/verification/limits: decision-lab/docs/{RESEARCH,VERIFICATION}.md. PR/combined-main rebase/deployment verification in progress; history/privacy administration and actual household evidence remain needs review, not fabricated completion.
 
 - 2026-11-25: Release rebase onto main@f69788c resolved a coordination-only conflict by keeping the full latest integration board and replaying this session’s isolated additions. Combined root static/JS checks, module 55-test build and diff whitespace passed again. No root implementation files appear in this session’s final diff. Branch PR/release ready; root-menu/module-CI handoff remains issue #2 and is not silently implemented across scope.
+
+---
+
+## Session 1c9e6f1e — integration checkpoint (branch `arena/1c9e6f1e-tinodash2`)
+
+**Scope claimed:** coordination-only. This session's household-analysis dashboard was prepared but **not published**. Main's binding privacy rule (above, and `decision-lab/PRIVACY.md`) forbids publishing household-derived outputs, including rounded or ratio-only values. Publishing them would conflict with that rule and with the open privacy incident (issue #2). The conflict is therefore recorded for the repository owner and was not resolved silently.
+
+**Files changed on this branch:** `COORDINATION.md` only (append-only). No root site file, no `decision-lab/**`, no `docs/`, no workflow file was edited, so the root site, the decision-lab module and the Pages configuration are unchanged.
+
+### What was held back (not in Git, not published)
+- A household-input planning engine, its full output, and a public-export step. All remain in a git-ignored `private/` path on the session machine. They were never committed to this branch and must not be committed without owner approval.
+- A draft 14-page dashboard that published indices and ratios derived from household inputs. It was **not** merged. Its existence is recorded here so the owner can decide whether ratio outputs may ever be published.
+
+### Irregularities found during this session (flagged, not fixed in public)
+1. **Request vs policy conflict.** The brief asked for household-derived analysis on the public site. Main's policy prohibits it. The owner must decide. Options: (a) keep household analysis private and publish only generic public-law material (current position); (b) approve a ratio-only publication after a privacy review; (c) move the repository or Pages to private.
+2. **Internal model defect (fixed in the private draft only).** An early internal run did not tax stock-pool gains, which overstated every stock-holding path. The fix is in the private engine. Any earlier output from that run is withdrawn and must not be reused.
+3. **Sensitivity of unverified inputs.** The SF real-property transfer-tax schedule and the Prop 13 2026–27 inflation factor are still unverified against official pages (sf.gov and the BOE factor page were not reachable or not read). Keep both blank until confirmed.
+4. **Legacy root site.** The live Pages site (legacy, `main:/`) still serves the root pages as they are on main; the decision-lab link and module CI remain the pending integration request in issue #2.
+5. **History.** Earlier commits and closed PRs still contain household figures. Nothing in this entry changes that. **Owner must decide on any history purge** (see Exposure log, items 1–5).
+
+### Owner decisions requested
+- Confirm the privacy position: household-derived outputs stay private (recommended by the binding policy) or are approved for a ratio-only publication after review.
+- Confirm whether the legacy root pages should be replaced or retired, and whether Pages should move to the `decision-lab/dist` allowlist (issue #2).
+- Decide on history purge and cache/fork handling for the figures listed in the Exposure log.
+- Provide official confirmations for SF transfer-tax rates and the Prop 13 2026–27 factor, or accept that they remain blank.
+
+### Verification (this branch, at `origin/main` 4585e89 + this log only)
+- `python3 scripts/check_site.py`: passed (includes privacy scan).
+- `node --check app.js`: passed.
+- `npm --prefix decision-lab test`: passed.
+- Household-pattern scan of tracked files: no matches except the checker's own guard list.
+
+### Status
+- Claim: complete (coordination only). Household-analysis publication: **blocked pending owner decision**.
