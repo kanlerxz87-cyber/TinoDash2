@@ -271,3 +271,5 @@ The initial local checkout contained only README.md. After the initial claim pus
 
 ### Status
 - Claim: complete (coordination only). Household-analysis publication: **blocked pending owner decision**.
+
+- PR link (session 1c9e6f1e, coordination checkpoint): https://github.com/kanlerxz87-cyber/TinoDash2/pull/20
