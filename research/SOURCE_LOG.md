@@ -80,3 +80,5 @@ Owner policy applied: household figures published rounded to the nearest $10 wit
 Under the owner decision of 2026-11-25, rounded ($10) household figures with placeholders appear on
 figures.html only; unrounded values, identifiers and market-area names are blocked by CI. Nothing
 in this log identifies a property.
+
+| 37 | RTC 63.2(d) Prop 19 new-taxable-value formula | New taxable value = transferor's factored value immediately prior to transfer (Sec. 110.1) PLUS, where market value at transfer >= factored + adjusted allowance, the excess of market value over that sum (statute text says $1,000,000; adjusted allowance $1,044,586 for 2/16/2025-2/15/2027 per BOE LTA 2025/009). Filing: homeowners' exemption within 1 year; claim within 3 years or before a third-party transfer/occupancy end, whichever earlier; late claims apply from lien date of filing year (subd. (f)(3)) | https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=63.2 | verified-fetch (full text, 3 chunks) |
