@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Projections &amp; what-if | Estate Pathways</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">EP</span><span>Estate Pathways<small>Projections &amp; what-if</small></span></a><a class="button button-quiet" href="../index.html">← Overview</a></header>
+  <main class="review-page">
+    <nav class="catnav" aria-label="Category menu">
+      <span class="grp">DECIDE</span><a href="../index.html">Overview</a><a href="decision-criteria.html">Criteria &amp; log</a><a href="comparison.html">Path comparison</a><a href="questions.html">Questions</a>
+      <span class="grp">MODEL</span><a href="properties.html">Property files</a><a class="active" href="projections.html">Projections</a><a href="../black-swan.html">Black swan</a><a href="tax-legal.html">Tax &amp; law</a>
+      <span class="grp">GOVERN</span><a href="timeline.html">Timeline</a><a href="law-watch.html">Law watch</a><a href="briefing.html">Brief</a><a href="suggestions.html">Suggestions</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="../FLAGGED_FOR_REVIEW.html">Flagged ↗</a>
+    </nav>
+    <div class="eyebrow">YEAR-BY-YEAR · LOW / BASE / HIGH · BROWSER-ONLY CALCULATOR</div>
+    <h1>Projections and what-if controls</h1>
+    <p class="review-intro">Everything is a range. The tables below come from the rounded model (<code>data/model.js</code>, rebuilt by <code>scripts/build_model.py</code>); the calculator starts pre-filled with the same rounded values and computes entirely in your browser. No input is required — it runs on load — but every control can be changed.</p>
+
+    <h2 id="method">1 · Assumption ranges (the sources of every number)</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Input</th><th>Range (rounded)</th><th>Basis / caveat</th><th>Source</th></tr></thead>
+      <tbody id="assumptionRanges"></tbody>
+    </table></div>
+
+    <h2>2 · Year-by-year model (2026–2060)</h2>
+    <p class="figure-note">Assessed values grow at Proposition 13's 2% cap until an ownership change (inheritance) reassesses under the rules in force at that time — see <a href="tax-legal.html#prop19">Prop 19</a>. Taxes use the effective-rate estimate; direct assessments and the parcel's tax rate area are unverified.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Year</th><th>A value low</th><th>A value base</th><th>A value high</th><th>A assessed</th><th>A tax (base)</th><th>A opex (base)</th><th>B value base</th><th>B assessed</th><th>B tax (base)</th><th>Source</th></tr></thead>
+      <tbody id="projectionRows"></tbody>
+    </table></div>
+
+    <h2>3 · What-if calculator (pre-filled · runs locally)</h2>
+    <form id="wifForm" class="input-grid">
+      <fieldset><legend>Scope</legend><div class="input-grid">
+        <label>Years after transfer<input class="prefilled" type="number" id="wifYears" value="10" min="1" max="50" step="1"></label>
+        <label>Property A value at transfer ($)<input class="prefilled" type="number" id="wifHome" value="4278730" step="10"><small>Pre-filled: $3,100,000 grown 3.5%/yr to 2045 (rounded).</small></label>
+        <label>Friction on sale (%)<input class="prefilled" type="number" id="wifFriction" value="6.11" step="0.01"><small>6% sale costs + 0.11% county transfer tax (assumption).</small></label>
+      </div></fieldset>
+      <fieldset><legend>Ranges</legend><div class="input-grid">
+        <label>Home appreciation low (%)<input class="prefilled" type="number" id="wifGrowthLow" value="2.0" step="0.1"></label>
+        <label>Home appreciation high (%)<input class="prefilled" type="number" id="wifGrowthHigh" value="5.5" step="0.1"></label>
+        <label>Stock return low (%)<input class="prefilled" type="number" id="wifStockLow" value="5.0" step="0.1"></label>
+        <label>Stock return high (%)<input class="prefilled" type="number" id="wifStockHigh" value="9.0" step="0.1"></label>
+        <label>Inflation (%)<input class="prefilled" type="number" id="wifInflation" value="2.8" step="0.1"></label>
+        <label>Treasury yield (%)<input class="prefilled" type="number" id="wifTreasury" value="3.5" step="0.1"><small>Reinvestment resets at each maturity.</small></label>
+      </div></fieldset>
+      <fieldset><legend>Paths &amp; stress</legend><div class="input-grid">
+        <label>Phase-in months (24–36)<input class="prefilled" type="number" id="wifPhaseMonths" value="36" min="24" max="36" step="12"></label>
+        <label>Market rent, Property A ($/mo)<input class="prefilled" type="number" id="wifRentMo" value="5000" step="10"><small>HUD FY2026 4BR benchmark, rounded.</small></label>
+        <label>Carrying costs, Property A ($/yr)<input class="prefilled" type="number" id="wifCarryYr" value="26040" step="10"><small>Property tax + insurance + water/electricity + maintenance + capital reserve.</small></label>
+        <label>Net rent flow, Property A ($/yr)<input class="prefilled" type="number" id="wifNetRentYr" value="27110" step="10"><small>95% of gross rent minus landlord costs (no owner utilities).</small></label>
+        <label>Crash year (optional)<input type="number" id="wifCrashYear" min="1" max="50" step="1" placeholder="e.g. 1"></label>
+        <label>Drawdown % (optional)<input type="number" id="wifDrawdown" min="0" max="100" step="1" placeholder="e.g. 40"></label>
+      </div></fieldset>
+      <div class="form-actions"><button class="button" type="submit">Recompute</button><button class="button button-secondary" type="reset">Reset to model defaults</button><span id="wifStatus" role="status">Runs automatically on load.</span></div>
+    </form>
+    <h3>Illustrative terminal values (low / high case)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Path</th><th>Low case</th><th>High case</th><th>Real (low / high)</th><th>Source</th></tr></thead>
+      <tbody id="wifResults"></tbody>
+    </table></div>
+    <h4>Distribution (high case endpoints)</h4>
+    <div id="wifDistribution" role="img" aria-label="What-if distribution chart"></div>
+    <p class="figure-note">Bars are modelled range endpoints — not probability. The calculator is a simplified pre-tax range model; taxes and legal effects are priced on the <a href="tax-legal.html">tax &amp; legal page</a>.</p>
+
+    <h2>4 · Reinvestment risk, stated beside the staging headline</h2>
+    <div class="callout">Every staged path on this site shows the cost of its insurance: uninvested tranches earn the Treasury yield, which <strong>resets at each maturity</strong>. If yields fall (2020-style), staged cash earns almost nothing while markets rise; if yields stay high (2023–25-style), staging looks cheap but equity legs still lag a rising market. The Nov 2026 curve (≈4.3% 3M, ≈4.6% 2Y) is not a forecast of 2040–2050. <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates">Official yield source</a> · <a href="../black-swan.html">how staging behaved in 1929/1973/2008/2013/2022</a>.</div>
+    <footer><p><a href="../index.html">← Overview</a> · Not legal, tax, or investment advice.</p></footer>
+  </main>
+  <script src="../data/model.js"></script><script src="../app.js" defer></script>
+</body>
+</html>

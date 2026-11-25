@@ -35,3 +35,20 @@ Sandbox bash has no outbound network; every check used the page fetch tool.
 
 ## Privacy
 Personal and household figures gathered for the analysis are not in this log or the published site.
+
+## Verification log — session arena/da762c26 (2026-11-25)
+
+| # | Item | Verified value / point | Source | Status |
+|---|------|------------------------|--------|--------|
+| 21 | Federal basic exclusion CY2026 | $15,000,000 (P.L. 119-21 §70106 amends §2010(c)(3)) | https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax | enacted (fetch re-verified) |
+| 22 | Prop 19 $1M amount adjustment | $1,044,586 for transfers 2/16/2025–2/15/2027; prior $1,022,600 / $1,000,000; adjusted every other Feb 16 by FHFA CA HPI; next Feb 2027 | https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf | enacted (fetch re-verified) |
+| 23 | SB 293 (2025) | Chaptered 10/10/2025 (ch. 539); amends R&T 63.1/63.2 — claim-filing relief for specified 2025 wildfire cases (3-yr window from supplemental/escape notice, claims < 1/1/2031) + homeowners'/veterans' exemption filing relief | https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB293 | enacted (fetch re-verified) |
+| 24 | S&P 500 + T-bill annual returns 1928–2025 | Full series read (1929 −8.30/3.16 … 2008 −36.55/1.40, 2022 −18.04/2.09, 2025 +17.78/4.21) | https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html | verified-fetch (Jan 2026 dataset) |
+| 25 | FTB 540 line 62 (1% over $1M) | Behavioral Health Services Tax (renamed TY2025+); CA gain = ordinary income | https://www.ftb.ca.gov/forms/2025/2025-540-booklet.html | verified (booklet read in session s-95fcebfc; corroborated by search) |
+| 26 | SF real property transfer tax schedule | Not extracted — sf.gov and sftreasurer transfer-tax URLs failed to load | https://sf.gov/information--real-property-transfer-tax | FLAGGED — no figures published |
+| 27 | HUD FMR Santa Clara County FY2026 3BR/4BR | $4,602 / $5,010 (via data mirrors of HUD FMR) | https://www.huduser.gov/portal/datasets/fmr.html | FLAGGED — mirror-sourced; confirm in HUD lookup |
+| 28 | Home insurance expectations, Santa Clara County | Commercial aggregators show county averages ≈$1,000–$1,300 (2025-26); no official premium dataset exists | https://www.insurance.ca.gov/ | FLAGGED — estimates only; quotes required |
+
+Owner policy applied this session: household figures published rounded to nearest $10;
+identifiers (names/addresses/ZIPs/APNs/account numbers) and exact unrounded values banned
+from public artifacts. Decision recorded in COORDINATION.md, 2026-11-25.
