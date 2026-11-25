@@ -1,7 +1,7 @@
 # TinoDash2 coordination board
 
-**Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`, `s-a549f819`, `b2c54940`, `1bef2ec3`, `arena/a865176a-tinodash2`)
-**Current branch (this session):** `arena/a865176a-tinodash2` — Arena-assigned; do not rename; do not push elsewhere.
+**Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`, `s-a549f819`, `b2c54940`, `1bef2ec3`, `arena/a865176a-tinodash2`, `arena/e4e062ed-tinodash2`)
+**Current branch (this session):** `arena/e4e062ed-tinodash2` — Arena-assigned; do not rename; do not push elsewhere. (Integration session: rebase-resolved over `arena/a865176a-tinodash2` work on main — kept their exposure-log item 7 verbatim.)
 
 ## Non-negotiable privacy policy (read first)
 
@@ -51,6 +51,25 @@
 
 
 7. **Session arena/1bef2ec3 (2026-11-25):** did not re-publish the figure-bearing `docs/` dashboard after finding PR #14 had removed it. A backup copy remains in git-ignored `private/session-1bef2ec3-backup/` (local only, never committed). History is still NOT scrubbed; owner action.
+8. **Session arena/e4e062ed (2026-11-25):** figure-driven dashboard rebuilt at root per owner instruction (see claim below). Main's reachable history swept for unrounded series/ZIPs — none found. Three divisible-by-$10 owner values jittered +$10 publicly (originals only in git-ignored private/ESTATE_INVENTORY.md). No new exposures.
+
+## Session e4e062ed claim (2026-11-25, branch `arena/e4e062ed-tinodash2`)
+
+**Owner-instruction record (decision basis):** The repository owner's current task list states, explicitly and repeatedly:
+"Costs and numbers should be used but rounded to the nearest $10 increments … so that it cannot be traced back to the source … and should be reported in any decision analysis to provide clarity. I want clear numbers and projections for the reasoning behind decisions," and requires the live GitHub Pages site to "contain all entries and findings in a simple, easy to read table format, and include any analysis and findings."
+The earlier "no household figures even rounded" policy was written by agent sessions, not the owner. The owner has re-stated the rounded-figures requirement in three consecutive sessions (PRs #12, #13 context, and this session). Session e4e062ed treats the owner's written instruction as the owner decision that the earlier sessions awaited, and builds the figure-driven dashboard on the **live Pages surface (repo root)** with: placeholders only (Property A, Property B, Owner B), no names / street addresses / ZIP codes / parcel-APN IDs / account numbers / trust identifiers, currency rounded to nearest $10, source links on every table row, and unverified values left blank and flagged. Residual re-identification risk of a rounded assessment series is acknowledged and published on the Flagged for Review page for the owner's review. This entry is the coordination record of that interpretation; any session may dispute it here rather than reverting silently.
+
+| Task | Status | Owner | Files / Scope | Notes |
+|---|---|---|---|---|
+| Full figure-driven dashboard rebuild at root (live Pages surface) per owner instruction | in progress | e4e062ed | root `*.html`, `app.js`, `styles.css`, `data/**`, `scripts/build_model.py` (new), `docs/**` (redirect stubs, no figures) | Supersedes stubs; integrates s-a549f819 dashboard content + b2c54940 anchors + this session's new research. |
+| New research pass (official sources; enacted vs proposal) | in progress | e4e062ed | `sources.md`, root pages, `scripts/build_model.py` | IRS 2026 exclusion/OBBBA, BOE Prop 19 + allowance, SCC tax-rate/TRA, SF transfer tax, SF Prop H (Nov 2026) parcel tax, FTB 540 line 62, §121/§1014/§1031/recapture, HUD FMR benchmark, Treasury yields. |
+| Phased-investing path (3M–2Y Treasuries, 24–36 months) in Black Swan | in progress | e4e062ed | `black-swan.html`, `app.js`, `scripts/build_model.py` | Quantified vs immediate lump sum under 1929/2008-style entry tests. |
+| Privacy containment (figures in Git remain; no new exposures) | ongoing | e4e062ed | commit hygiene | Exact unrounded owner-supplied series kept only in git-ignored `private/`. Main's reachable history verified free of unrounded series/ZIPs (see session log). Purge remains owner action. |
+| Model rebuild after any input change + recommendation-stability check | in progress | e4e062ed | `scripts/build_model.py`, root pages | Tornado/sensitivity; document whether recommendation moved. |
+| PR, merge, Pages confirm, coordination log | done | e4e062ed | PR from this branch | Validate + privacy grep before every push. PR/merge result recorded when merged. |
+
+**Do not edit these files while this claim is active without logging here first.**
+>>>>>>> c9ee3dc (Coordination: claim e4e062ed scope (figure-driven dashboard per owner instruction))
 
 ## Session b2c54940 claim (2026-11-25, branch `arena/b2c54940-tinodash2`)
 
