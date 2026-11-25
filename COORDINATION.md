@@ -67,7 +67,7 @@
 - Corrected flagged item: Prop H described as "approved" with a percentage; now marked as official approval statement plus preliminary, uncertified tallies.
 - Flagged non-official mirror (officialdata.org) used for black-swan index anchors.
 - Irregularities: history not scrubbed; SCO prior link dead; Form 540 line 62 unconfirmed; parcel TRA/rate unverified; no insurance/utility/rent verification; `docs/` path will 404 after deploy.
-- Integration: this branch is the integration for the public-site changes. PR to main: see PR link recorded below.
+- PR: https://github.com/kanlerxz87-cyber/TinoDash2/pull/14 (validate check passed; mergeable). Merge method: merge commit. Pages deploy result: see final check recorded by the next session.
 ## Session s-a549f819 task board
 
 | Task | Status | Owner | Files / Scope | Notes |
