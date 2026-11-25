@@ -1,38 +1,33 @@
-# TinoDash2 — Inheritance Decision Dashboard
+# TinoDash2 — Inheritance Decision Workspace
 
-Privacy-first static dashboard for organizing an inheritance decision involving:
-- **Property A**: Santa Clara County, CA property to be inherited by trust (planned 2040–2050).
-- **Property B**: San Francisco, CA property already owned by Owner B.
+This repository contains privacy-first planning materials for comparing inherited-home and existing-property paths. It currently includes two static site surfaces:
+
+1. **Root site (Estate Pathways)** — plain HTML/CSS/JS at repo root, served by legacy GitHub Pages from `main` root. Browser-only what-if tools; no embedded household values.
+2. **Docs dashboard (`docs/`)** — static dashboard added in session `s-a549f819` with executive summary, decision criteria, timelines, scenarios, black-swan/phased-investing analysis, tax/legal map, questions, printable attorney/CPA briefing sheet, sources, and flagged-for-review pages. Values displayed are anonymized placeholders and rounded to nearest $10 per user request; see privacy notes below.
 
 ## Privacy
 
-- Public outputs use placeholders only (Property A, Property B, Owner B).
-- No names, street addresses, ZIP codes, parcel/APN IDs, account numbers, or exact traceable public-record values are published.
-- Currency values are rounded to the nearest $10 in published outputs.
-- Sensitive details discovered during research are for internal use only and must not be published.
+- Public outputs should use placeholders only (Property A, Property B, Owner B).
+- No names, street addresses, ZIP codes, parcel/APN IDs, account numbers, or exact traceable public-record values should be published.
+- Sensitive details discovered during research are for internal use only.
+- `private/` and other ignored private paths are guardrails, not security boundaries; check staged files before every commit.
+- Prior public-data exposure exists in repository history/closed PR refs (see `COORDINATION.md` Exposure log). Do not claim history is scrubbed.
 
-## Site
-
-The static site lives in [`docs/`](docs/) and is intended for GitHub Pages.
+## Docs dashboard (s-a549f819)
 
 - Landing page: `docs/index.html`
-- Data model: `docs/data/model.json`
-- Model build script: `scripts/build_model.py`
+- Model build: `python3 scripts/build_model.py` -> `docs/data/model.json`
+- Verification: `docs/sources.html`, `docs/flagged.html`
 
-To rebuild the model data:
+## Root site
 
-```bash
-python3 scripts/build_model.py
-```
+- Open `index.html` in a modern browser for the root Estate Pathways site.
+- Validation: `python3 scripts/check_site.py` (if present on branch).
 
 ## GitHub Pages
 
-Configure GitHub Pages to serve from the `main` branch, `/docs` folder.
-
-## Verification
-
-Every table row should include an official source link where possible. Values that cannot be confirmed from an official source are left blank/flagged as unverified. See `docs/sources.html` and `docs/flagged.html`.
+Legacy Pages currently serves `main` root. If the `docs/` dashboard should be published, configure Pages source accordingly or integrate into the root site; confirm with repository owner.
 
 ## Disclaimer
 
-This repository is a planning and decision-organization aid. It is not legal, tax, investment, appraisal, or insurance advice.
+Planning and decision-organization aid only. Not legal, tax, investment, appraisal, or insurance advice.

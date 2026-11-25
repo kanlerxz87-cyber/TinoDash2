@@ -1,0 +1,28 @@
+name: Validate site
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check static pages and local links
+        run: python3 scripts/check_site.py
+      - name: Check JavaScript syntax
+        run: node --check app.js
+# NOTE: GitHub Pages for this repository is served by the *legacy* builder
+# (build_type=legacy, source = main branch root), not by this workflow.
+# The deploy job was removed 2026-11-25 because actions/deploy-pages cannot
+# publish a legacy-built Pages site: it failed on push (run 45620071167).
+# If the repository owner switches Pages to "GitHub Actions" in Settings → Pages,
+# restore an actions/deploy-pages job. Until then, merging to main updates the
+# live site via the legacy builder automatically.
