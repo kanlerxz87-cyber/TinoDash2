@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>50-Year Projections &amp; What-If Controls · Inheritance Decision Desk</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="projections.html">
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell"><div id="nav-mount"></div>
+<main id="main">
+<p class="eyebrow">Analysis · Projections with live what-if controls</p>
+<h1>50-year projections, ranges not points</h1>
+<p class="lede">Every number on this page is a <em>range with visible drivers</em>. Move the sliders: property growth, equity CAGR, inflation, entry-crash magnitude and staging length — and watch the lump-sum vs staged-reinvest verdict, the property’s tax profile, the rent-path NOI, and the 50-year compounding table all recompute live in your browser. Nothing leaves your machine.</p>
+
+<h2>What-if controls</h2>
+<div class="grid g-2">
+  <div class="control"><label for="wi-growth">Property value growth (nominal) <output id="wi-growth-out">4.0%</output></label><input id="wi-growth" type="range" min="1" max="7" step="0.5" value="4"></div>
+  <div class="control"><label for="wi-equity">Equity CAGR (nominal) <output id="wi-equity-out">7.0%</output></label><input id="wi-equity" type="range" min="2" max="12" step="0.5" value="7"></div>
+  <div class="control"><label for="wi-infl">Inflation (CPI) <output id="wi-infl-out">2.4%</output></label><input id="wi-infl" type="range" min="0" max="6" step="0.25" value="2.4"></div>
+  <div class="control"><label for="wi-crash">Entry crash applied to lump sum <output id="wi-crash-out">0%</output></label><input id="wi-crash" type="range" min="-80" max="0" step="5" value="0"></div>
+  <div class="control"><label for="wi-stage">Staging window (months, T-bills then phase) <output id="wi-stage-out">30 months</output></label><input id="wi-stage" type="range" min="0" max="60" step="6" value="30"></div>
+  <div class="control"><label for="wi-horizon">Comparison horizon <output id="wi-horizon-out">+25 years</output></label><input id="wi-horizon" type="range" min="5" max="50" step="5" value="25"></div>
+</div>
+<div class="grid g-4" style="margin-top:12px">
+  <div class="card"><div class="kpi"><small>FMV at inheritance (2040)</small><span id="out-fmv">—</span></div></div>
+  <div class="card"><div class="kpi"><small>Net sale proceeds</small><span id="out-net">—</span></div></div>
+  <div class="card"><div class="kpi"><small>Lump sum @ horizon</small><span id="out-lump">—</span></div></div>
+  <div class="card"><div class="kpi"><small>Staged @ horizon</small><span id="out-staged">—</span></div></div>
+</div>
+<div class="grid g-3" style="margin-top:12px">
+  <div class="card"><div class="kpi"><small>Staged portfolio at end of staging</small><span id="out-staged-pre">—</span></div></div>
+  <div class="card"><div class="kpi"><small>Rent-path NOI (Yr-1, 2040)</small><span id="out-noi">—</span></div></div>
+  <div class="card"><div class="kpi"><small>Property tax: live (Prop 19)</small><span id="out-livetax">—</span></div></div>
+  <div class="card"><div class="kpi"><small>Property tax: reassessed</small><span id="out-reasstax">—</span></div></div>
+</div>
+<div class="info" style="margin-top:10px"><strong>Verdict under your settings:</strong> <span id="out-verdict">—</span></div>
+<p class="small">Assumes: 14 years from Nov 2026 baseline (2026 dollars) to 2040 inheritance; assessed value grows 2.0%/yr (RTC §51); Prop 19 allowance $1,044,586 indexed ≈2%/2y; tax rate 1.34% held constant; rent Year-1 $10,000/mo (range $8,000–$12,000 — <strong>unverified</strong>, see Flagged #8) grown 3%/yr; rent path burdened by full reassessment; commission 5.0%; county transfer $1.10/$1,000; $15,000 misc allowance; no mortgage; figures rounded to $10. Monte Carlo below uses CAGR 7%, σ 16%, 4,000 paths, seed 20261125, start = net proceeds.</p>
+
+<h2>Fan chart — sale proceeds, 25 years from inheritance</h2>
+<div class="card">
+  <svg id="fanChart" role="img" aria-label="Percentile fan of invested proceeds"></svg>
+  <div class="grid g-3" style="margin-top:10px">
+    <div class="kpi"><small>P10 at +25y</small><span id="mc-p10">—</span></div>
+    <div class="kpi"><small>P50 at +25y</small><span id="mc-p50">—</span></div>
+    <div class="kpi"><small>P90 at +25y</small><span id="mc-p90">—</span></div>
+  </div>
+  <p class="small">Seeded PRNG (mulberry32), Box–Muller normals — identical numbers on every load; no data leaves the page. For licensed Monte Carlo with taxes, mean-variance and fat tails, the CPA/adviser should run their own — ours bounds behavior, not prognosis.</p>
+</div>
+
+<h2>Distribution of outcomes (terminal wealth, +25y)</h2>
+<div class="card">
+  <svg id="distChart" role="img" aria-label="Histogram of simulated terminal wealth"></svg>
+  <p class="small">Left quartile (red) below ≈ P25; right tail (green) above ≈ P75. The fat left tail <em>is</em> the reason for the staging recommendation; the fat right tail is the reason not to pay the entire premium. See <a href="black-swan.html">Black Swan Stress Lab</a>.</p>
+</div>
+
+<h2>50-year grid, recalculated live (property &amp; proceeds paths)</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Horizon</th><th class="num">Property A — projected FMV</th><th class="num">Assessed (2%/yr)</th><th class="num">Property tax @ 1.34%</th><th class="num">Net-proceeds compounding @ equity slider</th></tr></thead>
+<tbody id="proj-rows"></tbody>
+</table>
+</div>
+<p class="small">Compounding column assumes sale at inheritance and reinvestment; zero taxes until realized; for distribution chart inputs it is exact. Rows every 5 years to +50y. Property tax column shows <em>status-quo</em> assessed-value levy — inheritance-year outcomes live on <a href="property-a.html">Property A</a>.</p>
+
+<h2>Sensitivity grid — federal estate exclusion vs combined estate (2040)</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Combined gross estate at death</th><th class="num">2035 (excl ≈ $18,570,000)</th><th class="num">2040 (excl ≈ $20,900,000)</th><th class="num">2045 (excl ≈ $23,540,000)</th><th class="num">2050 (excl ≈ $26,500,000)</th></tr></thead>
+<tbody>
+<tr><td>$10,000,000</td><td class="num">$0</td><td class="num">$0</td><td class="num">$0</td><td class="num">$0</td></tr>
+<tr><td>$15,000,000</td><td class="num">$0</td><td class="num">$0</td><td class="num">$0</td><td class="num">$0</td></tr>
+<tr><td>$20,000,000</td><td class="num">$572,000</td><td class="num">$0</td><td class="num">$0</td><td class="num">$0</td></tr>
+<tr><td>$25,000,000</td><td class="num">$2,572,000</td><td class="num">$1,640,000</td><td class="num">$584,000</td><td class="num">$0</td></tr>
+<tr><td>$30,000,000</td><td class="num">$4,572,000</td><td class="num">$3,640,000</td><td class="num">$2,584,000</td><td class="num">$1,400,000</td></tr>
+<tr><td>$40,000,000</td><td class="num">$8,572,000</td><td class="num">$7,640,000</td><td class="num">$6,584,000</td><td class="num">$5,400,000</td></tr>
+</tbody></table>
+</div>
+<p class="small">40% on the excess over the projected exclusion (2.4%/yr indexing from $15,000,000 in 2026; Rev. Proc. 2025-32 base; indexing method from 2027 is statutory chained-CPI — 2027 figure unpublished, modeled at 2.4%). Unified credit, lifetime gifts and GST exemption share this amount. Exclusion amounts rounded to nearest $10,000s here for readability of thresholds; exact statutory figures govern — see <a href="sources.html">Sources</a>. <strong>If any cell in the $25M+ rows is non-zero, valuation, gifting and portability strategy must be implemented before death — that is what the attorney/CPA brief is for (<a href="brief.html">Briefing Sheet</a>).</strong></p>
+
+<h2>Capital-gains sensitivity — post-inheritance appreciation (the real “sell later” tax)</h2>
+<p>Step-up erases the pre-death gain. Only appreciation <em>after</em> date of death is taxable. Worked example: A inherited at $5,368,200 (2040); sold 10 years later at $7,946,000 (4%/yr): gain ≈ $2,578,000. Federal: 15% to ≈ $613,700 (MFJ 2026 breakpoint, indexed) / 20% above → ≈ $461,000 + 3.8% NIIT ≈ $98,000. CA: no preferential rate — 12.3% top + 1% MHSA (Form 540 line 62) on income &gt; $1,000,000 → ≈ $344,000. <strong>Combined ≈ $903,000 ≈ 35% of the appreciation</strong> — the quantified cost of “wait too long to sell.” §121 (live 2+ yrs) would shelter $250,000/$500,000 of it. Selling at the inheritance year costs ≈ $0 on the same property.</p>
+
+<div class="footer-inject"></div>
+</main></div>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Suggestions Board (Review) · Inheritance Decision Desk</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="suggestions.html">
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell"><div id="nav-mount"></div>
+<main id="main">
+<p class="eyebrow">Review · Pick, then implement — never auto-implement</p>
+<h1>Suggestions board — improve the site before improving the model</h1>
+<p class="lede">Every suggestion below is <strong>inert</strong> until someone ticks “Implement”. Tick boxes are stored in your browser only (localStorage; nothing is sent anywhere). Decide as a household; the best suggestions ship in the next session; the rest stay proposed. <span id="sug-count" class="badge b-est">0 marked</span></p>
+
+<div class="note"><strong>Review protocol.</strong> (1) Read effort vs impact honestly. (2) For each, decide: <em>implement / park / reject</em> — record the decision + date in the <a href="journal.html">Decision Journal</a>. (3) Nothing here changes tax law, the model, or any estimate by itself; several suggestions, if chosen, require new source verification before they may ship (e.g., new pages get source links like everything else). (4) “Blocked” = needs facts we don’t have yet.</div>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>✓</th><th>ID</th><th>Suggestion (what &amp; why)</th><th>Area</th><th>Effort</th><th>Impact</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><input class="sug-check" id="sug-01" type="checkbox" aria-label="implement sug-01"></td><td>S-01</td><td><strong>Wire a live Monte Carlo with real fat-tailed returns</strong> (t-dist, regime switching; 10k paths) instead of seeded lognormal; show P5/P50/P95; sensitivity on σ (12%/16%/22%).</td><td>Projections</td><td>M</td><td>High</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-02" type="checkbox" aria-label="implement sug-02"></td><td>S-02</td><td><strong>Import real transaction comps</strong> (CSV drop of 6–10 sold/rented Cupertino &amp; SF comps) so rent path ranks on evidence — <em>requires appraiser or broker deliverable</em>.</td><td>Property A/B</td><td>M</td><td>High</td><td><span class="badge b-flag">Blocked by data</span></td></tr>
+<tr><td><input class="sug-check" id="sug-03" type="checkbox" aria-label="implement sug-03"></td><td>S-03</td><td><strong>Form 540 line 62 auto-checker</strong>: slider for CA taxable income → instant 1% surcharge output; link straight to the FTB booklet.</td><td>Taxes</td><td>S</td><td>Med</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-04" type="checkbox" aria-label="implement sug-04"></td><td>S-04</td><td><strong>Rate-area (TRA) picker for both properties</strong>: dropdown of Cupertino/SF TRAs with bond levies → exact composite rate; closes Flagged #1 &amp; #3.</td><td>Properties</td><td>M</td><td>Med</td><td><span class="badge b-flag">Needs county data</span></td></tr>
+<tr><td><input class="sug-check" id="sug-05" type="checkbox" aria-label="implement sug-05"></td><td>S-05</td><td><strong>“Estate waterfall” graphic</strong>: gross estate → unified credit → taxable estate → 40% band, built from actual household figures (lawyer to supply numbers privately; site keeps placeholders).</td><td>Taxes / Brief</td><td>S</td><td>High</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-06" type="checkbox" aria-label="implement sug-06"></td><td>S-06</td><td><strong>Dark mode + print theme variants</strong>; current print sheet is already one-page — add 2-up “meeting handout” layout.</td><td>UX</td><td>S</td><td>Low</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-07" type="checkbox" aria-label="implement sug-07"></td><td>S-07</td><td><strong>Version the model</strong>: MODEL block → JSON with changelog; every number cites model version; “recommendation moved?” diff badge on each release.</td><td>Engineering</td><td>M</td><td>High</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-08" type="checkbox" aria-label="implement sug-08"></td><td>S-08</td><td><strong>“What would change the answer” gets sliders</strong>: appraisal ±20%, rent ±30%, drawdown −60% → live re-ranking badge (current ranking re-derives).</td><td>Dashboard</td><td>M</td><td>High</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-09" type="checkbox" aria-label="implement sug-09"></td><td>S-09</td><td><strong>Amortization/return of capital view for the rent path</strong>: year-by-year deduction stack (interest=0, taxes, insurance, repairs, depreciation) → after-tax cash curve vs sale-invest curve.</td><td>Compare</td><td>M</td><td>Med</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-10" type="checkbox" aria-label="implement sug-10"></td><td>S-10</td><td><strong>County transfer-tax sanity widget</strong> for B: SF tiered schedule with live “full-price vs marginal” illustration and the BUILD Act/House-SF churn callout (parked until SF Controller publishes consolidated schedule).</td><td>Property B</td><td>S</td><td>Med</td><td><span class="badge b-flag">Waiting on official schedule</span></td></tr>
+<tr><td><input class="sug-check" id="sug-11" type="checkbox" aria-label="implement sug-11"></td><td>S-11</td><td><strong>Print-ready “Annual Recheck Pack”</strong>: one page auto-listing the 12 annual checks with dates &amp; owners (extends brief.html pattern).</td><td>Process</td><td>S</td><td>Med</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-12" type="checkbox" aria-label="implement sug-12"></td><td>S-12</td><td><strong>IRR vs simple-CAGR toggles</strong> everywhere we compound; show simple/log returns side-by-side for the 50-year grid.</td><td>Projections</td><td>S</td><td>Low</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-13" type="checkbox" aria-label="implement sug-13"></td><td>S-13</td><td><strong>Sensitivity tornado chart</strong> (static SVG): rank inputs by swing on terminal wealth (growth ±1%, CAGR ±1%, tax rate ±0.2pt, rent ±$2k, appraisal ±10%).</td><td>Projections</td><td>M</td><td>High</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-14" type="checkbox" aria-label="implement sug-14"></td><td>S-14</td><td><strong>“As of” banner auto-stamp</strong>: build date injected at deploy (GitHub Action) so every page shows freshness; stale &gt; 180 days → amber banner.</td><td>Engineering</td><td>S</td><td>Med</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-15" type="checkbox" aria-label="implement sug-15"></td><td>S-15</td><td><strong>Accessible tables &amp; keyboard nav pass</strong> (caption/scope, focus rings, aria-current) — partial already; finish audit with axe-core offline.</td><td>Accessibility</td><td>S</td><td>Med</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-16" type="checkbox" aria-label="implement sug-16"></td><td>S-16</td><td><strong>Glossary deep-links from every term</strong> (auto-annotate “Prop 19”, “§121”, “NIIT”… with anchor jumps).</td><td>UX</td><td>M</td><td>Low</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-17" type="checkbox" aria-label="implement sug-17"></td><td>S-17</td><td><strong>Private intake form (local-only)</strong>: fill questionnaire in-browser → generates pre-filled Briefing Sheet; zero network calls; export via print.</td><td>Brief</td><td>M</td><td>Med</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-18" type="checkbox" aria-label="implement sug-18"></td><td>S-18</td><td><strong>Scenario presets row</strong> on What-If: “1973-repeat”, “AI-boom”, “stagflation”, “soft landing” one-click slider sets.</td><td>Projections</td><td>S</td><td>Med</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-19" type="checkbox" aria-label="implement sug-19"></td><td>S-19</td><td><strong>Evidence locker page</strong> (private repo only): hashes of raw ledgers &amp; appraisals (SHA-256) so “nothing was edited after the fact” is provable — no raw data committed.</td><td>Privacy</td><td>S</td><td>Med</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-20" type="checkbox" aria-label="implement sug-20"></td><td>S-20</td><td><strong>Co-heir view mode</strong>: read-only simplified page (no adult knobs) for family members who shouldn’t tweak the model.</td><td>UX</td><td>S</td><td>Low</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-21" type="checkbox" aria-label="implement sug-21"></td><td>S-21</td><td><strong>Notification digest</strong>: RSS/e-mail-me link to the annual recheck (calendar file download) — no tracking pixels.</td><td>Process</td><td>S</td><td>Low</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-22" type="checkbox" aria-label="implement sug-22"></td><td>S-22</td><td><strong>Rate-limited “ask the CPA” question generator</strong>: builds the exact email from checked boxes (Form 706? §121? line 62?) with figures attached.</td><td>Brief</td><td>M</td><td>Med</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-23" type="checkbox" aria-label="implement sug-23"></td><td>S-23</td><td><strong>Trustee succession flowchart</strong> (SVG): death → successor trustee → distributions → tax forms → deed recording, with owners &amp; clocks.</td><td>Process</td><td>S</td><td>Med</td><td><span class="badge b-est">Proposed</span></td></tr>
+<tr><td><input class="sug-check" id="sug-24" type="checkbox" aria-label="implement sug-24"></td><td>S-24</td><td><strong>Diff-watch on official URLs</strong>: quarterly HEAD/etag check of the 25 cited sources; banner “source pages changed — re-verify” (runs locally or in Action).</td><td>Engineering</td><td>M</td><td>High</td><td><span class="badge b-est">Proposed</span></td></tr>
+</tbody></table>
+</div>
+
+<h2>Scorecard — what we’d do first if all boxes ticked</h2>
+<ol class="questions">
+<li><strong>If the goal is decision quality fastest:</strong> S-08 → S-13 → S-05 → S-07.</li>
+<li><strong>If the goal is correctness of record:</strong> S-07 → S-24 → S-19 → S-02.</li>
+<li><strong>If the goal is household alignment:</strong> S-17 → S-22 → S-20 → S-11.</li>
+<li><strong>Parking lot (reject or defer):</strong> anything cosmetic before the appraisal gap closes (S-06, S-12, S-16, S-21).</li>
+</ol>
+
+<div class="footer-inject"></div>
+</main></div>
+<script src="assets/app.js"></script>
+</body>
+</html>
