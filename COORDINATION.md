@@ -1,7 +1,7 @@
 # TinoDash2 coordination board
 
-**Last updated:** 2026-11-25 (session `arena/349fb457-tinodash2`)
-**Current branch:** `arena/349fb457-tinodash2` — Arena-assigned; do not rename; do not push elsewhere.
+**Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`)
+**Current branch:** `arena/43306062-tinodash2` — Arena-assigned; do not rename; do not push elsewhere.
 
 ## Non-negotiable privacy policy (read first)
 
@@ -28,7 +28,8 @@
 | Legacy Pages serving `main` root | ✅ Live | `https://kanlerxz87-cyber.github.io/TinoDash2/`; `pages build and deployment` runs succeed |
 | `Validate site` workflow | ✅ Fixed | Deploy job removed (legacy Pages cannot be deployed by `actions/deploy-pages`; run 45620071167 failed at “Deploy to GitHub Pages”) |
 | PR #8 (figure-driven site) | ❌ Closed unmerged | Household figures in commits `993b85a`, `e0adbc6`; exposure remains via closed-PR refs; owner decision needed |
-| Branch `arena/349fb457-tinodash2` | Reset to `origin/main` | Force-push (`--force-with-lease`) so the branch tip no longer serves the figures; closed-PR objects persist regardless |
+| PR #10 (figure-driven site, session `arena/43306062-tinodash2`) | ❌ Closed unmerged | Figure-driven 10-page site; closed per privacy policy; branch reset to `origin/main`; closed-PR refs retain commits until purge; owner decision needed |
+| Branch `arena/43306062-tinodash2` | Reset to `origin/main` | Force-push (`--force-with-lease`) so the branch tip no longer serves the figures; closed-PR objects persist regardless |
 | Black-swan page | ✅ Added (`black-swan.html`) | Cited public anchors only; zero household figures |
 | Sources / Flagged additions | ✅ Done | Prop H (SFMTA), line-62 naming, 2027 indexing, SF transfer-tax flux, PR #8 exposure flag |
 | Private analysis annex | ✅ Done | `private/ANALYSIS_ANNEX.md` — git-ignored |
@@ -46,6 +47,7 @@
    Closed-PR ref still retains commits `993b85a` and `e0adbc6` until GitHub purges.
    **Owner must decide on history rewrite/purge including these commits and all caches.**
 3. Nothing from the figure-driven site exists in the current working tree; quarantine wiped.
+4. **PR #10 (session `arena/43306062-tinodash2`, 2026-11-25):** opened “TinoDash2 privacy-first inheritance dashboard (10 pages, interactive model, Black Swan)” containing a figure-driven site (rounded to $10) in root HTML + `assets/` + `data/`. Merge conflict with `main` (PR #9) revealed the repo privacy policy forbids household figures even rounded. **Closed unmerged**; branch force-reset to `origin/main` (`bd80845`) so the branch tip no longer serves figures. Figure-driven analysis preserved only in git-ignored `private/` (internal use, never committed). Closed-PR ref retains the figure commits until GitHub purges. **Owner must decide on history rewrite/purge including PR #10 commits and all caches.**
 
 ## Task board (current branch)
 
