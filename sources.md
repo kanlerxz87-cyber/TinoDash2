@@ -1,0 +1,42 @@
+# Official source register
+
+Last checked: 2026-11-25. Links are for manual review. Published claims are deliberately narrow; each table row on the site includes at least one source link. Official sources are not parcel-specific advice.
+
+| Authority | Official source | Use / limitation |
+|---|---|---|
+| IRS | [What's new — Estate and gift tax](https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax) | Current 2026 federal basic exclusion amount ($15,000,000); adjusted taxable gifts, estate scope and portability matter. Not a 2040–2050 forecast. |
+| IRS | [Instructions for Form 706 (2026)](https://www.irs.gov/instructions/i706) | Filing rules, portability, gross estate, basic exclusion and current-year return details. Use year-of-death edition. |
+| IRS | [Gifts & inheritances FAQ](https://www.irs.gov/faqs/interest-dividends-other-types-of-income/gifts-inheritances/gifts-inheritances) | General inherited-property basis rules, generally FMV at death; exceptions and reporting rules apply. |
+| IRS | [Publication 523 (2025): Selling Your Home](https://www.irs.gov/publications/p523) | Home-sale exclusion and depreciation limits; residence tests must be applied to actual history. |
+| IRS | [Publication 544 (2025)](https://www.irs.gov/publications/p544) | Depreciation and disposition treatment. |
+| IRS | [Like-kind exchanges — real estate](https://www.irs.gov/businesses/small-businesses-self-employed/like-kind-exchanges-real-estate-tax-tips) | Current §1031 overview; only qualifying business/investment real property, not a general personal-home rollover. |
+| California BOE | [Proposition 19](https://www.boe.ca.gov/prop19/) | Current general comparison; family home / eligible transferee / limits / filing. BOE notes summaries do not replace the statute or individualized counsel. |
+| California BOE | [2025–2027 Prop 19 allowance adjustment](https://www.boe.ca.gov/news/2025/nr-25-02.htm) | $1,044,586 adjusted amount for transfer dates Feb. 16, 2025–Feb. 15, 2027 only. Recheck at transfer. |
+| California FTB | [2025 Form 540 instructions](https://www.ftb.ca.gov/forms/2025/2025-540-instructions.html) | 2025-year California individual tax, including 1% Behavioral Health Services Tax on taxable income above $1,000,000. Not inheritance tax; use current return-year law. |
+| California FTB | [2025 Form 540 booklet](https://www.ftb.ca.gov/forms/2025/2025-540-booklet.html) | Tax schedules and California filing details. |
+| California State Controller | [California estate tax](https://www.sco.ca.gov/ardtax_estate_tax.html) | Current agency page: no CA estate return required for deaths on or after Jan. 1, 2005 under current framework; not a promise against future law. |
+| California State Controller | [Estate return filing requirements](https://www.sco.ca.gov/ardtax_taxinfo_estate_return.html) | Confirms return rule and historical scope. |
+| Santa Clara County | [Assessor](https://www.sccassessor.org/) · [online property search](https://www.sccassessor.org/online-services/property-search/) | Private parcel lookup for assessed value / tax rate area; never publish parcel identifiers. |
+| San Francisco | [Treasurer & Tax Collector property tax](https://www.sftreasurer.org/property) | Official bill/payment information; not the full parcel tax calculation. |
+| San Francisco | [Real property transfer tax](https://www.sf.gov/information--real-property-transfer-tax) | Current city rates, thresholds and exemptions must be rechecked at sale. |
+| San Francisco Rent Board | [Rent Board](https://www.sf.gov/departments/rent-board) · [AB 1482](https://www.sf.gov/reports--california-tenant-protection-act-2019-ab-1482) | Local and state rental rules; applicability depends on unit, tenancy and history. |
+| San Francisco DBI | [Department of Building Inspection](https://sf.gov/departments/department-building-inspection) | Permit / property records source; legal use and unit count require parcel-specific review. |
+| San Francisco Elections / City | [2020 election results](https://sfelections.org/results/20201103/index.html) · [Prop H process summary](https://www.sf.gov/news--mayor-london-breed-announces-small-business-permitting-support-services) | 2020 Prop H concerns neighborhood commercial uses / small-business permitting; not an inheritance, transfer-tax or Prop 19 measure. Check current Planning Code. |
+| U.S. Treasury | [Daily Treasury rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates) · [Treasury bills](https://www.treasurydirect.gov/marketable-securities/treasury-bills/) | Date-specific rates and instrument basics; no future yield is assumed. Short maturity means reinvestment risk. |
+| NBER | [Business-cycle dating](https://www.nber.org/research/business-cycle-dating) | Recession dates, not equity total-return series. |
+| Federal Reserve History | [Great Recession and its aftermath](https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath) | Historical context, not portfolio performance figures. |
+| FRED | [Federal Reserve Bank of St. Louis data](https://fred.stlouisfed.org/) | Potential source for documented macroeconomic series; no return data used in the numeric model yet. |
+| California Department of Insurance | [Consumer information](https://www.insurance.ca.gov/) | General consumer resources, not a premium or coverage quote for a specific property. |
+| California Contractors State License Board | [CSLB](https://www.cslb.ca.gov/) | Contractor license lookup; not an inspection or bid. |
+| California Legislature | [SB 284 (2025–2026) status](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB284) · [amended text](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB284) | Official page lists the Prop 19-related bill as active in committee; last five-history action shown is July 14, 2025, held in committee and under submission. Amended draft would expand qualifying transfers between eligible transferees and change timing in certain judicial-decree transfers. Proposal only; not modeled as current law. Recheck current status. |
+| IRS | [Working Families Tax Cuts provisions](https://irs.gov/newsroom/one-big-beautiful-bill-provisions-individuals-and-workers) | Enacted federal law (Public Law 119-21); 2026 federal exclusion details. Separate from proposals and future thresholds. |
+| San Francisco | [Prop H permitting summary](https://www.sf.gov/news--mayor-london-breed-announces-small-business-permitting-support-services) · [2020 official election results](https://sfelections.org/results/20201103/index.html) | Voter-approved commercial use / permitting measure; no property-tax inheritance benefit. Current Planning Code applicability needs parcel/use review. |
+| California Legislature | [Legislative Information](https://leginfo.legislature.ca.gov/) | Official bill text and status for annual proposal/enactment tracking. |
+| FTC | [Privacy and security guidance](https://www.ftc.gov/business-guidance/privacy-security) | General privacy/security guidance; site-specific household records should remain private. |
+
+## Important source boundaries
+
+- 2026 federal and current 2025 state tax references cannot determine liability in 2040–2050.
+- An official general page cannot establish a private person's relationship, occupancy, basis, local rent, parcel tax rate area, insurance eligibility, legal unit count, or property condition.
+- No 1929 or 2008 numerical stock drawdown / recovery series is included. Before adding one, identify a total-return source, index, dates, dividend treatment, inflation deflator, allocation, fees and reproducible method.
+- Proposals must remain labelled proposed until official enactment and effective dates are verified.

@@ -1,0 +1,12 @@
+# Generated Pages artifact (created only in CI)
+/_site/
+
+# Household-specific records and calculations: never publish to GitHub Pages
+/private/
+/private-inventory/
+*.private.md
+*.private.csv
+*.private.xlsx
+*.private.pdf
+.env
+.DS_Store

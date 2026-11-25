@@ -1,20 +1,21 @@
-# TinoDash2 — Inheritance Decision Dashboard (Privacy-First)
+# Estate Pathways
 
-Decision-support site for: **live in / rent / sell + reinvest** the inherited Cupertino house (Property A, 95014, via trust ~2040–2050), given the already-owned San Francisco house (Property B, 94122).
+A privacy-first, static decision workspace for comparing possible inherited-home and existing-property paths. The site is plain HTML/CSS/JavaScript and runs locally in a browser; the what-if form does not transmit or save inputs. Do not enter names, parcel IDs, addresses, trust documents, or account details.
 
-- **Privacy:** placeholders only (Property A / Property B / Heir / Decedent). No names, addresses, APNs, or account numbers. All dollars rounded to nearest $10.
-- **Ranges, not points:** every path shows low/base/high. Mixed paths included. Black-swan stress tests + phased Treasury investing path (24–36 mo) with reinvestment risk shown beside headlines.
-- **Verified:** every factual row on `verification.html` links to an official source (IRS, CA BOE, FTB, CA AG, SF Rent Board, U.S. Treasury) or is flagged blank. Unverified/irregular items on `flagged.html`.
-- **What-if controls** on the dashboard rebuild the model live. Distribution chart + cumulative-cash chart included.
-- **Printable** Attorney & CPA Briefing Sheet (`briefing.html`).
+## Preview locally
 
-## Pages
-`index.html` (dashboard + what-would-change-the-answer) · `properties.html` · `projections.html` (50-yr) · `paths.html` · `black-swan.html` · `taxes.html` (estate/basis/property-tax separated, deadlines timeline, enacted vs. proposed) · `verification.html` · `questions.html` (blocking Q&A + pre-agreement) · `suggestions.html` (choose-best-path) · `briefing.html` · `flagged.html` · `glossary.html`
+Open `index.html` in a modern browser. No build dependencies, trackers, external fonts, or third-party scripts are used. The printable attorney and CPA briefing sheet is available from the top-right print button.
 
-## Model
-`assets/model.js` — transparent year-by-year engine. Official rules (Prop 13 2% cap, Prop 19 cap, $15M exemption, 1% MHST) are parameters; forecasts are labeled assumptions with sensitivities. `assets/app.js` — UI, charts, what-if binding, suggestions voting (localStorage only).
+## Privacy boundary
 
-## Deploy
-GitHub Pages from root (`.github/workflows/pages.yml`). See `COORDINATION.md` for task board, sources, and handoff log.
+- The public site intentionally omits household identifiers and the submitted exact property figures. Current local-law and federal-law references are official source links, not personalized conclusions.
+- `private/estate-inventory-template.md` is a blank working template, ignored by Git and not part of the Pages deployment artifact. Keep any completed inventory encrypted and outside the repository. `.gitignore` is a guardrail, not a security boundary; check staged files before every commit.
+- The initial repository history consisted of a README only. No household values were in the history to scrub. Do not add source documents or private inputs in future commits.
 
-> Not tax/legal advice. Confirm with attorney + CPA before acting. Re-run annually with updated inputs.
+## GitHub Pages
+
+The GitHub Actions workflow in `.github/workflows/pages.yml` validates local links on pull requests and deploys the root static site from `main`. The site does not include a backend. If Pages has not been enabled for GitHub Actions on the repository, select **Settings → Pages → Build and deployment → GitHub Actions** after merging.
+
+## Evidence limitations
+
+Published legal/tax claims have direct official links. Current values are not forecasts for a 2040–2050 transfer. Parcel-specific assessments, rent, insurance, utilities, capital costs, rental legality and taxes require private records and professional review. Unverified claims and missing evidence are listed in `FLAGGED_FOR_REVIEW.html`.
