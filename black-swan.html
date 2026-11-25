@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Black Swan — TinoDash2</title><link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><span class="brand">TinoDash2</span><nav>
+<a href="index.html">Dashboard</a><a href="properties.html">Properties</a><a href="projections.html">Projections</a><a href="paths.html">Paths Compared</a><a class="on" href="black-swan.html">Black Swan</a><a href="taxes.html">Taxes &amp; Law</a><a href="verification.html">Verification</a><a href="questions.html">Questions &amp; Missing Info</a><a href="suggestions.html">Suggestions</a><a href="briefing.html">Attorney &amp; CPA Brief</a><a href="flagged.html">Flagged for Review</a><a href="glossary.html">Glossary</a>
+</nav></header>
+<div class="wrap">
+<h1>Black swan — real-world stress conditions</h1>
+<p class="mut">Growth and inflation are never consistent over 50 years. This section mimics real conditions: crashes, stagflation, housing drawdowns, and rate shocks. Baseline projections assume smoothness; reality does not.</p>
+
+<div class="card"><h2>Historical drawdowns (official/market history)</h2>
+<table>
+<tr><th>Episode</th><th class="num">Max drawdown</th><th class="num">Time to recover (price)</th><th>Lesson for this decision</th></tr>
+<tr><td>1929–32 Great Depression (Dow)</td><td class="num">−89%</td><td class="num">~25 yrs (to Nov 1954)</td><td>Lump-sum entry at peak can take a generation to recover. Phased entry + Treasuries softens but does not eliminate.</td></tr>
+<tr><td>2007–09 GFC (S&amp;P 500)</td><td class="num">−57%</td><td class="num">~5.5 yrs (to Mar 2013)</td><td>Even modern crashes halve portfolios. 24–36 mo Treasury parking covers the typical fall duration (17 mo peak-to-trough).</td></tr>
+<tr><td>1973–74 oil shock / stagflation</td><td class="num">−48% (real worse)</td><td class="num">~10 yrs</td><td>Inflation + crash together: nominal recovery hides real loss. Property (rent) hedges differently than stocks.</td></tr>
+<tr><td>2000–02 dot-com</td><td class="num">−49%</td><td class="num">~7 yrs</td><td>Back-to-back crashes (2000 + 2008) merged into a "lost decade" in real terms.</td></tr>
+<tr><td>2022 inflation shock</td><td class="num">−25% (S&amp;P)</td><td class="num">~2 yrs</td><td>Stocks + bonds fell together; Treasuries <em>held short</em> (3M–2Y) still paid ~4–5% while equities fell.</td></tr>
+</table>
+<p class="mut small">Sources: market-history summaries (see Verification V-18). Dividends shorten recovery (1929: ~15 yrs total-return vs. 25 yrs price-only) — model uses total-return assumption 7% base.</p></div>
+
+<div class="card" style="margin-top:14px"><h2>Phased-investing path (parking sale proceeds in 3M–2Y Treasuries, 24–36 months)</h2>
+<p><strong>Design:</strong> Sell A → hold net proceeds in a 3-month to 2-year Treasury ladder → phase into diversified stocks in 6 equal tranches over months 25–30 (default 30 mo). Purpose: test how staging softens 1929/2008 crash-entry risk.</p>
+<div id="blackSwanOut">Loading…</div>
+<div class="banner"><strong>Reinvestment risk (shown beside the headline, as required):</strong> In a bull market with no crash, phased entry <em>underperforms</em> lump-sum by the Treasury-vs-stock return gap over 30 months. The table above shows the no-crash row — phased loses there. Staging is insurance, not alpha. Size the Treasury sleeve to the household's crash tolerance, not to maximize expected return.</div>
+<p class="mut small">Treasury yield anchor: ~4.3% (3-mo) / ~4.6% (2-yr) par yields, Nov 2026 (U.S. Treasury Daily Par Yield Curve — Official). Yields will differ at inheritance (2040s) — sensitivity via Dashboard (Treasury return is fixed at 4.3% in model; treat as assumption).</p></div>
+
+<div class="grid g2" style="margin-top:14px">
+<div class="card"><h3>Stress 1 · Stagflation (1973-style)</h3><p>Inflation 8% + stocks −30% + home growth 1% for 5 yrs. Rent caps (5%+CPI, max 10%) bind; property tax still +2%/yr (Prop 13). Live path (imputed rent) is relatively sheltered; leveraged rent path suffers.</p></div>
+<div class="card"><h3>Stress 2 · Housing crash (−30% A value)</h3><p>A falls 30% post-inheritance. Sell path locks in pre-crash price (if sold early); live/rent paths carry mark-to-market loss + higher tax-to-value ratio (Prop 8 decline-in-value review may help — ask assessor).</p></div>
+<div class="card"><h3>Stress 3 · Rate shock (Treasuries 1%)</h3><p>Parking yield collapses. Phased advantage shrinks; lump-sum wins. Test by lowering stock return on Dashboard — if ranking flips, the answer is rate-sensitive.</p></div>
+<div class="card"><h3>Stress 4 · Longevity + low returns (5% stocks, 1% homes)</h3><p>Low scenario on Dashboard. Rent path (yield + appreciation) vs. sell path (5% compounding) — the gap narrows; liquidity of sell path matters more.</p></div>
+</div>
+
+<div class="card" style="margin-top:14px"><h2>Investment policy for sale proceeds (write before money arrives)</h2>
+<ol>
+<li>Parking: 3M–2Y Treasury ladder, 24–36 mo, 6 tranches into stocks (default). Revisit if yields &lt;2%.</li>
+<li>Target allocation after phase-in: ___% stocks / ___% bonds / ___% cash (household to fill — Q-10).</li>
+<li>Rebalance: annual, ±5% bands. Review extreme scenarios annually (Q-14).</li>
+<li>Tax location: hold Treasuries (state-exempt) in taxable account; stocks for LTCG treatment. CA taxes gains as ordinary income (no preferential rate) — see Taxes.</li>
+<li>Guardrail: if stocks fall &gt;20% during phase-in, accelerate tranches (pre-agree the rule now).</li>
+</ol>
+<p class="mut small">Decision + date: ______________ (fill when adopted). See Questions for the pre-agreement template.</p></div>
+</div>
+<footer>Crash history sourced; phased math is modeled (simplified, before income tax).</footer>
+<script src="assets/model.js"></script><script src="assets/app.js"></script>
+</body></html>
