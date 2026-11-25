@@ -1,21 +1,33 @@
-# Estate Pathways
+# TinoDash2 — Inheritance Decision Workspace
 
-A privacy-first, static decision workspace for comparing possible inherited-home and existing-property paths. The site is plain HTML/CSS/JavaScript and runs locally in a browser; the what-if form does not transmit or save inputs. Do not enter names, parcel IDs, addresses, trust documents, or account details.
+This repository contains privacy-first planning materials for comparing inherited-home and existing-property paths. It currently includes two static site surfaces:
 
-## Preview locally
+1. **Root site (Estate Pathways)** — plain HTML/CSS/JS at repo root, served by legacy GitHub Pages from `main` root. Browser-only what-if tools; no embedded household values.
+2. **Docs dashboard (`docs/`)** — static dashboard added in session `s-a549f819` with executive summary, decision criteria, timelines, scenarios, black-swan/phased-investing analysis, tax/legal map, questions, printable attorney/CPA briefing sheet, sources, and flagged-for-review pages. Values displayed are anonymized placeholders and rounded to nearest $10 per user request; see privacy notes below.
 
-Open `index.html` in a modern browser. No build dependencies, trackers, external fonts, or third-party scripts are used. The printable attorney and CPA briefing sheet is available from the top-right print button. `black-swan.html` publishes cited public-market stress anchors (no household figures).
+## Privacy
 
-## Privacy boundary
+- Public outputs should use placeholders only (Property A, Property B, Owner B).
+- No names, street addresses, ZIP codes, parcel/APN IDs, account numbers, or exact traceable public-record values should be published.
+- Sensitive details discovered during research are for internal use only.
+- `private/` and other ignored private paths are guardrails, not security boundaries; check staged files before every commit.
+- Prior public-data exposure exists in repository history/closed PR refs (see `COORDINATION.md` Exposure log). Do not claim history is scrubbed.
 
-- The public site intentionally omits household identifiers and the submitted exact property figures. Current local-law and federal-law references are official source links, not personalized conclusions.
-- `private/estate-inventory-template.md` is a blank working template, ignored by Git and not part of the Pages deployment artifact. Keep any completed inventory encrypted and outside the repository. `.gitignore` is a guardrail, not a security boundary; check staged files before every commit.
-- A privacy audit after other session PRs merged found user-submitted property figures and ZIP codes in earlier public `main` commits and pages. This branch redacts the current pages, but public `main` still exposes the earlier versions until the change merges, and prior commits retain the data; a normal PR cannot erase them. The repository owner must decide on a history rewrite and cache/index purge. See `COORDINATION.md` before treating the history as cleaned.
+## Docs dashboard (s-a549f819)
+
+- Landing page: `docs/index.html`
+- Model build: `python3 scripts/build_model.py` -> `docs/data/model.json`
+- Verification: `docs/sources.html`, `docs/flagged.html`
+
+## Root site
+
+- Open `index.html` in a modern browser for the root Estate Pathways site.
+- Validation: `python3 scripts/check_site.py` (if present on branch).
 
 ## GitHub Pages
 
-Pages is served by the **legacy builder** (source: `main` branch, root). Merging to `main` updates the live site automatically (`https://kanlerxz87-cyber.github.io/TinoDash2/`). The GitHub Actions workflow only **validates** the site (local links, JS syntax); its former deploy job was removed in Nov 2026 because a legacy-built Pages site cannot be deployed by `actions/deploy-pages`. If Pages is switched to “GitHub Actions” in Settings → Pages, restore a deploy job. The site does not include a backend.
+Legacy Pages currently serves `main` root. If the `docs/` dashboard should be published, configure Pages source accordingly or integrate into the root site; confirm with repository owner.
 
-## Evidence limitations
+## Disclaimer
 
-Published legal/tax claims have direct official links. Current values are not forecasts for a 2040–2050 transfer. Parcel-specific assessments, rent, insurance, utilities, capital costs, rental legality and taxes require private records and professional review. Unverified claims and missing evidence are listed in `FLAGGED_FOR_REVIEW.html`.
+Planning and decision-organization aid only. Not legal, tax, investment, appraisal, or insurance advice.

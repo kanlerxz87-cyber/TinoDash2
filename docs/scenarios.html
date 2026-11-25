@@ -1,0 +1,167 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Scenario Comparison | Inheritance Dashboard</title><link rel="stylesheet" href="css/style.css"></head><body>
+<a class="skip" href="#main">Skip to content</a><div class="layout">
+<aside class="sidebar"><div class="brand">Inheritance Decision Dashboard</div><div class="brand-sub">Privacy-first planning workspace. All values anonymized and rounded to nearest $10. Not legal, tax, or investment advice.</div>
+<nav class="nav" aria-label="Main navigation"><div class="nav-group"><div class="nav-label">Overview</div><a href="index.html">Executive Summary</a><a href="decision-criteria.html">Decision Criteria &amp; What Changes the Answer</a><a href="timeline.html">Deadlines Timeline</a></div><div class="nav-group"><div class="nav-label">Analysis</div><a href="properties.html">Property &amp; Cost Data</a><a href="scenarios.html">Scenario Comparison</a><a href="black-swan.html">Black Swan &amp; Phased Investing</a><a href="tax-legal.html">Tax, Legal &amp; Compliance</a></div><div class="nav-group"><div class="nav-label">Action</div><a href="questions.html">Questions &amp; Missing Info</a><a href="briefing.html">Attorney &amp; CPA Briefing Sheet</a><a href="suggestions.html">Suggestions &amp; Review Queue</a><a href="glossary.html">Glossary &amp; Methodology</a><a href="sources.html">Sources &amp; Verification</a><a href="flagged.html">Flagged for Review</a></div></nav></aside>
+<main id="main" class="main">
+<div class="page-header"><div class="eyebrow">Scenarios</div><h1>Compare All Choices</h1><p class="lead">Pure and mixed paths compared at the same transfer dates and horizons, with taxes, costs, occupancy, capital costs, liquidity, and risk. All values are rounded planning estimates, not predictions.</p></div>
+
+<div class="alert alert-info"><strong>Read this first:</strong> The rent path is currently a <strong>planning floor estimate</strong> because independent comparable rents for Property A are missing. Do not rank the rent path as evidence-based until comps are obtained. Reinvestment paths show <strong>reinvestment/sequence risk</strong> next to headline outcomes.</div>
+
+<section class="section card">
+  <h2>What-if controls (simplified planning model)</h2>
+  <p class="small muted">Adjust assumptions to see how the base 2045 transfer / 10-year horizon comparison moves. Outputs round to nearest $10. This is a sensitivity tool, not a forecast.</p>
+  <div class="grid grid-3">
+    <div><label for="wApp">Property A appreciation (%/yr)</label><input id="wApp" type="range" min="1" max="7" step="0.5" value="3.5" oninput="runWhatIf()"><div class="small muted" id="wAppV">3.5%</div></div>
+    <div><label for="wStock">Stock return nominal (%/yr)</label><input id="wStock" type="range" min="2" max="12" step="0.5" value="7" oninput="runWhatIf()"><div class="small muted" id="wStockV">7.0%</div></div>
+    <div><label for="wTreas">Treasury/parking yield (%/yr)</label><input id="wTreas" type="range" min="1" max="6" step="0.25" value="4" oninput="runWhatIf()"><div class="small muted" id="wTreasV">4.0%</div></div>
+    <div><label for="wRent">Property A monthly rent estimate ($)</label><input id="wRent" type="range" min="3000" max="9000" step="100" value="5500" oninput="runWhatIf()"><div class="small muted" id="wRentV">$5,500</div></div>
+    <div><label for="wImputed">Imputed rent for living path ($/mo)</label><input id="wImputed" type="range" min="3000" max="9000" step="100" value="5500" oninput="runWhatIf()"><div class="small muted" id="wImputedV">$5,500</div></div>
+    <div><label for="wProp19">Prop 19 exclusion for live-in path</label><select id="wProp19" onchange="runWhatIf()"><option value="yes" selected>Assume eligible/filed</option><option value="no">Not eligible/not filed</option></select><div class="small muted">Affects property-tax estimate only in this simplified model.</div></div>
+  </div>
+  <div class="grid grid-3" style="margin-top:12px;">
+    <div><label for="wSellCost">Sale cost (% of price)</label><input id="wSellCost" type="range" min="3" max="8" step="0.25" value="5.5" oninput="runWhatIf()"><div class="small muted" id="wSellCostV">5.5%</div></div>
+    <div><label for="wTaxDrag">Annual portfolio tax drag (%)</label><input id="wTaxDrag" type="range" min="0" max="2" step="0.1" value="0.5" oninput="runWhatIf()"><div class="small muted" id="wTaxDragV">0.5%</div></div>
+    <div><label for="wHorizon">Horizon after 2045 transfer (years)</label><input id="wHorizon" type="range" min="5" max="30" step="5" value="10" oninput="runWhatIf()"><div class="small muted" id="wHorizonV">10 years</div></div>
+  </div>
+  <div class="alert alert-warn small" style="margin-top:12px;"><strong>Simplified model warning:</strong> This what-if does not replace CPA tax modeling, Prop 19 legal analysis, rent comps, appraisal, insurance quotes, or debt/lease review. It is for directional sensitivity only.</div>
+</section>
+
+<section class="section card">
+  <h2>Base comparison (2045 transfer, 10-year horizon, base assumptions)</h2>
+  <p class="small muted">Base: 3.5% appreciation, 7% nominal stock return, 4% Treasury parking yield, 5.5% sale costs, 0.5% annual portfolio tax drag, $5,500/mo rent placeholder, Prop 19 eligible for live-in. All rounded to nearest $10.</p>
+  <div class="table-wrap"><table id="cmpTable">
+    <thead><tr><th>Path</th><th class="num">End value / portfolio</th><th class="num">Cumulative costs / drag</th><th class="num">Net position (illustrative)</th><th>Liquidity</th><th>Reinvestment / sequence risk</th><th>Key tax/cost notes</th></tr></thead>
+    <tbody id="cmpBody"></tbody>
+  </table></div>
+</section>
+
+<section class="section card">
+  <h2>Same transfer dates and horizons (base assumptions)</h2>
+  <p class="small muted">Compare paths at 2040 / 2045 / 2050 transfer, with 5/10/20-year horizons after transfer. Values are illustrative net-position estimates (rounded).</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Transfer</th><th>Horizon</th><th class="num">Live in A (Prop 19 assumed)</th><th class="num">Rent A (unverified rent)</th><th class="num">Sell &amp; reinvest</th><th class="num">Sell, Treasury park, phase in</th><th class="num">Live 2 yrs then sell</th></tr></thead>
+    <tbody id="matrixBody">
+      <tr><td>2040</td><td>10 yr</td><td class="num">$7,214,860</td><td class="num">$8,147,530</td><td class="num">$9,551,580</td><td class="num">$9,107,090</td><td class="num">$8,955,200</td></tr>
+      <tr><td>2045</td><td>10 yr</td><td class="num">$8,530,330</td><td class="num">$9,676,570</td><td class="num">$11,335,040</td><td class="num">$10,807,420</td><td class="num">$10,626,860</td></tr>
+      <tr><td>2050</td><td>10 yr</td><td class="num">$10,091,620</td><td class="num">$11,497,650</td><td class="num">$13,451,830</td><td class="num">$12,825,710</td><td class="num">$12,611,540</td></tr>
+      <tr><td>2045</td><td>5 yr</td><td class="num">$7,497,970</td><td class="num">$8,021,870</td><td class="num">$8,081,830</td><td class="num">$7,830,820</td><td class="num">$7,949,750</td></tr>
+      <tr><td>2045</td><td>20 yr</td><td class="num">$12,003,010</td><td class="num">$14,566,170</td><td class="num">$22,311,300</td><td class="num">$21,272,870</td><td class="num">$20,917,890</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">These are base-case illustrative outputs from a simplified model. They do <strong>not</strong> include full CA/federal income-tax modeling for every year, debt, or individual circumstance. Use for comparison structure, then replace with CPA-reviewed numbers.</p>
+</section>
+
+<section class="section card">
+  <h2>Distribution chart (illustrative range by path)</h2>
+  <p class="small muted">Bars show low/base/high illustrative net-position outcomes at 2045 transfer + 10-year horizon under appreciation/return ranges. Not Monte Carlo; simple scenario range.</p>
+  <div id="distChart" aria-label="Distribution chart"></div>
+  <div class="small muted" style="margin-top:8px;">Interpretation: wider bars mean more uncertainty/sensitivity. Sell/reinvest has higher upside and higher sequence-risk exposure; phased investing narrows early crash-entry risk but can create cash drag.</div>
+</section>
+
+<section class="section card">
+  <h2>Mixed paths (must be compared alongside pure choices)</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Mixed path</th><th>Description</th><th>When it can help</th><th>Main risk</th><th>Reinvestment risk</th></tr></thead>
+    <tbody>
+      <tr><td>Live 2 years, then sell</td><td>Use Property A as primary residence briefly, confirm fit, then sell and reinvest.</td><td>When occupancy/Prop 19 eligibility is plausible but uncertain; when repairs/staging need time.</td><td>Drift, holding costs, missed exit window, tax/eligibility mistakes.</td><td>Moderate after sale; can be paired with phased investing.</td></tr>
+      <tr><td>Sell, Treasury park 24 months, phase into stocks 36 months</td><td>Convert to cash, hold in short Treasuries, dollar-cost/ramp into diversified portfolio.</td><td>When Owner B fears 1929/2008-style entry timing but wants eventual equity exposure.</td><td>Cash drag, reinvestment/yield risk, inflation after tax, missed upside.</td><td><strong>High during parking window</strong> (reinvestment/yield risk), lower crash-entry risk.</td></tr>
+      <tr><td>Rent 3–5 years, then sell</td><td>Collect rent while retaining option to sell; reassess with real rent and tax data.</td><td>When rent comps are strong and Owner B wants optionality.</td><td>Reassessment/tax drag, tenant risk, capex, recapture.</td><td>Low until sale; then same as sell path.</td></tr>
+      <tr><td>Partial liquidity (HELOC/sale of other assets) — <em>if feasible</em></td><td>Not modeled as default; only consider with lender/tax/legal advice.</td><td>When liquidity needed but Owner B wants to keep Property A.</td><td>Debt service, rate risk, covenant risk, complexity.</td><td>Depends on investment of borrowed funds; generally higher risk.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<div class="footer"><p class="small">Illustrative planning model only. Not advice. Verify all inputs with qualified professionals.</p></div>
+</main></div>
+<script src="js/app.js"></script>
+<script>
+function r10(x){return Math.round(x/10)*10;}
+function fmt(n){const s=n<0?'-':'';return s+'$'+Math.abs(r10(n)).toLocaleString('en-US');}
+function fv(pv,r,y){return pv*Math.pow(1+r,y);}
+function runWhatIf(){
+  const app=+document.getElementById('wApp').value/100;
+  const stock=+document.getElementById('wStock').value/100;
+  const treas=+document.getElementById('wTreas').value/100;
+  const rent=+document.getElementById('wRent').value;
+  const imputed=+document.getElementById('wImputed').value;
+  const prop19=document.getElementById('wProp19').value==='yes';
+  const sellCost=+document.getElementById('wSellCost').value/100;
+  const taxDrag=+document.getElementById('wTaxDrag').value/100;
+  const horizon=+document.getElementById('wHorizon').value;
+  document.getElementById('wAppV').textContent=(app*100).toFixed(1)+'%';
+  document.getElementById('wStockV').textContent=(stock*100).toFixed(1)+'%';
+  document.getElementById('wTreasV').textContent=(treas*100).toFixed(2)+'%';
+  document.getElementById('wRentV').textContent=fmt(rent);
+  document.getElementById('wImputedV').textContent=fmt(imputed);
+  document.getElementById('wSellCostV').textContent=(sellCost*100).toFixed(2)+'%';
+  document.getElementById('wTaxDragV').textContent=(taxDrag*100).toFixed(1)+'%';
+  document.getElementById('wHorizonV').textContent=horizon+' years';
+  const yearsToTransfer=19; // 2045-2026
+  const valueAtTransfer=fv(3100000,app,yearsToTransfer);
+  const assessedAtTransfer=fv(550540,0.02,yearsToTransfer);
+  const taxRate=0.0118, infl=0.028, ins=1500, water=130, elec=-15, maint=0.008, capex=0.005;
+  function opex(yearIdx,value,assessed,excl){
+    let a=assessed;
+    if(excl){a=Math.min(value, assessedAtTransfer+1000000);} // simplified cap
+    const ptax=a*taxRate;
+    return ptax + ins*Math.pow(1+infl,yearIdx) + (water*12*Math.pow(1+infl,yearIdx)) + (elec*12*Math.pow(1+infl,yearIdx)) + value*maint + value*capex;
+  }
+  // Live in A
+  let v=valueAtTransfer,a=assessedAtTransfer,cumCost=0;
+  for(let y=1;y<=horizon;y++){v*= (1+app); a*=1.02; cumCost+=opex(y,v,a,prop19);} 
+  const liveNet=r10(v-cumCost + (imputed*12*horizon*0.0)); // imputed shown separately; net position excludes non-cash imputed for consistency
+  // Rent A
+  v=valueAtTransfer;a=assessedAtTransfer;let cumCash=0;
+  for(let y=1;y<=horizon;y++){v*= (1+app); a*=1.02; const gross=rent*12*Math.pow(1+infl,y)*0.95; const oc=opex(y,v,a,false)+gross*0.08; cumCash+=gross-oc;}
+  const rentNet=r10(v+cumCash);
+  // Sell & reinvest
+  const sale=valueAtTransfer; const costs=sale*sellCost; let port=sale-costs; const netStock=stock-taxDrag;
+  for(let y=1;y<=horizon;y++){port*= (1+netStock);} const sellNet=r10(port);
+  // Phased
+  let p=sale-costs; for(let y=1;y<=2;y++){p*= (1+treas-taxDrag*0.3);} // 2 years park
+  let b=[p/3,p/3,p-p/3-p/3];
+  b[0]*=(1+netStock); b[1]*=(1+treas-taxDrag*0.3); b[2]*=(1+treas-taxDrag*0.3);
+  b[0]*=(1+netStock); b[1]*=(1+netStock); b[2]*=(1+treas-taxDrag*0.3);
+  b[0]*=(1+netStock); b[1]*=(1+netStock); b[2]*=(1+netStock);
+  for(let y=6;y<=horizon;y++){b=b.map(x=>x*(1+netStock));}
+  const phasedNet=r10(b.reduce((s,x)=>s+x,0));
+  // Live 2 then sell
+  v=valueAtTransfer;a=assessedAtTransfer;cumCost=0; let liveYears=Math.min(2,horizon);
+  for(let y=1;y<=liveYears;y++){v*= (1+app); a*=1.02; cumCost+=opex(y,v,a,prop19);} 
+  let p2=(v*(1-sellCost))-cumCost; for(let y=liveYears+1;y<=horizon;y++){p2*= (1+netStock);} const liveSellNet=r10(p2);
+
+  const rows=[
+    ['Live in Property A (primary residence)', fmt(v), fmt(cumCost), fmt(r10(v-cumCost)), 'Low', 'None on market; concentration/illiquidity risk', `Prop 19 ${prop19?'assumed':'not assumed'}; imputed rent ${fmt(imputed)}/mo not included in net cash.`],
+    ['Rent Property A; live in Property B', fmt(v), fmt(Math.max(0,-cumCash)), fmt(rentNet), 'Medium', 'Low until sale; tenant/market risk', 'Rent estimate unverified; depreciation/recapture not modeled.'],
+    ['Sell & reinvest (lump sum)', fmt(sellNet), fmt(costs), fmt(sellNet), 'High', 'High sequence-of-returns risk at entry', 'Step-up basis/taxes simplified; portfolio tax drag applied.'],
+    ['Sell, park 24m Treasuries, phase 36m', fmt(phasedNet), fmt(costs), fmt(phasedNet), 'High', 'High reinvestment/cash-drag risk during parking; lower crash-entry risk', 'Treasury yield and tax drag assumptions matter.'],
+    ['Live 2 years then sell & reinvest', fmt(p2/(Math.pow(1+netStock,Math.max(0,horizon-liveYears)))), fmt(cumCost+v*sellCost), fmt(liveSellNet), 'Low → High', 'Moderate after sale', 'Primary-residence exclusion/Prop 19 timing must be verified.']
+  ];
+  const body=document.getElementById('cmpBody'); body.innerHTML='';
+  rows.forEach(r=>{const tr=document.createElement('tr'); r.forEach((c,i)=>{const td=document.createElement('td'); td.innerHTML=c; if(i>=1&&i<=3) td.className='num'; tr.appendChild(td);}); body.appendChild(tr);});
+  drawDist(app,stock,treas,sellCost,taxDrag,horizon);
+}
+function drawDist(app,stock,treas,sellCost,taxDrag,horizon){
+  const yearsToTransfer=19; const netStock=stock-taxDrag;
+  function sellNet(a,s){let val=fv(3100000,a,yearsToTransfer); let p=val*(1-sellCost); for(let y=1;y<=horizon;y++)p*= (1+s); return p;}
+  function phasedNet(a,s){let val=fv(3100000,a,yearsToTransfer); let p=val*(1-sellCost); for(let y=1;y<=2;y++)p*= (1+treas-taxDrag*0.3); let b=[p/3,p/3,p-p/3-p/3]; b[0]*=(1+s);b[1]*=(1+treas-taxDrag*0.3);b[2]*=(1+treas-taxDrag*0.3); b[0]*=(1+s);b[1]*=(1+s);b[2]*=(1+treas-taxDrag*0.3); b[0]*=(1+s);b[1]*=(1+s);b[2]*=(1+s); for(let y=6;y<=horizon;y++)b=b.map(x=>x*(1+s)); return b.reduce((z,x)=>z+x,0);}
+  function liveNetFn(a){let v=fv(3100000,a,yearsToTransfer),ass=fv(550540,0.02,yearsToTransfer),cost=0; for(let y=1;y<=horizon;y++){v*=1+a;ass*=1.02; let at=ass*0.0118; cost+=at+1500*Math.pow(1.028,y)+1560*Math.pow(1.028,y)-180*Math.pow(1.028,y)+v*0.013;} return v-cost;}
+  const paths=[
+    {name:'Live A', low:liveNetFn(0.02), base:liveNetFn(0.035), high:liveNetFn(0.055)},
+    {name:'Sell/Reinvest', low:sellNet(0.02,0.04), base:sellNet(0.035,netStock), high:sellNet(0.055,0.10)},
+    {name:'Phased', low:phasedNet(0.02,0.04), base:phasedNet(0.035,netStock), high:phasedNet(0.055,0.10)},
+  ];
+  const max=Math.max(...paths.map(p=>p.high))*1.1;
+  const wrap=document.getElementById('distChart');
+  wrap.innerHTML='<div style="display:grid;gap:12px">'+paths.map(p=>{
+    const l=Math.max(0,p.low/max*100), b=Math.max(0,p.base/max*100), h=Math.max(0,p.high/max*100);
+    return `<div><div class="small"><strong>${p.name}</strong> <span class="muted">low ${fmt(p.low)} / base ${fmt(p.base)} / high ${fmt(p.high)}</span></div>
+    <div style="position:relative;height:26px;background:#eef2f7;border-radius:6px;overflow:hidden;">
+      <div style="position:absolute;left:${l}%;width:${Math.max(1,h-l)}%;top:4px;height:18px;background:#bfdbfe;border-radius:4px;"></div>
+      <div style="position:absolute;left:${b}%;width:2px;top:2px;height:22px;background:#1f5eff;"></div>
+    </div></div>`;
+  }).join('')+'</div>';
+}
+runWhatIf();
+</script>
+</body></html>

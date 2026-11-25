@@ -8,5 +8,30 @@
 *.private.csv
 *.private.xlsx
 *.private.pdf
-.env
+
+# OS/editor
 .DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Private/internal working data - never publish
+/data/private/
+/research/private/
+*.private.*
+
+# Env
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node
+node_modules/
+
+# Logs
+*.log
