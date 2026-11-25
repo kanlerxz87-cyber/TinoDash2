@@ -1,68 +1,198 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TinoDash2 — Inheritance Decision Dashboard (Privacy-First)</title>
-<link rel="stylesheet" href="assets/style.css"></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TinoDash2 — Estate &amp; Property Inheritance Decision Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
 <body>
-<header class="top"><span class="brand">TinoDash2</span>
-<nav>
-<a class="on" href="index.html">Dashboard</a><a href="properties.html">Properties</a><a href="projections.html">Projections</a><a href="paths.html">Paths Compared</a><a href="black-swan.html">Black Swan</a><a href="taxes.html">Taxes &amp; Law</a><a href="verification.html">Verification</a><a href="questions.html">Questions &amp; Missing Info</a><a href="suggestions.html">Suggestions</a><a href="briefing.html">Attorney &amp; CPA Brief</a><a href="flagged.html">Flagged for Review</a><a href="glossary.html">Glossary</a>
-</nav></header>
-<div class="wrap">
-<h1>Inheritance decision dashboard — Cupertino (Property A) + San Francisco (Property B)</h1>
-<p class="mut">Privacy-first: placeholders only (Property A = Cupertino 95014 inherited via trust ~2040–2050; Property B = San Francisco 94122 already owned by the heir). No names, addresses, APNs, or account numbers. All dollars rounded to nearest $10. Ranges, not points. Every factual claim is sourced on <a href="verification.html">Verification</a> or flagged blank.</p>
+<div class="layout">
+  <aside id="sidebar" class="sidebar"></aside>
+  <main class="main">
+    <div class="page-header">
+      <h1>Executive Summary &amp; What-If Decision Model</h1>
+      <p>Property A (Cupertino, 95014 — Trust Inheritance 2040–2050) &amp; Property B (San Francisco, 94122 — Currently Owned 3-Unit)</p>
+    </div>
 
-<div class="banner"><strong>What would change the answer — read this first.</strong>
-<ul>
-<li><strong>Prop 19 occupancy:</strong> If the heir does <em>not</em> occupy Property A as a primary residence within 1 year of transfer, the parent-child exclusion is lost and Property A is reassessed to full market value (BOE). That single fact can swing annual tax by tens of thousands. <a href="taxes.html">Details</a></li>
-<li><strong>Same-year sale:</strong> Selling in the inheritance year (stepped-up basis, IRC §1014) ≈ $0 federal gain on pre-death appreciation. Waiting years adds post-death appreciation + depreciation recapture if rented. <a href="paths.html">Paths</a></li>
-<li><strong>Market rent for A:</strong> No appraisal exists. Rent paths use a $3,800/mo median <em>floor</em> benchmark. If true market rent is $6,200/mo, the rent path jumps. <a href="flagged.html">F-04</a></li>
-<li><strong>Crash timing:</strong> Lump-sum stock entry the year before a 2008/1929-style crash loses 57–89%. The phased Treasury path (24–36 mo) softens entry but lags in bull markets (reinvestment risk). <a href="black-swan.html">Black Swan</a></li>
-<li><strong>Estate size:</strong> Federal exemption is $15M/person (2026, permanent under OBBBA). Below that, estate tax = $0; above it, 40% on the excess. California has no estate/inheritance tax. <a href="taxes.html">Taxes</a></li>
-</ul></div>
+    <div class="privacy-banner">
+      <strong>Privacy-First &amp; $10-Rounded:</strong> All personal identifiers are anonymized. All dollar figures in tables and projections are rounded to the nearest $10 increment to prevent parcel-level tracing.
+    </div>
 
-<div class="grid g3">
-<div class="card"><h3>Executive summary</h3>
-<p>Under <em>current</em> law and base assumptions (3% home growth, 7% stocks, 4.3% Treasuries), no single path dominates across all horizons — see live ranking below. The model compares <strong>all paths at the same transfer date and horizon</strong>, with taxes, debt (none assumed — confirm), occupancy, capital costs, and liquidity. Mixed paths (live-then-rent, rent-then-sell) are included, not only pure choices.</p>
-<p class="mut small">This is a decision-support model, not tax/legal advice. Confirm with attorney + CPA before acting. See <a href="briefing.html">Briefing Sheet</a>.</p></div>
-<div class="card"><h3>Live ranking (base case)</h3><div id="rankOut">Loading…</div><p class="mut small" id="modelMeta"></p>
-<p class="mut small">Change any what-if control — the ranking rebuilds instantly. If the ranking does not move, the assumption is not decision-critical.</p></div>
-<div class="card"><h3>What-if controls</h3>
-<label>Inheritance year <input type="number" id="in-inheritYear" data-bind value="2045" min="2040" max="2050"></label>
-<label>Horizon (years after inheritance) <input type="number" id="in-horizon" data-bind value="20" min="5" max="50"></label>
-<label>Home appreciation %/yr <input type="number" id="in-apprec" data-bind value="3" step="0.5"></label>
-<label>Stock return %/yr <input type="number" id="in-stock" data-bind value="7" step="0.5"></label>
-<label>Property A market rent $/mo <input type="number" id="in-rentA" data-bind value="3800" step="100"></label>
-<label>Imputed rent (live path) $/mo <input type="number" id="in-imputed" data-bind value="3800" step="100"></label>
-<label>Insurance A $/yr <input type="number" id="in-insA" data-bind value="1250" step="50"></label>
-<label>Sell cost % <input type="number" id="in-sellPct" data-bind value="6.5" step="0.5"></label>
-<label>Treasury parking months <input type="number" id="in-phase" data-bind value="30" step="6"></label>
-</div>
+    <!-- KPI Summary -->
+    <div class="grid-3">
+      <div class="card">
+        <div class="kpi-label">Top Projected Path</div>
+        <div class="kpi-value" id="kpiBestPath">Sell &amp; Reinvest</div>
+        <div id="kpiBestVal" style="font-size:0.9rem; color:var(--text-muted);">Calculating...</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Property A Est. Value at Transfer</div>
+        <div class="kpi-value" id="kpiTransferVal">$6,530,850</div>
+        <div style="font-size:0.85rem; color:var(--text-muted);">Stepped-up basis under IRC § 1014</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Federal Estate Exclusion (2026)</div>
+        <div class="kpi-value">$15,000,000</div>
+        <div style="font-size:0.85rem; color:var(--text-muted);">P.L. 119-21 (WFTC); CA Estate Tax: $0</div>
+      </div>
+    </div>
+
+    <!-- What Would Change the Answer (First Screen) -->
+    <div class="card" style="border-left: 4px solid var(--warn);">
+      <h2>What Would Change the Answer?</h2>
+      <div class="grid-2" style="margin-bottom:0;">
+        <div>
+          <ul style="margin:0; padding-left:18px; font-size:0.9rem;">
+            <li><strong>Prop 19 Repeal or Non-Occupancy:</strong> If the heir does not move into Property A within 1 year, Prop 19 fails and property taxes jump to full FMV (~$77,000+/yr), making <em>Rent</em> or <em>Sell</em> strongly favored.</li>
+            <li><strong>Estate Exceeds Federal Exclusion:</strong> If total estate (Property A + liquid assets) exceeds the indexed $15M exclusion, estate liquidity planning is required before holding illiquid real estate.</li>
+          </ul>
+        </div>
+        <div>
+          <ul style="margin:0; padding-left:18px; font-size:0.9rem;">
+            <li><strong>Equity vs. Real Estate Spread:</strong> If equities return &lt; 5.5% while Cupertino appreciates &gt; 4.5% with Prop 19 intact, holding Property A narrows the gap.</li>
+            <li><strong>1929 / 2008 Crash at Transfer:</strong> Immediate lump-sum equity investing faces sequence-of-returns risk; <em>Phased Investing (3M–2Y Treasuries for 24–36 mo)</em> softens crash entry but introduces <strong>reinvestment risk</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive What-If Controls -->
+    <div class="card">
+      <h2>Interactive What-If Controls</h2>
+      <div class="controls-grid">
+        <div class="control-item">
+          <label>Transfer Year <span id="lblTransferYear">2045</span></label>
+          <input type="range" id="inTransferYear" min="2040" max="2050" step="1" value="2045" />
+        </div>
+        <div class="control-item">
+          <label>Projection Horizon (Yrs) <span id="lblHorizon">20</span></label>
+          <input type="range" id="inHorizon" min="10" max="50" step="5" value="20" />
+        </div>
+        <div class="control-item">
+          <label>Property A Market Rent ($/mo) <span id="lblRent">$5,200</span></label>
+          <input type="range" id="inRent" min="4000" max="7500" step="100" value="5200" />
+        </div>
+        <div class="control-item">
+          <label>Equity Return (%/yr) <span id="lblStock">7.0%</span></label>
+          <input type="range" id="inStock" min="4.0" max="9.5" step="0.5" value="7.0" />
+        </div>
+        <div class="control-item">
+          <label>Property Growth (%/yr) <span id="lblPropGrowth">4.0%</span></label>
+          <input type="range" id="inPropGrowth" min="2.0" max="6.0" step="0.5" value="4.0" />
+        </div>
+        <div class="control-item">
+          <label>Prop 19 Primary Residence?</label>
+          <select id="inProp19">
+            <option value="true" selected>Yes (Occupy within 1 yr)</option>
+            <option value="false">No (Full Reassessment)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Comparison Table -->
+    <div class="card">
+      <h2>Pure &amp; Mixed Paths Comparison (Net Wealth at Horizon, Rounded to $10)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Path</th>
+              <th>Type</th>
+              <th>Key Tax / Rule Driver</th>
+              <th>Projected Net Wealth</th>
+            </tr>
+          </thead>
+          <tbody id="pathTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Distribution Chart -->
+    <div class="card">
+      <h2>Outcome Comparison Chart</h2>
+      <canvas id="summaryChart" height="110"></canvas>
+    </div>
+  </main>
 </div>
 
-<div class="card" style="margin-top:14px"><h2>All paths at the same dates &amp; horizons (ranges)</h2>
-<div class="scroll"><table><thead><tr><th>Path</th><th class="num">Terminal wealth — low</th><th class="num">Base</th><th class="num">High</th><th class="num">NPV of annual cash (base)</th><th class="num">Sale tax (base)</th></tr></thead><tbody id="pathTableBody"></tbody></table></div>
-<p class="mut small">Terminal wealth = cumulative cash + invested proceeds (if sold) or property equity net of sell costs (if held). Low/base/high vary home growth (1%/3%/5%) and stock return (5%/7%/9%). Reinvestment risk is shown on <a href="black-swan.html">Black Swan</a> beside every staging headline.</p></div>
+<script src="js/nav.js"></script>
+<script src="js/model.js"></script>
+<script>
+(function () {
+  let chart = null;
 
-<div class="grid g2" style="margin-top:14px">
-<div class="card"><h3>Distribution chart (terminal wealth)</h3><canvas class="chart" id="distChart"></canvas><p class="mut small">Each bar = one path; peak bin = base case. Width = low–high range. Overlap means the paths are not statistically separated — do not over-read the base ranking.</p></div>
-<div class="card"><h3>Cumulative cash — live path (base)</h3><canvas class="chart" id="cashChart"></canvas><p class="mut small">Includes imputed rent for living in A. Compare with rent/sell paths on <a href="projections.html">Projections</a>.</p></div>
-</div>
+  function update() {
+    const transferYear = parseInt(document.getElementById("inTransferYear").value, 10);
+    const horizonYears = parseInt(document.getElementById("inHorizon").value, 10);
+    const propARentMo = parseInt(document.getElementById("inRent").value, 10);
+    const stockReturn = parseFloat(document.getElementById("inStock").value) / 100;
+    const propGrowth = parseFloat(document.getElementById("inPropGrowth").value) / 100;
+    const prop19Eligible = document.getElementById("inProp19").value === "true";
 
-<div class="card" style="margin-top:14px"><h2>How to use this site</h2>
-<ol>
-<li><strong>Properties</strong> — the two houses, user tax tables (rounded), utility/insurance ranges.</li>
-<li><strong>Projections</strong> — year-by-year market value, assessed value, tax, insurance, maintenance for 50 years.</li>
-<li><strong>Paths Compared</strong> — live / rent / sell / mixed, same dates, with taxes, debt, occupancy, capital costs, liquidity.</li>
-<li><strong>Black Swan</strong> — 1929/2008/1973/2022 stress tests + phased Treasury investing path.</li>
-<li><strong>Taxes &amp; Law</strong> — estate vs. income-basis vs. property-tax (separated), Prop 19, Form 540 1% tax, deadlines timeline, enacted vs. proposed.</li>
-<li><strong>Verification</strong> — every row sourced to an official site or flagged blank. <strong>Flagged</strong> — irregularities for your review.</li>
-<li><strong>Questions &amp; Missing Info</strong> — what must be answered before any decision is reasonable, and how to discover it.</li>
-<li><strong>Suggestions</strong> — improvement ideas; choose the best path before anything is implemented.</li>
-<li><strong>Attorney &amp; CPA Brief</strong> — one-page printable sheet.</li>
-</ol>
-<p class="mut small">Pre-agreed decision rule (anti-reverse-engineering): the household should agree <em>in writing</em> what would make it choose each path <em>before</em> relying on these figures. Template on <a href="questions.html">Questions</a>.</p>
-</div>
-</div>
-<footer>TinoDash2 · Privacy-first · Placeholders only · Rounded to $10 · Sources: IRS, CA BOE, FTB, CA AG, SF Rent Board, U.S. Treasury (see Verification). Modeled figures are assumptions, not official data. Not tax/legal advice.</footer>
-<script src="assets/model.js"></script><script src="assets/app.js"></script>
-</body></html>
+    document.getElementById("lblTransferYear").textContent = transferYear;
+    document.getElementById("lblHorizon").textContent = horizonYears;
+    document.getElementById("lblRent").textContent = "$" + propARentMo.toLocaleString();
+    document.getElementById("lblStock").textContent = (stockReturn * 100).toFixed(1) + "%";
+    document.getElementById("lblPropGrowth").textContent = (propGrowth * 100).toFixed(1) + "%";
+
+    const res = TinoModel.simulatePaths({
+      transferYear, horizonYears, propARentMo, imputedRentMo: propARentMo,
+      stockReturn, propGrowth, prop19Eligible
+    });
+
+    document.getElementById("kpiTransferVal").textContent = TinoModel.fmt(res.valAtTransfer);
+
+    const rows = [
+      { name: "Sell Immediately & Lump-Sum Equities", type: "Pure", driver: "IRC § 1014 Stepped-up basis ($0 cap gain); ~5.5% selling + SCC transfer tax", val: res.sellStockFinal },
+      { name: "Sell & Phased-Invest (30m Treasuries → Equities)", type: "Mixed", driver: "Softens crash entry risk; carries reinvestment risk on 3M–2Y Treasuries", val: res.phasedFinal },
+      { name: "Live in Property A (Imputed Rent + Prop 19)", type: "Pure", driver: prop19Eligible ? "Prop 19 FBYV + $1.04M cap; saves Property B rental income" : "No Prop 19 -> Full FMV reassessment", val: res.liveFinalNet },
+      { name: "Live 2+ Years, Then Sell (IRC § 121)", type: "Mixed", driver: "IRC § 121 ($250k/$500k) excludes post-inheritance gain", val: res.liveThenSellFinal },
+      { name: "Rent Property A Long-Term", type: "Pure", driver: "Full FMV reassessment + 27.5-yr depreciation &amp; recapture risk", val: res.rentFinalNet }
+    ];
+
+    rows.sort((a, b) => b.val - a.val);
+    document.getElementById("kpiBestPath").textContent = rows[0].name.split("&")[0].trim();
+    document.getElementById("kpiBestVal").textContent = "Projected: " + TinoModel.fmt(rows[0].val);
+
+    const tbody = document.getElementById("pathTableBody");
+    tbody.innerHTML = rows.map((r, i) => `
+      <tr>
+        <td><strong>${r.name}</strong> ${i === 0 ? '<span class="badge badge-ok">Top</span>' : ''}</td>
+        <td><span class="badge badge-info">${r.type}</span></td>
+        <td>${r.driver}</td>
+        <td><strong>${TinoModel.fmt(r.val)}</strong></td>
+      </tr>
+    `).join("");
+
+    const ctx = document.getElementById("summaryChart").getContext("2d");
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: rows.map(r => r.name.replace(" (30m Treasuries → Equities)", "")),
+        datasets: [{
+          label: "Projected Net Wealth ($)",
+          data: rows.map(r => r.val),
+          backgroundColor: ["#1e40af", "#0f766e", "#3b82f6", "#64748b", "#94a3b8"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { ticks: { callback: v => "$" + (v / 1e6).toFixed(1) + "M" } } }
+      }
+    });
+  }
+
+  ["inTransferYear", "inHorizon", "inRent", "inStock", "inPropGrowth", "inProp19"].forEach(id => {
+    document.getElementById(id).addEventListener("input", update);
+    document.getElementById(id).addEventListener("change", update);
+  });
+  update();
+})();
+</script>
+</body>
+</html>

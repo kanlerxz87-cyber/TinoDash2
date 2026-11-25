@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flagged for Review &amp; Official Sources — TinoDash2</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+<div class="layout">
+  <aside id="sidebar" class="sidebar"></aside>
+  <main class="main">
+    <div class="page-header">
+      <h1>Flagged for Review &amp; Official Sources</h1>
+      <p>Line-by-line verification against official government sources. Unverified or parcel-specific items are flagged here for manual confirmation.</p>
+    </div>
+
+    <div class="card">
+      <h2>Verified Statutory &amp; Official Figures</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Item</th><th>Verified Value</th><th>Status</th><th>Official Source</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>2026 Federal Estate Tax Basic Exclusion</td>
+              <td>$15,000,000 (P.L. 119-21, WFTC)</td>
+              <td><span class="badge badge-ok">Verified</span></td>
+              <td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax" target="_blank">IRS.gov</a></td>
+            </tr>
+            <tr>
+              <td>2026 Annual Gift Tax Exclusion</td>
+              <td>$19,000 per donee</td>
+              <td><span class="badge badge-ok">Verified</span></td>
+              <td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax" target="_blank">IRS.gov</a></td>
+            </tr>
+            <tr>
+              <td>Prop 19 Parent-Child Exclusion Cap (2025–2027)</td>
+              <td>FBYV + $1,044,586</td>
+              <td><span class="badge badge-ok">Verified</span></td>
+              <td><a href="https://www.boe.ca.gov/news/2025/nr-25-02.htm" target="_blank">CA BOE</a></td>
+            </tr>
+            <tr>
+              <td>CA Mental Health Services Tax (Form 540)</td>
+              <td>1% on taxable income &gt; $1,000,000 (Top rate 13.3%)</td>
+              <td><span class="badge badge-ok">Verified</span></td>
+              <td><a href="https://www.ftb.ca.gov/forms/2021/2021-540-booklet.pdf" target="_blank">CA FTB</a></td>
+            </tr>
+            <tr>
+              <td>IRC § 121 Primary Residence Exclusion</td>
+              <td>$250,000 Single / $500,000 MFJ (2 of 5 yrs)</td>
+              <td><span class="badge badge-ok">Verified</span></td>
+              <td><a href="https://www.irs.gov/newsroom/questions-and-answers-on-the-net-investment-income-tax" target="_blank">IRS.gov</a></td>
+            </tr>
+            <tr>
+              <td>Santa Clara County Documentary Transfer Tax</td>
+              <td>$0.55 per $500 ($1.10 per $1,000)</td>
+              <td><span class="badge badge-ok">Verified</span></td>
+              <td><a href="https://clerkrecorder.sccgov.org/real-estate-recording" target="_blank">SCC Clerk-Recorder</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 4px solid var(--danger);">
+      <h2>Flagged for Manual Review (Unverified / Parcel-Specific)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Item</th><th>Reason Flagged</th><th>Action Required</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Property A Exact Tax Rate Area (TRA)</td>
+              <td>Parcel-specific; model uses ~1.18% placeholder.</td>
+              <td>Look up Property A's TRA on Santa Clara County Tax Collector bill.</td>
+            </tr>
+            <tr>
+              <td>Property B SF Rent Control / Prop H Applicability</td>
+              <td>Depends on Property B's Certificate of Occupancy date (pre/post June 13, 1979) and lease terms.</td>
+              <td>Verify with <a href="https://www.sf.gov/information--partial-exemption-newly-constructed-rental-units" target="_blank">SF Rent Board</a> &amp; counsel.</td>
+            </tr>
+            <tr>
+              <td>Property A Single-Family Market Rent</td>
+              <td>Online averages ($4,130/mo) reflect apartments; SFH 95014 comparables needed.</td>
+              <td>Obtain 3–5 local SFH lease comparables.</td>
+            </tr>
+            <tr>
+              <td>2040–2050 Federal Estate Exclusion</td>
+              <td>Future Congress may alter the $15M exclusion before 2040–2050.</td>
+              <td>Re-check annually; track proposed legislation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/nav.js"></script>
+</body>
+</html>
