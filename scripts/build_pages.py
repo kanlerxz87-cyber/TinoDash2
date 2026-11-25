@@ -489,6 +489,8 @@ def build_law_watch() -> str:
          "Net proceeds", a("rtc11911", "RTC 11911") + " · " + a("sf_transfer", "SF transfer tax")),
         ("Annually, and after any input change", "Rebuild the replay and the site; re-verify every cited anchor.",
          "Whether the recommendation moved", '<a href="crash-replay.html">Crash replay</a>'),
+        ("Automatic: monthly and on demand", "The scheduled workflow re-fetches every cited official page and re-verifies the historical dataset. A claim that can no longer be confirmed opens or updates a tracking issue instead of passing silently.",
+         "Whether any published anchor has gone stale", ext("https://github.com/kanlerxz87-cyber/TinoDash2/actions/workflows/source-recheck.yml", "Source re-check workflow")),
     ]
 
     body = (
@@ -508,7 +510,7 @@ def build_law_watch() -> str:
                   f"<ol><li>Read the enrolled text or official guidance, not a summary article.</li>"
                   f"<li>Record the effective date and the exact transfer or tax year it first applies to.</li>"
                   f"<li>Change the anchor in <code>law-watch</code> and in any page that repeats it; do not leave a stale figure in place.</li>"
-                  f"<li>Re-run <code>python3 scripts/verify_sources.py --online</code>, then rebuild the replay and the site.</li>"
+                  f"<li>Re-run <code>python3 scripts/verify_sources.py --online</code> (the scheduled <code>Source re-check</code> workflow does this monthly and files an issue when a claim stops matching), then rebuild the replay and the site.</li>"
                   f"<li>Note in the decision journal whether the ranking of the options moved.</li></ol>"
                   f'<p class="source-note">Primary entry points: {a("irs", "IRS")} · {a("leginfo", "California Legislative Information")} · '
                   f'{a("boe", "California State Board of Equalization")} · {a("ftb", "California Franchise Tax Board")} · {a("sccgov", "Santa Clara County")}.</p>')

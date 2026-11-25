@@ -381,3 +381,13 @@ and a decision on whether the repository should stay public.
 - **Browser-only engine upgrade (`app.js` + `index.html`, all household inputs blank):** Added optional Prop 19 / TRA reassessment & move-out trap, delayed-exit `IRC § 121` / `27.5-yr` MACRS & `25%/28.8% IRC § 1250` recapture / `IRC § 1031` / progressive CA Form 540 (`1% >$1M` BHST), `Form 706` / DSUE portability / prior-gifts headroom, 1929/1973/2000/2008 10-yr crash-entry replay (Lump-Sum vs 24m/36m `3M–2Y` Treasury ladder with explicit reinvestment risk), and local `FileReader` JSON import/export + dated decision note.
 - **PR:** https://github.com/kanlerxz87-cyber/TinoDash2/pull/23
 
+### Added after the first merge (deliverables still open)
+
+| Item | Status | Notes |
+|---|---|---|
+| `worksheets.html` — depreciation/recapture and estate-liquidity/portability | ✅ Built and live | Blank worksheets: 12 depreciation/recapture lines, 10 estate-liquidity/portability lines, "what these do not do", five-step order of operations. Every line carries its official rule and anchor; no figure is published or assumed. Merged in PR #25. |
+| Annual (and monthly) re-check workflow in CI | ✅ Built | `.github/workflows/source-recheck.yml` runs monthly on the 2nd and on demand: offline dataset integrity, then `--online` re-fetch of every cited page, a run summary that says what a failure means, and it opens or updates a `source-recheck` issue when a claim stops matching. Marked on the `law-watch.html` recheck calendar so the page states what runs itself. |
+| Multi-scenario projections with value/assessed-value/tax/insurance/utility lines | ⛔ **Not built, deliberately** | Publishing the scenario outputs requires publishing the inputs, which the binding policy forbids even rounded. Replaced by the browser-only calculator (blank inputs, figures stay on the visitor's device) plus the `decision-lab` synthetic surface. This is a published decision, not an omission. |
+| History purge | ⛔ **Owner action** | Unchanged. |
+
+**Note on the recheck workflow and secrets:** it uses the default `GITHUB_TOKEN` with `permissions: contents: read` plus the issue write granted by `issues: write` on the create-comment call — if the scheduled run cannot file an issue, the run summary still records the failure and the job still fails, so the signal is not lost.
