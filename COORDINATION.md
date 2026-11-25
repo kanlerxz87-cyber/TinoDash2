@@ -1,7 +1,7 @@
 # TinoDash2 coordination board
 
-**Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`, `s-a549f819`)
-**Current branch:** `arena/a549f819-tinodash2` — Arena-assigned for this session; do not rename; do not push elsewhere.
+**Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`, `s-a549f819`, `b2c54940`, `1bef2ec3`)
+**Current branch (this session):** `arena/1bef2ec3-tinodash2` — Arena-assigned; do not rename; do not push elsewhere.
 
 ## Non-negotiable privacy policy (read first)
 
@@ -48,6 +48,8 @@
 4. **PR #10 (session `arena/43306062-tinodash2`, 2026-11-25):** opened “TinoDash2 privacy-first inheritance dashboard (10 pages, interactive model, Black Swan)” containing a figure-driven site (rounded to $10) in root HTML + `assets/` + `data/`. Merge conflict with `main` (PR #9) revealed the repo privacy policy forbids household figures even rounded. **Closed unmerged**; branch force-reset to `origin/main` (`bd80845`) so the branch tip no longer serves figures. Figure-driven analysis preserved only in git-ignored `private/` (internal use, never committed). Closed-PR ref retains the figure commits until GitHub purges. **Owner must decide on history rewrite/purge including PR #10 commits and all caches.**
 5. **PR #12 (session `s-a549f819`, 2026-11-25):** user explicitly requested a full inheritance decision dashboard including rounded-to-$10 figures, projections, black-swan/phased-investing analysis, and printable briefing sheet. Session built `docs/` site with anonymized placeholders (Property A/B/Owner B), no ZIP codes/addresses/parcel IDs/names, and values rounded to nearest $10. This conflicts with the stated "no household figures even rounded" policy. Session flagged the conflict in docs/flagged.html and here. **Owner must decide whether to accept, redact, or move figures to private-only artifacts; history/purge implications apply if merged.**
 
+
+7. **Session arena/1bef2ec3 (2026-11-25):** did not re-publish the figure-bearing `docs/` dashboard after finding PR #14 had removed it. A backup copy remains in git-ignored `private/session-1bef2ec3-backup/` (local only, never committed). History is still NOT scrubbed; owner action.
 
 ## Session b2c54940 claim (2026-11-25, branch `arena/b2c54940-tinodash2`)
 
@@ -101,6 +103,31 @@
 - Insurance quotes: missing.
 - Depreciation/recapture model: missing.
 - Property B lease/local-rule compliance review: missing.
+
+## Session arena/1bef2ec3 (2026-11-25) — claim, merge with PR #14, verification
+
+**Claim:** public root site (`index.html`, `sources.md`, `FLAGGED_FOR_REVIEW.html`), `scripts/check_site.py`, this file.
+
+**What happened:** Work started on the `docs/` dashboard and the model script. Before merging, `main` had moved: PR #14 (session b2c54940) removed `docs/**` and `scripts/build_model.py` from the public tree as privacy containment. Merging would have re-published household-derived figures. This session therefore:
+1. Kept the figure-bearing `docs/` tree and `build_model.py` **only** in git-ignored `private/session-1bef2ec3-backup/` (never committed; internal use). Not in `main`.
+2. Accepted main’s removal (conflict resolved in favour of containment, not by re-adding figures).
+3. Ported only public-law corrections to the root site (no household values, ZIPs, addresses, parcel IDs, or city/neighborhood names).
+
+| Task | Status | Notes |
+|---|---|---|
+| Verify federal estate filing threshold (2026 $15,000,000) | done | IRS Estate-tax page fetched. |
+| Verify CA Form 540 line 62 (1% over $1M, “Behavioral Health Services Tax”) | done for TY2025 | FTB 2025 booklet read (chunk 11). Closes the line-62 flag in part; re-check each year. |
+| Verify SCC documentary transfer tax ($1.10 per $1,000) | done (county rate) | City conveyance tax for Property A’s city NOT confirmed — flagged. |
+| Gift exclusion $19,000 | flagged | Secondary-sourced only. |
+| Privacy scan in `check_site.py` | done | Blocks city/neighborhood names, ZIPs, street addresses, APN/parcel IDs on public files. |
+| Pages source | unchanged | Legacy Pages keeps serving `main` root (Estate Pathways). The `docs/` dashboard is NOT published. |
+
+**Irregularities / open items (arena/1bef2ec3):**
+1. **Owner decision (unchanged):** the household dashboard with rounded-to-$10 figures remains in git-ignored `private/` only. The owner's latest instruction asked for rounded figures on the site, which conflicts with the privacy containment merged in PR #14. Not resolved here; requires owner decision.
+2. Model sale cost omitted the county transfer tax (0.11%). Corrected in the private model copy. Impact on private static table ≈ $12,900 at the 2045 / 10-year base; ranking unchanged.
+3. Two inconsistent private models (build script vs inline JavaScript). Private only; open.
+4. Property-tax rate (1.18%) remains unverified. The private history implies about 1.34% (Property A) and 2.14% (Property B) of assessed value. TRA lookup pending (private).
+5. 146 table rows in the private analysis lack per-row source links. Not published.
 
 ## How future sessions work here
 
