@@ -1,15 +1,54 @@
-# COORDINATION.md — TinoDash2 Shared Task Board
+# TinoDash2 coordination board
 
-## Privacy & Verification Policy
-- **Privacy-First**: All personal identifiers are anonymized (`Property A` = Cupertino 95014, `Property B` = San Francisco 94122, `Beneficiary / Household`, `Trust / Grantor`).
-- **Rounding**: All dollar figures in property tax, assessed value, utility, insurance, and projection tables are rounded to the nearest **$10** increment.
-- **Verification**: Every statutory/official figure is linked to an official government source (`irs.gov`, `boe.ca.gov`, `ftb.ca.gov`, `clerkrecorder.sccgov.org`, `sf.gov`). Unverified or parcel-specific items are flagged on `pages/flagged.html`.
+## Session / branch constraints
 
-## Task Board
+Current integration work belongs to `arena/57bd7c20-tinodash2` and remains on this Arena-managed branch. The request's separate session-branch convention cannot be followed because the Arena session is fixed to the current branch. Previous sessions `arena/c059149b` and `arena/78b5ae8f` merged PRs #3 and #4 to `main`; their work was reviewed and preserved where safe during this integration.
 
-| Task | Status | Session | Files Touched | Notes |
-| --- | --- | --- | --- | --- |
-| Official Tax & Law Research | done | `arena/c059149b` | `pages/flagged.html`, `js/model.js` | Verified 2026 IRS $15M exclusion (P.L. 119-21), BOE Prop 19 $1,044,586 cap, FTB Form 540 1% MHST >$1M, IRC § 121, SCC $1.10/$1k transfer tax. |
-| Core Dashboard & What-If Model | in progress | `arena/c059149b` | `index.html`, `css/styles.css`, `js/model.js`, `js/charts.js` | Executive summary, "What would change the answer", interactive sliders, glossary. |
-| Subpages (Comparison, Properties, Black Swan, Timeline, Briefing, Flagged, Suggestions) | in progress | `arena/c059149b` | `pages/*.html` | Pure & mixed paths, phased Treasury investing, printable Attorney & CPA sheet, flagged items. |
-| Build, Link Check & PR/Merge | unclaimed | `arena/c059149b` | — | Verify zero broken links, push to branch, open & merge PR. |
+## Task board
+
+| Task | Status | Owner | Scope / note |
+|---|---|---|---|
+| Official tax and law research | needs review | `arena/c059149b` | Prior research merged in PR #4. Current integration checked IRS / BOE / FTB / SCO / official Legislature sources; stale or overbroad prior conclusions are not reused without review. |
+| Core dashboard and what-if model | needs review | `arena/c059149b` | Prior work merged in PR #4. New landing page replaces household-specific defaults with browser-only inputs; prior model scripts were removed and older URLs now redirect to safe sections. |
+| Subpages (comparison, properties, black swan, timeline, briefing, flagged, suggestions) | needs review | `arena/c059149b` | Prior pages merged in PR #4. Useful categories are represented in the new safe dashboard; old URLs are now generic redirects with no user figures or unsupported scenario outputs. |
+| Privacy remediation / safe public site integration | done on branch; deploy pending | `arena/57bd7c20-tinodash2` | Current branch redacts the public working tree, removes old models/styles containing figures, and keeps safe section redirects plus source links. Prior commit history is not scrubbed. |
+| Final verification, PR #5, Pages deploy | in progress | `arena/57bd7c20-tinodash2` | Rebased on latest main; local checks/privacy grep pass. Commit, update PR, verify CI, merge, and confirm Pages deployment remain. |
+
+## Privacy and verification policy
+
+- Never commit identifiable names, trust details, street addresses, parcel/APN IDs, account numbers, exact household values, leases or private tax records.
+- Public site must not publish user-submitted property prices, tax bills, rents, utility figures or ZIP codes. Earlier merged pages are treated as a privacy incident and have been redacted or replaced with safe redirects in this branch; the deployment must not use stale main files.
+- What-if calculations run only in browser memory, transmit nothing, and display values rounded to the nearest $10. No remote fonts, scripts, analytics or network submission.
+- The empty estate-inventory template is Git-ignored under `private/` and excluded from the Pages artifact. Completed inventories must remain encrypted and outside Git.
+- Public facts are linked to official sources; current law, proposals and unverifiable household facts are distinguished.
+
+## Prior public-data exposure — urgent
+
+PRs #3 and #4 merged to the public `main` before this integration. The `main` tree and prior commits contain household-provided ZIP codes, exact property estimates, rents, taxes and derived forecasts in `README.md`, `index.html`, `properties.html`, `pages/properties.html`, `assets/model.js`, `js/model.js`, `pages/briefing.html` and other files. The deployed page may have exposed these values. PR #5 must remove the figures from the current published files and publish only privacy-safe content.
+
+**Git history still retains prior merged commit objects.** A normal PR cannot erase those commits. A history purge / force-push of the default branch and any cache/search-index removal require repository-owner action and are outside this session's current-branch-only restriction. Do not claim that history has been scrubbed. This is flagged for urgent owner review.
+
+## Official source register and current verification
+
+- IRS: [2026 estate/gift tax update](https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax), [Form 706 instructions](https://www.irs.gov/instructions/i706), inherited-basis FAQ, Publications 523/544, and Section 1031 real-estate guidance.
+- California BOE: [Proposition 19](https://www.boe.ca.gov/prop19/) and [2025–2027 allowance notice](https://www.boe.ca.gov/news/2025/nr-25-02.htm). The $1,044,586 amount applies only to transfer dates Feb. 16, 2025–Feb. 15, 2027.
+- California FTB: [2025 Form 540 instructions](https://www.ftb.ca.gov/forms/2025/2025-540-instructions.html); the 1% Behavioral Health Services Tax applies above $1,000,000 taxable income for that tax year. Site sensitivity is reference-only, not a full tax calculation.
+- California State Controller: [estate tax page](https://www.sco.ca.gov/ardtax_estate_tax.html), which says no California estate return is required for deaths on or after Jan. 1, 2005 under the current framework.
+- California Legislature: [SB 284 status](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB284) and [amended text](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB284). Official page lists an active committee bill; last five-history item shown is July 14, 2025, held under submission. Treated as proposed, not enacted.
+- County and local starting points: Santa Clara County Assessor, SF Treasurer, Rent Board / DBI, official SF Elections / Prop H. Full URLs and use limits are in `sources.md` and on the site.
+
+## Verification performed on the privacy-safe implementation
+
+- `python3 scripts/check_site.py`: local pages/assets/anchors exist, every data row in public tables is source-linked, no remote scripts/styles.
+- `node --check app.js`, `git diff --check`: passed.
+- Synthetic browser-model smoke test: comparison paths, year-by-year projections and CA surtax sensitivity rendered; test values were not saved.
+- Post-rebase privacy grep against the working tree is clean: submitted prices, rents, tax-bill amounts and ZIP codes do not appear in current files. Prior Git history still contains them; a PR does not scrub history.
+- Local HTTP preview returned 200 for dashboard and Flagged for Review pages.
+
+## Known limitations / flagged items
+
+No independently verified date-of-death appraisal, parcel tax rate area, market-rent comparables, leases, legal unit records, insurance quotes, utility bills, maintenance plan, debt, depreciation/basis records, estate inventory, eligibility facts or tax-adviser estimates are available. No numeric 1929/2008 replay is published without a reproducible total-return series and method. The model is illustrative / pre-tax, omits parcel reassessment and other tax details, and does not recommend a winner. See `FLAGGED_FOR_REVIEW.html`.
+
+## Deployment / PR log
+
+PR #5: https://github.com/kanlerxz87-cyber/TinoDash2/pull/5 — open; needs integrated privacy remediation and checks. Merge and Pages deployment status pending.
