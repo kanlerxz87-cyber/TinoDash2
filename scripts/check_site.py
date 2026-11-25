@@ -18,6 +18,7 @@ REQUIRED = [
     "black-swan.html",
     "questions.html",
     "law-watch.html",
+    "worksheets.html",
     "brief.html",
     "suggestions.html",
     "FLAGGED_FOR_REVIEW.html",
