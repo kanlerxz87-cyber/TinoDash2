@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projections — TinoDash2</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="privacy-banner"><div><strong>PRIVACY-FIRST:</strong> All figures $10-rounded • Property A (95014) • Property B (94122)</div><div class="privacy-pill">Ranges, not points • 10th–90th percentile fan</div></div>
+<header class="site-header"><div class="header-inner">
+<div class="brand-row"><div><div class="brand-title">📈 Projections — Ranges, Not Points</div><div class="brand-subtitle">Same transfer dates & horizons; taxes, debt, occupancy, capital costs & liquidity included</div></div><div class="header-actions"><a class="btn btn-primary" href="briefing-sheet.html">📄 Briefing Sheet</a><a class="btn btn-outline" href="index.html">← Dashboard</a></div></div>
+<nav class="grouped-nav">
+<div class="nav-group"><span class="nav-group-label">Decide</span><a class="nav-link" href="index.html">Dashboard</a><a class="nav-link active" href="projections.html">Projections</a><a class="nav-link" href="black-swan.html">Black Swan</a></div>
+<div class="nav-group"><span class="nav-group-label">Tax & Law</span><a class="nav-link" href="tax-legal.html">Tax & Legal</a><a class="nav-link" href="operations-capital.html">Operations & Capital</a></div>
+<div class="nav-group"><span class="nav-group-label">Process</span><a class="nav-link" href="timeline-inventory.html">Timeline & Inventory</a><a class="nav-link" href="governance-suggestions.html">Governance</a></div>
+<div class="nav-group"><span class="nav-group-label">Reference</span><a class="nav-link" href="glossary.html">Glossary</a><a class="nav-link nav-flagged" href="flagged-review.html">⚠ Flagged for Review</a><a class="nav-link nav-brief" href="briefing-sheet.html">📄 Briefing Sheet</a></div>
+</nav></div></header>
+
+<main class="container">
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">📊 Multi-Horizon Ranges — All 6 Paths at Identical Dates</div><div class="card-subtitle">Baseline appreciation 4.0% (A) / 3.5% (B), inflation 2.6%, equity 7.8%, Treasury 4.2%. $10-rounded.</div></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Path</th><th class="num">2026→2056 (30-yr)</th><th class="num">2045→2075 (30-yr baseline)</th><th class="num">2045→2055 (10-yr)</th><th class="num">2045→2075 Range (P10–P90)</th></tr></thead>
+      <tbody>
+        <tr class="row-highlight"><td><strong>Path 1A Same-Year Sale</strong></td><td class="num">$16,609,060</td><td class="num">$34,995,260</td><td class="num">$11,405,300 (P50)</td><td class="num">$17,516,310 – $85,201,900</td></tr>
+        <tr><td><strong>Path 1B Phased (30m Treasuries)</strong></td><td class="num">$15,846,030</td><td class="num">$33,387,560</td><td class="num">$11,405,300 (P50)</td><td class="num">$17,516,310 – $85,201,900</td></tr>
+        <tr><td><strong>Path 4 Live-then-Sell (3yr)</strong></td><td class="num">$16,137,910</td><td class="num">$33,261,500</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td><strong>Path 5B Rent-then-1031 (7yr)</strong></td><td class="num">—</td><td class="num">$33,004,060</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td><strong>Path 3 Occupy (Prop 19)</strong></td><td class="num">—</td><td class="num">$29,166,730</td><td class="num">$10,239,610 (P50)</td><td class="num">—</td></tr>
+        <tr><td><strong>Path 2 Rent (Full Reassess)</strong></td><td class="num">—</td><td class="num">$24,643,810</td><td class="num">$9,574,630 (P50)</td><td class="num">—</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-info">Ranges replace round-number assumptions: P10–P90 fan below uses lognormal equity volatility (σ 16%) + appreciation uncertainty. Point estimates alone would hide sequence risk.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">📉 10th–90th Percentile Distribution Fan — Sell-Phased vs Occupy vs Rent (2045→2075)</div><div class="card-subtitle">Interactive SVG fan chart (data: model_output.json distribution_fan_2045_2075). Hover for values.</div></div></div>
+    <div class="chart-box">
+      <svg id="fan-chart" viewBox="0 0 900 420" width="100%" height="420" role="img" aria-label="Percentile distribution fan chart">
+        <defs><linearGradient id="fanGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2563eb" stop-opacity="0.25"/><stop offset="100%" stop-color="#2563eb" stop-opacity="0.05"/></linearGradient></defs>
+        <rect x="0" y="0" width="900" height="420" fill="#ffffff"/>
+        <text x="20" y="28" font-size="13" font-weight="700" fill="#0f172a">Terminal Wealth ($M) — 2045 to 2075</text>
+        <text x="20" y="46" font-size="11" fill="#64748b">Blue band = Sell-Phased P10–P90 • Dark line = P50 • Green = Occupy P50 • Amber = Rent P50</text>
+        <!-- Grid -->
+        <g stroke="#e2e8f0" stroke-width="1">
+          <line x1="70" y1="60" x2="860" y2="60"/><line x1="70" y1="140" x2="860" y2="140"/><line x1="70" y1="220" x2="860" y2="220"/><line x1="70" y1="300" x2="860" y2="300"/><line x1="70" y1="380" x2="860" y2="380"/>
+        </g>
+        <!-- Y labels: 0, 20M, 40M, 60M, 80M mapped to y 380..60 -->
+        <g font-size="11" fill="#64748b" font-family="monospace">
+          <text x="10" y="384">$0</text><text x="2" y="304">$20M</text><text x="2" y="224">$40M</text><text x="2" y="144">$60M</text><text x="2" y="64">$80M</text>
+        </g>
+        <!-- Fan polygon P90 top, P10 bottom: years 2045..2075 x 70..860 -->
+        <!-- P90: 6.2,11.2,17.7,26.8,39.8,58.4,85.2 ; P10: 6.2,6.3,7.4,8.9,11.1,13.9,17.5 -->
+        <polygon fill="url(#fanGrad)" stroke="#2563eb" stroke-width="1.5" points="70,340 202,318 334,292 466,258 598,218 730,148 860,60 860,312 730,338 598,362 466,370 334,376 202,378 70,340"/>
+        <!-- P50 line: 6.2,8.4,11.4,15.5,21.0,28.5,38.6 -->
+        <polyline fill="none" stroke="#1e3a8a" stroke-width="2.5" points="70,340 202,332 334,322 466,312 598,300 730,282 860,262"/>
+        <!-- Occupy P50: 6.5,8.2,10.2,12.8,16.1,20.1,25.2 -->
+        <polyline fill="none" stroke="#047857" stroke-width="2" stroke-dasharray="6,3" points="70,338 202,334 334,326 466,320 598,312 730,304 860,292"/>
+        <!-- Rent P50: 6.5,7.9,9.6,11.6,14.0,17.0,20.6 -->
+        <polyline fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="3,3" points="70,338 202,335 334,328 466,322 598,316 730,310 860,302"/>
+        <!-- X labels -->
+        <g font-size="11" fill="#64748b" text-anchor="middle">
+          <text x="70" y="402">2045</text><text x="202" y="402">2050</text><text x="334" y="402">2055</text><text x="466" y="402">2060</text><text x="598" y="402">2065</text><text x="730" y="402">2070</text><text x="860" y="402">2075</text>
+        </g>
+        <g font-size="11" fill="#0f172a"><circle cx="760" cy="90" r="5" fill="#1e3a8a"/><text x="772" y="94">Sell-Phased P50</text><circle cx="760" cy="108" r="5" fill="#047857"/><text x="772" y="112">Occupy P50</text><circle cx="760" cy="126" r="5" fill="#b45309"/><text x="772" y="130">Rent P50</text></g>
+      </svg>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">Fan widens over time: by 2075, P10 $17.5M vs P90 $85.2M (4.9× spread). Occupy/Rent P50 lines sit well below Sell P50 after 2055 — holding Cupertino real estate underperforms diversified compounding in most paths.</div>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Year</th><th class="num">Sell P10</th><th class="num">Sell P50</th><th class="num">Sell P90</th><th class="num">Occupy P50</th><th class="num">Rent P50</th></tr></thead>
+      <tbody>
+        <tr><td>2045</td><td class="num">$6,197,080</td><td class="num">$6,197,080</td><td class="num">$6,197,080</td><td class="num">$6,530,800</td><td class="num">$6,530,800</td></tr>
+        <tr><td>2050</td><td class="num">$6,307,720</td><td class="num">$8,407,110</td><td class="num">$11,205,250</td><td class="num">$8,177,590</td><td class="num">$7,907,590</td></tr>
+        <tr><td>2055</td><td class="num">$7,365,940</td><td class="num">$11,405,300</td><td class="num">$17,659,780</td><td class="num">$10,239,610</td><td class="num">$9,574,630</td></tr>
+        <tr><td>2060</td><td class="num">$8,949,260</td><td class="num">$15,472,720</td><td class="num">$26,751,360</td><td class="num">$12,821,590</td><td class="num">$11,593,110</td></tr>
+        <tr><td>2065</td><td class="num">$11,078,830</td><td class="num">$20,990,670</td><td class="num">$39,770,280</td><td class="num">$16,054,630</td><td class="num">$14,037,110</td></tr>
+        <tr><td>2070</td><td class="num">$13,874,630</td><td class="num">$28,476,470</td><td class="num">$58,445,500</td><td class="num">$20,102,900</td><td class="num">$16,996,340</td></tr>
+        <tr><td>2075</td><td class="num">$17,516,310</td><td class="num">$38,631,890</td><td class="num">$85,201,900</td><td class="num">$25,171,970</td><td class="num">$20,579,420</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">🧮 Same-Year Sale vs IRC §121 vs 27.5-Yr Depreciation & IRC §1250 Recapture / §1031</div><div class="card-subtitle">2045 transfer baseline. $10-rounded.</div></div></div>
+    <div class="grid-3">
+      <div class="kpi-box"><div class="kpi-label">Same-Year Sale (IRC §1014)</div><div class="kpi-value">$0 tax</div><div class="kpi-sub">Basis $6,531,230 = FMV; gain $0; net $6,197,080 after $334,150 costs.</div></div>
+      <div class="kpi-box"><div class="kpi-label">Live 3 Yrs → Sell (IRC §121)</div><div class="kpi-value">$500k exclusion</div><div class="kpi-sub">Gain on post-inheritance appreciation only; MFJ $500k / single $250k. Saves ~$185,500 at 37.1% combined.</div></div>
+      <div class="kpi-box"><div class="kpi-label">Rent 7 Yrs → Sell (Depreciation)</div><div class="kpi-value">$465,500 dep.</div><div class="kpi-sub">Basis 28% × FMV = $1,828,740; $66,500/yr × 7. §1250 recapture tax $195,970 at 42.1% (25% Fed + 3.8% NIIT + 13.3% CA).</div></div>
+    </div>
+    <div class="table-wrap" style="margin-top:12px;"><table>
+      <thead><tr><th>Item</th><th class="num">Same-Year (Day 1)</th><th class="num">Live-then-Sell (Yr 3)</th><th class="num">Rent-then-Sell (Yr 7, taxable)</th><th class="num">Rent-then-1031 (Yr 7)</th></tr></thead>
+      <tbody>
+        <tr><td>Gross sale price</td><td class="num">$6,531,230</td><td class="num">$7,351,000 (est.)</td><td class="num">$8,622,000 (est.)</td><td class="num">$8,622,000 → DST</td></tr>
+        <tr><td>Brokerage + transfer + recording</td><td class="num">$334,150</td><td class="num">$375,850</td><td class="num">$440,880</td><td class="num">$440,880 (deferred)</td></tr>
+        <tr><td>Capital gains tax</td><td class="num">$0</td><td class="num">Gain − $500k × 37.1%</td><td class="num">Gain × 37.1%</td><td class="num">$0 (deferred)</td></tr>
+        <tr><td>§1250 recapture tax</td><td class="num">$0</td><td class="num">$0 (no depreciation)</td><td class="num">$195,970</td><td class="num">$0 (deferred, FTB 3840)</td></tr>
+        <tr><td>Net to portfolio</td><td class="num"><strong>$6,197,080</strong></td><td class="num">$6,789,650 (est.)</td><td class="num">$7,348,150 (est.)</td><td class="num">$8,181,120 (est.)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-warn">1031 requires <strong>45-day identify / 180-day close</strong> via Qualified Intermediary; CA taxes the exchange (FTB Form 3840). Decide intent <em>before</em> listing — see <a href="tax-legal.html">Tax & Legal</a>.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">📅 Year-by-Year Projections 2026–2076 (Selected Years)</div><div class="card-subtitle">Property A FMV, FBYV, Prop 19 allowance, taxes (occupy vs rent), rent, and Property B. Full 51-row table in model_output.json.</div></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Year</th><th class="num">A FMV</th><th class="num">A FBYV</th><th class="num">Prop 19 Allow.</th><th class="num">Tax Occupy</th><th class="num">Tax Rent</th><th class="num">A Gross Rent</th><th class="num">B FMV</th><th class="num">B Tax</th></tr></thead>
+      <tbody>
+        <tr><td>2026</td><td class="num">$3,100,000</td><td class="num">$550,540</td><td class="num">$1,044,590</td><td class="num">$25,170</td><td class="num">$37,540</td><td class="num">$76,800</td><td class="num">$1,800,000</td><td class="num">$2,470</td></tr>
+        <tr><td>2031</td><td class="num">$3,771,620</td><td class="num">$607,960</td><td class="num">$1,161,210</td><td class="num">$31,800</td><td class="num">$45,570</td><td class="num">$89,400</td><td class="num">$2,136,000</td><td class="num">$2,900</td></tr>
+        <tr><td>2036</td><td class="num">$4,588,760</td><td class="num">$671,500</td><td class="num">$1,291,570</td><td class="num">$40,000</td><td class="num">$55,320</td><td class="num">$104,100</td><td class="num">$2,534,000</td><td class="num">$3,400</td></tr>
+        <tr><td>2041</td><td class="num">$5,582,920</td><td class="num">$741,570</td><td class="num">$1,437,240</td><td class="num">$50,140</td><td class="num">$67,170</td><td class="num">$121,200</td><td class="num">$3,006,000</td><td class="num">$3,990</td></tr>
+        <tr class="row-highlight"><td><strong>2045 (transfer)</strong></td><td class="num"><strong>$6,531,230</strong></td><td class="num"><strong>$801,960</strong></td><td class="num"><strong>$1,565,580</strong></td><td class="num"><strong>$59,930</strong></td><td class="num"><strong>$78,470</strong></td><td class="num"><strong>$134,670</strong></td><td class="num"><strong>$3,460,500</strong></td><td class="num"><strong>$3,530</strong></td></tr>
+        <tr><td>2051</td><td class="num">$8,264,090</td><td class="num">$903,880</td><td class="num">$1,767,920</td><td class="num">$78,040</td><td class="num">$99,100</td><td class="num">$170,500</td><td class="num">$4,266,000</td><td class="num">$4,630</td></tr>
+        <tr><td>2056</td><td class="num">$10,054,530</td><td class="num">$998,210</td><td class="num">$1,967,870</td><td class="num">$96,980</td><td class="num">$120,410</td><td class="num">$198,500</td><td class="num">$5,059,000</td><td class="num">$5,430</td></tr>
+        <tr><td>2061</td><td class="num">$12,232,880</td><td class="num">$1,102,690</td><td class="num">$2,190,330</td><td class="num">$120,260</td><td class="num">$146,320</td><td class="num">$231,100</td><td class="num">$6,000,000</td><td class="num">$6,370</td></tr>
+        <tr><td>2066</td><td class="num">$14,883,160</td><td class="num">$1,218,450</td><td class="num">$2,438,530</td><td class="num">$148,850</td><td class="num">$177,830</td><td class="num">$269,100</td><td class="num">$7,116,000</td><td class="num">$7,470</td></tr>
+        <tr><td>2071</td><td class="num">$18,107,640</td><td class="num">$1,346,230</td><td class="num">$2,714,370</td><td class="num">$183,920</td><td class="num">$216,160</td><td class="num">$313,300</td><td class="num">$8,438,000</td><td class="num">$8,760</td></tr>
+        <tr><td>2076</td><td class="num">$22,030,720</td><td class="num">$1,487,410</td><td class="num">$3,021,400</td><td class="num">$226,910</td><td class="num">$262,770</td><td class="num">$364,800</td><td class="num">$10,005,000</td><td class="num">$10,270</td></tr>
+      </tbody>
+    </table></div>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">Prop 19 allowance = $1,044,586 (2025–27) × 1.0215<sup>t</sup> (FHFA HPI). FBYV grows at 2% Prop 13 cap. SCC ad valorem 1.185% + fixed charges indexed 1.5%/yr. Source: <a href="https://www.boe.ca.gov/proptaxes/pdf/lta25009.pdf" target="_blank" rel="noopener">BOE LTA 2025/009</a>.</div>
+  </div>
+</main>
+<footer class="site-footer"><div>TinoDash2 • <a href="index.html">Dashboard</a> • <a href="black-swan.html">Black Swan</a> • <a href="tax-legal.html">Tax & Legal</a></div><div>Not tax/legal advice.</div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

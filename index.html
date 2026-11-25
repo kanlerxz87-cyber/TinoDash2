@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TinoDash2 — Cupertino / San Francisco Inheritance Decision Dashboard</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="privacy-banner">
+  <div><strong>PRIVACY-FIRST:</strong> All figures rounded to nearest <strong>$10</strong> • Property A (Cupertino 95014) • Property B (SF 94122 Outer Sunset) • No PII / APN / addresses</div>
+  <div class="privacy-pill">data/model_output.json • $10-rounded • <a href="flagged-review.html" style="color:#e0f2fe;text-decoration:underline;">Flagged for Review</a></div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <div>
+        <div class="brand-title">🏠 TinoDash2 — Inheritance Decision Dashboard</div>
+        <div class="brand-subtitle">Cupertino Property A (trust ~2040–2050, Nov 2026 FMV $3,100,000) • SF Property B already owned (Nov 2026 FMV $1,800,000, 3 units, $7,150/mo from 2 units)</div>
+      </div>
+      <div class="header-actions">
+        <a class="btn btn-primary" href="briefing-sheet.html">📄 Attorney & CPA Briefing Sheet</a>
+        <a class="btn btn-outline" href="projections.html">📈 Projections</a>
+        <a class="btn btn-outline" href="black-swan.html">🌪️ Black Swan</a>
+      </div>
+    </div>
+    <nav class="grouped-nav">
+      <div class="nav-group"><span class="nav-group-label">Decide</span><a class="nav-link active" href="index.html">Dashboard</a><a class="nav-link" href="projections.html">Projections</a><a class="nav-link" href="black-swan.html">Black Swan</a></div>
+      <div class="nav-group"><span class="nav-group-label">Tax & Law</span><a class="nav-link" href="tax-legal.html">Tax & Legal</a><a class="nav-link" href="operations-capital.html">Operations & Capital</a></div>
+      <div class="nav-group"><span class="nav-group-label">Process</span><a class="nav-link" href="timeline-inventory.html">Timeline & Inventory</a><a class="nav-link" href="governance-suggestions.html">Governance</a></div>
+      <div class="nav-group"><span class="nav-group-label">Reference</span><a class="nav-link" href="glossary.html">Glossary</a><a class="nav-link nav-flagged" href="flagged-review.html">⚠ Flagged for Review</a><a class="nav-link nav-brief" href="briefing-sheet.html">📄 Briefing Sheet</a></div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- FIRST SCREEN: What Would Change the Answer -->
+  <div class="card what-changes-card">
+    <div class="card-header"><div><div class="card-title">🎯 What Would Change the Answer — Decision-Flip Thresholds (First Screen)</div><div class="card-subtitle">Baseline: 2045 transfer, 30-yr horizon to 2075. All figures $10-rounded. Drag the What-If controls below to see if the recommendation moves.</div></div><span class="badge badge-info">Baseline Holds: Path 1A</span></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Lever</th><th>Baseline (2045 / 30-yr)</th><th>Flip Threshold</th><th>New Leader If Crossed</th><th>Why It Flips</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Property A appreciation</strong></td><td class="num">4.0%/yr</td><td class="num">&lt; 2.2%/yr sustained</td><td>Path 1B (Phased Sale) wins by larger margin; Path 3 collapses</td><td>Low appreciation + 2% Prop 13 cap means holding destroys real return; selling dominates.</td></tr>
+        <tr><td><strong>Cupertino market rent (95014)</strong></td><td class="num">$6,400/mo (2026$)</td><td class="num">&gt; $9,200/mo sustained</td><td>Path 2 (Rent) or Path 5B (Rent→1031) overtakes Path 1A</td><td>At $9,200/mo gross yield ~3.6% covers full reassessment tax ($78,470/yr at 2045) + costs.</td></tr>
+        <tr><td><strong>Equity return (nominal)</strong></td><td class="num">7.8%/yr</td><td class="num">&lt; 4.5%/yr for 10+ yrs</td><td>Path 3 (Occupy) or Path 4 (Live-then-Sell) wins</td><td>Depressed equities make imputed rent ($6,200/mo) + Prop 19 shelter more valuable.</td></tr>
+        <tr><td><strong>CA marginal rate (Form 540)</strong></td><td class="num">13.3% (12.3% + 1% MHSA &gt;$1M)</td><td class="num">&lt; 9.3% or &gt; 13.3% with $0 gain</td><td>Same-year sale stays #1; delayed sale (Path 4/5) penalized harder at 13.3%</td><td>Same-year sale has $0 gain (IRC §1014), so CA rate is irrelevant Day 1; delayed paths pay 13.3% on gain + §1250 recapture.</td></tr>
+        <tr><td><strong>Treasury staging (24–36 mo)</strong></td><td class="num">30 mo, 4.2% yield</td><td class="num">Crash in first 12 mo</td><td>Path 1B beats Path 1A by $1.2M–$3.9M (see Black Swan)</td><td>Phased 3M–2Y ladder cuts 1929 drawdown from −60.5% to −38.6% and 2008 from −35.5% to −7.9%.</td></tr>
+        <tr><td><strong>Prop 19 eligibility</strong></td><td class="num">Occupancy + BOE-19-P in 1 yr</td><td class="num">No occupancy / late filing</td><td>Path 3/4 lose $18,540/yr shelter; Path 1A/1B unaffected</td><td>Without Prop 19, occupy tax jumps $59,930 → $78,470/yr at 2045.</td></tr>
+        <tr><td><strong>Cash inheritance size</strong></td><td class="num">$4,500,000 (2026$)</td><td class="num">Gross estate &gt; $24.4M (2045, 1-spouse)</td><td>Estate tax 40% on excess; liquidity plan required</td><td>At 2045, $15M OBBBA exclusion indexed to ~$24.4M; DSUE portability doubles to ~$48.9M.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-info" style="margin-top:10px;">Sources: IRC §1014, §121, §1250, §1031; R&TC §63.2 / BOE LTA 2025/009; Rev. Proc. 2025-32 (OBBBA §70106); FTB Form 540 instructions (12.3% + 1% MHSA). See <a href="tax-legal.html">Tax & Legal</a> for full citations.</div>
+  </div>
+
+  <!-- Headline + Reinvestment Risk Side-by-Side -->
+  <div class="hero-grid">
+    <div class="card headline-card">
+      <div class="card-header"><div><div class="card-title">🏆 Headline Recommendation — Baseline 2045 → 2075 (30-yr)</div><div class="card-subtitle">Ranked at identical transfer date & horizon; taxes, debt, occupancy, capital costs & liquidity included</div></div><span class="badge badge-verified">Verified Model</span></div>
+      <div style="font-size:28px;font-weight:800;color:var(--emerald);margin:6px 0;">Path 1A (Pure): Same-Year Sale & Lump-Sum Reinvestment</div>
+      <div style="font-size:14px;color:var(--text-secondary);margin-bottom:12px;">Sell Property A in the <strong>same tax year as inheritance</strong> (full IRC §1014 stepped-up basis → <strong>$0 capital gains tax</strong>), net <strong>$6,197,080</strong> after 5% brokerage + $7,180 SCC transfer tax + $400 recording, reinvest in diversified portfolio, remain in SF Property B Unit 3.</div>
+      <div class="kpi-grid" style="grid-template-columns:1fr 1fr;margin-bottom:0;">
+        <div class="kpi-box"><div class="kpi-label">Terminal Wealth 2075</div><div class="kpi-value">$34,995,260</div><div class="kpi-sub">+ $1,607,700 ahead of #2 (Path 1B)</div></div>
+        <div class="kpi-box"><div class="kpi-label">Day-1 Net Proceeds</div><div class="kpi-value">$6,197,080</div><div class="kpi-sub">Gross FMV $6,531,230 − $334,150 costs</div></div>
+        <div class="kpi-box"><div class="kpi-label">Year-1 Property Tax</div><div class="kpi-value">$0</div><div class="kpi-sub">No holding cost after sale</div></div>
+        <div class="kpi-box"><div class="kpi-label">Liquidity</div><div class="kpi-value">100% Liquid</div><div class="kpi-sub">T+1 diversified portfolio</div></div>
+      </div>
+      <div class="callout callout-success">Why it wins: $0 tax on $6.5M gain + immediate compounding at 7.8% equity / 4.2% Treasury blended return beats 2.2% gross rental yield minus $78,470/yr full-reassessment tax drag. <a href="projections.html">See full 6-path ranking →</a></div>
+    </div>
+
+    <div class="card reinvestment-risk-card">
+      <div class="card-header"><div><div class="card-title">⚠️ Reinvestment Risk — Beside the Headline</div><div class="card-subtitle">Crash-entry / sequence risk if you invest 100% on Day 1 at a market peak</div></div><span class="badge badge-flagged">Mitigated by Path 1B</span></div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Path 1A is <span style="color:var(--rose);">High crash-entry exposure</span> — 100% equity on Day 1.</div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Black Swan Entry</th><th class="num">Lump-Sum Drawdown</th><th class="num">24m Treasury</th><th class="num">36m Treasury</th></tr></thead>
+        <tbody>
+          <tr><td>1929 Depression</td><td class="num" style="color:var(--rose);">−60.5%</td><td class="num">−47.8%</td><td class="num">−38.6%</td></tr>
+          <tr><td>2008 GFC</td><td class="num" style="color:var(--rose);">−35.5%</td><td class="num">−13.6%</td><td class="num">−7.9%</td></tr>
+          <tr><td>2000 Dot-Com</td><td class="num">−29.3%</td><td class="num">−21.8%</td><td class="num">−16.0%</td></tr>
+          <tr><td>1973 Stagflation</td><td class="num">−28.5%</td><td class="num">−14.8%</td><td class="num">−6.7%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout callout-warn"><strong>Path 1B (Mixed): Same-Year Sale + 24–36m 3M–2Y Treasury Ladder → Equities</strong> parks $6,197,080 in CA-tax-exempt Treasuries (31 U.S.C. §3124) and phases into stocks over 30 months. Costs ~$1.6M in baseline bull market ($33,387,560 vs $34,995,260) but <strong>saves $3.1M–$3.9M</strong> if a 1929/2008 crash hits in Year 1. <a href="black-swan.html">Simulate →</a></div>
+      <div style="font-size:12.5px;color:var(--text-muted);">Decision rule: If you cannot tolerate a −35% to −60% mark-to-market in the first 3 years, choose Path 1B. The IPS (see <a href="governance-suggestions.html">Governance</a>) must be written <em>before</em> proceeds arrive.</div>
+    </div>
+  </div>
+
+  <!-- KPI Strip -->
+  <div class="kpi-grid">
+    <div class="kpi-box"><div class="kpi-label">Property A FMV at Transfer (2045)</div><div class="kpi-value" id="kpi-fmv-transfer">$6,531,230</div><div class="kpi-sub">$3,100,000 (2026) × 1.04<sup>19</sup></div></div>
+    <div class="kpi-box"><div class="kpi-label">Net Same-Year Sale Proceeds</div><div class="kpi-value" id="kpi-net-sale">$6,197,080</div><div class="kpi-sub">After $326,560 brokerage + $7,180 transfer tax</div></div>
+    <div class="kpi-box"><div class="kpi-label">Yr-1 Tax — Occupy (Prop 19)</div><div class="kpi-value" id="kpi-tax-occupy">$59,930/yr</div><div class="kpi-sub">FBYV $801,960 + $1,565,580 allowance</div></div>
+    <div class="kpi-box"><div class="kpi-label">Yr-1 Tax — Rent (Full Reassess)</div><div class="kpi-value" id="kpi-tax-rent">$78,470/yr</div><div class="kpi-sub">+ $18,540/yr vs Prop 19</div></div>
+    <div class="kpi-box"><div class="kpi-label">Federal Estate Tax (2045)</div><div class="kpi-value" id="kpi-estate-tax">$0</div><div class="kpi-sub" id="kpi-estate-sub">Gross Estate: $16,916,600 vs $24,428,180 1-Spouse Excl.</div></div>
+  </div>
+
+  <!-- Interactive What-If Controls -->
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">🎛️ Interactive What-If Controls — Rebuild the Model Live</div><div class="card-subtitle">Change any input → model rebuilds instantly → banner shows whether the recommendation moved. All outputs $10-rounded.</div></div><button class="btn btn-outline" id="btn-reset-whatif" type="button">↺ Reset to Baseline (2045 / 30-yr)</button></div>
+    <form id="whatif-form" onsubmit="return false;">
+      <div class="controls-grid">
+        <div class="control-group"><label>Transfer Year <span id="val-transfer-year">2045</span></label><input type="range" id="ctrl-transfer-year" min="2035" max="2055" step="1" value="2045"></div>
+        <div class="control-group"><label>Horizon <span id="val-horizon">30 yrs</span></label><input type="range" id="ctrl-horizon" min="10" max="50" step="5" value="30"></div>
+        <div class="control-group"><label>Property A Appreciation <span id="val-apprec-a">4.0%/yr</span></label><input type="range" id="ctrl-apprec-a" min="1" max="7" step="0.1" value="4.0"></div>
+        <div class="control-group"><label>Cupertino Market Rent (95014) <span id="val-rent-a">$6,400/mo</span></label><input type="range" id="ctrl-rent-a" min="4000" max="12000" step="100" value="6400"></div>
+        <div class="control-group"><label>Imputed Rent (Live Path) <span id="val-imputed-rent">$6,200/mo</span></label><input type="range" id="ctrl-imputed-rent" min="3000" max="10000" step="100" value="6200"></div>
+        <div class="control-group"><label>Equity Return (nominal) <span id="val-equity-ret">7.8%/yr</span></label><input type="range" id="ctrl-equity-ret" min="3" max="12" step="0.1" value="7.8"></div>
+        <div class="control-group"><label>Treasury Yield (3M–2Y) <span id="val-treasury-yield">4.2%/yr</span></label><input type="range" id="ctrl-treasury-yield" min="1" max="8" step="0.1" value="4.2"></div>
+        <div class="control-group"><label>CA Marginal Rate (Form 540) <span id="val-ca-tax">13.3%</span></label><input type="range" id="ctrl-ca-tax" min="9.3" max="13.3" step="0.1" value="13.3"></div>
+        <div class="control-group"><label>Treasury Staging <span id="val-stage-months">30 mos</span></label><select id="ctrl-stage-months"><option value="0">0 mo (Lump-Sum)</option><option value="24">24 mo</option><option value="30" selected>30 mo (Baseline)</option><option value="36">36 mo</option></select></div>
+        <div class="control-group"><label>Cash Inheritance (2026$) <span id="val-cash-estate">$4,500,000</span></label><input type="range" id="ctrl-cash-estate" min="1000000" max="15000000" step="100000" value="4500000"></div>
+        <div class="control-group"><label>Prop 19 Exclusion</label><label style="font-weight:500;"><input type="checkbox" id="ctrl-prop19" checked> ON (BOE-19-P + occupancy)</label></div>
+        <div class="control-group"><label>IRC §121 Exclusion</label><label style="font-weight:500;"><input type="checkbox" id="ctrl-irc121" checked> ON ($500k MFJ / $250k single)</label></div>
+        <div class="control-group"><label>IRC §1031 Exchange</label><label style="font-weight:500;"><input type="checkbox" id="ctrl-1031" checked> ON (defer §1250 recapture)</label></div>
+      </div>
+    </form>
+    <div id="rec-move-banner" class="rec-status-banner rec-status-unchanged"><div><strong>MODEL REBUILT — RECOMMENDATION UNCHANGED:</strong> <strong>Path 1A (Pure): Same-Year Sale & Lump-Sum Reinvestment</strong> remains #1 ($34,995,260), with <strong>Path 1B (30m Treasury Staging)</strong> at $33,387,560 providing Black Swan crash protection.</div><span class="badge badge-verified">Baseline Holds</span></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Rank</th><th>Path (Pure & Mixed Compared at Same Dates/Horizons)</th><th>Type</th><th class="num">Day-1 Proceeds</th><th class="num">Yr-1 Prop A Tax</th><th class="num">Terminal Wealth</th><th class="num">vs Leader</th><th>Reinvestment / Liquidity Risk</th></tr></thead>
+      <tbody id="whatif-paths-tbody"></tbody>
+    </table></div>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">Engine: <code>assets/app.js</code> mirrors <code>scripts/build_model.py</code>. Re-run <code>python3 scripts/build_model.py</code> after changing assumptions and check whether the recommendation moved. See <a href="projections.html">Projections</a> for ranges & distribution fan.</div>
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">📋 Executive Summary — Important Details</div><div class="card-subtitle">Read this first; every number below is $10-rounded and sourced. Unverified cells are blank and flagged.</div></div></div>
+    <div class="grid-2">
+      <div>
+        <h3 style="margin-bottom:8px;">The Two Properties (Anonymized)</h3>
+        <ul style="padding-left:18px;line-height:1.7;">
+          <li><strong>Property A — Cupertino 95014 (to be inherited via trust ~2040–2050):</strong> Nov 2026 FMV <strong>$3,100,000</strong>; 2026 assessed <strong>$550,540</strong> (+2.0% BOE CCPI); parent tax ~$7,330/yr (2026 projected). Solar NEM credit −$180/yr; water $1,500/yr; insurance $1,950/yr primary / $2,450/yr landlord.</li>
+          <li><strong>Property B — SF Outer Sunset 94122 (already owned):</strong> Nov 2026 FMV <strong>$1,800,000</strong>; 2025 assessed <strong>$114,250</strong>; 2025 tax <strong>$2,440</strong>; 3 units — Units 1–2 rented <strong>$7,150/mo</strong> ($85,800/yr), Unit 3 vacant/owner-occupied. Water $4,380/yr (3 units), electricity $600/yr, insurance $3,600/yr.</li>
+          <li><strong>Key distinction:</strong> Property B is <em>already owned</em> — its low Prop 13 basis ($114,250) is an asset to protect. Moving to Cupertino and renting SF Unit 3 (~$3,500/mo) adds income; staying in SF keeps $7,150/mo + imputed rent.</li>
+        </ul>
+        <h3 style="margin:14px 0 8px;">The Three Tax Systems (Never Conflate)</h3>
+        <ul style="padding-left:18px;line-height:1.7;">
+          <li><strong>Estate tax (IRC §2001/§2010):</strong> 2026 exclusion <strong>$15,000,000</strong> per person (OBBBA §70106, Rev. Proc. 2025-32); $30M married with DSUE portability; 40% top rate. At 2045 baseline gross estate $16.9M → <strong>$0 tax</strong> (1-spouse exclusion ~$24.4M indexed).</li>
+          <li><strong>Income-tax basis (IRC §1014):</strong> Heir gets stepped-up basis = FMV at death. Same-year sale → <strong>$0 capital gains</strong>. CA Form 540 taxes gains as ordinary income: <strong>12.3% + 1% MHSA above $1M = 13.3%</strong> top rate (R&TC §17041). Delayed sale pays 13.3% + 25% §1250 recapture + 3.8% NIIT.</li>
+          <li><strong>Property-tax assessment (Prop 13 / Prop 19 R&TC §63.2):</strong> Parent FBYV $801,960 at 2045 + $1,565,580 Prop 19 allowance = $2,367,540 ceiling. Occupy → $59,930/yr; Rent (no exclusion) → $78,470/yr. SCC ad valorem ~1.185% + fixed charges.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:8px;">What the Model Says (2045 → 2075, 30-yr)</h3>
+        <ul style="padding-left:18px;line-height:1.7;">
+          <li><strong>#1 Path 1A Same-Year Sale:</strong> $34,995,260 — wins because $0 tax + compounding beats 2.2% rental yield.</li>
+          <li><strong>#2 Path 1B Phased Sale (30m Treasuries):</strong> $33,387,560 — costs $1.6M in bull market, saves $3M+ in crash.</li>
+          <li><strong>#3 Path 4 Live-then-Sell (3 yrs, Prop 19 + §121):</strong> $33,261,500 — best if you want to live in Cupertino briefly.</li>
+          <li><strong>#4 Path 5B Rent-then-1031 (7 yrs):</strong> $33,004,060 — defers recapture but suffers 7 yrs of full tax reset.</li>
+          <li><strong>#5 Path 3 Occupy Long-Term:</strong> $29,166,730 — lifestyle choice, not wealth-maximizing.</li>
+          <li><strong>#6 Path 2 Rent Long-Term:</strong> $24,643,810 hold / $17,757,090 liquidated — worst; Prop 19 reset eats ~50% of rent.</li>
+        </ul>
+        <h3 style="margin:14px 0 8px;">Before You Decide — Non-Negotiables</h3>
+        <ul style="padding-left:18px;line-height:1.7;">
+          <li>Obtain <strong>written DOD appraisal</strong> of Property A (sets §1014 basis).</li>
+          <li>Decide <strong>1031 intent in writing</strong> before selling; get advice <em>before</em> listing.</li>
+          <li>Write the <strong>Investment Policy Statement (IPS)</strong> before money arrives.</li>
+          <li>Ask now about <strong>DSUE portability & prior taxable gifts</strong> (Form 706).</li>
+          <li>Claim <strong>Prop 19 only if you will occupy</strong> — file BOE-19-P + Homeowners' Exemption within 1 year.</li>
+        </ul>
+        <div class="callout callout-warn">Full checklist: <a href="governance-suggestions.html">Missing Information & Questions Discovery Checklist</a> • Deadlines: <a href="timeline-inventory.html">Timeline</a> • One-page brief: <a href="briefing-sheet.html">Attorney & CPA Briefing Sheet</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Verified Historical Tables -->
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">📜 Verified Historical Property Tax & Assessment Tables ($10-Rounded)</div><div class="card-subtitle">Every row links to BOE CCPI LTA + County Assessor. Blank = unverified (see Flagged for Review). Effective rate = Tax ÷ Assessed.</div></div><a class="btn btn-outline" href="flagged-review.html">⚠ Audit & Irregularities</a></div>
+    <div class="grid-2">
+      <div>
+        <h3 style="margin-bottom:8px;">Property A — Cupertino 95014 (2014–2026)</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Year</th><th class="num">Tax</th><th class="num">Assessed</th><th>BOE CCPI</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr class="row-unverified"><td>2026</td><td class="num">--</td><td class="num">$550,540</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/ltacont.htm" target="_blank" rel="noopener">BOE LTA 2025/048</a> • <a href="https://www.sccassessor.org/" target="_blank" rel="noopener">SCC Assessor</a></td></tr>
+            <tr><td>2025</td><td class="num">$7,210</td><td class="num">$539,740</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta24042.pdf" target="_blank" rel="noopener">BOE LTA 2024/042</a></td></tr>
+            <tr><td>2024</td><td class="num">$7,000</td><td class="num">$529,160</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta23047.pdf" target="_blank" rel="noopener">BOE LTA 2023/047</a></td></tr>
+            <tr><td>2023</td><td class="num">$6,920</td><td class="num">$518,790</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta22055.pdf" target="_blank" rel="noopener">BOE LTA 2022/055</a></td></tr>
+            <tr><td>2022</td><td class="num">$6,760</td><td class="num">$508,610</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta21054.pdf" target="_blank" rel="noopener">BOE LTA 2021/054</a></td></tr>
+            <tr><td>2021</td><td class="num">$6,660</td><td class="num">$498,640</td><td>+1.036%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta20061.pdf" target="_blank" rel="noopener">BOE LTA 2020/061</a></td></tr>
+            <tr><td>2020</td><td class="num">$6,570</td><td class="num">$493,530</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta19042.pdf" target="_blank" rel="noopener">BOE LTA 2019/042</a></td></tr>
+            <tr><td>2019</td><td class="num">$6,570</td><td class="num">$483,850</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta18062.pdf" target="_blank" rel="noopener">BOE LTA 2018/062</a></td></tr>
+            <tr><td>2018</td><td class="num">$6,380</td><td class="num">$474,370</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta17056.pdf" target="_blank" rel="noopener">BOE LTA 2017/056</a></td></tr>
+            <tr><td>2017</td><td class="num">$6,380</td><td class="num">$465,070</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta16055.pdf" target="_blank" rel="noopener">BOE LTA 2016/055</a></td></tr>
+            <tr><td>2016</td><td class="num">$6,410</td><td class="num">$455,950</td><td>+1.525%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta15058.pdf" target="_blank" rel="noopener">BOE LTA 2015/058</a></td></tr>
+            <tr><td>2015</td><td class="num">$6,130</td><td class="num">$449,100</td><td>+1.998%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta14060.pdf" target="_blank" rel="noopener">BOE LTA 2014/060</a></td></tr>
+            <tr><td>2014</td><td class="num">$5,970</td><td class="num">$440,310</td><td>+0.454%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta13060.pdf" target="_blank" rel="noopener">BOE LTA 2013/060</a></td></tr>
+          </tbody>
+        </table></div>
+        <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px;">2026 tax <strong>--</strong> = not yet billed / unverified — left blank per verification rule. Effective rate 2025: 1.3358%.</div>
+      </div>
+      <div>
+        <h3 style="margin-bottom:8px;">Property B — SF 94122 Outer Sunset (2016–2026)</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Year</th><th class="num">Tax</th><th class="num">Assessed</th><th>BOE CCPI</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr class="row-unverified"><td>2026</td><td class="num">--</td><td class="num">--</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/ltacont.htm" target="_blank" rel="noopener">BOE LTA 2025/048</a> • <a href="https://www.sf.gov/departments--assessor-recorder" target="_blank" rel="noopener">SF Assessor</a></td></tr>
+            <tr><td>2025</td><td class="num">$2,440</td><td class="num">$114,250</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta24042.pdf" target="_blank" rel="noopener">BOE LTA 2024/042</a></td></tr>
+            <tr><td>2024</td><td class="num">$2,320</td><td class="num">$112,010</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta23047.pdf" target="_blank" rel="noopener">BOE LTA 2023/047</a></td></tr>
+            <tr><td>2023</td><td class="num">$2,180</td><td class="num">$109,810</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta22055.pdf" target="_blank" rel="noopener">BOE LTA 2022/055</a></td></tr>
+            <tr class="row-flagged"><td>2022</td><td class="num">$2,110</td><td class="num">$107,660</td><td>+2.00%*</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta21054.pdf" target="_blank" rel="noopener">BOE LTA 2021/054</a> *+1.95% computed</td></tr>
+            <tr><td>2021</td><td class="num">$2,070</td><td class="num">$105,600</td><td>+1.036%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta20061.pdf" target="_blank" rel="noopener">BOE LTA 2020/061</a></td></tr>
+            <tr><td>2020</td><td class="num">$2,200</td><td class="num">$104,510</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta19042.pdf" target="_blank" rel="noopener">BOE LTA 2019/042</a></td></tr>
+            <tr><td>2019</td><td class="num">$2,130</td><td class="num">$102,470</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta18062.pdf" target="_blank" rel="noopener">BOE LTA 2018/062</a></td></tr>
+            <tr class="row-flagged"><td>2018</td><td class="num">$2,060</td><td class="num">$100,460</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta17056.pdf" target="_blank" rel="noopener">BOE LTA 2017/056</a> ⚠ +18.4% tax jump</td></tr>
+            <tr><td>2017</td><td class="num">$1,740</td><td class="num">$98,490</td><td>+2.00%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta16055.pdf" target="_blank" rel="noopener">BOE LTA 2016/055</a></td></tr>
+            <tr class="row-flagged"><td>2016</td><td class="num">$1,680</td><td class="num">$96,560</td><td>+1.525%</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta15058.pdf" target="_blank" rel="noopener">BOE LTA 2015/058</a> ⚠ 2015 base omitted</td></tr>
+          </tbody>
+        </table></div>
+        <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px;">Flagged rows explained on <a href="flagged-review.html">Flagged for Review</a>. 2026 row blank — not in source table.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- All 6 Paths Static Comparison -->
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">⚖️ All 6 Pure & Mixed Paths — Static Baseline (2045 → 2075)</div><div class="card-subtitle">Same transfer date & horizon; taxes, debt, occupancy, capital costs & liquidity included. $10-rounded.</div></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Rank</th><th>Path</th><th>Type</th><th class="num">Day-1 Proceeds</th><th class="num">Yr-1 Tax</th><th class="num">Terminal Wealth</th><th>Liquidity</th><th>Reinvestment Risk</th></tr></thead>
+      <tbody>
+        <tr class="row-highlight"><td>#1</td><td><strong>Path 1A (Pure): Same-Year Sale & Lump-Sum</strong><div style="font-size:11.5px;color:#64748b;">Sell same tax year (§1014 $0 tax); stay in SF Unit 3</div></td><td><span class="badge badge-info">Pure Choice</span></td><td class="num">$6,197,080</td><td class="num">$0</td><td class="num"><strong>$34,995,260</strong></td><td>High (100% Liquid)</td><td>High crash-entry risk (mitigated by 1B)</td></tr>
+        <tr><td>#2</td><td><strong>Path 1B (Mixed): Sale + 24–36m Treasury Ladder → Stocks</strong><div style="font-size:11.5px;color:#64748b;">Park in 3M–2Y Treasuries 30 mo, phase into equities</div></td><td><span class="badge badge-purple">Mixed / Staged</span></td><td class="num">$6,197,080</td><td class="num">$0</td><td class="num">$33,387,560</td><td>High (Treasuries + Equities)</td><td>Low — cuts 1929/2008 drawdown +24% to +38%</td></tr>
+        <tr><td>#3</td><td><strong>Path 4 (Mixed): Live 3 Yrs (Prop 19 + §121), Then Sell</strong><div style="font-size:11.5px;color:#64748b;">BOE-19-P in 1 yr; $500k §121 exclusion on gain</div></td><td><span class="badge badge-purple">Mixed Path</span></td><td class="num">$0</td><td class="num">$59,930</td><td class="num">$33,261,500</td><td>Medium-High (after Yr 3)</td><td>Moderate — 3-yr delayed entry</td></tr>
+        <tr><td>#4</td><td><strong>Path 5B (Mixed): Rent 7 Yrs, Then §1031 Exchange</strong><div style="font-size:11.5px;color:#64748b;">27.5-yr depreciation; defer §1250 recapture via DST</div></td><td><span class="badge badge-purple">Mixed Path</span></td><td class="num">$0</td><td class="num">$78,470</td><td class="num">$33,004,060</td><td>Low (Illiquid RE/DST)</td><td>Moderate — 7 yrs full tax reset</td></tr>
+        <tr><td>#5</td><td><strong>Path 3 (Pure): Occupy Long-Term (Prop 19)</strong><div style="font-size:11.5px;color:#64748b;">Move in permanently; rent SF Unit 3 (~$3,500/mo)</div></td><td><span class="badge badge-info">Pure Choice</span></td><td class="num">$0</td><td class="num">$59,930</td><td class="num">$29,166,730</td><td>Low (2 Bay Area properties)</td><td>Low timing, high concentration/seismic</td></tr>
+        <tr><td>#6</td><td><strong>Path 2 (Pure): Rent Long-Term (Full Reassessment)</strong><div style="font-size:11.5px;color:#64748b;">No Prop 19; 100% reassessed to FMV</div></td><td><span class="badge badge-info">Pure Choice</span></td><td class="num">$0</td><td class="num">$78,470</td><td class="num">$24,643,810</td><td>Low (Single-family rental)</td><td>Severe — tax eats ~50% of rent</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-info">Same-year sale breakdown (2045): Gross FMV <strong>$6,531,230</strong> − Brokerage 5% <strong>$326,560</strong> − SCC transfer tax ($1.10/$1,000) <strong>$7,180</strong> − Recording <strong>$400</strong> − Capital gains <strong>$0</strong> (§1014) = <strong>$6,197,080</strong> net. See <a href="projections.html">Projections</a> for depreciation/recapture math.</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card"><div class="card-title">📈 Projections</div><p style="font-size:13px;color:var(--text-secondary);margin:8px 0;">Multi-horizon ranges, 10th–90th percentile fan, same-year vs §121 vs depreciation/1031, year-by-year 2026–2076.</p><a class="btn btn-primary" href="projections.html">Open Projections →</a></div>
+    <div class="card"><div class="card-title">🌪️ Black Swan</div><p style="font-size:13px;color:var(--text-secondary);margin:8px 0;">1929, 1973, 2000, 2008, M7.0 quake + 24–36m Treasury phased-investing simulator.</p><a class="btn btn-primary" href="black-swan.html">Open Black Swan →</a></div>
+    <div class="card"><div class="card-title">⚖️ Tax & Legal</div><p style="font-size:13px;color:var(--text-secondary);margin:8px 0;">Estate vs basis vs assessment; Prop 19, Prop H, Form 540 1% MHSA, enacted vs proposed law.</p><a class="btn btn-primary" href="tax-legal.html">Open Tax & Legal →</a></div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div>TinoDash2 • Privacy-first ($10 rounding) • <a href="COORDINATION.md">COORDINATION.md</a> • Model: <code>scripts/build_model.py</code> → <code>data/model_output.json</code></div>
+  <div>Not tax/legal advice. Verify with CPA/attorney. Sources linked per row.</div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

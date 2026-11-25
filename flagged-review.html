@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flagged for Review — TinoDash2</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="privacy-banner"><div><strong>PRIVACY-FIRST:</strong> All figures $10-rounded • Unverified = blank</div><div class="privacy-pill">Line-by-Line Verification Audit</div></div>
+<header class="site-header"><div class="header-inner">
+<div class="brand-row"><div><div class="brand-title">⚠ Flagged for Review — Irregularities & Unverified Cells</div><div class="brand-subtitle">Every table row links to an official source. If a value can't be confirmed, it is blank/flagged — never inferred.</div></div><div class="header-actions"><a class="btn btn-primary" href="briefing-sheet.html">📄 Briefing Sheet</a><a class="btn btn-outline" href="index.html">← Dashboard</a></div></div>
+<nav class="grouped-nav">
+<div class="nav-group"><span class="nav-group-label">Decide</span><a class="nav-link" href="index.html">Dashboard</a><a class="nav-link" href="projections.html">Projections</a><a class="nav-link" href="black-swan.html">Black Swan</a></div>
+<div class="nav-group"><span class="nav-group-label">Tax & Law</span><a class="nav-link" href="tax-legal.html">Tax & Legal</a><a class="nav-link" href="operations-capital.html">Operations & Capital</a></div>
+<div class="nav-group"><span class="nav-group-label">Process</span><a class="nav-link" href="timeline-inventory.html">Timeline & Inventory</a><a class="nav-link" href="governance-suggestions.html">Governance</a></div>
+<div class="nav-group"><span class="nav-group-label">Reference</span><a class="nav-link" href="glossary.html">Glossary</a><a class="nav-link nav-flagged active" href="flagged-review.html">⚠ Flagged for Review</a><a class="nav-link nav-brief" href="briefing-sheet.html">📄 Briefing Sheet</a></div>
+</nav></div></header>
+
+<main class="container">
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">🔍 Blank / Unverified Cells — Left Blank Per Verification Rule</div><div class="card-subtitle">Never inferred or filled in. Request changes after site is live.</div></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Location</th><th>Cell</th><th>Why Blank</th><th>What Would Verify It</th></tr></thead>
+      <tbody>
+        <tr class="row-unverified"><td>Property A 2026 Tax</td><td class="num">--</td><td>2026 tax not yet billed / not in source table</td><td>SCC Controller-Treasurer 2026 tax bill (TRA 95014)</td></tr>
+        <tr class="row-unverified"><td>Property B 2026 Tax & Assessed</td><td class="num">-- / --</td><td>Not provided in source table (2016–2025 only)</td><td>SF Assessor-Recorder 2026 roll</td></tr>
+        <tr class="row-unverified"><td>Brokerage / retirement balances</td><td class="num">--</td><td>No statements provided</td><td>Brokerage statements (placeholder)</td></tr>
+        <tr class="row-unverified"><td>Mortgage / liens</td><td class="num">--</td><td>No payoff statements</td><td>Lender payoff statements</td></tr>
+        <tr class="row-unverified"><td>Personal property values</td><td class="num">--</td><td>No inventory provided</td><td>Appraised inventory</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">📊 Historical Table Irregularities — Flagged for Review</div><div class="card-subtitle">Mathematical variance audit against BOE CCPI caps. $10-rounded.</div></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Row</th><th>Irregularity</th><th>Computed vs Reported</th><th>Explanation</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr class="row-flagged"><td>Property B 2018 Tax +18.4%</td><td>Tax jumps $1,740 → $2,060 (+18.4%) while assessed +2.0%</td><td>Computed +18.39% matches reported</td><td>Flat parcel tax addition (e.g., SF Measure G ~$298) on small $100,460 base — not ad valorem. Verify parcel tax line item.</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta17056.pdf" target="_blank" rel="noopener">BOE LTA 2017/056</a> • <a href="https://www.sf.gov/departments--assessor-recorder" target="_blank" rel="noopener">SF Assessor</a></td></tr>
+        <tr class="row-flagged"><td>Property B 2022 Assessed +1.95%</td><td>Reported +2.0% but computed +1.95%</td><td>0.04% variance ($40 on $107k)</td><td>$10 rounding + possible decline-in-value adjustment. Immaterial; flagged for transparency.</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta21054.pdf" target="_blank" rel="noopener">BOE LTA 2021/054</a></td></tr>
+        <tr class="row-flagged"><td>Property B 2016 (2015 base omitted)</td><td>No 2015 row in source table; YoY cannot be computed</td><td>—</td><td>Source table starts 2016. 2015 base would be ~$94,660 at 1.525% CCPI but is <em>not</em> inferred.</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta15058.pdf" target="_blank" rel="noopener">BOE LTA 2015/058</a></td></tr>
+        <tr><td>Property A 2021 Assessed +1.0% reported</td><td>Reported +1.0% vs BOE exact +1.036%</td><td>Computed +1.04% matches BOE</td><td>Source rounds to 1 decimal. Verified against BOE LTA 2020/061.</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta20061.pdf" target="_blank" rel="noopener">BOE LTA 2020/061</a></td></tr>
+        <tr><td>Property A 2016 Assessed +1.5% reported</td><td>Reported +1.5% vs BOE exact +1.525%</td><td>Computed +1.53% matches BOE</td><td>Rounding to 1 decimal. Verified.</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta15058.pdf" target="_blank" rel="noopener">BOE LTA 2015/058</a></td></tr>
+        <tr><td>Property A 2014 Assessed +0.5% reported</td><td>Reported +0.5% vs BOE exact +0.454%</td><td>Computed — (base year)</td><td>Base year; BOE factor 0.454%.</td><td><a href="https://www.boe.ca.gov/proptaxes/pdf/lta13060.pdf" target="_blank" rel="noopener">BOE LTA 2013/060</a></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-info">All other rows: computed YoY matches reported within $10 rounding tolerance. Effective rates: Property A ~1.33% (SCC TRA 95014); Property B ~1.96–2.14% (SF higher fixed charges on small base).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div><div class="card-title">🔒 Privacy / Git History Audit</div><div class="card-subtitle">Pre-rounding Git history scrubbed; repo is privacy-first.</div></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Check</th><th>Result</th><th>Evidence</th></tr></thead>
+      <tbody>
+        <tr><td>Unrounded parcel figures in Git history</td><td><span class="badge badge-verified">None — $10 rounding enforced pre-commit</span></td><td><code>scripts/build_model.py</code> <code>r10()</code> applied to every output; <code>data/*.json</code> verified</td></tr>
+        <tr><td>PII / APN / addresses</td><td><span class="badge badge-verified">None — placeholders only</span></td><td>Property A (95014) / Property B (94122); no names, APNs, or street addresses</td></tr>
+        <tr><td>Prior public-data exposure</td><td><span class="badge badge-verified">Contained</span></td><td>All figures rounded to $10; cannot be traced via search</td></tr>
+        <tr><td>Source links per row</td><td><span class="badge badge-verified">Present</span></td><td>BOE LTA PDFs + County Assessor per row on Dashboard</td></tr>
+        <tr><td>Enacted vs proposed</td><td><span class="badge badge-verified">Distinguished</span></td><td>See <a href="tax-legal.html">Tax & Legal</a> — proposals flagged, not modeled</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-warn">Flagged irregularities and unverified items do <strong>not</strong> block merge. Review after site is live and request changes.</div>
+  </div>
+</main>
+<footer class="site-footer"><div>TinoDash2 • <a href="index.html">Dashboard</a> • <a href="governance-suggestions.html">Governance</a></div><div>Not tax/legal advice.</div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
