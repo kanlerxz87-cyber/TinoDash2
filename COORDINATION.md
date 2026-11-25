@@ -1,7 +1,7 @@
 # TinoDash2 coordination board
 
-**Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`, `s-a549f819`)
-**Current branch:** `arena/a549f819-tinodash2` — Arena-assigned for this session; do not rename; do not push elsewhere.
+**Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`, `s-a549f819`, `b2c54940`, `1bef2ec3`)
+**Current branch (this session):** `arena/1bef2ec3-tinodash2` — Arena-assigned; do not rename; do not push elsewhere.
 
 ## Non-negotiable privacy policy (read first)
 
@@ -29,7 +29,7 @@
 | `Validate site` workflow | ✅ Fixed | Deploy job removed (legacy Pages cannot be deployed by `actions/deploy-pages`) |
 | PR #8 (figure-driven site) | ❌ Closed unmerged | Household figures in commits `993b85a`, `e0adbc6`; exposure remains via closed-PR refs; owner decision needed |
 | PR #10 (figure-driven site) | ❌ Closed unmerged | Figure-driven site; closed per privacy policy; closed-PR refs retain commits until purge |
-| PR #12 (s-a549f819 docs dashboard) | ⏳ Open/pending merge | Contains user-requested rounded/anonymized planning figures in `docs/`; **owner/privacy-policy review required** before treating as policy-compliant |
+| PR #12 (s-a549f819 docs dashboard) | ✅ Merged to main (figure-bearing `docs/`); removed from public tree by b2c54940 | Contains user-requested rounded/anonymized planning figures in `docs/`; **owner/privacy-policy review required** before treating as policy-compliant |
 | Root site (Estate Pathways) | ✅ On main | Browser-only/blank worksheets; no embedded household values |
 | Docs dashboard (`docs/`) | ⚠️ Added by s-a549f819 | User explicitly requested rounded-to-$10 anonymized figures and projections; published in `docs/`. This conflicts with the "no household figures even rounded" policy above. Flagged for owner decision. |
 | History purge (PRs #3/#4/#5/#8/#10/#12 refs as applicable) | ⛔ **Owner action** | See Exposure log |
@@ -48,6 +48,28 @@
 4. **PR #10 (session `arena/43306062-tinodash2`, 2026-11-25):** opened “TinoDash2 privacy-first inheritance dashboard (10 pages, interactive model, Black Swan)” containing a figure-driven site (rounded to $10) in root HTML + `assets/` + `data/`. Merge conflict with `main` (PR #9) revealed the repo privacy policy forbids household figures even rounded. **Closed unmerged**; branch force-reset to `origin/main` (`bd80845`) so the branch tip no longer serves figures. Figure-driven analysis preserved only in git-ignored `private/` (internal use, never committed). Closed-PR ref retains the figure commits until GitHub purges. **Owner must decide on history rewrite/purge including PR #10 commits and all caches.**
 5. **PR #12 (session `s-a549f819`, 2026-11-25):** user explicitly requested a full inheritance decision dashboard including rounded-to-$10 figures, projections, black-swan/phased-investing analysis, and printable briefing sheet. Session built `docs/` site with anonymized placeholders (Property A/B/Owner B), no ZIP codes/addresses/parcel IDs/names, and values rounded to nearest $10. This conflicts with the stated "no household figures even rounded" policy. Session flagged the conflict in docs/flagged.html and here. **Owner must decide whether to accept, redact, or move figures to private-only artifacts; history/purge implications apply if merged.**
 
+
+7. **Session arena/1bef2ec3 (2026-11-25):** did not re-publish the figure-bearing `docs/` dashboard after finding PR #14 had removed it. A backup copy remains in git-ignored `private/session-1bef2ec3-backup/` (local only, never committed). History is still NOT scrubbed; owner action.
+
+## Session b2c54940 claim (2026-11-25, branch `arena/b2c54940-tinodash2`)
+
+| Task | Status | Owner | Files / Scope | Notes |
+|---|---|---|---|---|
+| Contain prior public-data exposure (remove household-derived figures from public tree) | done (history NOT scrubbed; owner action) | b2c54940 | `docs/**` (removed from public tree), `scripts/build_model.py` (moved to `private/`), `.gitignore` | Figure-bearing dashboard quarantined to git-ignored `private/`. Git history NOT rewritten; purge still an owner action. |
+| Verify official anchors (IRS, CA BOE, CA SCO, CA FTB) | done (partial: rows listed in sources.md log) | b2c54940 | `sources.md`, `verification.html`-linked pages | Only rows actually re-fetched are marked verified. |
+| Private analysis annex (rounded to $10, local only) | done (local only; not committed) | b2c54940 | `private/ANALYSIS_ANNEX.md` (git-ignored, never committed) | Not published. |
+| Public site, README, validator | done | b2c54940 | root `*.html`, `README.md`, `scripts/check_site.py` | No household figures, names, ZIPs, addresses, parcel IDs. |
+
+
+### Session b2c54940 log (2026-11-25)
+
+- Removed `docs/` (figure-bearing dashboard, merged from PR #12) and `scripts/build_model.py` from the public tree. Copies kept in git-ignored `private/`. Figures remain in Git history.
+- Generated `private/ANALYSIS_ANNEX.md` (local only, $10-rounded, assumptions labeled). Not published.
+- Re-fetched official sources: IRS What's New (verified $15,000,000, P.L. 119-21); BOE LTA 2025/009 (verified $1,044,586); SCO estate-tax pages (verified no CA estate return for deaths on/after 1/1/2005; the old SCO link was dead and replaced); SFMTA Prop H page (states approved; certified count not checked); LEGINFO SB 284 (held in committee, not enacted).
+- Corrected flagged item: Prop H described as "approved" with a percentage; now marked as official approval statement plus preliminary, uncertified tallies.
+- Flagged non-official mirror (officialdata.org) used for black-swan index anchors.
+- Irregularities: history not scrubbed; SCO prior link dead; Form 540 line 62 unconfirmed; parcel TRA/rate unverified; no insurance/utility/rent verification; `docs/` path will 404 after deploy.
+- PR: https://github.com/kanlerxz87-cyber/TinoDash2/pull/14 (validate check passed; mergeable). Merge method: merge commit. Pages deploy result: see final check recorded by the next session.
 ## Session s-a549f819 task board
 
 | Task | Status | Owner | Files / Scope | Notes |
@@ -81,6 +103,36 @@
 - Insurance quotes: missing.
 - Depreciation/recapture model: missing.
 - Property B lease/local-rule compliance review: missing.
+
+## Session arena/1bef2ec3 (2026-11-25) — claim, merge with PR #14, verification
+
+**Claim:** public root site (`index.html`, `sources.md`, `FLAGGED_FOR_REVIEW.html`), `scripts/check_site.py`, this file.
+
+**What happened:** Work started on the `docs/` dashboard and the model script. Before merging, `main` had moved: PR #14 (session b2c54940) removed `docs/**` and `scripts/build_model.py` from the public tree as privacy containment. Merging would have re-published household-derived figures. This session therefore:
+1. Kept the figure-bearing `docs/` tree and `build_model.py` **only** in git-ignored `private/session-1bef2ec3-backup/` (never committed; internal use). Not in `main`.
+2. Accepted main’s removal (conflict resolved in favour of containment, not by re-adding figures).
+3. Ported only public-law corrections to the root site (no household values, ZIPs, addresses, parcel IDs, or city/neighborhood names).
+
+| Task | Status | Notes |
+|---|---|---|
+| Verify federal estate filing threshold (2026 $15,000,000) | done | IRS Estate-tax page fetched. |
+| Verify CA Form 540 line 62 (1% over $1M, “Behavioral Health Services Tax”) | done for TY2025 | FTB 2025 booklet read (chunk 11). Closes the line-62 flag in part; re-check each year. |
+| Verify SCC documentary transfer tax ($1.10 per $1,000) | done (county rate) | City conveyance tax for Property A’s city NOT confirmed — flagged. |
+| Gift exclusion $19,000 | flagged | Secondary-sourced only. |
+| Privacy scan in `check_site.py` | done | Blocks city/neighborhood names, ZIPs, street addresses, APN/parcel IDs on public files. |
+| Pages source | unchanged | Legacy Pages keeps serving `main` root (Estate Pathways). The `docs/` dashboard is NOT published. |
+
+**Merge and deploy record (arena/1bef2ec3):**
+- PR #15 (`arena/1bef2ec3-tinodash2` → `main`) merged with a merge commit (`6b9d27c`) on 2026-11-25. The first merge attempt failed because `main` had moved after PR #14. Resolved as described above and pushed.
+- Validate site: `pass` (run 45625194192). Pages build for `6b9d27c`: `built`. Live check (cache-busted fetch) shows the Property A wording and no Cupertino text.
+- Pages source is unchanged: legacy build from `main /`. The `docs/` dashboard is not published.
+
+**Irregularities / open items (arena/1bef2ec3):**
+1. **Owner decision (unchanged):** the household dashboard with rounded-to-$10 figures remains in git-ignored `private/` only. The owner's latest instruction asked for rounded figures on the site, which conflicts with the privacy containment merged in PR #14. Not resolved here; requires owner decision.
+2. Model sale cost omitted the county transfer tax (0.11%). Corrected in the private model copy. Impact on private static table ≈ $12,900 at the 2045 / 10-year base; ranking unchanged.
+3. Two inconsistent private models (build script vs inline JavaScript). Private only; open.
+4. Property-tax rate (1.18%) remains unverified. The private history implies about 1.34% (Property A) and 2.14% (Property B) of assessed value. TRA lookup pending (private).
+5. 146 table rows in the private analysis lack per-row source links. Not published.
 
 ## How future sessions work here
 
