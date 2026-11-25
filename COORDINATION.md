@@ -1,6 +1,6 @@
 # TinoDash2 coordination board
 
-**Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`, `s-a549f819`)
+**Last updated:** 2026-11-25 (session `arena/08a8afe5-tinodash2` — active; prior sessions b2c54940, s-a549f819, 43306062, 349fb457)
 **Current branch:** `arena/a549f819-tinodash2` — Arena-assigned for this session; do not rename; do not push elsewhere.
 
 ## Non-negotiable privacy policy (read first)
@@ -25,14 +25,39 @@
 
 | Item | Status | Notes |
 |---|---|---|
-| Legacy Pages serving `main` root | ✅ Live (as of prior check) | `https://kanlerxz87-cyber.github.io/TinoDash2/`; legacy builder from main root |
+| Legacy Pages serving `main` root | ✅ Live | `https://kanlerxz87-cyber.github.io/TinoDash2/`; legacy builder from main root |
 | `Validate site` workflow | ✅ Fixed | Deploy job removed (legacy Pages cannot be deployed by `actions/deploy-pages`) |
 | PR #8 (figure-driven site) | ❌ Closed unmerged | Household figures in commits `993b85a`, `e0adbc6`; exposure remains via closed-PR refs; owner decision needed |
 | PR #10 (figure-driven site) | ❌ Closed unmerged | Figure-driven site; closed per privacy policy; closed-PR refs retain commits until purge |
-| PR #12 (s-a549f819 docs dashboard) | ✅ Merged to main (figure-bearing `docs/`); removed from public tree by b2c54940 | Contains user-requested rounded/anonymized planning figures in `docs/`; **owner/privacy-policy review required** before treating as policy-compliant |
+| PR #12 (s-a549f819 docs dashboard) | ✅ Merged 2026-11-25 13:20 UTC, then `docs/` removed from public tree by b2c54940 (PR #14) under the older stricter policy | Rounded/anonymized planning figures; owner decision recorded below resolves the conflict |
+| PR #13/#14 (b2c54940 privacy containment) | ✅ Merged | Removed figure-bearing `docs/` + `scripts/build_model.py` from public tree; verified official anchors; history NOT scrubbed (owner action) |
 | Root site (Estate Pathways) | ✅ On main | Browser-only/blank worksheets; no embedded household values |
-| Docs dashboard (`docs/`) | ⚠️ Added by s-a549f819 | User explicitly requested rounded-to-$10 anonymized figures and projections; published in `docs/`. This conflicts with the "no household figures even rounded" policy above. Flagged for owner decision. |
-| History purge (PRs #3/#4/#5/#8/#10/#12 refs as applicable) | ⛔ **Owner action** | See Exposure log |
+| Docs dashboard (`docs/`) | ⚠️ Rebuild + feature upgrade in progress (arena/08a8afe5) | Rebuilt per owner decision recorded below (rounded to $10, placeholders only) with: phased-investing crash tests, Monte Carlo distribution chart, what-if controls, decision log, §121/transfer-tax/depreciation modeling, Prop 19 allowance forward model, Prop H parcel tax, five-year capex plan |
+| Pages source switch to `/docs` | 🔧 In progress (arena/08a8afe5) | So the live URL serves the full docs dashboard (owner asked for one live site with all findings) |
+| History purge (PRs #3/#4/#5/#8/#10/#12 refs) | ⛔ **Owner action** | See Exposure log |
+
+## Owner policy decision recorded 2026-11-25 (supersedes the stricter figure ban)
+
+The repository owner's instruction of 2026-11-25 explicitly resolves the previously flagged conflict:
+
+- **Decision figures ARE wanted in the published dashboard, rounded to the nearest $10** ("Costs and numbers should be used but rounded to the nearest $10 increments … so that it cannot be traced back to the source or traced online through search, and should be reported in any decision analysis").
+- **Personal information remains prohibited in public outputs and on the site**: no names, no street addresses, no ZIP codes, no parcel/APN IDs, no account numbers, no exact unrounded public-record values. Placeholders (Property A / Property B / Owner B) only.
+- Household-supplied tables are published only in rounded-to-$10 form. Any figure not verifiable from an official source is left blank and flagged as unverified (never inferred).
+
+## Session arena/08a8afe5-tinodash2 task board
+
+| Task | Status | Owner | Files / Scope | Notes |
+|------|--------|-------|---------------|-------|
+| Claim coordination + record owner figure decision | done | arena/08a8afe5 | COORDINATION.md | Owner decision recorded 2026-11-25; supersedes figure ban. |
+| Switch Pages source to `/docs` (API) | in progress | arena/08a8afe5 | repo settings (Pages) | Fallback if API fails: root redirect page in PR. |
+| Official-source verification pass (fetch pages) | in progress | arena/08a8afe5 | docs/sources.html, sources.md | IRS estate tax 2026, BOE Prop 19 + allowance, FTB 540 BHST, SCC transfer tax/TRA, SF transfer tax, SFMTA Prop H, Treasury, HUD FMR, CA DOI. |
+| Model upgrade: phased crash tests, Monte Carlo, mixed paths, §121, transfer tax, depreciation/recapture, imputed rent, Prop 19 forward, Prop H, five-year capex, sensitivities, decision log | in progress | arena/08a8afe5 | scripts/build_model.py, docs/data/model.json | Rounded to $10; recommendation movement vs PR #12 model recorded. |
+| Site upgrade: 13 pages, what-if controls, distribution chart, grouped nav, printable briefing | pending | arena/08a8afe5 | docs/*.html, docs/js/app.js, docs/css/style.css | Every table row carries a source link; unverified values blank+flagged. |
+| check_site.py extension (docs/ validation + privacy grep) | pending | arena/08a8afe5 | scripts/check_site.py, scripts/privacy_check.py | Runs in CI. |
+| PR, merge, deploy verification, board closeout | pending | arena/08a8afe5 | PR + COORDINATION.md | Merge without waiting for approval; confirm Pages build. |
+
+Session scopes: b2c54940 owns root `*.html`, `README.md`, `.gitignore` containment work; arena/08a8afe5 owns `docs/**`, `scripts/build_model.py`, `scripts/check_site.py`, `scripts/privacy_check.py`, `sources.md`, `COORDINATION.md` (board), and Pages settings. Requests to touch a file outside scope go here, not in the other session's files. No other session is currently active; do not start a task marked in progress above without logging a handoff here.
+
 
 ## Exposure log (verbatim, append-only)
 
