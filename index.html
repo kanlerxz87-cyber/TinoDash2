@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TinoDash2 — Estate &amp; Property Inheritance Decision Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="layout">
+  <aside id="sidebar" class="sidebar"></aside>
+  <main class="main">
+    <div class="page-header">
+      <h1>Executive Summary &amp; What-If Decision Model</h1>
+      <p>Property A (Cupertino, 95014 — Trust Inheritance 2040–2050) &amp; Property B (San Francisco, 94122 — Currently Owned 3-Unit)</p>
+    </div>
+
+    <div class="privacy-banner">
+      <strong>Privacy-First &amp; $10-Rounded:</strong> All personal identifiers are anonymized. All dollar figures in tables and projections are rounded to the nearest $10 increment to prevent parcel-level tracing.
+    </div>
+
+    <!-- KPI Summary -->
+    <div class="grid-3">
+      <div class="card">
+        <div class="kpi-label">Top Projected Path</div>
+        <div class="kpi-value" id="kpiBestPath">Sell &amp; Reinvest</div>
+        <div id="kpiBestVal" style="font-size:0.9rem; color:var(--text-muted);">Calculating...</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Property A Est. Value at Transfer</div>
+        <div class="kpi-value" id="kpiTransferVal">$6,530,850</div>
+        <div style="font-size:0.85rem; color:var(--text-muted);">Stepped-up basis under IRC § 1014</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Federal Estate Exclusion (2026)</div>
+        <div class="kpi-value">$15,000,000</div>
+        <div style="font-size:0.85rem; color:var(--text-muted);">P.L. 119-21 (WFTC); CA Estate Tax: $0</div>
+      </div>
+    </div>
+
+    <!-- What Would Change the Answer (First Screen) -->
+    <div class="card" style="border-left: 4px solid var(--warn);">
+      <h2>What Would Change the Answer?</h2>
+      <div class="grid-2" style="margin-bottom:0;">
+        <div>
+          <ul style="margin:0; padding-left:18px; font-size:0.9rem;">
+            <li><strong>Prop 19 Repeal or Non-Occupancy:</strong> If the heir does not move into Property A within 1 year, Prop 19 fails and property taxes jump to full FMV (~$77,000+/yr), making <em>Rent</em> or <em>Sell</em> strongly favored.</li>
+            <li><strong>Estate Exceeds Federal Exclusion:</strong> If total estate (Property A + liquid assets) exceeds the indexed $15M exclusion, estate liquidity planning is required before holding illiquid real estate.</li>
+          </ul>
+        </div>
+        <div>
+          <ul style="margin:0; padding-left:18px; font-size:0.9rem;">
+            <li><strong>Equity vs. Real Estate Spread:</strong> If equities return &lt; 5.5% while Cupertino appreciates &gt; 4.5% with Prop 19 intact, holding Property A narrows the gap.</li>
+            <li><strong>1929 / 2008 Crash at Transfer:</strong> Immediate lump-sum equity investing faces sequence-of-returns risk; <em>Phased Investing (3M–2Y Treasuries for 24–36 mo)</em> softens crash entry but introduces <strong>reinvestment risk</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive What-If Controls -->
+    <div class="card">
+      <h2>Interactive What-If Controls</h2>
+      <div class="controls-grid">
+        <div class="control-item">
+          <label>Transfer Year <span id="lblTransferYear">2045</span></label>
+          <input type="range" id="inTransferYear" min="2040" max="2050" step="1" value="2045" />
+        </div>
+        <div class="control-item">
+          <label>Projection Horizon (Yrs) <span id="lblHorizon">20</span></label>
+          <input type="range" id="inHorizon" min="10" max="50" step="5" value="20" />
+        </div>
+        <div class="control-item">
+          <label>Property A Market Rent ($/mo) <span id="lblRent">$5,200</span></label>
+          <input type="range" id="inRent" min="4000" max="7500" step="100" value="5200" />
+        </div>
+        <div class="control-item">
+          <label>Equity Return (%/yr) <span id="lblStock">7.0%</span></label>
+          <input type="range" id="inStock" min="4.0" max="9.5" step="0.5" value="7.0" />
+        </div>
+        <div class="control-item">
+          <label>Property Growth (%/yr) <span id="lblPropGrowth">4.0%</span></label>
+          <input type="range" id="inPropGrowth" min="2.0" max="6.0" step="0.5" value="4.0" />
+        </div>
+        <div class="control-item">
+          <label>Prop 19 Primary Residence?</label>
+          <select id="inProp19">
+            <option value="true" selected>Yes (Occupy within 1 yr)</option>
+            <option value="false">No (Full Reassessment)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Comparison Table -->
+    <div class="card">
+      <h2>Pure &amp; Mixed Paths Comparison (Net Wealth at Horizon, Rounded to $10)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Path</th>
+              <th>Type</th>
+              <th>Key Tax / Rule Driver</th>
+              <th>Projected Net Wealth</th>
+            </tr>
+          </thead>
+          <tbody id="pathTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Distribution Chart -->
+    <div class="card">
+      <h2>Outcome Comparison Chart</h2>
+      <canvas id="summaryChart" height="110"></canvas>
+    </div>
+  </main>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/model.js"></script>
+<script>
+(function () {
+  let chart = null;
+
+  function update() {
+    const transferYear = parseInt(document.getElementById("inTransferYear").value, 10);
+    const horizonYears = parseInt(document.getElementById("inHorizon").value, 10);
+    const propARentMo = parseInt(document.getElementById("inRent").value, 10);
+    const stockReturn = parseFloat(document.getElementById("inStock").value) / 100;
+    const propGrowth = parseFloat(document.getElementById("inPropGrowth").value) / 100;
+    const prop19Eligible = document.getElementById("inProp19").value === "true";
+
+    document.getElementById("lblTransferYear").textContent = transferYear;
+    document.getElementById("lblHorizon").textContent = horizonYears;
+    document.getElementById("lblRent").textContent = "$" + propARentMo.toLocaleString();
+    document.getElementById("lblStock").textContent = (stockReturn * 100).toFixed(1) + "%";
+    document.getElementById("lblPropGrowth").textContent = (propGrowth * 100).toFixed(1) + "%";
+
+    const res = TinoModel.simulatePaths({
+      transferYear, horizonYears, propARentMo, imputedRentMo: propARentMo,
+      stockReturn, propGrowth, prop19Eligible
+    });
+
+    document.getElementById("kpiTransferVal").textContent = TinoModel.fmt(res.valAtTransfer);
+
+    const rows = [
+      { name: "Sell Immediately & Lump-Sum Equities", type: "Pure", driver: "IRC § 1014 Stepped-up basis ($0 cap gain); ~5.5% selling + SCC transfer tax", val: res.sellStockFinal },
+      { name: "Sell & Phased-Invest (30m Treasuries → Equities)", type: "Mixed", driver: "Softens crash entry risk; carries reinvestment risk on 3M–2Y Treasuries", val: res.phasedFinal },
+      { name: "Live in Property A (Imputed Rent + Prop 19)", type: "Pure", driver: prop19Eligible ? "Prop 19 FBYV + $1.04M cap; saves Property B rental income" : "No Prop 19 -> Full FMV reassessment", val: res.liveFinalNet },
+      { name: "Live 2+ Years, Then Sell (IRC § 121)", type: "Mixed", driver: "IRC § 121 ($250k/$500k) excludes post-inheritance gain", val: res.liveThenSellFinal },
+      { name: "Rent Property A Long-Term", type: "Pure", driver: "Full FMV reassessment + 27.5-yr depreciation &amp; recapture risk", val: res.rentFinalNet }
+    ];
+
+    rows.sort((a, b) => b.val - a.val);
+    document.getElementById("kpiBestPath").textContent = rows[0].name.split("&")[0].trim();
+    document.getElementById("kpiBestVal").textContent = "Projected: " + TinoModel.fmt(rows[0].val);
+
+    const tbody = document.getElementById("pathTableBody");
+    tbody.innerHTML = rows.map((r, i) => `
+      <tr>
+        <td><strong>${r.name}</strong> ${i === 0 ? '<span class="badge badge-ok">Top</span>' : ''}</td>
+        <td><span class="badge badge-info">${r.type}</span></td>
+        <td>${r.driver}</td>
+        <td><strong>${TinoModel.fmt(r.val)}</strong></td>
+      </tr>
+    `).join("");
+
+    const ctx = document.getElementById("summaryChart").getContext("2d");
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: rows.map(r => r.name.replace(" (30m Treasuries → Equities)", "")),
+        datasets: [{
+          label: "Projected Net Wealth ($)",
+          data: rows.map(r => r.val),
+          backgroundColor: ["#1e40af", "#0f766e", "#3b82f6", "#64748b", "#94a3b8"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { ticks: { callback: v => "$" + (v / 1e6).toFixed(1) + "M" } } }
+      }
+    });
+  }
+
+  ["inTransferYear", "inHorizon", "inRent", "inStock", "inPropGrowth", "inProp19"].forEach(id => {
+    document.getElementById(id).addEventListener("input", update);
+    document.getElementById(id).addEventListener("change", update);
+  });
+  update();
+})();
+</script>
+</body>
+</html>
