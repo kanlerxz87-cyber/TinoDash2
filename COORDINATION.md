@@ -602,3 +602,40 @@ in the gates). This session's branch was rebased onto `d5012f5` with the conflic
 All checks green after the merge: check_site (12 required pages), privacy gate (38 files),
 node --check (app.js, calculator.js, data/model.js, data/render.js), smoke_calculator,
 verify_sources (offline), decision-lab 55/55.
+
+### Second rebase addendum — a69037f0 (2026-11-25, later the same day)
+
+Main moved again (PRs #29/#30, `arena-e4e062ed`): the root is now a 13-page figure-driven
+dashboard (owner-instruction record), with the earlier editions preserved at `companion/`
+(figure-free) and `companion/estate-pathways/` (the da762c26 figure edition), a merged
+validator/privacy gate across all editions, and the "privacy incident" (raw owner values and
+the Property A city name in published files) fixed by that session. This branch was rebased
+onto `c60ed28` under the same protocol — their work preserved, mine fitted:
+
+- `figures.html` + `scripts/build_figures.py` kept as the independent audit model, refitted to
+  the new structure: nav mirrors the root dashboard, cross-links remapped (war-room /
+  crash-replay / law-watch / brief now `companion/*` or `taxes.html`; flag page = `flagged.html`),
+  the black-swan.html injection dropped (that page is owned by the root dashboard build), and
+  the +$10 privacy jitter adopted for values whose $10-rounded form equals the raw record value
+  ($493,530 → $493,540, $6,130 → $6,140, $1,740 → $1,750) exactly as published on
+  properties.html.
+- check_site.py = e4e062ed's merged gate + figures.html added to REQUIRED/index-must-link +
+  the owner $10-rounding rule re-added (statutory whitelist now covers the Prop 19 allowance
+  and HUD's published FMR amounts $4,602/$5,010; preserved `companion/`+`docs/` findings are
+  warnings, consistent with the row-link treatment of preserved editions). privacy_check.py =
+  their gate + word-boundary/decimal-guarded literal matching + the dual selftest (leaks caught
+  AND compliant rounded output left clean).
+- Live-page rounding fixes under the owner rule: the quoted CDI FAIR-plan average shown as
+  ≈$2,918 is published as ≈$2,920 on properties.html/sources.html/sources.md.
+  companion/brief.html link paths corrected (../figures.html) after the edition split.
+- flagged.html gains a compact addendum section: two-model reconciliation pointer, Property B
+  transfer-compliance gap (sewer lateral / permits / unit 3), preserved-edition unrounded
+  aggregator quotes (gate warnings). Their irregularity log already covers the 2018 Property B
+  tax-jump anomaly, the TRA manual-reading gap, the SF transfer-tax cliff, and SB 284 status.
+- COORDINATION.md, sources.md, research/SOURCE_LOG.md conflict resolutions kept every parallel
+  entry (both sides) throughout.
+
+All gates green on the merged tree: check_site (15 required pages, 98 scanned, preserved-edition
+warnings only), privacy gate (101 files, 0 findings; selftest 3/3 + clean-check), node --check
+(app.js, data/render.js, data/model.js, companion/calculator.js, companion/estate-pathways app +
+render), smoke_calculator, verify_sources (offline), decision-lab 55/55.

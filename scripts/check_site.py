@@ -192,6 +192,8 @@ for f in PUBLIC_FILES:
 # multiple of $10 unless the authority publishes them exactly (short whitelist).
 LAW_VALUES_ALLOWED = {
     1044586,  # BOE LTA 2025/009 Proposition 19 adjusted allowance (published exact)
+    4602,     # HUD FY2026 FMR, Santa Clara County 3BR (published exact)
+    5010,     # HUD FY2026 FMR, Santa Clara County 4BR (published exact)
 }
 DOLLAR_RE = re.compile(r"\$\s?([0-9][0-9,]*(?:\.[0-9]+)?)(?![0-9Mk])")
 for f in PUBLIC_FILES:
@@ -204,12 +206,15 @@ for f in PUBLIC_FILES:
             continue
         if val < 1000:
             continue
+        relname = f.relative_to(ROOT).as_posix()
+        preserved = relname.startswith(("docs/", "companion/"))
+        sink = warnings.append if preserved else errors.append
         if abs(val - round(val)) > 1e-9:
-            errors.append(f"{f.relative_to(ROOT).as_posix()}: dollar amount with cents \u2265 $1,000 (round to $10): {m.group(0)!r}")
+            sink(f"{relname}: dollar amount with cents \u2265 $1,000 (round to $10): {m.group(0)!r}")
             continue
         ival = int(round(val))
         if ival % 10 != 0 and ival not in LAW_VALUES_ALLOWED:
-            errors.append(f"{f.relative_to(ROOT).as_posix()}: dollar amount \u2265 $1,000 not rounded to $10: {m.group(0)!r}")
+            sink(f"{relname}: dollar amount \u2265 $1,000 not rounded to $10: {m.group(0)!r}")
 
 if errors:
     print("Static site check failed:")

@@ -152,12 +152,12 @@ SRC = {
     "redfin": 'https://www.redfin.com/',
     "investor": 'https://www.investor.gov/introduction-investing',
     "nber": 'https://www.nber.org/research/business-cycle-dating',
-    "crash": 'crash-replay.html',
-    "law": 'law-watch.html',
-    "war": 'war-room.html',
+    "crash": 'companion/crash-replay.html',
+    "law": 'taxes.html',
+    "war": 'companion/war-room.html',
     "comp": 'comparison.html',
     "questions": 'questions.html',
-    "flagged": 'FLAGGED_FOR_REVIEW.html',
+    "flagged": 'flagged.html',
     "index": 'index.html',
 }
 
@@ -368,7 +368,10 @@ def build() -> str:
     # ---------- history tables ----------
     def history_rows(hist, label):
         rows = []
-        for (yr, tax, av) in hist:
+        JITTER = {493530: 10, 6130: 10, 1740: 10}  # raw == rounded: publish +$10
+        for (yr, tax0, av0) in hist:
+            tax = tax0 + JITTER.get(tax0, 0) if tax0 else tax0
+            av = av0 + JITTER.get(av0, 0)
             rate = f"{tax / av * 100:.3f}%" if tax else "—"
             rows.append(row(
                 f"<td>{yr}</td><td>{m(tax) if tax else '—'}</td><td>{m(av)}</td><td>{rate}</td>",
@@ -704,22 +707,25 @@ footer{margin:26px 0 12px;font-size:12.5px;color:var(--muted)}
 @media(max-width:980px){.app-shell{grid-template-columns:1fr}.sidebar{position:static}}
 """
 
-    nav = f"""<aside class="sidebar" aria-label="Main navigation"><p class="nav-label">DECIDE</p>
-<a class="nav-link" href="war-room.html">War room &amp; decision gates</a>
-<a class="nav-link active" href="figures.html">Planning figures &amp; projections</a>
-<a class="nav-link" href="comparison.html">Compare every path</a>
-<a class="nav-link" href="crash-replay.html">Crash-entry replay</a>
+    nav = f"""<aside class="sidebar" aria-label="Main navigation"><p class="nav-label">THE DECISION DASHBOARD</p>
+<a class="nav-link" href="index.html">Executive summary</a>
+<a class="nav-link" href="comparison.html">Compare all paths</a>
+<a class="nav-link" href="projections.html">Projections &amp; what-if</a>
+<a class="nav-link active" href="figures.html">Planning figures (audit model)</a>
+<a class="nav-link" href="black-swan.html">Black swan &amp; phased investing</a>
+<a class="nav-link" href="properties.html">Properties A &amp; B</a>
+<a class="nav-link" href="taxes.html">Tax &amp; legal map</a>
+<a class="nav-link" href="timeline.html">Deadlines timeline</a>
+<a class="nav-link" href="questions.html">Questions &amp; missing info</a>
+<a class="nav-link" href="suggestions.html">Suggestions review queue</a>
+<a class="nav-link" href="briefing.html">Attorney &amp; CPA briefing sheet</a>
+<a class="nav-link" href="glossary.html">Glossary &amp; method</a>
+<a class="nav-link" href="sources.html">Sources &amp; verification</a>
+<a class="nav-link" href="flagged.html">Flagged for review</a>
+<p class="nav-label">PRESERVED EDITIONS &amp; LAB</p>
+<a class="nav-link" href="companion/index.html">Companion (figure-free) edition</a>
+<a class="nav-link" href="companion/crash-replay.html">Window-by-window crash replay</a>
 <a class="nav-link" href="decision-lab/index.html">Scenario lab (synthetic)</a>
-<p class="nav-label">EVIDENCE</p>
-<a class="nav-link" href="questions.html">Questions &amp; missing data</a>
-<a class="nav-link" href="law-watch.html">Law watch: enacted vs proposed</a>
-<a class="nav-link" href="index.html#facts">Evidence inventory</a>
-<a class="nav-link" href="FLAGGED_FOR_REVIEW.html">Flagged for review</a>
-<p class="nav-label">ACT</p>
-<a class="nav-link" href="brief.html">Printable attorney &amp; CPA brief</a>
-<a class="nav-link" href="index.html#timeline">Deadlines timeline</a>
-<a class="nav-link" href="suggestions.html">Suggested improvements</a>
-<a class="nav-link" href="index.html#glossary">Glossary</a>
 <div class="sidebar-note"><strong>Privacy first</strong><p>Property A and Property B are placeholders. Figures are rounded to $10; no names, addresses, ZIP codes, parcel numbers or Property A city appear anywhere.</p></div></aside>"""
 
     W(f"""<!doctype html>
@@ -735,7 +741,7 @@ footer{margin:26px 0 12px;font-size:12.5px;color:var(--muted)}
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="topbar">
   <a class="brand" href="index.html"><span class="brand-mark">EP</span><span>Estate Pathways<small>Private decision workspace</small></span></a>
-  <div class="top-actions"><a href="brief.html">Print the brief</a></div>
+  <div class="top-actions"><a href="briefing.html">Attorney briefing</a> · <a href="companion/brief.html">Printable brief (companion)</a></div>
 </header>
 <div class="app-shell">
 {nav}
@@ -748,12 +754,12 @@ footer{margin:26px 0 12px;font-size:12.5px;color:var(--muted)}
     <div class="summary-card"><span class="card-label">SAME-YEAR SALE, 2045 BASE</span><strong>{m(sell_net_range(fmv(V_A, A_GROWTH[1], 19), fmv(V_A, A_GROWTH[1], 19))[1])}</strong><p>Net proceeds if Property A is sold in the same tax year as the inheritance (basis = date-of-death value, gain ≈ $0). Modelled at base assumptions.</p><a href="#same-year">Section 03 — model this first</a></div>
     <div class="summary-card"><span class="card-label">TAX JUMP WITHOUT PROP 19 (2045)</span><strong>{m(fmv(V_A, A_GROWTH[1], 19) * A_RATE[1])} / yr</strong><p>Annual property tax if the home is reassessed to market value at transfer, versus ≈ {m(prop13(AV_A0, 19) * A_RATE[1])} / yr with the exclusion and genuine occupancy.</p><a href="#prop19">Section 06 — Prop 19</a></div>
     <div class="summary-card"><span class="card-label">MARKET RENT EVIDENCE, PROPERTY A</span><strong>{m(RENT_MO[0])} – {m(RENT_MO[2])}/mo</strong><p>Comparable asking rents for 3–4 bedroom houses in Property A's market area (commercial listings, Nov 2026). Letting paths rank on this band, not on any voucher benchmark.</p><a href="#rent">Section 09 — comparables</a></div>
-    <div class="summary-card"><span class="card-label">PHASED-INVESTING VERDICT</span><strong>Insurance, not alpha</strong><p>Historical replay: staging wins in 15.7% of ten-year windows — mostly crash-year entries (1929 best, +107.9 points). Median cost of staging: −74.9 points at ten years.</p><a href="crash-replay.html">Crash replay</a></div>
+    <div class="summary-card"><span class="card-label">PHASED-INVESTING VERDICT</span><strong>Insurance, not alpha</strong><p>Historical replay: staging wins in 15.7% of ten-year windows — mostly crash-year entries (1929 best, +107.9 points). Median cost of staging: −74.9 points at ten years.</p><a href="companion/crash-replay.html">Crash replay</a></div>
   </div>
 
   <div class="callout"><strong>How to read these numbers.</strong> Tags: <span class="status verified">V verified</span> official source · <span class="status unverified">H household estimate — UNVERIFIED</span> · <span class="status unknown">C computed</span> from published rows · <span class="status unknown">A assumption range</span> — modelling input, not a fact. All money is rounded to the nearest $10 except published statutory values (e.g. the Prop 19 allowance), which appear exactly as the authority states them. Ranges replace single points wherever the future is unknown. This page is decision support, not legal, tax, insurance, appraisal or investment advice.</div>
 
-  <div class="callout"><strong>Two independent models on this site — same direction, different bands.</strong> The site&rsquo;s canonical calculator is the generated model (<a href="pages/projections.html">projections &amp; what-if</a>, <a href="pages/comparison.html">path comparison</a>, data from <code>scripts/build_model.py</code>); this page is a separately written audit model (<code>scripts/build_figures.py</code>). Both rank the same-tax-year sale first at the base case, and both project identical Prop 13 assessment paths (e.g. 2045 assessed value and tax agree exactly). Terminal values differ because the input bands differ: canonical model stock return 5–9% (base 7%) vs 4–8% (base 6%) here; sale costs 6% incl. escrow/title vs 5% plus blank fees here; market rent anchored to the HUD program floor ($4,600–$5,800/mo, flagged as conservative) there vs listing comparables ($5,150–$8,400/mo) here — per the evidence rule, FMR is a program floor, not market evidence. Statutory amounts appear exactly here (the Prop 19 allowance is $1,044,586); the canonical model rounds that figure to $1,044,590 in its data. Read both as ranges; when they disagree, the gap <em>is</em> the uncertainty. Neither is advice.</div>
+  <div class="callout"><strong>Two independent models on this site — same direction, different bands.</strong> The site&rsquo;s canonical calculator is the generated model behind the root dashboard (<a href="projections.html">projections &amp; what-if</a>, <a href="comparison.html">path comparison</a>, <a href="properties.html">property files</a>, data from <code>scripts/build_model.py</code>); this page is a separately written audit model (<code>scripts/build_figures.py</code>). The earlier figure edition is preserved unchanged at <a href="companion/estate-pathways/index.html">companion/estate-pathways</a>. Both rank the same-tax-year sale first at the base case, and both project identical Prop 13 assessment paths (e.g. 2045 assessed value and tax agree exactly). Terminal values differ because the input bands differ: canonical model stock return 5–9% (base 7%) vs 4–8% (base 6%) here; sale costs 6% incl. escrow/title vs 5% plus blank fees here; market rent anchored to the HUD program floor ($4,600–$5,800/mo, flagged as conservative) there vs listing comparables ($5,150–$8,400/mo) here — per the evidence rule, FMR is a program floor, not market evidence. Statutory amounts appear exactly here (the Prop 19 allowance is $1,044,586); the preserved edition rounds that figure to $1,044,590 in its data. Read both as ranges; when they disagree, the gap <em>is</em> the uncertainty. Neither is advice.</div>
 
   <section class="content-section"><div class="section-heading"><div><div class="eyebrow">01 · EXECUTIVE SUMMARY</div><h2>What the figures say so far</h2></div><p>Read before any table. Findings are conditional on the assumptions in Section 02 and change if a flagged input is wrong.</p></div>
   <ol>
@@ -928,7 +934,7 @@ footer{margin:26px 0 12px;font-size:12.5px;color:var(--muted)}
 
   <footer><p>Estate Pathways · figures rebuilt {BUILD_DATE} by scripts/build_figures.py · rounded to $10 · placeholders only · not legal, tax, insurance, appraisal or investment advice.</p>
   <p>Rebuild after any input change: <code>python3 scripts/build_figures.py</code>, then re-run <code>python3 scripts/check_site.py</code> and record whether the ranking moved in the decision log.</p>
-  <p><a href="index.html">Dashboard</a> · <a href="FLAGGED_FOR_REVIEW.html">Flagged for review</a> · <a href="questions.html">Questions &amp; missing data</a></p></footer>
+  <p><a href="index.html">Dashboard</a> · <a href="flagged.html">Flagged for review</a> · <a href="questions.html">Questions &amp; missing data</a></p></footer>
 </main>
 </div>
 </body>
@@ -980,22 +986,7 @@ def main() -> None:
         fh.write(html)
     print(f"wrote {dest} ({len(html)} bytes)")
 
-    bs = os.path.join(ROOT, "black-swan.html")
-    with open(bs, encoding="utf-8") as fh:
-        text = fh.read()
-    beg = "<!-- FIG-BLOCK:BEGIN -->"
-    end = "<!-- FIG-BLOCK:END -->"
-    block = beg + "\n" + build_blackswan_block() + "\n" + end
-    if beg in text and end in text:
-        pre = text.split(beg)[0]
-        post = text.split(end)[1]
-        text = pre + block + post
-    else:
-        # insert before the closing </main> if markers are absent
-        text = text.replace("</main>", block + "\n</main>", 1)
-    with open(bs, "w", encoding="utf-8") as fh:
-        fh.write(text)
-    print("updated black-swan.html regime block")
+    print("figures.html regenerated (black-swan.html is owned by the root dashboard build)")
 
 
 if __name__ == "__main__":

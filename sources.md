@@ -98,7 +98,7 @@ Not reachable in-session: https://www.boe.ca.gov/proptaxes/prop19.htm ; https://
 | U.S. Treasury | [Daily par yield curve (XML feed)](https://home.treasury.gov/resource-center/data-chart-center/interest-rates) | Nov 24, 2026: 3M 4.36%, 1Y 4.59%, 2Y 4.63% (phased-path parking anchor). |
 | HUD | [Fair Market Rents system](https://www.huduser.gov/portal/datasets/fmr.html) | Santa Clara County FY2026 3BR FMR ≈$4,602 (mirrored values; official API not automation-fetchable — confirm at the official tool). FLOOR benchmark only. |
 | CA SCO | [Estate tax](https://www.sco.ca.gov/ardtax_estate_tax.html) | No CA estate return for deaths on/after Jan 1, 2005 (current framework). |
-| CDI | [insurance.ca.gov](https://www.insurance.ca.gov/) | Consumer resources; statewide FAIR Plan dwelling-fire average ≈$2,918 (2025 experience year, CDI data call, via secondary summary); admitted HO-3 average ≈$1,480. Not parcel quotes. |
+| CDI | [insurance.ca.gov](https://www.insurance.ca.gov/) | Consumer resources; statewide FAIR Plan dwelling-fire average ≈$2,920 (2025 experience year, CDI data call, via secondary summary); admitted HO-3 average ≈$1,480. Not parcel quotes. |
 
 ### Verification log (session e4e062ed, 2026-11-25)
 - Fetched directly and verified: IRS What's New ($15M/PL 119-21); BOE Prop 19 + NR-25-02 ($1,044,586); Treasury daily yield XML (Nov 24, 2026 values); SFMTA Prop H terms; Leginfo SB-284 (held in committee).
