@@ -419,3 +419,11 @@ and a decision on whether the repository should stay public.
 | History purge | ⛔ **Owner action** | Unchanged. |
 
 **Note on the recheck workflow and secrets:** it uses the default `GITHUB_TOKEN` with `permissions: contents: read` plus the issue write granted by `issues: write` on the create-comment call — if the scheduled run cannot file an issue, the run summary still records the failure and the job still fails, so the signal is not lost.
+
+## Session arena/da762c26 — integration complete (2026-11-25)
+
+- **REBASE CONTENTION RESOLVED**: main moved twice during this session (PRs #17–#26 landed, incl. a full root-level site: war-room/crash-replay/worksheets/brief/questions/law-watch/suggestions + `decision-lab/` engine + CI gates). At rebase, 7 files conflicted (index.html, app.js, README.md, FLAGGED_FOR_REVIEW.html, questions.html, suggestions.html, law-watch.html). Resolution = **kept main's versions of all seven** (their content is full-page and nav-consistent; nothing of theirs discarded), then re-added the figure layer additively: `data/render.js` (rounded-figure renderers + what-if calculator, loaded only by `pages/*` and `black-swan.html`), a rounded-figure strip + figure-page links on `index.html`, and addendum rows on `FLAGGED_FOR_REVIEW.html`.
+- **PRIVACY GATE POLICY UPDATE (`scripts/privacy_check.py`)**: per the owner's explicit instruction, the gate now ALLOWS figures rounded to $10 and keeps banning identifiers (names/street/ZIP/APN/account patterns) and the exact unrounded values (550537, 539743). This supersedes the stricter reading used by earlier sessions (recorded here, preserved in git history). Same policy in `scripts/check_site.py`.
+- **Owner figure policy on record (2026-11-25)**: rounded-$10 figures published in the analysis; PII banned; exacts only in git-ignored `private/ANALYSIS_ANNEX.md`.
+- **PR**: opened from `arena/da762c26-tinodash2` → `main` with summary, sources, flagged items; merged without waiting per instructions. Result recorded below by the merge step.
+- **History purge**: `research/HISTORY_PURGE_RUNBOOK.md` — owner action (orphan rewrite + GitHub Support cache purge); not possible from inside a sandbox. Flagged on the site's Flagged page.

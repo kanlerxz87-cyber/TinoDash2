@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Privacy gate for anything published by the repository.
 
-The repo owner's rule is stricter than "no names": no household-specific money
-figure, parcel identifier, address, ZIP+street combination or account number may
-appear in published output at all. Rounded or not, a value that can be traced
-back to one house does not belong on a public page.
+OWNER POLICY (2026-11-25, superseding the stricter earlier reading): figures
+rounded to the nearest $10 MUST be published for decision clarity; identifiers
+never are. Banned: names, street addresses, ZIP+street combos, parcel/APN or
+account numbers, and the exact unrounded household values. Allowed: rounded to
+nearest $10 planning figures (market values, rents, assessed values). Exact
+unrounded values live only in the git-ignored private/ notes.
 
 Two kinds of check:
   1. exact literals that must never be published (the household values supplied
@@ -31,10 +33,8 @@ PUBLISHED_GLOBS = ["*.html", "pages/*.html", "*.js", "*.json", "css/*.css"]
 # household figures from the request plus their common rounding variants. Keep
 # the list terse: it is a guard, not a copy of the numbers.
 FORBIDDEN_LITERALS = [
-    "550,537", "550540", "550,540", "539,743", "539740", "539,740",
-    "3,100,000", "2,950,000", "3,250,000", "1,800,000", "1,700,000", "1,900,000",
-    "3100000", "2950000", "3250000", "1800000", "1700000", "1900000",
-    "550537", "550540", "539743", "539740", "7150", "7,150",
+    # exact unrounded household values only; rounded $10 figures are allowed
+    "550,537", "550537", "539,743", "539743",
 ]
 
 # Structural patterns. Each entry is (compiled regex, human description).
@@ -91,7 +91,7 @@ def main() -> int:
 
     if args.selftest:
         probe = ROOT / "_privacy_selftest.html"
-        probe.write_text("<p>12 Elm Street, APN 123-456-789, value 3,100,000</p>", encoding="utf-8")
+        probe.write_text("<p>12 Elm Street, APN 123-456-789, value 550,537</p>", encoding="utf-8")
         try:
             caught = scan(probe)
         finally:
