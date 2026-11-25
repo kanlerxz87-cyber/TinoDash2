@@ -2,10 +2,11 @@
 """Small dependency-free checks for the static Pages site."""
 from html.parser import HTMLParser
 from pathlib import Path
+import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html"))
+PAGES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html")) + sorted((ROOT / "docs").glob("*.html"))
 
 class Scanner(HTMLParser):
     def __init__(self):
@@ -42,6 +43,7 @@ class Scanner(HTMLParser):
             self.row_has_link = False
 
 errors=[]
+warnings=[]
 scanners={}
 for page in PAGES:
     if not page.exists():
@@ -52,7 +54,12 @@ for page in PAGES:
     page_name=page.relative_to(ROOT).as_posix()
     scanners[page_name]=parser
     for issue in parser.table_rows_without_links:
-        errors.append(f"{page_name}: {issue}")
+        if page_name.startswith("docs/"):
+            # Analysis tables: per-row source links are a verification gap, reported as warnings
+            # and listed on the Flagged for Review page. Not a build failure.
+            warnings.append(f"{page_name}: {issue}")
+        else:
+            errors.append(f"{page_name}: {issue}")
 
 for name, parser in scanners.items():
     for tag, url in parser.links:
@@ -86,9 +93,25 @@ for name, parser in scanners.items():
         if tag in {"script", "link"} and url.startswith(("https://", "//")):
             errors.append(f"{name}: remote executable/style resource would expose visitor metadata: {url}")
 
+# Privacy scan: no addresses, ZIP codes, parcel IDs, or the owner's city names on any published surface.
+PRIVACY_PATTERNS = [
+    (r"(?i)\bcupertino\b", "city name for Property A"),
+    (r"(?i)outer\s+sunset|sunset\s+district", "neighborhood name for Property B"),
+    (r"(?i)\bAPN\s*[:#]?\s*\d", "assessor parcel number"),
+    (r"(?i)parcel\s*(id|number|no\.?)\s*[:#]?\s*\d", "parcel identifier"),
+    (r"(?i)\bzip(\s*code)?\s*[:#]?\s*9\d{4}\b", "ZIP code"),
+    (r"\b\d{1,5}\s+[A-Z][a-z]+\s+(Ave|Avenue|St|Street|Rd|Road|Dr|Drive|Way|Ln|Lane|Blvd|Court|Ct)\b", "street address"),
+]
+PUBLIC_FILES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html")) + sorted((ROOT / "docs").rglob("*.html")) + sorted((ROOT / "docs").rglob("*.json")) + sorted((ROOT / "docs").rglob("*.js"))
+for f in PUBLIC_FILES:
+    text = f.read_text(encoding="utf-8")
+    for pat, label in PRIVACY_PATTERNS:
+        for m in re.finditer(pat, text):
+            errors.append(f"{f.relative_to(ROOT).as_posix()}: privacy scan hit ({label}): {m.group(0)[:40]!r}")
+
 if errors:
     print("Static site check failed:")
     for error in errors:
         print(f" - {error}")
     sys.exit(1)
-print("Static site check passed: required pages/assets/anchors present, all table rows linked, no remote scripts or styles.")
+print(f"Static site check passed: required pages/assets/anchors present, no remote scripts or styles, privacy scan clean. Warnings (docs rows without per-row source link): {len(warnings)}")

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T12:54:32.335802+00:00",
+  "generated_at": "2026-11-25T13:33:12.562701+00:00",
   "assumptions": {
     "as_of_date": "2026-11-25",
     "rounding_rule": "All displayed currency values rounded to nearest $10; rates shown as percentages with up to 2 decimals. Historical source-table values are rounded before display.",
@@ -101,8 +101,10 @@
       "step_up_basis_general_rule": true,
       "property_tax_base_rate_estimate": 0.0118,
       "prop13_annual_assessed_increase_cap": 0.02,
-      "prop19_value_limit_over_fbyv": 1000000,
+      "prop19_value_limit_over_fbyv": 1044586,
       "prop19_filing_homeowner_exemption_days": 365,
+      "county_documentary_transfer_tax_rate": 0.0011,
+      "sale_broker_other_placeholder_rate": 0.055,
       "prop19_claim_filing_years": 3
     }
   },
@@ -320,8 +322,8 @@
       "transfer_year": 2045,
       "horizon_years": 10,
       "end_asset_value": 8406820,
-      "cumulative_cash_cost": 1186990,
-      "net_position_est": 7219830,
+      "cumulative_cash_cost": 1192250,
+      "net_position_est": 7214570,
       "liquidity": "Low (wealth tied in home)",
       "key_risks": "Prop 19 eligibility/file deadlines; maintenance/capex shocks; concentration risk; opportunity cost vs. reinvestment",
       "tax_notes": "If Prop 19 exclusion applies, assessed value may carry over within value cap; primary residence exclusion may apply on later sale if ownership/use tests met. Verify eligibility."
@@ -344,10 +346,10 @@
       "transfer_year": 2045,
       "horizon_years": 10,
       "sale_price_est": 5959750,
-      "sale_costs_est": 328290,
-      "net_proceeds_est": 5631470,
-      "end_portfolio_value": 11077950,
-      "net_position_est": 11077950,
+      "sale_costs_est": 334840,
+      "net_proceeds_est": 5624910,
+      "end_portfolio_value": 11065050,
+      "net_position_est": 11065050,
       "liquidity": "High (liquid portfolio, subject to market/tax)",
       "key_risks": "Market sequence risk; reinvestment risk; tax drag; behavioral risk; loss of real-asset/inflation hedge; transaction costs",
       "tax_notes": "Step-up in basis may reduce/eliminate capital gain if sold soon after death; state/federal taxes still depend on timing, income, and basis documentation. Price transfer tax/recording fees into net."
@@ -359,10 +361,10 @@
       "horizon_years": 10,
       "live_years_before_sale": 2,
       "sale_price_est": 6384240,
-      "sale_costs_est": 351630,
-      "cumulative_holding_cost_before_sale": 211720,
-      "end_portfolio_value": 10001370,
-      "net_position_est": 10001370,
+      "sale_costs_est": 358660,
+      "cumulative_holding_cost_before_sale": 212770,
+      "end_portfolio_value": 9987500,
+      "net_position_est": 9987500,
       "liquidity": "Low then high after sale",
       "key_risks": "Timing risk; eligibility for primary-residence exclusion depends on ownership/use tests; Prop 19 implications; sequence risk after sale",
       "tax_notes": "Primary-residence exclusion rules (IRC 121) require meeting ownership and use tests; confirm with CPA. Step-up basis and holding period matter."
@@ -373,9 +375,9 @@
       "transfer_year": 2045,
       "horizon_years": 10,
       "sale_price_est": 5959750,
-      "net_proceeds_est": 5631470,
-      "end_portfolio_value": 10174780,
-      "net_position_est": 10174780,
+      "net_proceeds_est": 5624910,
+      "end_portfolio_value": 10162940,
+      "net_position_est": 10162940,
       "liquidity": "High (liquid; staged market exposure)",
       "key_risks": "Cash drag/reinvestment risk during holding period; inflation erosion; missed upside if markets rise; still exposed to market risk after phasing",
       "tax_notes": "Treasury interest taxable; capital gains/dividends taxed as realized. Reinvestment and yield changes are material risks."
@@ -506,7 +508,7 @@
       "date_or_window": "Same tax year as inheritance (if considering sale)",
       "item": "Model sale-in-same-tax-year scenario before deciding",
       "who": "Owner B + CPA",
-      "why": "Timing affects gain, basis documentation, CA taxable income, and 1% Mental Health Services Tax exposure above $1M.",
+      "why": "Timing affects gain, basis documentation, CA taxable income, and 1% Behavioral Health Services Tax (formerly Mental Health Services Tax) exposure above $1M.",
       "source_type": "FTB/IRS planning"
     },
     {

@@ -9,7 +9,7 @@
 
 <section class="section card">
   <h2>What-if controls (simplified planning model)</h2>
-  <p class="small muted">Adjust assumptions to see how the base 2045 transfer / 10-year horizon comparison moves. Outputs round to nearest $10. This is a sensitivity tool, not a forecast.</p>
+  <p class="small muted">Adjust assumptions to see how the base 2045 transfer / 10-year horizon comparison moves. Sale cost default now includes the verified 0.11% county documentary transfer tax (previously omitted). Outputs round to nearest $10. This is a sensitivity tool, not a forecast.</p>
   <div class="grid grid-3">
     <div><label for="wApp">Property A appreciation (%/yr)</label><input id="wApp" type="range" min="1" max="7" step="0.5" value="3.5" oninput="runWhatIf()"><div class="small muted" id="wAppV">3.5%</div></div>
     <div><label for="wStock">Stock return nominal (%/yr)</label><input id="wStock" type="range" min="2" max="12" step="0.5" value="7" oninput="runWhatIf()"><div class="small muted" id="wStockV">7.0%</div></div>
@@ -19,7 +19,7 @@
     <div><label for="wProp19">Prop 19 exclusion for live-in path</label><select id="wProp19" onchange="runWhatIf()"><option value="yes" selected>Assume eligible/filed</option><option value="no">Not eligible/not filed</option></select><div class="small muted">Affects property-tax estimate only in this simplified model.</div></div>
   </div>
   <div class="grid grid-3" style="margin-top:12px;">
-    <div><label for="wSellCost">Sale cost (% of price)</label><input id="wSellCost" type="range" min="3" max="8" step="0.25" value="5.5" oninput="runWhatIf()"><div class="small muted" id="wSellCostV">5.5%</div></div>
+    <div><label for="wSellCost">Sale cost (% of price)</label><input id="wSellCost" type="range" min="3" max="8" step="0.01" value="5.61" oninput="runWhatIf()"><div class="small muted" id="wSellCostV">5.61%</div></div>
     <div><label for="wTaxDrag">Annual portfolio tax drag (%)</label><input id="wTaxDrag" type="range" min="0" max="2" step="0.1" value="0.5" oninput="runWhatIf()"><div class="small muted" id="wTaxDragV">0.5%</div></div>
     <div><label for="wHorizon">Horizon after 2045 transfer (years)</label><input id="wHorizon" type="range" min="5" max="30" step="5" value="10" oninput="runWhatIf()"><div class="small muted" id="wHorizonV">10 years</div></div>
   </div>
@@ -28,7 +28,7 @@
 
 <section class="section card">
   <h2>Base comparison (2045 transfer, 10-year horizon, base assumptions)</h2>
-  <p class="small muted">Base: 3.5% appreciation, 7% nominal stock return, 4% Treasury parking yield, 5.5% sale costs, 0.5% annual portfolio tax drag, $5,500/mo rent placeholder, Prop 19 eligible for live-in. All rounded to nearest $10.</p>
+  <p class="small muted">Base: 3.5% appreciation, 7% nominal stock return, 4% Treasury parking yield, 5.61% sale costs (5.50% broker/other placeholder + 0.11% county documentary transfer tax), 0.5% annual portfolio tax drag, $5,500/mo rent placeholder, Prop 19 eligible for live-in. All rounded to nearest $10.</p>
   <div class="table-wrap"><table id="cmpTable">
     <thead><tr><th>Path</th><th class="num">End value / portfolio</th><th class="num">Cumulative costs / drag</th><th class="num">Net position (illustrative)</th><th>Liquidity</th><th>Reinvestment / sequence risk</th><th>Key tax/cost notes</th></tr></thead>
     <tbody id="cmpBody"></tbody>
@@ -37,6 +37,8 @@
 
 <section class="section card">
   <h2>Same transfer dates and horizons (base assumptions)</h2>
+<div class="alert alert-warn small"><strong>Correction note (2026-11-25):</strong> The static table below was generated before the verified 0.11% county transfer tax was added to sale costs. Sell-path figures are overstated by about $12,900 at the 2045 / 10-year base (≈0.1%). Ranking is unchanged. Use the what-if controls above for corrected live values.</div>
+
   <p class="small muted">Compare paths at 2040 / 2045 / 2050 transfer, with 5/10/20-year horizons after transfer. Values are illustrative net-position estimates (rounded).</p>
   <div class="table-wrap"><table>
     <thead><tr><th>Transfer</th><th>Horizon</th><th class="num">Live in A (Prop 19 assumed)</th><th class="num">Rent A (unverified rent)</th><th class="num">Sell &amp; reinvest</th><th class="num">Sell, Treasury park, phase in</th><th class="num">Live 2 yrs then sell</th></tr></thead>
@@ -102,7 +104,7 @@ function runWhatIf(){
   const taxRate=0.0118, infl=0.028, ins=1500, water=130, elec=-15, maint=0.008, capex=0.005;
   function opex(yearIdx,value,assessed,excl){
     let a=assessed;
-    if(excl){a=Math.min(value, assessedAtTransfer+1000000);} // simplified cap
+    if(excl){a=Math.min(value, assessedAtTransfer+1044586);} // Prop 19 cap: factored base + $1,044,586 (LTA 2025/009 window; 2040-2050 allowance unknown)
     const ptax=a*taxRate;
     return ptax + ins*Math.pow(1+infl,yearIdx) + (water*12*Math.pow(1+infl,yearIdx)) + (elec*12*Math.pow(1+infl,yearIdx)) + value*maint + value*capex;
   }

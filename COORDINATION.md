@@ -1,7 +1,7 @@
 # TinoDash2 coordination board
 
 **Last updated:** 2026-11-25 (sessions `arena/349fb457-tinodash2`, `arena/43306062-tinodash2`, `s-a549f819`)
-**Current branch:** `arena/a549f819-tinodash2` — Arena-assigned for this session; do not rename; do not push elsewhere.
+**Current branch (this session):** `arena/1bef2ec3-tinodash2` — Arena-assigned; do not rename; do not push elsewhere.
 
 ## Non-negotiable privacy policy (read first)
 
@@ -81,6 +81,35 @@
 - Insurance quotes: missing.
 - Depreciation/recapture model: missing.
 - Property B lease/local-rule compliance review: missing.
+
+## Session arena/1bef2ec3 (2026-11-25) — claim, work, verification
+
+**Claim:** scope = `docs/**`, `scripts/build_model.py`, `scripts/check_site.py`, `docs/data/model.json`, `COORDINATION.md`, root `index.html` (Property A city wording only). Task: verification pass of tax/legal anchors, enacted-vs-proposed tracker, transfer-tax correction, Form 540 line 62 naming, Prop 19 cap, privacy scan, Pages source switch to `docs/`.
+
+| Task | Status | Owner | Notes |
+|---|---|---|---|
+| Re-verify federal estate/gift anchors | done | arena/1bef2ec3 | IRS estate-tax page fetched: 2026 threshold $15,000,000. IRS gift-tax overview fetched; $19,000 secondary-sourced. |
+| CA Form 540 1% surtax (“1% over $1M”) | done | arena/1bef2ec3 | FTB 2025 Form 540 booklet fetched: line 62 “Behavioral Health Services Tax” = 1% of taxable income over $1,000,000 (formerly Mental Health Services Tax). |
+| Prop 19 cap (value limit) | done (partial) | arena/1bef2ec3 | $1,044,586 for 2/16/2025–2/15/2027 via BOE Pub 801 excerpt and BOE-19-P summary (LTA 2025/009 cited; not opened). Earlier “$1,000,000 as adjusted” corrected. 2040–2050 allowance UNKNOWN. |
+| Santa Clara County transfer tax | done | arena/1bef2ec3 | SCC Clerk-Recorder: $0.55 per $500 ($1.10 per $1,000). Property A city not on official city list → unverified. Model previously OMITTED this tax (5.5% “sale cost” was broker/other placeholder). Added 0.11%. |
+| SF transfer-tax changes | recorded as PROPOSED | arena/1bef2ec3 | SF Ballot digest (2026-07-30) and Feb-2026 news report. Not enacted. |
+| Enacted vs proposed tracker | done | arena/1bef2ec3 | `docs/tax-legal.html` “Law tracker” section. |
+| Privacy scan in checker | done | arena/1bef2ec3 | `scripts/check_site.py` blocks city/neighborhood names, ZIPs, street addresses, APN/parcel IDs on public pages. Removed “Property A city” from published pages. |
+| Docs in link checker | done | arena/1bef2ec3 | `docs/*.html` included. Missing per-row source links on analysis pages reported as WARNINGS (147), not failures; logged on Flagged page. |
+| Pages source | pending merge | arena/1bef2ec3 | Plan: switch legacy Pages from `main /` to `main /docs` after merge so the dashboard is the live site. |
+
+**Verification log (arena/1bef2ec3, 2026-11-25):**
+- Fetched successfully: https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax ; https://www.irs.gov/businesses/small-businesses-self-employed/gift-tax ; https://www.ftb.ca.gov/forms/2025/2025-540-booklet.html (chunks 11, 12, 13, 15 read).
+- Not reachable in-session: https://www.boe.ca.gov/proptaxes/prop19.htm ; https://www.boe.ca.gov/proptaxes/pdf/lta2025009.pdf ; https://www.ftb.ca.gov/forms/2025/25_540bk.pdf ; https://www.sfgov.org/sftreasure/transfer-tax .
+- Search excerpts of official pages used: https://www.boe.ca.gov/pdf/pub801.pdf ; https://clerkrecorder.santaclaracounty.gov/recording-documents/recording-real-estate ; https://media.api.sf.gov/documents/Approved_Digest_-_Changes_to_Real_Property_Transfer_Tax.pdf .
+
+**Irregularities (arena/1bef2ec3):**
+1. Model sale cost omitted the county transfer tax; corrected. Static comparison table still pre-correction (about $12,900 overstatement at 2045/10-year base; ranking unchanged) and bannered.
+2. Two inconsistent models: `scripts/build_model.py` vs inline JS in `docs/scenarios.html`. Open.
+3. Property-tax rate 1.18% is unverified; user-provided history implies about 1.34% (A) and 2.14% (B) of assessed value. Open; TRA lookup pending.
+4. “Prop H” reference not matched to any official SF measure. Open.
+5. 147 analysis-table rows lack per-row official source links (warnings). Open.
+6. Owner instruction (2026-11-25) asks for rounded-to-$10 figures on the dashboard. This session followed that instruction (placeholders only, no ZIPs, addresses, names or parcel IDs). The “no household figures even rounded” rule above remains recorded for owner decision. This is an owner decision point, not resolved here.
 
 ## How future sessions work here
 

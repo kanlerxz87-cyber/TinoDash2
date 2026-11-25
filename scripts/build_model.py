@@ -117,8 +117,10 @@ ASSUMPTIONS = {
         "step_up_basis_general_rule": True,
         "property_tax_base_rate_estimate": 0.0118,
         "prop13_annual_assessed_increase_cap": 0.02,
-        "prop19_value_limit_over_fbyv": 1000000,
+        "prop19_value_limit_over_fbyv": 1044586,  # BOE LTA 2025/009, transfers 2/16/2025-2/15/2027; future windows unknown
         "prop19_filing_homeowner_exemption_days": 365,
+        "county_documentary_transfer_tax_rate": 0.0011,  # SCC Clerk-Recorder: $0.55 per $500 = $1.10 per $1,000
+        "sale_broker_other_placeholder_rate": 0.055,  # placeholder, NOT verified
         "prop19_claim_filing_years": 3,
     },
 }
@@ -249,7 +251,7 @@ def build_path_comparison():
         a = assessed
         if prop19_exclusion:
             # Exclusion: factored base year value + $1M (inflation-adjusted) cap; simplified as assessed carries over if within cap.
-            cap_limit = assessed_at_transfer + 1_000_000  # simplified, not inflation-adjusted in this rough model
+            cap_limit = assessed_at_transfer + 1_044_586  # BOE LTA 2025/009 window; future windows unknown
             a = min(value, cap_limit)
         ptax = annual_property_tax(a, tax_rate)
         ins = ins_a * ((1 + infl) ** year_idx)
@@ -314,7 +316,7 @@ def build_path_comparison():
 
     # Path 3: Sell Property A and reinvest
     sale_price = value_at_transfer
-    sell_costs = estimate_sale_costs(sale_price, transfer_tax_rate=0.0, recording_fixed=500, broker_pct=0.05, other_pct=0.005)
+    sell_costs = estimate_sale_costs(sale_price, transfer_tax_rate=0.0011, recording_fixed=500, broker_pct=0.05, other_pct=0.005)  # 0.11% county DTT verified; broker/other placeholder
     # Step-up basis at death generally means gain near zero if sold soon after; later gain depends on timing.
     # We'll show two sub-cases: sell near transfer (minimal gain) and sell later.
     net_proceeds = sale_price - sell_costs
@@ -347,7 +349,7 @@ def build_path_comparison():
         c, _ = opex_a(y, value, assessed, prop19_exclusion=True)
         cum_cost += c
     sale_price2 = value
-    sell_costs2 = estimate_sale_costs(sale_price2)
+    sell_costs2 = estimate_sale_costs(sale_price2, transfer_tax_rate=0.0011)
     net2 = sale_price2 - sell_costs2 - cum_cost
     portfolio2 = net2
     for y in range(live_years + 1, horizon + 1):
@@ -370,7 +372,7 @@ def build_path_comparison():
 
     # Path 5: Black-swan phased investing
     sale_price = value_at_transfer
-    sell_costs = estimate_sale_costs(sale_price)
+    sell_costs = estimate_sale_costs(sale_price, transfer_tax_rate=0.0011)
     net_proceeds = sale_price - sell_costs
     # Park in T-bills/short Treasuries for 2 years, then phase into stocks over 3 years
     treasury = 0.04
@@ -443,7 +445,7 @@ def build_deadlines():
         {"date_or_window": "Within 1 year of transfer (Prop 19)", "item": "If claiming parent-child exclusion, transferee must occupy Property A as primary residence and file homeowner's/disabled veteran's exemption", "who": "Heir/Owner B", "why": "Prop 19 requires primary-residence occupancy and timely exemption filing for exclusion.", "source_type": "CA BOE Prop 19"},
         {"date_or_window": "Within 3 years of transfer, or before transfer to 3rd party (earlier)", "item": "File Prop 19 claim form (BOE-19-P/BOE-19-G as applicable)", "who": "Heir/Owner B", "why": "Required to claim intergenerational transfer exclusion; late filing may limit relief.", "source_type": "CA BOE Prop 19"},
         {"date_or_window": "9 months after death (plus extensions if applicable)", "item": "Federal estate tax return (Form 706) if required or if portability election desired", "who": "Executor/trustee/CPA", "why": "Required when gross estate exceeds filing threshold; portability election must be timely made on complete Form 706.", "source_type": "IRS Estate Tax / Form 706"},
-        {"date_or_window": "Same tax year as inheritance (if considering sale)", "item": "Model sale-in-same-tax-year scenario before deciding", "who": "Owner B + CPA", "why": "Timing affects gain, basis documentation, CA taxable income, and 1% Mental Health Services Tax exposure above $1M.", "source_type": "FTB/IRS planning"},
+        {"date_or_window": "Same tax year as inheritance (if considering sale)", "item": "Model sale-in-same-tax-year scenario before deciding", "who": "Owner B + CPA", "why": "Timing affects gain, basis documentation, CA taxable income, and 1% Behavioral Health Services Tax (formerly Mental Health Services Tax) exposure above $1M.", "source_type": "FTB/IRS planning"},
         {"date_or_window": "Before sale/listing", "item": "Price transfer tax, recording fees, broker/closing costs, and repairs", "who": "Owner B + agent/attorney", "why": "Net proceeds can differ materially from gross sale price.", "source_type": "Local recorder/treasurer"},
         {"date_or_window": "Before receiving proceeds", "item": "Write investment policy statement (IPS) for sale proceeds", "who": "Owner B + adviser", "why": "Prevents ad hoc allocation and manages sequence/reinvestment risk.", "source_type": "Planning practice"},
         {"date_or_window": "Annual", "item": "Re-run model with updated valuations, tax law, insurance, rents, and spending", "who": "Owner B", "why": "Assumptions drift; laws change; decisions should be refreshed.", "source_type": "Planning practice"},
