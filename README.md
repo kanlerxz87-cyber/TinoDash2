@@ -1,33 +1,65 @@
 # TinoDash2 — Inheritance Decision Workspace
 
-This repository contains privacy-first planning materials for comparing inherited-home and existing-property paths. It currently includes two static site surfaces:
+A privacy-first static site for deciding what to do with an inherited home while an existing
+multi-unit property is already owned. Everything published here is plain HTML, CSS and
+JavaScript served from the repository root by GitHub Pages (legacy builder, `main` root).
 
-1. **Root site (Estate Pathways)** — plain HTML/CSS/JS at repo root, served by legacy GitHub Pages from `main` root. Browser-only what-if tools; no embedded household values.
-2. **Docs dashboard (`docs/`)** — static dashboard added in session `s-a549f819` with executive summary, decision criteria, timelines, scenarios, black-swan/phased-investing analysis, tax/legal map, questions, printable attorney/CPA briefing sheet, sources, and flagged-for-review pages. Values displayed are anonymized placeholders and rounded to nearest $10 per user request; see privacy notes below.
+**Live site:** <https://kanlerxz87-cyber.github.io/TinoDash2/>
 
-## Privacy
+## What is published
 
-- Public outputs should use placeholders only (Property A, Property B, Owner B).
-- No names, street addresses, ZIP codes, parcel/APN IDs, account numbers, or exact traceable public-record values should be published.
-- Sensitive details discovered during research are for internal use only.
-- `private/` and other ignored private paths are guardrails, not security boundaries; check staged files before every commit.
-- Prior public-data exposure exists in repository history/closed PR refs (see `COORDINATION.md` Exposure log). Do not claim history is scrubbed.
+| Page | What it is for |
+|---|---|
+| `index.html` | Dashboard: decision state, what would change the answer, evidence inventory, timeline, sources, glossary |
+| `war-room.html` | The nine gates that block a decision, the pre-commitment register, requirement coverage, decision journal |
+| `crash-replay.html` | Does parking sale proceeds for 24 months and phasing in over 36 actually help? Tested on 89 ten-year windows, 1928–2025 |
+| `black-swan.html` | Method notes for the historical replay |
+| `comparison.html` | Eight paths on one calendar, including four mixed paths, with a 25-input browser-only calculator |
+| `questions.html` | Every open question, its owner, and the evidence that closes it |
+| `law-watch.html` | Enacted anchors, live proposals, re-check calendar, change procedure |
+| `suggestions.html` | Twenty-two reviewable actions with acceptance criteria |
+| `brief.html` | One printable page for the attorney and CPA |
+| `FLAGGED_FOR_REVIEW.html` | Everything unverified, blocked, or needing a human decision |
 
-## Docs dashboard (s-a549f819)
+## What is deliberately *not* published
 
-- Landing page: `docs/index.html`
-- Model build: `python3 scripts/build_model.py` -> `docs/data/model.json`
-- Verification: `docs/sources.html`, `docs/flagged.html`
+No household-specific figure appears anywhere in this repository — no property values, rent,
+assessed values, tax bills, utility costs, insurance premiums, addresses, ZIP codes, parcel
+numbers, or names. Rounding does not anonymize, so rounded figures are excluded too. The
+calculator's inputs are blank by design and are never sent, stored, or logged.
 
-## Root site
+## Checks (all run in CI on every push and pull request)
 
-- Open `index.html` in a modern browser for the root Estate Pathways site.
-- Validation: `python3 scripts/check_site.py` (if present on branch).
+```bash
+python3 scripts/check_site.py            # required pages present and linked, every table row sourced, all local anchors resolve, no remote scripts/styles
+python3 scripts/privacy_check.py --selftest   # proves the detector works, then scans every published file
+python3 scripts/verify_sources.py        # recomputes the historical datasets against published index levels
+node --check app.js && node --check calculator.js
+node scripts/smoke_calculator.js         # drives the calculator against a stub DOM; asserts no network/storage APIs
+```
 
-## GitHub Pages
+`scripts/verify_sources.py --online` additionally re-fetches the cited official pages. It
+cannot run in a sandbox without outbound HTTPS, and it says so explicitly rather than reporting
+a pass.
 
-Legacy Pages currently serves `main` root. If the `docs/` dashboard should be published, configure Pages source accordingly or integrate into the root site; confirm with repository owner.
+## Rebuilding the generated pages
+
+```bash
+python3 scripts/build_pages.py           # war-room, law-watch, questions, comparison, suggestions, brief
+python3 scripts/build_crash_replay_page.py
+```
+
+Both generators are dependency-free (Python standard library only) and write into the
+repository root, because that is what Pages serves.
+
+## Privacy and history
+
+`COORDINATION.md` holds the binding policy, the exposure log, and the owner actions still
+outstanding. Earlier public commits and closed pull-request references contain household
+figures from before the policy was tightened; **history is not scrubbed** and doing so requires
+repository-owner action. See `FLAGGED_FOR_REVIEW.html`.
 
 ## Disclaimer
 
-Planning and decision-organization aid only. Not legal, tax, investment, appraisal, or insurance advice.
+Planning and decision-organization aid only. Not legal, tax, investment, appraisal, or
+insurance advice.

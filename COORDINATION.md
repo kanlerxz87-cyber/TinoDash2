@@ -94,3 +94,58 @@
 See `sources.md` (root) and `docs/sources.html` (docs dashboard) for official links. Core anchors: IRS Estate Tax, Form 706, Pub 551, Pub 523/527/544 as applicable; CA BOE Prop 19/Pub 29; CA FTB capital gains/540 booklet; SCC DTAC; SF Assessor-Recorder; SF Rent Board.
 
 *Educational decision support only — not legal, tax or investment advice.*
+
+## Session `arena/e0eabcec-tinodash2` (2026-11-25)
+
+Branch `arena/e0eabcec-tinodash2`, from `5560f3d` on `main`. Scope: run and harden the
+verification scripts, build the decision-support pages that were still missing, and repair the
+policy conflict left by PR #12.
+
+### Decisions taken this session
+
+1. **`docs/` removed from the published tree.** The PR #12 dashboard in `docs/` embedded
+   household-derived values (property value bands, assessed values, rent, annual tax) even
+   though the repository policy forbids them even rounded. Since `main` is served by the
+   legacy Pages builder from the repository root, that content was publishable and the earlier
+   note that "`docs/` is not served" was not a mitigation. The directory is deleted in this
+   branch; a permanent privacy gate now runs in CI (`scripts/privacy_check.py --selftest`).
+   No value from it is reproduced here. The generator `scripts/build_model.py` is retained but
+   no longer publishes to a served path.
+2. **Nothing household-specific is published.** The six new pages carry public-law anchors,
+   protocol, ranges of required evidence, and a browser-only calculator whose inputs are blank
+   and never leave the page. Confirmed by the privacy gate.
+3. **Failed verification is reported as failed.** `scripts/verify_sources.py --online` cannot
+   reach the network from this sandbox; offline mode now prints an explicit "online
+   verification was NOT run" banner rather than a pass that could be mistaken for a full check.
+   A silent-pass bug (string/int year comparison meant zero checkpoints were compared) was
+   found and fixed; the script now fails if nothing was actually compared.
+
+### Task board
+
+| Task | Status | Files |
+|---|---|---|
+| Verify historical datasets | ✅ 22 checkpoints, worst relative error 0.0344% (offline) | `scripts/verify_sources.py`, `data/` |
+| Online re-fetch of cited pages | ⛔ Blocked: no outbound HTTPS in this environment; CI step added | `.github/workflows/pages.yml` |
+| War room / decision gates | ✅ | `war-room.html` |
+| Law watch (enacted + proposals + recheck calendar) | ✅ | `law-watch.html` |
+| Questions and missing data | ✅ | `questions.html` |
+| Path comparison + calculator | ✅ 8 paths, 25 blank inputs, browser-only | `comparison.html`, `calculator.js` |
+| Suggestions queue | ✅ S1–S22 with acceptance criteria | `suggestions.html` |
+| Printable attorney/CPA brief | ✅ | `brief.html` |
+| Crash-entry replay | ✅ 89 ten-year windows, 1928–2025 | `crash-replay.html` |
+| Site integrity check | ✅ 10 required pages present and linked from `index.html` | `scripts/check_site.py` |
+| Calculator smoke test in CI | ✅ stub-DOM test, no network APIs referenced | `scripts/smoke_calculator.js` |
+| Privacy gate in CI | ✅ self-test catches 3/3 planted findings; live tree 0 findings | `scripts/privacy_check.py` |
+| Prop H (Nov 2026) tier schedule | ✅ verified against SFMTA page | `law-watch.html` |
+| Depreciation / recapture model | ⬜ Not built — needs CPA-grade assumptions the evidence does not support yet; scoped on `war-room.html` | — |
+| Estate-liquidity / portability worksheet | ⬜ Not built — depends on the 706 gate | — |
+| Multi-scenario value/property-tax projection | ⬜ Deliberately withheld: publishing value bands would breach the privacy policy | — |
+| History purge of PRs #3/#4/#5/#8/#10/#12 | ⛔ **Owner action** — shallow clone here; see Exposure log | — |
+
+### Exposure log addition
+
+6. **PR #12 `docs/` dashboard (removal, 2026-11-25):** discovered to be publishable through the
+   legacy root Pages build. Deleted from the working tree in this branch. The merged commit on
+   `main` still contains the files until this branch lands, and git history retains them after
+   that. **Owner action:** after merge, extend the history purge to the PR #12 merge commit and
+   confirm the served site no longer exposes those pages.

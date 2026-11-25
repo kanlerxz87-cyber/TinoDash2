@@ -8,7 +8,9 @@ from __future__ import annotations
 import json, math, os
 from datetime import datetime, timezone
 
-OUT = os.path.join(os.path.dirname(__file__), '..', 'docs', 'data', 'model.json')
+# This model embeds household-derived inputs. It must never write into a path that
+# GitHub Pages serves. Output goes to the git-ignored private/ directory instead.
+OUT = os.path.join(os.path.dirname(__file__), '..', 'private', 'model.json')
 
 def r10(x):
     """Round to nearest $10."""

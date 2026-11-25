@@ -7,6 +7,21 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html"))
 
+# Pages a visitor can reach from the dashboard. If one of these disappears from
+# the build, the site is broken even though every remaining link still resolves.
+REQUIRED = [
+    "index.html",
+    "war-room.html",
+    "comparison.html",
+    "crash-replay.html",
+    "black-swan.html",
+    "questions.html",
+    "law-watch.html",
+    "brief.html",
+    "suggestions.html",
+    "FLAGGED_FOR_REVIEW.html",
+]
+
 class Scanner(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -86,9 +101,26 @@ for name, parser in scanners.items():
         if tag in {"script", "link"} and url.startswith(("https://", "//")):
             errors.append(f"{name}: remote executable/style resource would expose visitor metadata: {url}")
 
+present = {p.name for p in PAGES}
+for required in REQUIRED:
+    if required not in present:
+        errors.append(f"Required page is missing from the build: {required}")
+
+# Anything published must be reachable from index.html, and index.html must not
+# link to a page that only exists locally.
+index_ids = scanners.get("index.html")
+if index_ids is None:
+    errors.append("index.html was not scanned")
+else:
+    linked = {url.partition("#")[0] for tag, url in scanners["index.html"].links if tag == "a"}
+    for required in REQUIRED:
+        if required != "index.html" and required not in linked:
+            errors.append(f"index.html does not link to required page: {required}")
+
 if errors:
     print("Static site check failed:")
     for error in errors:
         print(f" - {error}")
     sys.exit(1)
-print("Static site check passed: required pages/assets/anchors present, all table rows linked, no remote scripts or styles.")
+print(f"Static site check passed: {len(REQUIRED)} required pages present and linked from index.html, "
+      "all table rows carry a source link, every local anchor resolves, no remote scripts or styles.")
