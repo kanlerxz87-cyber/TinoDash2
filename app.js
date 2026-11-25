@@ -223,10 +223,10 @@
     const taxNote = $('taxSensitivity');
     taxNote.replaceChildren();
     if (data.caTaxableIncome === null) {
-      taxNote.textContent = '2025 California 1% tax sensitivity: not calculated (no taxable-income input). This estimate is outside the path values.';
+      taxNote.textContent = '2025 Form 540 reference only: not calculated (no taxable-income input). Line 62 Behavioral Health Services Tax = 1% of taxable income above $1,000,000, computed in whole dollars. This estimate is outside the path values. California taxes capital gains as ordinary income — no preferential low rate.';
     } else {
       const additionalTax = Math.max(0, data.caTaxableIncome - 1000000) * 0.01;
-      taxNote.append(document.createTextNode(`2025 Form 540 reference only: estimated 1% Behavioral Health Services Tax = ${displayMoney(additionalTax)} based on entered California taxable income of ${displayMoney(data.caTaxableIncome)}; not added to path values. `));
+      taxNote.append(document.createTextNode(`2025 Form 540 reference only: estimated Line 62 Behavioral Health Services Tax = ${displayMoney(additionalTax)} (1% of California taxable income above $1,000,000, whole dollars) based on entered taxable income of ${displayMoney(data.caTaxableIncome)}; not added to path values. California taxes capital gains as ordinary income — no preferential low rate.`));
       const link = document.createElement('a'); link.href = '#src-ftb-540'; link.textContent = 'Review official FTB instructions.'; taxNote.append(link);
     }
     results.hidden=false;

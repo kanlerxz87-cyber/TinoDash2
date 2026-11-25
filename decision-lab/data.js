@@ -1,0 +1,1011 @@
+/** Public-safe content only. Every authority was opened on the review date.
+ * Links support the stated legal/methodological claim, NOT hypothetical prices/costs.
+ */
+export const REVIEW_DATE = "2026-11-25";
+export const MODEL_VERSION = "1.0.0";
+export const SOURCES = {
+  estate: {
+    name: "IRS · Estate tax",
+    url: "https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax",
+    scope:
+      "2026 filing threshold, estate-wide inclusion, deductions, gifts and portability.",
+    kind: "Federal · enacted framework",
+    read: "Filing-threshold table and portability paragraph",
+  },
+  estateUpdate: {
+    name: "IRS · Estate & gift update",
+    url: "https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax",
+    scope:
+      "Public Law 119-21 sets the 2026 basic exclusion at $15,000,000. Do not reuse the superseded scheduled 2026 sunset.",
+    kind: "Federal · enacted change",
+    read: "Working Families Tax Cuts section",
+  },
+  form706: {
+    name: "IRS · Form 706 instructions",
+    url: "https://www.irs.gov/instructions/i706",
+    scope:
+      "July 2026 revision: filing test, 9-month deadline, automatic 6-month filing extension application, portability and qualified late-election relief. Filing extension is not automatically a payment extension.",
+    kind: "Federal · published instructions",
+    read: "Which Estates Must File; When To File; Portability; Paying the Tax",
+  },
+  basis: {
+    name: "IRS · Publication 551",
+    url: "https://www.irs.gov/publications/p551",
+    scope:
+      "Inherited-property basis, exceptions, trust carryover basis, land/building allocation and conversion to rental use. A trust alone does not establish a basis adjustment.",
+    kind: "Federal · published guidance",
+    read: "Inherited Property; Property Received from a Trust; Adjusted Basis; Property Changed to Business or Rental Use",
+  },
+  prop19: {
+    name: "BOE · Proposition 19",
+    url: "https://www.boe.ca.gov/prop19/",
+    scope:
+      "Principal-residence conditions, separate 1-year exemption and 3-year exclusion claims; loss of eligibility on moving out uses transfer-date market value factored forward.",
+    kind: "State · enacted framework",
+    read: "Comparison chart; Parent-Child FAQs 1–6",
+  },
+  allowance: {
+    name: "BOE · 2025–27 allowance",
+    url: "https://www.boe.ca.gov/news/2025/nr-25-02.htm",
+    scope:
+      "$1,044,586 allowance for Feb 16, 2025–Feb 15, 2027; biennial FHFA California HPI adjustment, not automatic CPI indexing.",
+    kind: "State · dated official amount",
+    read: "Full release NR 25-02",
+  },
+  prop13: {
+    name: "BOE · Property-tax overview",
+    url: "https://www.boe.ca.gov/proptaxes/pdf/pub29.pdf",
+    scope:
+      "March 2025 Publication 29: 1% general levy plus voter-approved debt; factored base growth generally capped at 2%, not a 2% cap on the whole bill; new construction and assessment appeals.",
+    kind: "State · published guidance",
+    read: "Important Property Tax Dates; Proposition 13; Assessment Process",
+  },
+  death: {
+    name: "BOE · Death reporting",
+    url: "https://www.boe.ca.gov/proptaxes/pdf/lta24052.pdf",
+    scope:
+      "Publication 800-9 enclosed: date of death versus distribution; BOE-502-D generally within 150 days; probate exception; separate Prop 19 filings.",
+    kind: "State · published guidance",
+    read: "Death of a Real Property Owner, pages 1–4 of enclosed information sheet",
+  },
+  tra: {
+    name: "County · Published TRA books",
+    url: "https://controller.santaclaracounty.gov/property-tax-distribution/property-tax-rate-book",
+    scope:
+      "Official index of tax rates by tax-rate-area number. FY2025–26 was listed when read; the correct parcel TRA is NOT known.",
+    kind: "Local · publication index",
+    read: "Full index. No private parcel searched.",
+  },
+  traBook: {
+    name: "County · FY2025–26 rate book",
+    url: "https://files.santaclaracounty.gov/exjcpb1531/2025-11/tax-rate-book-2025-2026.pdf",
+    scope:
+      "Official county rate book located from the index. Parcel match and relevant published row NOT read or verified; no rate is assigned to Property A.",
+    kind: "Local · needs parcel match",
+    read: "Publication located only; parcel-specific row unverified",
+    unverified: true,
+  },
+  transfer: {
+    name: "Recorder · Transfer & recording fees",
+    url: "https://clerkrecorder.santaclaracounty.gov/recording-documents/recording-document-fees",
+    scope:
+      "$0.55 per $500 or fraction for county documentary transfer tax. Listed extra city conveyance levy applies to three named cities, not every city. Recording quote depends on document, pages and exemptions.",
+    kind: "Local · published fee rule",
+    read: "Transfer, fees and taxes; additional recording fees; PCOR",
+  },
+  caGains: {
+    name: "FTB · Capital gains",
+    url: "https://www.ftb.ca.gov/file/personal/income-types/capital-gains-and-losses.html",
+    scope:
+      "California has no lower capital-gain rate; gains are ordinary income for state tax.",
+    kind: "State · published guidance",
+    read: "Full Capital gains and losses page (updated Jan 28, 2026)",
+  },
+  form540: {
+    name: "FTB · 2025 Form 540",
+    url: "https://www.ftb.ca.gov/forms/2025/2025-540-instructions.html",
+    scope:
+      "Line 62: 1% Behavioral Health Services Tax on taxable income above $1,000,000, not on all proceeds, all income or the entire gain. This is a 2025-return rule, not verified 2040 law.",
+    kind: "State · 2025 instructions",
+    read: "Other Taxes → Line 62, all five worksheet steps",
+  },
+  caEstate: {
+    name: "Controller · California estate tax",
+    url: "https://www.sco.ca.gov/ardtax_estate_tax.html",
+    scope:
+      "No California estate-tax return for deaths on/after Jan 1, 2005; state inheritance-tax program pertains to deaths before June 8, 1982. Other states/domiciles require separate review.",
+    kind: "State · published guidance",
+    read: "Full filing requirements",
+  },
+  homeSale: {
+    name: "IRS · Main-home exclusion",
+    url: "https://www.irs.gov/taxtopics/tc701",
+    scope:
+      "Up to $250,000 / $500,000 subject to ownership/use tests (generally 2 of 5 years), spouse conditions, frequency and other rules. Do not activate just by changing an address.",
+    kind: "Federal · published guidance",
+    read: "The exclusion; Qualifying for the exclusion",
+  },
+  rental: {
+    name: "IRS · Residential rental property",
+    url: "https://www.irs.gov/publications/p527",
+    scope:
+      "Land is not depreciable; residential rental buildings generally use 27.5-year straight-line GDS with mid-month convention. Allocate mixed personal/rental costs; capitalize improvements rather than deducting them as repairs.",
+    kind: "Federal · published guidance",
+    read: "Rental Expenses; Repairs and Improvements; Depreciation; Renting Part of Property",
+  },
+  gains: {
+    name: "IRS · Capital-gain rules",
+    url: "https://www.irs.gov/taxtopics/tc409",
+    scope:
+      "Gain uses amount realized less adjusted basis; unrecaptured §1250 gain has a maximum 25% federal rate. Marginal scenarios are not full tax returns.",
+    kind: "Federal · published guidance",
+    read: "Capital gains tax rates; loss limits; NIIT",
+  },
+  niit: {
+    name: "IRS · Net investment income tax",
+    url: "https://www.irs.gov/individuals/net-investment-income-tax",
+    scope:
+      "3.8% on lesser of net investment income or MAGI above filing-status threshold; $250,000 MFJ, $200,000 single, $125,000 MFS. Excluded home-sale gains are not included.",
+    kind: "Federal · published guidance",
+    read: "Full threshold and excluded home-sale gain paragraphs",
+  },
+  exchange: {
+    name: "IRS · Like-kind exchange",
+    url: "https://www.irs.gov/businesses/small-businesses-self-employed/like-kind-exchanges-real-estate-tax-tips",
+    scope:
+      "Business/investment real estate exchanges; stocks and personal residences do not automatically qualify. Advice must precede disposition.",
+    kind: "Federal · published guidance",
+    read: "Full scope and like-kind property sections",
+  },
+  form8824: {
+    name: "IRS · Form 8824 instructions",
+    url: "https://www.irs.gov/instructions/i8824",
+    scope:
+      "Deferred exchange: identify in 45 days; receive by earlier of 180 days or return due date including extensions; qualified-intermediary safe harbor and disqualified persons.",
+    kind: "Federal · published instructions",
+    read: "Deferred Exchanges section",
+  },
+  bills: {
+    name: "TreasuryDirect · Bills",
+    url: "https://www.treasurydirect.gov/marketable-securities/treasury-bills/",
+    scope:
+      "Bills include 13-, 26-, 52-week terms; interest federally taxable, exempt from state/local income taxes. Future yields not known.",
+    kind: "Federal · security terms",
+    read: "Bills at a Glance; taxes",
+  },
+  notes: {
+    name: "TreasuryDirect · Notes",
+    url: "https://www.treasurydirect.gov/marketable-securities/treasury-notes/",
+    scope:
+      "2-year notes available; coupon fixed at auction, paid semiannually; federal tax, no state/local income tax. A quoted yield is not guaranteed on future reinvestment.",
+    kind: "Federal · security terms",
+    read: "Notes at a Glance; taxes",
+  },
+  bondRisk: {
+    name: "SEC · Bond risks",
+    url: "https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products/bonds",
+    scope:
+      "Interest-rate, inflation, liquidity and credit risks; a sale before maturity can lose principal. Treasuries are not a stock-entry guarantee.",
+    kind: "Federal · investor education",
+    read: "What are the benefits and risks of bonds?",
+  },
+  crash1929: {
+    name: "Federal Reserve · 1929 crash",
+    url: "https://www.federalreservehistory.org/essays/stock-market-crash-of-1929",
+    scope:
+      "Dow price index fell about 89% from 1929 peak to 1932 low; price peak regained in 1954. This is NOT a dividend-reinvested broad-market total-return series.",
+    kind: "Federal Reserve · historical account",
+    read: "Opening narrative and Chart 1 description",
+  },
+  crash2008: {
+    name: "Federal Reserve · Great Recession",
+    url: "https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath",
+    scope:
+      "Housing decline, financial crisis, 18-month recession, rate cuts toward 0–0.25% and slow recovery. Our numerical equity stress shape is a chosen assumption, not an official replay.",
+    kind: "Federal Reserve · historical account",
+    read: "Rise and Fall of Housing Market; Effects on Broader Economy",
+  },
+  inflation: {
+    name: "Federal Reserve · Great Inflation",
+    url: "https://www.federalreservehistory.org/essays/great-inflation",
+    scope:
+      "1965–82 inflation regime; inflation exceeded 14% in 1980. A constant low-inflation 50-year forecast is not a robustness test.",
+    kind: "Federal Reserve · historical account",
+    read: "Forensics of the Great Inflation; Chart 1 description",
+  },
+  insurance: {
+    name: "CDI · Residential insurance",
+    url: "https://www.insurance.ca.gov/01-consumers/105-type/5-residential/Top10Tips_FindingResidentialIns.cfm",
+    scope:
+      "Shop licensed brokers, compare limits/exclusions and replacement costs. Comparison tools are not property-specific quotes; FAIR Plan is limited coverage, not a substitute for all-perils/liability cover.",
+    kind: "State · consumer guidance",
+    read: "Tips 1–10",
+  },
+  leases: {
+    name: "Rent Board · Inventory & fee notice",
+    url: "https://www.sf.gov/notice-of-rent-board-fee-and-housing-inventory-requirement",
+    scope:
+      "2027 notice: exemption window ends Dec 14, 2026; annual housing inventory due March 1; reporting and fee exemptions are different; missing rent-increase license can void increases.",
+    kind: "Local · dated official notice",
+    read: "2027 Informational Notice, English",
+  },
+  propH: {
+    name: "Elections · Prop H legal text",
+    url: "https://media.api.sf.gov/documents/Legal_Text_3X0F1JU.pdf",
+    scope:
+      "Nov 2026 Stronger Muni for All: §§1802–1806 and §37.3(a)(12). FY2027–28 through FY2041–42; multifamily parcel base $249 (NOT per dwelling), size increment, exemptions, indexing and limited tenant passthrough.",
+    kind: "Local · ballot legal text",
+    read: "Definitions; §§1803–1806; §37.3(a)(12)",
+  },
+  propHResults: {
+    name: "Elections · Preliminary results",
+    url: "https://www.sfelections.org/results/20261103/index.html",
+    scope:
+      "Page read Nov 25, updated Nov 23: results explicitly preliminary. No certified enactment is asserted. Verify certification, codification and litigation before including a bill.",
+    kind: "Local · preliminary, NOT certification",
+    read: "Preliminary-results notice; Measure H",
+  },
+  propHSummary: {
+    name: "Controller · Prop H impact report",
+    url: "https://media.api.sf.gov/documents/MUNI_parcel_tax_economic_impact_final.pdf",
+    scope:
+      "September 16, 2026 report; summary differs from legal text on single-family >5,000-sq-ft rate. Model follows ballot legal text, with discrepancy flagged.",
+    kind: "Local · summary discrepancy",
+    read: "Introduction; Details of the Proposed Tax",
+  },
+  github: {
+    name: "GitHub · Sensitive-data removal",
+    url: "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository",
+    scope:
+      "History rewrites require coordinated cleanup; forks, cached SHA views, PR refs and clones can retain data. Support may be needed. No guaranteed recall of public copies.",
+    kind: "Publisher · operational guidance",
+    read: "Side effects; About sensitive data exposure",
+  },
+};
+
+export const PATHS = [
+  {
+    id: "live",
+    name: "Live in A",
+    short: "Live",
+    color: "#2c7061",
+    category: "Keep",
+    summary: "Make A home; retain B and its existing leased income.",
+    condition:
+      "A is the genuinely preferred long-term home; carrying costs and concentration are acceptable.",
+    sources: ["prop19", "rental"],
+  },
+  {
+    id: "rent",
+    name: "Rent A · live in B",
+    short: "Rent",
+    color: "#a27743",
+    category: "Keep",
+    summary:
+      "Retain both buildings; lease A at an independently supported rent.",
+    condition:
+      "Verified net rent clears the household hurdle after reassessment, repairs, tax and management.",
+    sources: ["rental", "prop19", "leases"],
+  },
+  {
+    id: "sell",
+    name: "Sell in transfer tax year",
+    short: "Sell now",
+    color: "#48769b",
+    category: "Sell",
+    summary:
+      "Date-of-death value basis sensitivity; immediately fund the selected stock/Treasury allocation.",
+    condition:
+      "Liquidity and diversification outweigh net rent, housing use and selling friction.",
+    sources: ["basis", "gains", "transfer"],
+  },
+  {
+    id: "staged",
+    name: "Sell · park · phase",
+    short: "Park → phase",
+    color: "#8a76ae",
+    category: "Mixed",
+    summary:
+      "Park sale proceeds for 24–36 months; deploy the stock sleeve over the next 12–24 months.",
+    condition:
+      "A written policy values reduced immediate entry exposure and accepts reinvestment and rebound risk.",
+    sources: ["bills", "notes", "bondRisk"],
+  },
+  {
+    id: "rent-sell",
+    name: "Rent 5 years · sell",
+    short: "Rent → sell",
+    color: "#b96c61",
+    category: "Mixed",
+    summary:
+      "Keep optionality, then sell; depreciation and later gain are included.",
+    condition:
+      "A temporary lease strategy is legally workable and its added income exceeds delay and exit tax.",
+    sources: ["rental", "gains", "leases"],
+  },
+  {
+    id: "live-sell",
+    name: "Live 10 years · sell",
+    short: "Live → sell",
+    color: "#78844b",
+    category: "Mixed",
+    summary:
+      "Use A as home, then return to B; test §121 separately from Prop 19.",
+    condition:
+      "A decade in A is genuinely wanted; §121 tests are documented before any exclusion is assumed.",
+    sources: ["homeSale", "prop19", "gains"],
+  },
+  {
+    id: "live-rent",
+    name: "Live 10 years · rent",
+    short: "Live → rent",
+    color: "#637c84",
+    category: "Mixed",
+    summary:
+      "Return to B and rent A; any Prop 19 benefit ends when qualifying occupancy ends.",
+    condition:
+      "B remains legally available and the later rental economics still work without the occupancy exclusion.",
+    sources: ["prop19", "rental", "homeSale"],
+  },
+];
+
+export const QUESTIONS = [
+  {
+    id: "Q01",
+    group: "Privacy · urgent",
+    question: "Has prior public exposure actually been contained?",
+    known: "This module uses synthetic examples, not household records.",
+    answer: "",
+    missing:
+      "Visibility, Pages permissions, all remote refs, caches, prior artifacts and external copies.",
+    discover:
+      "Administrator: unpublish sensitive artifacts, restrict repository access, coordinate a full-ref history cleanup, then request cache/ref review from GitHub Support. Never paste private values in an issue.",
+    owner: "Repository administrator",
+    decision: "Blocked — app lacks administration/Pages permission",
+    status: "Critical",
+    sources: ["github"],
+  },
+  {
+    id: "Q02",
+    group: "Estate & title",
+    question: "What exactly transfers, when, and to whom?",
+    known:
+      "Planning distinguishes inherited A from already-owned B; B is not a new inheritance.",
+    answer: "",
+    missing:
+      "Trust terms, beneficial shares, title, powers, tax inclusion, citizenship/domicile and actual transfer date.",
+    discover:
+      "Estate attorney reviews certified trust, deeds, amendments and beneficiary provisions in an encrypted private matter file. Do not upload them here.",
+    owner: "Estate attorney / trustee",
+    decision: "No household path selected",
+    status: "Open",
+    sources: ["basis", "death", "estate"],
+  },
+  {
+    id: "Q03",
+    group: "Value & basis",
+    question: "Is there a defensible written date-of-death valuation for A?",
+    known:
+      "Market value, income-tax basis and assessment are different measures.",
+    answer: "",
+    missing:
+      "Independent written appraisal with land/building allocation and valuation date; possible alternate valuation or trust exceptions.",
+    discover:
+      "Commission a qualified independent appraiser at transfer; preserve methodology and comparable adjustments privately; obtain a second broker opinion separately.",
+    owner: "Trustee / appraiser / CPA",
+    decision: "Required before relying on same-year sale tax",
+    status: "Gate",
+    sources: ["basis", "form706"],
+  },
+  {
+    id: "Q04",
+    group: "Taxes",
+    question: "What is A’s TRA and the published parcel-applicable rate?",
+    known:
+      "The official rate-book index is located. No parcel match has been made.",
+    answer: "",
+    missing:
+      "Private bill/TRA, fiscal year, bond rows, exemptions, parcel levies and supplemental bills.",
+    discover:
+      "Privately read the TRA from the official bill, match the same TRA and fiscal year in the county book, and reconcile percentage levies separately from direct charges. Never back-solve a rate from a historic bill divided by assessed value.",
+    owner: "Trustee / county assessor",
+    decision: "Parcel rate left blank",
+    status: "Gate",
+    sources: ["tra", "traBook", "prop13"],
+  },
+  {
+    id: "Q05",
+    group: "Housing",
+    question: "Would the heir actually choose A as a long-term primary home?",
+    known:
+      "Prop 19 requires qualifying transferor and transferee primary-residence use; continued occupancy matters.",
+    answer: "",
+    missing:
+      "Relationship, prior exemption, permanent-home intent, eligible beneficiaries, claim timing and evidence of actual use.",
+    discover:
+      "Attorney obtains an assessor eligibility review; household signs its occupancy decision before viewing projected tax savings. Do not claim merely for a brief tax-motivated stay.",
+    owner: "Household / estate attorney",
+    decision: "Prop 19 OFF until substantiated",
+    status: "Gate",
+    sources: ["prop19", "allowance"],
+  },
+  {
+    id: "Q06",
+    group: "Rent evidence",
+    question: "What can A actually rent for, legally and net of costs?",
+    known:
+      "No property-specific market-rent evidence is verified. No voucher benchmark is used as market rent or a guaranteed floor.",
+    answer: "",
+    missing:
+      "Condition-adjusted leased comparables, realistic days vacant, concessions, management, lawful rent growth and tenant-paid utilities.",
+    discover:
+      "Obtain two independent property-manager opinions and 3–5 recent comparable executed leases, adjusted for size, condition, solar and location. Official public sources do not establish a bespoke rent; archive evidence privately, not on this site.",
+    owner: "Independent managers / leasing attorney",
+    decision: "Rent ranking is illustrative only",
+    status: "Gate",
+    sources: ["rental", "leases"],
+  },
+  {
+    id: "Q07",
+    group: "Existing property B",
+    question:
+      "Can B keep its leased income while housing the owner, including a later return?",
+    known:
+      "B remains owned in every modeled path; no automatic basis or assessment reset.",
+    answer: "",
+    missing:
+      "Unit legality, current leases, protected tenancies, owner-space availability, rent-control status, registration and expense allocations.",
+    discover:
+      "Local landlord-tenant counsel reads all leases and permit records privately. Verify the unleased owner space; do not assume an occupied unit can be recovered, rents reset to market, or a newly leased space later recovered without cost.",
+    owner: "Local landlord-tenant attorney",
+    decision: "No eviction, vacancy reset or extra-unit rent assumed",
+    status: "Gate",
+    sources: ["leases", "rental", "propH"],
+  },
+  {
+    id: "Q08",
+    group: "Costs & debt",
+    question: "What will both buildings cost over the next five years?",
+    known:
+      "Maintenance, capital improvements, debt interest and principal have different cash/tax treatments.",
+    answer: "",
+    missing:
+      "Inspections, roof/seismic/envelope/solar age, written bids, hazard coverage, debt balances/terms and direct charges.",
+    discover:
+      "Get building and specialty inspections, two bids for major work, lender payoff statements, 12–24 months of utility bills, and written owner-occupied / landlord / liability / catastrophe quotes with the same limits.",
+    owner: "Inspector / broker / trustee",
+    decision: "Actual cost fields blank; sandbox ranges only",
+    status: "Gate",
+    sources: ["insurance", "rental", "basis", "transfer"],
+  },
+  {
+    id: "Q09",
+    group: "Estate liquidity",
+    question:
+      "How large is the decedent’s estate, and what must be paid before distribution?",
+    known:
+      "The federal test is estate-wide, not a per-beneficiary tax-free inheritance allowance.",
+    answer: "",
+    missing:
+      "Cash, securities, retirement/IRD assets, life insurance inclusion, businesses, other real estate, gifts, debts, deductions, DSUE and tax apportionment.",
+    discover:
+      "CPA and trustee build the private inventory, reconcile Forms 709 and prior spouse’s Form 706, then stress tax and cash needs by the 9-month deadline. Do not add B unless counsel establishes decedent ownership.",
+    owner: "Estate attorney / CPA / trustee",
+    decision: "Headroom and distributable cash not calculable",
+    status: "Gate",
+    sources: ["estate", "form706", "caEstate"],
+  },
+  {
+    id: "Q10",
+    group: "Tax basis & exit",
+    question:
+      "What depreciation, gain rates and §121 eligibility actually apply?",
+    known:
+      "The 1% CA surtax is on taxable income over the threshold, not sale proceeds. B’s existing tax basis is not stepped up by A’s transfer.",
+    answer: "",
+    missing:
+      "Filing status, other income, land allocation, rental-service dates, prior depreciation allowed/allowable, suspended losses, §121 use/ownership tests and prior exclusions.",
+    discover:
+      "CPA prepares same-tax-year sale first, then tax-aware live/rent/mixed alternatives with annual cash tax and terminal exit tax. Reconcile Form 540 line 62 and federal NIIT separately.",
+    owner: "CPA / tax attorney",
+    decision: "Exclusions are separate conditional switches",
+    status: "Gate",
+    sources: ["form540", "caGains", "rental", "gains", "homeSale", "niit"],
+  },
+  {
+    id: "Q11",
+    group: "Before sale",
+    question: "Is a §1031 exchange actually wanted?",
+    known:
+      "Selling for stocks or cash is not a like-kind real-property exchange.",
+    answer: "",
+    missing:
+      "Investment intent, replacement-property goal, taxpayer identity and intermediary structure.",
+    discover:
+      "Decide with counsel before signing a disposition agreement or receiving proceeds. If appropriate, calendar 45-day identification and earlier-of-180-day/return-due-date completion, with a qualified intermediary.",
+    owner: "Tax attorney / CPA",
+    decision: "Not elected; not modeled as automatic deferral",
+    status: "Open",
+    sources: ["exchange", "form8824"],
+  },
+  {
+    id: "Q12",
+    group: "Investing policy",
+    question: "What is the written plan for proceeds before the money arrives?",
+    known:
+      "Parking can reduce immediate equity exposure, but introduces rollover, inflation and missed-rebound risk.",
+    answer: "",
+    missing:
+      "Required reserve, maximum tolerable drawdown, spending schedule, target allocation, custodian, tax lots and rebalancing/phase rules.",
+    discover:
+      "Write and sign an investment policy with a fiduciary adviser: match Treasury maturities to spending, choose the 24/36-month parking period and fixed deployment calendar, define allowed exceptions and annual crisis review.",
+    owner: "Household / fiduciary adviser",
+    decision: "No investment policy approved",
+    status: "Gate",
+    sources: ["bills", "notes", "bondRisk"],
+  },
+];
+
+export const LEGAL_ROWS = [
+  [
+    "Estate tax",
+    "2026 federal basic exclusion: $15,000,000 per decedent; estate-wide filing test includes adjusted taxable gifts. Portability is an election, not automatic doubling.",
+    "Enacted / dated 2026",
+    "estate",
+    "form706",
+  ],
+  [
+    "Future estate threshold",
+    "2040–2050 dollar thresholds are not published facts. Current-law inflation indexing does not guarantee unchanged future law; no future threshold is used as a household conclusion.",
+    "Future amount unverified",
+    "estateUpdate",
+    "form706",
+  ],
+  [
+    "California death taxes",
+    "For current deaths, no California estate-tax return is required under the Controller’s published rule. This does not remove income, property, other-state or local transfer tax.",
+    "Current published rule",
+    "caEstate",
+  ],
+  [
+    "Income-tax basis",
+    "Inherited basis is generally death-date FMV, subject to exceptions. Trust distribution alone does not guarantee a reset. B retains its existing basis and depreciation history.",
+    "Conditional on documents",
+    "basis",
+  ],
+  [
+    "Property-tax assessment",
+    "Prop 13: generally 1% plus voter-approved debt, with annual base-value growth generally capped at 2%. Direct levies and supplemental bills are separate.",
+    "Enacted framework",
+    "prop13",
+    "tra",
+  ],
+  [
+    "Prop 19 eligibility",
+    "Qualifying family home: transferor’s and eligible transferee’s primary residence; move in and claim homeowner/disabled-veteran exemption within 1 year. Continuing qualifying occupancy is required.",
+    "Eligibility unverified",
+    "prop19",
+  ],
+  [
+    "Prop 19 allowance",
+    "Official allowance is $1,044,586 for Feb 16, 2025–Feb 15, 2027 (displayed about $1,044,590 in rounded model outputs). Biennial update follows FHFA California HPI, not CPI.",
+    "Dated amount; future proxy only",
+    "allowance",
+  ],
+  [
+    "Prop 19 departure",
+    "On loss of qualifying occupancy, new taxable value uses inheritance-date market value factored forward, enrolled from the following lien date—not today’s market value and not permanent carryover of the exclusion.",
+    "Enacted framework",
+    "prop19",
+  ],
+  [
+    "California sale gain",
+    "Capital gains are taxed as ordinary income. Form 540 line 62 adds 1% only to taxable income above $1,000,000; incremental model applies the tax with-versus-without the gain.",
+    "2025 instructions read",
+    "caGains",
+    "form540",
+  ],
+  [
+    "Federal sale gain",
+    "Gain is amount realized less adjusted basis; unrecaptured §1250 gain has a maximum 25% federal rate. The sandbox uses marginal-rate sensitivities, not full bracket stacking.",
+    "Conditional tax model",
+    "gains",
+    "basis",
+  ],
+  [
+    "NIIT",
+    "3.8% on the lesser of net investment income or excess MAGI over filing-status threshold. Excluded main-home gain is excluded from NIIT.",
+    "Filing/income dependent",
+    "niit",
+  ],
+  [
+    "§121 main-home sale",
+    "Up to $250,000 / $500,000 if all tests are met (generally 2 of 5 years for ownership and use); depreciation-related gain is not automatically excluded. Separate from Prop 19.",
+    "Conditional, not automatic",
+    "homeSale",
+    "gains",
+  ],
+  [
+    "Rental depreciation",
+    "Buildings, not land, generally depreciate over 27.5 years under residential GDS. Mid-month convention, capital additions and mixed-use allocation need CPA schedules.",
+    "Simplified annual convention in model",
+    "rental",
+    "basis",
+  ],
+  [
+    "A sale closing costs",
+    "County documentary tax uses $0.55 per $500 or fraction. The model charges that rule separately from negotiable selling costs and an unverified recording/escrow reserve. Actual deed fees remain blank.",
+    "Fee rule verified / quote missing",
+    "transfer",
+  ],
+  [
+    "Existing B leases",
+    "Annual inventory and fee-exemption rules differ. Owner occupancy elsewhere does not extinguish tenant protections or permit automatic market-rent increases.",
+    "Property-specific review required",
+    "leases",
+  ],
+  [
+    "Prop H · Nov 2026",
+    "The relevant current measure is the Muni parcel tax, not older measures sharing the letter. Legal text has been read; official results page still says preliminary as of review. Kept OFF in the enacted baseline.",
+    "Preliminary outcome / sensitivity only",
+    "propH",
+    "propHResults",
+  ],
+  [
+    "Prop H term & amount",
+    "Conditional text: July 1, 2027–June 30, 2042. Multifamily tax: $249 per parcel up to 5,000 sq ft, plus $0.195/sq ft above, capped at $50,000, before indexing and eligible exemptions. Not $249 per dwelling.",
+    "Ballot terms verified, certification pending",
+    "propH",
+  ],
+  [
+    "Prop H indexing & occupancy",
+    "From FY2028–29, specified dollar amounts use SF/Oakland/Hayward CPI-U increases with statutory downward rounding. Qualifying 65+ resident-owner deductions need application; no blanket exemption for all rental units.",
+    "Conditional legal terms",
+    "propH",
+  ],
+  [
+    "Prop H tenant recovery",
+    "Up to 50% with a $65/unit/year cap before indexation; excludes exempt footage and units whose initial base rent is set on/after June 1, 2027. Model assumes no recovery without lease/legal evidence.",
+    "Conditional; not booked as rent",
+    "propH",
+  ],
+  [
+    "§1031",
+    "Only qualifying business/investment real property. Decide before selling; 45-day identification and earlier of 180 days or return due date (extensions included) for receipt. No automatic stocks/cash deferral.",
+    "Advice before disposition",
+    "exchange",
+    "form8824",
+  ],
+];
+
+export const TIMELINE = [
+  {
+    when: "Now · before figures",
+    title: "Protect records and agree the decision rules",
+    body: "Keep an encrypted, access-controlled inventory outside Git and this site. Sign the criteria for live/rent/sell, reserve and drawdown tolerance before the appraisal or projections arrive.",
+    type: "Planning action",
+    sources: ["github", "bondRisk"],
+  },
+  {
+    when: "Now · annual calendar",
+    title: "Check B’s present compliance",
+    body: "Current official notice: the 2027 fee-exemption window ends December 14, 2026; housing inventory is due March 1, 2027 and annually March 1. Verify exemptions and rent-increase license separately. No filing is performed here.",
+    type: "Dated local deadline",
+    sources: ["leases"],
+  },
+  {
+    when: "At death / transfer",
+    title: "Confirm title, appraisal, basis and control",
+    body: "Attorney confirms the operative transfer date, tax inclusion and successor authority. Obtain a written death-date appraisal and land/building allocation. Preserve tax, insurance and utility continuity; delayed distribution does not automatically delay reassessment.",
+    type: "Transfer checkpoint",
+    sources: ["death", "basis"],
+  },
+  {
+    when: "Same transfer tax year",
+    title: "Price the immediate-sale alternative first",
+    body: "CPA compares a sale in the same tax year using independently supported death-date basis and actual expected proceeds. Include post-death price changes, sale expenses, debt payoff and estimated-tax cash. A zero-gain illustration is not a zero-tax promise.",
+    type: "Modeling priority, not statutory deadline",
+    sources: ["basis", "gains", "transfer"],
+  },
+  {
+    when: "Within 150 days",
+    title: "Report death-related ownership change",
+    body: "Generally file BOE-502-D with the county assessor for affected real property. For probate, the rule is before or with the inventory and appraisal. Check counsel’s exact dates and form version.",
+    type: "General reporting deadline",
+    sources: ["death"],
+  },
+  {
+    when: "Within 9 months",
+    title: "Federal estate return, liquidity and portability",
+    body: "If required, Form 706 is due; review tax payment timing and portability even for a smaller estate. Form 4768 can request an automatic 6-month filing extension; payment relief is separate. Special late-portability relief is conditional, not a safe default.",
+    type: "Federal deadline",
+    sources: ["form706", "estate"],
+  },
+  {
+    when: "Within 1 year",
+    title: "Occupy and file the home exemption only if genuinely eligible",
+    body: "For a qualifying Prop 19 family-home claim, move in and file the homeowners’ or disabled veterans’ exemption within 1 year. The decision must be genuine long-term occupancy, not a short stay selected to fit a projection.",
+    type: "Conditional Prop 19 requirement",
+    sources: ["prop19"],
+  },
+  {
+    when: "Within 3 years · earlier if sold",
+    title: "File the separate intergenerational exclusion claim",
+    body: "BOE comparison chart: file within 3 years or before transfer to a third party. Do not confuse this with the 1-year home-exemption requirement. Have the assessor/attorney check any late-claim or notice-specific relief.",
+    type: "Separate conditional filing",
+    sources: ["prop19"],
+  },
+  {
+    when: "Before any investment sale",
+    title: "Make the §1031 decision, if wanted",
+    body: "Arrange qualified-intermediary advice before disposition. Identification is due in 45 days; receipt by the earlier of 180 days or the tax-return due date including extensions. These periods run concurrently.",
+    type: "Only for a qualifying exchange",
+    sources: ["form8824", "exchange"],
+  },
+  {
+    when: "24–36 months after sale",
+    title: "Complete the optional Treasury parking period",
+    body: "Only under an approved policy: hold a maturity-matched 3-month–2-year ladder, then phase the planned stock allocation over 12–24 months. No crash can be timed reliably. Review rollover yields and rebound opportunity cost alongside drawdown.",
+    type: "Policy date, not a legal deadline",
+    sources: ["bills", "notes", "bondRisk"],
+  },
+  {
+    when: "Each year · and after a material event",
+    title: "Recheck, rebuild and record the answer",
+    body: "Refresh official law, insurance, rent evidence, building bids and the estate inventory. Re-run all paths at common transfer dates and horizons. Revisit extreme scenarios, document whether the conditional ranking changed, and sign any household decision separately.",
+    type: "Recommended governance cadence",
+    sources: ["prop19", "form706", "leases", "bondRisk"],
+  },
+];
+
+export const SUGGESTIONS = [
+  {
+    id: "S01",
+    priority: "First",
+    title: "Use an encrypted off-site estate inventory",
+    reason:
+      "A static public site and Git history cannot be a secure estate vault.",
+    action:
+      "Have the trustee inventory assets, debts, ownership, beneficiary designations, account custodian references and document locations privately. Store identifiers only in an access-controlled vault.",
+    test: "Attorney confirms tax inclusion and liquidity without publishing source records.",
+    sources: ["estate", "github"],
+  },
+  {
+    id: "S02",
+    priority: "First",
+    title: "Pre-commit to household decision criteria",
+    reason: "One favorable projection should not determine the assumptions.",
+    action:
+      "Before new figures arrive, sign the circumstances for choosing each path: housing preference, minimum net rent, maximum concentration/drawdown, reserve target and management burden.",
+    test: "Criteria are dated and unchanged when independent values arrive, or changes have a written reason.",
+    sources: ["bondRisk", "prop19"],
+  },
+  {
+    id: "S03",
+    priority: "Next",
+    title: "Commission independent rent and value evidence",
+    reason:
+      "A voucher allowance, online estimate or generic cost article is not a bespoke appraisal or rent comp.",
+    action:
+      "Obtain a death-date appraisal when relevant, two independent manager rent opinions and recent executed-lease comparables. Record low/base/high supported ranges privately.",
+    test: "CPA can identify valuation date, adjustments, concessions and evidence owner.",
+    sources: ["basis", "rental"],
+  },
+  {
+    id: "S04",
+    priority: "Next",
+    title: "Replace capital reserves with inspected five-year bids",
+    reason:
+      "Deferred building work can overwhelm a small rent or tax advantage.",
+    action:
+      "Inspect both buildings and separate recurring repairs from capital replacements; record timing, low/high bids, contingency, insurance exclusions and responsible owner.",
+    test: "No double counting of reserve deposits and actual capital spending; each item has a condition and date.",
+    sources: ["rental", "insurance"],
+  },
+  {
+    id: "S05",
+    priority: "Next",
+    title: "Commission a tax-return-level comparison",
+    reason:
+      "Marginal sensitivities do not model every trust, bracket, passive-loss or NIIT interaction.",
+    action:
+      "CPA runs same-year sale first, then annual rent/live/mixed cash flows including depreciation, recapture, §121, gifts, portability and trust versus beneficiary tax.",
+    test: "All paths start at the same transfer date and are measured after tax at the same horizon.",
+    sources: ["form540", "basis", "rental", "form706"],
+  },
+  {
+    id: "S06",
+    priority: "Before cash arrives",
+    title: "Approve a written investing policy",
+    reason: "Treasuries reduce immediate stock exposure, not every risk.",
+    action:
+      "Choose reserve, target allocation, custody, 24/36-month park period, maturity matching, deployment dates, tax lots, rebalancing and limited override rules. Include rapid-rebound and late-crash tests.",
+    test: "Policy is signed before a sale; no opportunistic changes to fit the market narrative.",
+    sources: ["bills", "notes", "bondRisk"],
+  },
+  {
+    id: "S07",
+    priority: "Annual",
+    title: "Add scheduled authority-change monitoring",
+    reason:
+      "A green HTTP status is not proof that a legal rule is still correct.",
+    action:
+      "Root integration owner may add a scheduled, link-only official-page monitor that opens a non-sensitive review issue. A human compares enacted text, effective dates and proposals before changing constants.",
+    test: "Review date, reviewer, official text, old/new rule and enacted/proposed status are recorded; never auto-apply tax law.",
+    sources: ["prop19", "form706", "propHResults"],
+  },
+  {
+    id: "S08",
+    priority: "Later",
+    title: "Add private-only document-backed model runs",
+    reason:
+      "Publishing precise household projections can reveal the underlying inputs even when a table is hidden.",
+    action:
+      "Use a separate encrypted local application or accountant workbook; do not add private upload, cloud telemetry or account fields to this public module.",
+    test: "No private values in network requests, browser storage, URLs, logs, public artifacts or Git.",
+    sources: ["github"],
+  },
+];
+
+export const FLAGS = [
+  {
+    id: "F01",
+    severity: "Critical",
+    title: "Repository exposure is not contained",
+    body: "A concurrent root build introduced household-derived values into public Git history. Pages unpublish and repository-private requests returned HTTP 403. This module is synthetic-only, but the broader repository and cached copies are not certified private. Administrator action and coordinated full-ref cleanup remain open.",
+    sources: ["github"],
+  },
+  {
+    id: "F02",
+    severity: "Gate",
+    title: "No parcel-specific property-tax rate",
+    body: "The official TRA index was read; the correct TRA is unknown. The linked rate book was located, but the applicable published row has not been matched/read. The actual rate field stays blank. The scenario rate range is not an inferred parcel rate.",
+    sources: ["tra", "traBook", "prop13"],
+  },
+  {
+    id: "F03",
+    severity: "Gate",
+    title: "No verified valuation or market rent",
+    body: "No written death-date appraisal, independent rental opinion or executed-lease comps have been obtained. Private property characteristics cannot be researched from anonymized placeholders. Model values/rents are synthetic, not estimates or guaranteed floors.",
+    sources: ["basis", "rental"],
+  },
+  {
+    id: "F04",
+    severity: "Gate",
+    title: "Trust, estate and basis not validated",
+    body: "Trust tax inclusion, ownership percentages, estate inventory, portability, prior taxable gifts, debts and distributable cash are unknown. No personal federal estate-tax headroom or estate-tax amount can be stated. B is not assumed to belong to the decedent.",
+    sources: ["estate", "form706", "basis"],
+  },
+  {
+    id: "F05",
+    severity: "Gate",
+    title: "Occupancy, leases and §121 remain conditional",
+    body: "No genuine long-term occupancy decision or assessor eligibility finding exists. The Prop 19 switch starts OFF. §121 is a separately labeled hypothetical eligibility switch for lived-in paths; lease legality, B owner-space availability and the ability to return need counsel.",
+    sources: ["prop19", "homeSale", "leases"],
+  },
+  {
+    id: "F06",
+    severity: "Open",
+    title: "Prop H is not certified in this review",
+    body: "The Nov 2026 Muni measure legal text has been read. The official result page still labels returns preliminary as of the review date. No certification/codification is asserted; the model includes it only as an opt-in sensitivity, through its stated 2042 sunset.",
+    sources: ["propH", "propHResults"],
+  },
+  {
+    id: "F07",
+    severity: "Review",
+    title: "Official Prop H summary and legal text disagree",
+    body: "The Controller economic summary says $1.19 for the single-family tier over 5,000 sq ft; §1805(a)(3) in the ballot legal text says $1.99. The calculator follows the legal text and flags the discrepancy instead of silently resolving it. Household parcel classification and taxable floor area are unknown.",
+    sources: ["propH", "propHSummary"],
+  },
+  {
+    id: "F08",
+    severity: "Gate",
+    title: "Insurance, solar and capital costs are not quotes",
+    body: "No bindable owner/landlord, catastrophe, umbrella or loss-of-rent quote is verified. No assumption of permanently free power or an ongoing solar profit is made; tariff, true-up, system age, inverter and roof condition require private records. Five-year amounts are scenario budgets, not building diagnoses.",
+    sources: ["insurance", "rental"],
+  },
+  {
+    id: "F09",
+    severity: "Review",
+    title: "Simplified tax and investing model",
+    body: "Annual rental depreciation approximates the mid-month convention; flat marginal sensitivities replace full tax-return stacking; no tax benefit is credited for losses. AMT, passive-loss release, estate/trust income-tax brackets, transaction-specific exceptions and future legislation require CPA review. Treasury sleeve in long-run projections is a rolling-yield proxy, not bond mark-to-market pricing.",
+    sources: ["rental", "gains", "niit", "form540", "bondRisk"],
+  },
+  {
+    id: "F10",
+    severity: "Review",
+    title: "Scenario distributions are not probabilities",
+    body: "The 81-grid-point distribution is an equal-weight design exercise, not an empirical return model or confidence interval. Black swans use explicitly synthetic monthly shapes; 1929 is a price-index severity anchor, not a modern total-return backtest. Housing, rents, yields and inflation can move differently.",
+    sources: ["crash1929", "crash2008", "inflation"],
+  },
+  {
+    id: "F11",
+    severity: "Open",
+    title: "Future law, local death taxes and annual monitoring incomplete",
+    body: "No 2040–2050 thresholds are verified facts. No separate local inheritance-tax conclusion or comprehensive all-bill legislative search is certified. A proposed monitoring cadence is documented, but no background monitoring service is running in this module. Recheck applicable jurisdictions, enacted text, certification, effective dates and proposals with counsel each year.",
+    sources: ["estateUpdate", "form706", "caEstate", "propHResults"],
+  },
+];
+
+export const GLOSSARY = [
+  [
+    "Assessment / factored base",
+    "A property-tax valuation system, not the amount paid for the home and not necessarily market value.",
+    "prop13",
+  ],
+  [
+    "Basis (income tax)",
+    "The tax investment used to measure sale gain/loss and depreciation, adjusted for improvements and allowed/allowable depreciation. It is distinct from assessment.",
+    "basis",
+  ],
+  [
+    "Capital improvement",
+    "A capitalized betterment/restoration/adaptation, distinguished from current repair expense; it can affect basis and future depreciation.",
+    "rental",
+  ],
+  [
+    "Date-of-death FMV",
+    "Fair market value on the legally relevant valuation date. A later trust distribution date is not automatically the basis/assessment date.",
+    "basis",
+  ],
+  [
+    "DSUE / portability",
+    "A deceased spouse’s unused federal exclusion amount elected by the executor on Form 706; not a generic married-couple doubling.",
+    "form706",
+  ],
+  [
+    "Estate tax",
+    "A transfer tax computed on the decedent’s estate, not merely the heir’s receipt or a tax on a house sale.",
+    "estate",
+  ],
+  [
+    "Imputed rent",
+    "The non-cash housing service of living in a home. Here it is a separate preference/opportunity-cost metric, never cash rent or investable profit.",
+    "rental",
+  ],
+  [
+    "Liquidity",
+    "Funds available to meet expenses without relying on a property sale. Before-maturity bond prices can fluctuate; this model flags funding gaps.",
+    "bondRisk",
+  ],
+  [
+    "NIIT",
+    "Net Investment Income Tax: a separate federal 3.8% tax with income and filing-status conditions.",
+    "niit",
+  ],
+  [
+    "Nominal / real",
+    "Nominal dollars are future money; real dollars divide by the scenario’s cumulative inflation index. The model uses 2026 purchasing power.",
+    "inflation",
+  ],
+  [
+    "Prop 19 allowance",
+    "An indexed addition to the transferor’s factored assessment for an eligible family-home transfer. It is not an income-tax basis exclusion.",
+    "allowance",
+  ],
+  [
+    "Reinvestment risk",
+    "Future matured cash may only be reinvested at lower yields; staging also leaves capital out of rising stocks.",
+    "notes",
+  ],
+  [
+    "§121 exclusion",
+    "A conditional exclusion of main-home gain; not automatically granted by a Prop 19 claim.",
+    "homeSale",
+  ],
+  [
+    "§1250 gain",
+    "The depreciation-related portion of real-property gain; unrecaptured §1250 gain has a maximum 25% federal rate, plus other applicable taxes.",
+    "gains",
+  ],
+  [
+    "TRA / direct assessment",
+    "A Tax Rate Area groups applicable percentage levies; direct parcel charges must be reconciled separately.",
+    "tra",
+  ],
+  [
+    "§1031 exchange",
+    "Conditional real-property exchange deferral, not a way to sell a personal home and buy stocks tax-free.",
+    "exchange",
+  ],
+];
