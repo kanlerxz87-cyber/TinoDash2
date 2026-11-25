@@ -1,0 +1,28 @@
+# Release verification · Decision Lab 1.0.0
+
+Date: 2026-11-25 UTC. Scope: `decision-lab/**` only, plus this session's coordination entries. This records executed software checks and remaining limits, not a household/professional approval.
+
+## Executed checks
+
+- **55 Node tests pass**, including Form 540 incremental 1% arithmetic, NIIT lesser-of and aggregate threshold interactions, Treasury state exemption, §1250/§121 separation, debt/gain separation, monthly amortization, Prop 19 gates/departure/index sensitivity, Prop H per-parcel terms/index rounding/sunset, depreciation caps/conversion/B improvements, same-year sale, end-of-year mixed sales, capital renewals, imputed-rent non-cash treatment, funding gaps, all six 50-year stress shapes and fixed staging/rebound counterexamples.
+- `npm run verify` validates the 32-entry authority ledger and 85 source-linked content records, blank actual answers, public dependency graph, HTML/doc links, no external executable assets, privacy headers and allowlisted public files. This is **not** an external-link uptime crawl, source re-reading, private-data audit or history-erasure certificate.
+- `npm run build` runs the tests/verification and creates only the explicit public-file allowlist. Dist, dependencies, PDFs, CSVs, QA artifacts and private/environment/key paths are not committed.
+- Optional pinned Playwright/Chromium/axe check executed successfully against the built artifact at a nested `/TinoDash2/decision-lab/` URL: **15 desktop (1440×1050) and 15 mobile (390×844) routes**, 207 rendered table rows all containing official-source links, no page-level horizontal overflow, undefined/non-finite output, missing runtime resource, external request or console/runtime error.
+- Controls recalculate all seven paths, report illustrative-leader movement without a household recommendation, reset defaults, and pass native form constraints. Question/source filters, path selection, synthetic CSV, generic suggestion review/export and refresh-to-blank tab-only behavior pass. Browser storage state contains no cookies or persistent origins.
+- Axe WCAG 2/2.1 A/AA rule checks report **zero violations** across all desktop/mobile routes, desktop/mobile control dialogs and the mobile navigation state after contrast repairs. Off-screen mobile navigation is inert; open navigation makes background content inert; native modal dismissal and menu focus handling are tested. Automated results are **not** full accessibility or screen-reader certification.
+- Professional briefing: **one Letter page (612×792 points)** with all five sections/footer, readable point-based print typography, clickable authority links, and no invented household amounts/approval. PDF text extraction/render review performed. PDF and screenshots are ignored local deliverables, not embedded public source records.
+- Combined root checks (`python3 scripts/check_site.py`, `node --check app.js`) and `git diff --check` were run before release. Root work remains owned by its integration sessions.
+
+## Substantive source review and discrepancies
+
+The [research register](RESEARCH.md) records exact sections read on the review date. Official sources support law/methodology, not hypothetical inputs. The Controller estate-tax page was reopened successfully, and Prop H legal §§1803–1806 were re-read during QA. The legal text's single-family upper tier differs from its Controller summary; the calculator follows legal text and keeps the discrepancy visible. Preliminary election results are not certification; H stays OFF in the baseline.
+
+No current Treasury yield or reproducible official monthly equity total-return series was verified. Numerical 1929/2008 shapes remain explicitly synthetic and counterbalanced by rebound/later-crash cases. Private TRA, appraisal, leases, rents, insurance, debt, capital bids, basis/trust/estate facts, gifts/portability and eligibility remain blank/unverified. Annual tax-calendar, progressive return, loss, vintage/disposal and Treasury-pricing simplifications remain documented in the [methodology](../README.md) and Flagged for Review.
+
+## Operational irregularities / release boundary
+
+- Concurrent root implementations changed main during development. Scope stayed additive; coordination conflicts were resolved by preserving latest main's board and this session's own isolated log. No other branch was edited/pushed, and no root implementation was overwritten.
+- An obsolete own-base pull was aborted without retaining root changes. Earlier oversized UI write was rejected before execution; the file was subsequently written in chunks. Browser setup initially lacked NSS/NSPR; bundled npm Chromium libraries resolved it without a system install. Native form-step and navigation timing/contrast/print legibility issues were found and repaired before release.
+- Pages is legacy `main:/`, not Actions deployment. Source module and built artifact contain the same public runtime assets. Root navigation/module-CI requests are in [issue #2](https://github.com/kanlerxz87-cyber/TinoDash2/issues/2); this session does not overwrite active root claims. PR/merge/live deployment identifiers are recorded in COORDINATION.md after those operations, not predicted here.
+- **Historical public exposure remains unresolved.** 403 administration/Pages failures, branch-only restrictions, PR refs/caches/forks/clones and later concurrent exposures require an administrator-coordinated response. A sanitized source module, rounded amounts, noindex or green tests do not erase history. See [privacy](../PRIVACY.md).
+- No actual household choice, decision criteria, attorney/CPA signoff, transaction, filing, signed investment policy, scheduled meeting or background monitoring service is asserted.

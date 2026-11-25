@@ -4,7 +4,7 @@
 
 This additive module uses A/B placeholders and genuinely synthetic examples. It does not publish household histories, values, rent, costs, identifiers or completed inventories. It is **not a private vault**.
 
-Concurrent earlier root implementations committed household-derived financial/location material to a public repository. PR #5 sanitizes the current root and replaces whole-repository Pages upload with a public-file allowlist. That does **not** erase earlier public commits, PRs, Actions artifacts, cached views, forks, clones or third-party copies.
+Concurrent earlier root implementations committed household-derived financial/location material to a public repository. Redaction PRs including #5 and #14 removed material from their then-current public trees; later concurrent changes require a fresh audit of every combined deployment. A former whole-repository Actions upload was removed; Pages currently uses the legacy main-root builder. That does **not** erase earlier public commits, PRs, Actions artifacts, cached views, forks, clones or third-party copies.
 
 The prior attempts to unpublish Pages and make the repository private each returned **HTTP 403**. Neither setting changed through those requests. No history rewrite, full-ref cleanup or cache/fork recall was performed by this session. Its branch-only restriction does not authorize rewriting/pushing default or other session branches. No complete containment or erasure is claimed.
 

@@ -10,13 +10,13 @@ Requires Node 20+; no package install is needed for core checks or the static bu
 npm --prefix decision-lab test
 npm --prefix decision-lab run verify
 npm --prefix decision-lab run build
-python3 -m http.server 4173 --bind 0.0.0.0
-# Open /decision-lab/ for source preview or /decision-lab/dist/ for the allowlisted build.
+npm --prefix decision-lab run preview
+# Open the shown preview, or http://127.0.0.1:4173/TinoDash2/decision-lab/ locally.
 ```
 
-Serve over HTTP, not file:// (ES modules). All browser asset URLs are relative for GitHub Pages subpaths. `dist/` is generated/ignored. The build copies only named, public runtime assets and public documentation; it does not copy the repository, tests, source records, COORDINATION.md, environment files, uploads or Git metadata.
+The preview binds 0.0.0.0 and serves **only allowlisted built files**. Do not serve the repository root (which could expose .git or private working files). Serve over HTTP, not file:// (ES modules). All browser asset URLs are relative for GitHub Pages subpaths. `dist/` is generated/ignored. The build copies only named, public runtime assets and public documentation; it does not copy the repository, tests, source records, COORDINATION.md, environment files, uploads or Git metadata.
 
-**Root integration is a separate coordination claim.** The root deployment workflow's explicit allowlist must copy the built `decision-lab/dist/` to `_site/decision-lab/` and add a root menu link. A directory merged into Git is not proof of a Pages deployment. See issue [#2](https://github.com/kanlerxz87-cyber/TinoDash2/issues/2). Do not restore artifact upload of `.`.
+**Root integration is a separate coordination claim.** Pages currently uses the legacy builder from `main:/`; this source module is public-safe for that path. An Actions deployment, if administratively enabled later, should copy only built `decision-lab/dist/` to `_site/decision-lab/`. A root menu link and module CI are requested from the integration owner. A directory merged into Git is not proof of a Pages deployment. See issue [#2](https://github.com/kanlerxz87-cyber/TinoDash2/issues/2). Do not restore artifact upload of `.`.
 
 ## Navigation / deliverables
 
@@ -33,7 +33,7 @@ Serve over HTTP, not file:// (ES modules). All browser asset URLs are relative f
 
 This is a decision-preparation illustration, not a tax return, appraisal, investment recommendation, backtest, transaction instruction or filing. No actual household criteria/path/filing/investment policy has been approved. Every numeric input other than a dated public-law constant is a hypothetical sensitivity. Independent evidence belongs in a separate encrypted private matter file, never in this public site/Git or URL/browser storage.
 
-Official links support the stated **rule or methodology**, not a bespoke rent, valuation, property tax rate or insurance quote. Actual fields remain `— Unverified`. See [dated research](docs/RESEARCH.md), [privacy](PRIVACY.md) and the runtime source register for specific sections read.
+Official links support the stated **rule or methodology**, not a bespoke rent, valuation, property tax rate or insurance quote. Actual fields remain `— Unverified`. See [dated research](docs/RESEARCH.md), [release verification](docs/VERIFICATION.md), [privacy](PRIVACY.md) and the runtime source register for specific sections read.
 
 ### Seven consistent paths
 
@@ -104,3 +104,16 @@ Controls recalculate all seven paths and report whether the illustrative leader 
 Automated tests cover rule arithmetic, eligibility gates, ownership/rent invariants, sale timing, debt, capital/depreciation caps, threshold aggregation, nominal/real reconciliation, adverse inputs and staged/rebound counterexamples. Static verification checks source references, self-contained assets, dependency graph, policy and the public build allowlist. Browser checks cover every route, tables, controls, downloads, console/runtime failures, mobile overflow and the one-page PDF; external substantive source review is separate from local link checks.
 
 Proposed review cadence: official authorities quarterly and before transactions; inspections/rent/insurance/estate inventory and scenario refresh annually or after material change. Record revision date, reviewer, sections, status (enacted/proposed/preliminary), effective date and old/new model result. No background legal monitoring, filings, appraisal, quote, secure private vault or actual household selection is running or claimed.
+
+## Optional reproducible browser / accessibility check
+
+Core checks have no dependencies. Browser QA optionally uses pinned test-only packages (Node 22+ for this bundled Chromium); nothing from node_modules is built or committed.
+
+```sh
+cd decision-lab
+npm install --no-save --package-lock=false playwright-core@1.65.1 @sparticuz/chromium@158.0.0 axe-core@4.14.1
+# In a persistent process: npm run preview
+STRICT_A11Y=1 npm run test:browser
+```
+
+The script checks 15 routes at desktop/mobile sizes, official-source links in every rendered table row, controls/filters/exports/tab-only reset, runtime/network errors, desktop/mobile/dialog axe WCAG 2/2.1 A/AA rules, and a one-page Letter PDF. Screenshots/PDF/QA logs go to ignored `artifacts/`; the final briefing PDF is not embedded in the public build. Automated accessibility results are not a manual screen-reader certification.
