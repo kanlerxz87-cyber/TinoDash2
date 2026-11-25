@@ -48,6 +48,16 @@
 4. **PR #10 (session `arena/43306062-tinodash2`, 2026-11-25):** opened “TinoDash2 privacy-first inheritance dashboard (10 pages, interactive model, Black Swan)” containing a figure-driven site (rounded to $10) in root HTML + `assets/` + `data/`. Merge conflict with `main` (PR #9) revealed the repo privacy policy forbids household figures even rounded. **Closed unmerged**; branch force-reset to `origin/main` (`bd80845`) so the branch tip no longer serves figures. Figure-driven analysis preserved only in git-ignored `private/` (internal use, never committed). Closed-PR ref retains the figure commits until GitHub purges. **Owner must decide on history rewrite/purge including PR #10 commits and all caches.**
 5. **PR #12 (session `s-a549f819`, 2026-11-25):** user explicitly requested a full inheritance decision dashboard including rounded-to-$10 figures, projections, black-swan/phased-investing analysis, and printable briefing sheet. Session built `docs/` site with anonymized placeholders (Property A/B/Owner B), no ZIP codes/addresses/parcel IDs/names, and values rounded to nearest $10. This conflicts with the stated "no household figures even rounded" policy. Session flagged the conflict in docs/flagged.html and here. **Owner must decide whether to accept, redact, or move figures to private-only artifacts; history/purge implications apply if merged.**
 
+
+## Session b2c54940 claim (2026-11-25, branch `arena/b2c54940-tinodash2`)
+
+| Task | Status | Owner | Files / Scope | Notes |
+|---|---|---|---|---|
+| Contain prior public-data exposure (remove household-derived figures from public tree) | in progress | b2c54940 | `docs/**` (removed from public tree), `scripts/build_model.py` (moved to `private/`), `.gitignore` | Figure-bearing dashboard quarantined to git-ignored `private/`. Git history NOT rewritten; purge still an owner action. |
+| Verify official anchors (IRS, CA BOE, CA SCO, CA FTB) | in progress | b2c54940 | `sources.md`, `verification.html`-linked pages | Only rows actually re-fetched are marked verified. |
+| Private analysis annex (rounded to $10, local only) | in progress | b2c54940 | `private/ANALYSIS_ANNEX.md` (git-ignored, never committed) | Not published. |
+| Public site, README, validator | in progress | b2c54940 | root `*.html`, `README.md`, `scripts/check_site.py` | No household figures, names, ZIPs, addresses, parcel IDs. |
+
 ## Session s-a549f819 task board
 
 | Task | Status | Owner | Files / Scope | Notes |
