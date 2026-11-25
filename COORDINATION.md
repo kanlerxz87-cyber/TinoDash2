@@ -484,3 +484,31 @@ and a decision on whether the repository should stay public.
 - **PR**: opened from `arena/da762c26-tinodash2` → `main` with summary, sources, flagged items; merged without waiting per instructions. Result recorded below by the merge step.
 - **History purge**: `research/HISTORY_PURGE_RUNBOOK.md` — owner action (orphan rewrite + GitHub Support cache purge); not possible from inside a sandbox. Flagged on the site's Flagged page.
 - **MERGE RESULT (recorded 2026-11-25)**: PR **#27** (https://github.com/kanlerxz87-cyber/TinoDash2/pull/27) **MERGED** 2026-11-25T14:18:34Z. "Validate site" CI on main: success. GitHub Pages (legacy builder): **built** — live at https://kanlerxz87-cyber.github.io/TinoDash2/. Remaining owner actions: run research/HISTORY_PURGE_RUNBOOK.md; obtain SF transfer tax from SF Treasurer; DoD appraisal of Property A; insurance quotes; verify FMR/insurance mirrors at official sites; decide Prop 19 occupancy intention; 1031 election decision before any sale.
+
+## Session claim — `arena/a69037f0-tinodash2` (2026-11-25) — FINAL INTEGRATION SESSION
+
+**Session ID:** `a69037f0`
+**Role:** Final integration session (user instruction: finish all tasks, re-verify combined data, confirm the site builds with no broken links, PR to main, merge, confirm GitHub Pages).
+**Status:** in progress
+
+| Task | Status | Owner | Files / scope |
+|---|---|---|---|
+| Resolve owner decision on rounded figures (see below) | done (documented) | a69037f0 | COORDINATION.md (this entry) |
+| Figure-driven analysis rounded to $10, anonymized (Property A / Property B) | in progress | a69037f0 | index.html, black-swan.html, app.js, styles.css |
+| Official-source re-verification + source log append | in progress | a69037f0 | research/SOURCE_LOG.md, sources.md |
+| Checker update ($10-rounding enforcement, identifier blocking) | in progress | a69037f0 | scripts/check_site.py |
+| Regenerated projection/black-swan tables (reproducible) | in progress | a69037f0 | scripts/build_figures.py (new) |
+| Flagged page, briefing sheet, README refresh | in progress | a69037f0 | FLAGGED_FOR_REVIEW.html, README.md |
+| PR → main → Pages live check → final record | queued | a69037f0 | COORDINATION.md |
+
+**Scope exclusions:** `decision-lab/**` remains owned by session `arena-c5500fac` and is NOT edited here (navigation link only). `.github/workflows/pages.yml` unchanged. History purge remains an owner action (see Exposure log; nothing in this session claims history is scrubbed).
+
+### Owner decision resolved (2026-11-25, owner instruction restated in this session's brief)
+
+The repository owner has instructed, again and explicitly: household **costs and numbers must be published on the site rounded to the nearest $10** (property tax and assessed-value tables, costs, projections) "and should be reported in any decision analysis to provide clarity"; **all personal information must be replaced by placeholders** (Property A / Property B); no names, addresses, ZIP codes, parcel IDs, or Property A city names may appear. This resolves every "owner must decide" item in the Exposure log **in favour of rounded-figure publication with strict identifier removal**. The interim session rule "no household figures even rounded" is superseded by the owner for rounded figures only; the identifier prohibitions remain absolute and are enforced by `scripts/check_site.py` (unrounded household values, ZIPs, addresses, parcel IDs, city names blocked; all published dollar amounts ≥ $1,000 must be $10-multiples except whitelisted official law values such as the published Prop 19 allowance). Rounding is the owner's stated trade-off for traceability; identifiers are removed entirely.
+
+### Verification policy for this session (per user instruction)
+
+- Every published table row carries a link to an official source (or an explicit "household estimate — UNVERIFIED" label plus an official starting point).
+- Values that cannot be confirmed from an official source are labelled unverified and listed on the Flagged for Review page; no value is inferred or invented.
+- Official anchors re-checked in this session are recorded in `research/SOURCE_LOG.md` with fetch date.
