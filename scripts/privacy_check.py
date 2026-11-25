@@ -25,7 +25,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 # Files a visitor of https://<owner>.github.io/<repo>/ can open.
-PUBLISHED_GLOBS = ["*.html", "pages/*.html", "docs/*.html", "companion/*.html", "companion/pages/*.html", "*.js", "*.json", "css/*.css"]
+PUBLISHED_GLOBS = ["*.html", "pages/*.html", "docs/*.html", "companion/*.html", "companion/pages/*.html", "companion/estate-pathways/*.html", "companion/estate-pathways/pages/*.html", "*.js", "companion/estate-pathways/data/*.js", "*.json", "css/*.css"]
 
 # Exact literals that must never appear in published output. These are the
 # household figures from the request plus their common rounding variants. Keep

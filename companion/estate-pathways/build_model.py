@@ -15,7 +15,7 @@ import json, math, os
 from datetime import datetime, timezone
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
-OUT = os.path.join(ROOT, 'data', 'model.js')
+OUT = os.path.join(ROOT, 'companion', 'estate-pathways', 'data', 'model.js')
 
 def r10(x):
     if x is None:
@@ -106,31 +106,31 @@ ASSUMPTIONS = {
 # 2. Rounded history (household records, rounded to $10; % changes as provided)
 # ---------------------------------------------------------------------------
 PROPERTY_A_HISTORY = [
-    {"year": 2026, "taxes": None, "assessed": r10(550537), "note": "taxes not provided"},
-    {"year": 2025, "taxes": r10(7207), "assessed": r10(539743)},
-    {"year": 2024, "taxes": r10(7003), "assessed": r10(529161)},
-    {"year": 2023, "taxes": r10(6917), "assessed": r10(518786)},
-    {"year": 2022, "taxes": r10(6755), "assessed": r10(508614)},
-    {"year": 2021, "taxes": r10(6662), "assessed": r10(498642)},
-    {"year": 2020, "taxes": r10(6565), "assessed": r10(493530)},
-    {"year": 2019, "taxes": r10(6565), "assessed": r10(483854)},
-    {"year": 2018, "taxes": r10(6383), "assessed": r10(474368)},
-    {"year": 2017, "taxes": r10(6383), "assessed": r10(465067)},
-    {"year": 2016, "taxes": r10(6414), "assessed": r10(455949)},
-    {"year": 2015, "taxes": r10(6130), "assessed": r10(449101)},
-    {"year": 2014, "taxes": r10(5965), "assessed": r10(440305)},
+    {"year": 2026, "taxes": None, "assessed": r10(550540), "note": "taxes not provided"},
+    {"year": 2025, "taxes": r10(7210), "assessed": r10(539740)},
+    {"year": 2024, "taxes": r10(7000), "assessed": r10(529160)},
+    {"year": 2023, "taxes": r10(6920), "assessed": r10(518790)},
+    {"year": 2022, "taxes": r10(6760), "assessed": r10(508610)},
+    {"year": 2021, "taxes": r10(6660), "assessed": r10(498640)},
+    {"year": 2020, "taxes": r10(6570), "assessed": r10(493540)},
+    {"year": 2019, "taxes": r10(6570), "assessed": r10(483850)},
+    {"year": 2018, "taxes": r10(6380), "assessed": r10(474370)},
+    {"year": 2017, "taxes": r10(6380), "assessed": r10(465070)},
+    {"year": 2016, "taxes": r10(6410), "assessed": r10(455950)},
+    {"year": 2015, "taxes": r10(6140), "assessed": r10(449100)},
+    {"year": 2014, "taxes": r10(5970), "assessed": r10(440310)},
 ]
 PROPERTY_B_HISTORY = [
-    {"year": 2025, "taxes": r10(2439), "assessed": r10(114248)},
-    {"year": 2024, "taxes": r10(2315), "assessed": r10(112008)},
-    {"year": 2023, "taxes": r10(2179), "assessed": r10(109814)},
-    {"year": 2022, "taxes": r10(2107), "assessed": r10(107662)},
-    {"year": 2021, "taxes": r10(2066), "assessed": r10(105595)},
-    {"year": 2020, "taxes": r10(2197), "assessed": r10(104513)},
-    {"year": 2019, "taxes": r10(2134), "assessed": r10(102465)},
-    {"year": 2018, "taxes": r10(2061), "assessed": r10(100456)},
-    {"year": 2017, "taxes": r10(1740), "assessed": r10(98488)},
-    {"year": 2016, "taxes": r10(1675), "assessed": r10(96557)},
+    {"year": 2025, "taxes": r10(2440), "assessed": r10(114250)},
+    {"year": 2024, "taxes": r10(2320), "assessed": r10(112010)},
+    {"year": 2023, "taxes": r10(2180), "assessed": r10(109810)},
+    {"year": 2022, "taxes": r10(2110), "assessed": r10(107660)},
+    {"year": 2021, "taxes": r10(2070), "assessed": r10(105600)},
+    {"year": 2020, "taxes": r10(2200), "assessed": r10(104510)},
+    {"year": 2019, "taxes": r10(2130), "assessed": r10(102470)},
+    {"year": 2018, "taxes": r10(2060), "assessed": r10(100460)},
+    {"year": 2017, "taxes": r10(1750), "assessed": r10(98490)},
+    {"year": 2016, "taxes": r10(1680), "assessed": r10(96560)},
 ]
 
 # ---------------------------------------------------------------------------

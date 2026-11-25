@@ -18,7 +18,7 @@ jobs:
       - name: Check static pages and local links
         run: python3 scripts/check_site.py
       - name: Check JavaScript syntax
-        run: node --check app.js && node --check companion/app.js && node --check companion/calculator.js
+        run: node --check app.js && node --check companion/app.js && node --check companion/calculator.js && node --check companion/estate-pathways/app.js && node --check companion/estate-pathways/data/render.js
       - name: Smoke-test the browser-only calculator (no network, no storage)
         run: node scripts/smoke_calculator.js
       - name: Verify historical datasets against published index levels

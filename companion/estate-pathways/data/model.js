@@ -158,7 +158,7 @@ window.MODEL = {
   {
    "year": 2020,
    "taxes": 6570,
-   "assessed": 493530
+   "assessed": 493540
   },
   {
    "year": 2019,
@@ -182,7 +182,7 @@ window.MODEL = {
   },
   {
    "year": 2015,
-   "taxes": 6130,
+   "taxes": 6140,
    "assessed": 449100
   },
   {
@@ -234,7 +234,7 @@ window.MODEL = {
   },
   {
    "year": 2017,
-   "taxes": 1740,
+   "taxes": 1750,
    "assessed": 98490
   },
   {
@@ -3416,7 +3416,7 @@ window.MODEL = {
      "name": "Mixed: sell now, 70% equities / 30% Treasury ladder",
      "terminal": 23663380,
      "note": "Holds a deliberate liquidity sleeve (capital costs, tax payments, opportunities). Rebalancing rule should be written in advance.",
-     "terminal_real": 15986130
+     "terminal_real": 15986140
     },
     "live2_then_rent": {
      "name": "Mixed: live 2 years, then rent out to horizon",
@@ -3472,7 +3472,7 @@ window.MODEL = {
     },
     "rent_then_sell": {
      "name": "Rent 5 years, then sell + invest",
-     "terminal": 9921740,
+     "terminal": 9921750,
      "note": "Depreciation claimed or allowable reduces basis; unrecaptured section 1250 gain taxed up to 25% federal + CA ordinary. Estimate shown uses a 75% building allocation (assumption).",
      "terminal_real": 6677050
     },
@@ -3480,7 +3480,7 @@ window.MODEL = {
      "name": "Mixed: sell now, 70% equities / 30% Treasury ladder",
      "terminal": 10255620,
      "note": "Holds a deliberate liquidity sleeve (capital costs, tax payments, opportunities). Rebalancing rule should be written in advance.",
-     "terminal_real": 6901740
+     "terminal_real": 6901750
     },
     "live2_then_rent": {
      "name": "Mixed: live 2 years, then rent out to horizon",

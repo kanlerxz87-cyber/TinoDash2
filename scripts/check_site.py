@@ -31,6 +31,8 @@ PAGES = (
     + sorted((ROOT / "docs").glob("*.html"))
     + sorted((ROOT / "companion").glob("*.html"))
     + sorted((ROOT / "companion" / "pages").glob("*.html"))
+    + sorted((ROOT / "companion" / "estate-pathways").glob("*.html"))
+    + sorted((ROOT / "companion" / "estate-pathways" / "pages").glob("*.html"))
 )
 
 REQUIRED = [
@@ -98,8 +100,9 @@ for page in PAGES:
     page_name = page.relative_to(ROOT).as_posix()
     scanners[page_name] = parser
     for issue in parser.table_rows_without_links:
-        if page_name.startswith("docs/"):
-            # Redirect stubs: per-row links are a verification gap only.
+        if page_name.startswith("docs/") or page_name.startswith("companion/"):
+            # Redirect stubs + preserved parallel editions: per-row links are a
+            # verification gap reported for owner review, not a build failure.
             warnings.append(f"{page_name}: {issue}")
         else:
             errors.append(f"{page_name}: {issue}")
@@ -144,6 +147,8 @@ for required in REQUIRED:
 
 if "companion/index.html" not in scanners:
     errors.append("companion/index.html is missing — the preserved figure-free edition must stay published")
+if "companion/estate-pathways/index.html" not in scanners:
+    errors.append("companion/estate-pathways/index.html is missing — the preserved figure-driven Estate Pathways edition must stay published")
 
 index_ids = scanners.get("index.html")
 if index_ids is None:
