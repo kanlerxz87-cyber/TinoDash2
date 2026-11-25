@@ -369,6 +369,18 @@ Outstanding owner actions are unchanged and still need a human: history purge co
 PRs #3/#4/#5/#8/#10 and the PR #12 merge commit, cache and search-index removal, fork review,
 and a decision on whether the repository should stay public.
 
+---
+## Session `arena/760ee5cf-tinodash2` — statutory local anchors, browser-only tax/Prop-19/crash-replay engine & Issue #2 `decision-lab` integration (2026-11-25, PR #23)
+
+- **Privacy compliance:** Zero household figures, ZIP codes, addresses, parcel IDs, or Property A city names anywhere in public files, commits, or PR #23. Full `$10`-rounded household quantitative run and local JSON preset saved strictly in git-ignored `private/ANALYSIS_ANNEX.md` and `private/estate_pathways_local_scenario_rounded10.json` (never staged).
+- **Issue #2 root integration fulfilled:** Linked `decision-lab/index.html` from root `index.html` sidebar navigation, preserved `decision-lab/**` and all PR #21 pages untouched, and added `npm --prefix decision-lab test` to `.github/workflows/pages.yml`.
+- **Official sources fetched & added (`index.html`, `sources.md`, `FLAGGED_FOR_REVIEW.html`):**
+  - Santa Clara County FY 2025–2026 Tax Rate Book (`controller.santaclaracounty.gov`) published TRA ad valorem decomposition (`1.16360%` primary incorporated sub-TRA reference) + SCC `$1.10/$1,000` documentary transfer tax.
+  - San Francisco FY 2026–2027 secured property tax rate (`1.18162182%`, `sftreasurer.org`), SFMTA Nov 3, 2026 Prop H parcel tax (`sfmta.com`), SF Empty Homes Tax (Prop M on 3+ unit buildings, `sftreasurer.org`), and SF Rent Board 2026–27 `1.6%` cap & `§ 37.9C` relocation schedule (`sf.gov`).
+  - `CA Rev. & Tax. Code § 13302` (`leginfo.legislature.ca.gov`) primary statutory citation for `$0` CA estate/inheritance tax; `BOE Pub 800-9` (`R&TC § 480(b)` mandatory 150-day `Form BOE-502-D` death-of-owner notice) & `BOE Pub 801` (move-out reassessment); `CPUC Decision D.22-12-056` 20-year legacy solar NEM sunset; `CDI` `$3M` FAIR Plan residential reference; `CA FTB Form 3840` § 1031 tracking.
+- **Browser-only engine upgrade (`app.js` + `index.html`, all household inputs blank):** Added optional Prop 19 / TRA reassessment & move-out trap, delayed-exit `IRC § 121` / `27.5-yr` MACRS & `25%/28.8% IRC § 1250` recapture / `IRC § 1031` / progressive CA Form 540 (`1% >$1M` BHST), `Form 706` / DSUE portability / prior-gifts headroom, 1929/1973/2000/2008 10-yr crash-entry replay (Lump-Sum vs 24m/36m `3M–2Y` Treasury ladder with explicit reinvestment risk), and local `FileReader` JSON import/export + dated decision note.
+- **PR:** https://github.com/kanlerxz87-cyber/TinoDash2/pull/23
+
 ### Added after the first merge (deliverables still open)
 
 | Item | Status | Notes |

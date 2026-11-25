@@ -70,3 +70,14 @@ Re-checked against official hosts; only rows listed here are marked verified in 
 | Santa Clara County documentary transfer tax $1.10 per $1,000 | [SCC Clerk-Recorder](https://clerkrecorder.santaclaracounty.gov/recording-documents/recording-real-estate) (search excerpt) | Verified for the county rate. City conveyance tax: the official list does not name Property A's city; **not verified; flagged.** |
 
 Not reachable in-session: https://www.boe.ca.gov/proptaxes/prop19.htm ; https://www.sfgov.org/sftreasure/transfer-tax ; FTB 2025 Form 540 PDF.
+
+## Verification log — session 760ee5cf (2026-11-25)
+
+| Claim | Official source checked | Result |
+|---|---|---|
+| CA statutory prohibition of gift/inheritance tax & pick-up estate tax tie-in | [CA Rev. & Tax. Code § 13302](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=13302.) | Verified statutory code text alongside State Controller summary. |
+| Mandatory 150-day post-death county assessor notice (`Form BOE-502-D`, R&TC § 480(b)) | [BOE Publication 800-9 (PDF)](https://www.boe.ca.gov/pdf/pub800-9.pdf) | Verified 150-day filing requirement even for non-probate revocable trust transfers. |
+| Santa Clara County published TRA ad valorem rate decomposition (`1.16360%` primary incorporated sub-TRA ref) | [SCC FY 2025–2026 Tax Rate Book](https://controller.santaclaracounty.gov/property-tax-distribution/property-tax-rate-book) | Fetched official PDF (pp. A-4 to A-6): 1.0000% Prop 13 base + county/school/college/district voter debt. Exact parcel APN TRA remains private/unverified. |
+| San Francisco FY 2026–27 secured tax rate (`1.18162182%`), Empty Homes Tax (3+ units), & 2026–27 Rent Board rates (`1.6%` cap; `§ 37.9C` relocation) | [SF Treasurer Secured Taxes](https://sftreasurer.org/property/secured-property-taxes) · [SF Empty Homes Tax](https://sftreasurer.org/business/taxes-fees/empty-homes-tax-eht) · [SF Rent Board Rates](https://www.sf.gov/reports--current-rates-including-rent-increase-relocation-sec-deposit) | Verified official rates; parcel/unit applicability requires private Certificate of Occupancy & lease review. |
+| CPUC 20-year legacy solar NEM tariff window & CDI `$3,000,000` FAIR Plan residential limit | [CPUC Decision D.22-12-056 FAQ](https://www.cpuc.ca.gov/-/media/cpuc-website/divisions/energy-division/documents/net-energy-metering-nem/nemrevisit/final-qa-nem.pdf) · [CDI Residential Guide](https://www.insurance.ca.gov/01-consumers/105-type/5-residential/Top10Tips_FindingResidentialIns.cfm) | Verified official rules; solar PTO year and written carrier quotes remain private/unverified. |
+
