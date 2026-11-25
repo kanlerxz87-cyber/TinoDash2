@@ -95,6 +95,10 @@ for name, parser in scanners.items():
 
 # Privacy scan: no addresses, ZIP codes, parcel IDs, or the owner's city names on any published surface.
 PRIVACY_PATTERNS = [
+    (r"\b(2,950,000|3,100,000|3,250,000|1,700,000|1,800,000|1,900,000|7,150|6,800|7,500)\b", "household value or rent figure"),
+    (r"\b(550,5\d\d|539,7\d\d|114,2\d\d)\b", "assessed value figure"),
+    (r"\b(95014|94122)\b", "ZIP code"),
+    (r"\b(3\.1M|1\.8M|2\.95M|3\.25M)\b", "household value shorthand"),
     (r"(?i)\bcupertino\b", "city name for Property A"),
     (r"(?i)outer\s+sunset|sunset\s+district", "neighborhood name for Property B"),
     (r"(?i)\bAPN\s*[:#]?\s*\d", "assessor parcel number"),
@@ -102,7 +106,8 @@ PRIVACY_PATTERNS = [
     (r"(?i)\bzip(\s*code)?\s*[:#]?\s*9\d{4}\b", "ZIP code"),
     (r"\b\d{1,5}\s+[A-Z][a-z]+\s+(Ave|Avenue|St|Street|Rd|Road|Dr|Drive|Way|Ln|Lane|Blvd|Court|Ct)\b", "street address"),
 ]
-PUBLIC_FILES = sorted(ROOT.glob("*.md")) + sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html"))
+# COORDINATION.md is the internal, append-only board: not website content, so it is excluded from the public scan.
+PUBLIC_FILES = [f for f in sorted(ROOT.glob("*.md")) if f.name != "COORDINATION.md"] + sorted(ROOT.glob("*.html")) + sorted((ROOT / "pages").glob("*.html"))
 for f in PUBLIC_FILES:
     text = f.read_text(encoding="utf-8")
     for pat, label in PRIVACY_PATTERNS:
