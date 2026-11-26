@@ -711,3 +711,18 @@ market value over that sum.** Consequences, all recorded on the site:
 - Rebase note: a third `git pull --rebase origin main` fetched `459934a`; the coordination append conflicted with session `arena/3d344315-tinodash2`'s PR #36 receipt. Both that receipt and this session's PR #39 record are retained.
 - **Primary change merged:** PR #39 (https://github.com/kanlerxz87-cyber/TinoDash2/pull/39), merged 2026-11-26 at 13:04 UTC as `ecbc9bf4aa5f627db77ce23f0142b0750c2ceefb`. `Validate site` CI passed on the PR and on `main`; GitHub Pages API reports build status `built` for that commit, and the live landing page was fetched with a cache-busting query and showed the new privacy/freshness notice.
 - **Status: done (session scope); needs owner review** for S-C6, Git-history purge, and a fresh official-source re-check from a reachable network. The online source refresh was not successful; no current-law verification is claimed.
+
+## Session arena/4c47c34f-tinodash2 claim (2026-11-26)
+
+**Branch:** `arena/4c47c34f-tinodash2` (Arena-assigned; do not rename; push only here).
+**Scope (non-overlapping):** defect fixes to root dashboard files touched by *no other active session*
+(`timeline.html`, `flagged.html`, `figures.html` + `scripts/build_figures.py`, `COORDINATION.md`,
+and a new `research/` entry). Read-only everywhere else. No new household figures were introduced;
+nothing in `private/` was committed, and no history claim is made.
+
+| Task | Status | Owner | Files / Scope | Notes |
+|---|---|---|---|---|
+| Fix unresolved merge-conflict markers published on the live site | done | 4c47c34f | `timeline.html` | `timeline.html` shipped `<<<<<<< HEAD` / `=======` / `>>>>>>> c165e30` from the PR #29 integration merge. Resolved by keeping the newer `TinoDash2` dashboard page (the redirect stub it was merged against pointed *at* `pages/timeline.html`, which is itself a stub back to the root, so keeping the stub would have created a redirect loop). |
+| Same defect in the coordination log | done | 4c47c34f | `COORDINATION.md` | Two marker blocks removed; the newer (`83f9318`, statuses `done`) task table kept, older in-progress duplicate dropped. No content from either side lost beyond the superseded duplicate rows. |
+| Verify the flagged "two models disagree on Prop 19" irregularity | done — flag withdrawn | 4c47c34f | `flagged.html`, `figures.html`, `scripts/build_figures.py` | **The previous session's flag was wrong.** RTC 63.2(d) gives factored + max(0, FMV − factored − allowance), which is identically max(factored, FMV − allowance) above the cap — exactly what both models implement. The ≈$62,440 vs ≈$54,700 gap is the **tax-rate band** (1.33% audit band vs 1.1488% SCC typical TRA) on the same ≈$4.68M taxable value, not a formula error. Both pages corrected; the remaining real gap (TRA band, allowance carry-forward) stays flagged as placeholder. |
+| Re-verify cited official anchors | in progress | 4c47c34f | `research/SOURCE_LOG.md` (append only) | See entries below. |
