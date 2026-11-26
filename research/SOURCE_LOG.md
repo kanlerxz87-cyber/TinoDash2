@@ -90,3 +90,53 @@ in this log identifies a property.
 - Added prominent source-refresh and privacy-risk notices to the landing page; added a current refresh status to the source register and a flagged item for shallow-history limits.
 - Added suggestion S-C6: highest-priority proposal to remove all household-derived figures and property histories from public artifacts, keep private data in local untracked files, and leave only public anchors/empty local calculator online. Not implemented because the site's suggestion queue explicitly requires an owner decision before implementation.
 - No new personal identifiers or unrounded household values were added. Verified static/privacy checks after edits; no new legal/source facts were asserted.
+
+
+---
+
+## Session arena/4c47c34f-tinodash2 — independent re-verification, 2026-11-26
+
+Each line below was re-fetched and read directly this session (not carried over from an earlier
+session's note). The full claim-by-claim table is also published in `sources.md` (section
+"Verification log — session arena/4c47c34f"), so it is not duplicated here in full.
+
+| # | Anchor | Official URL | What the page actually says (read 2026-11-26) | Verdict |
+|---|---|---|---|---|
+| 51 | 2026 federal basic exclusion | https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax | "Public Law 119-21 … increasing the basic exclusion amount to $15,000,000 for calendar year 2026." | CONFIRMED |
+| 52 | CA has no estate tax | https://www.sco.ca.gov/ardtax_estate_tax.html | "For decedents that die on or after January 1, 2005, there is no longer a requirement to file a California Estate Tax Return." | CONFIRMED |
+| 53 | Prop 19 allowance $1,044,586 | https://www.boe.ca.gov/news/2025/nr-25-02.htm | "increased by 2.15 percent, from $1,022,600 to $1,044,586" for transfers 2/16/2025–2/15/2027, recalculated "every other year" from the FHFA California HPI. | CONFIRMED |
+| 54 | RTC 63.2(d) formula | https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=63.2 | taxable value = prior taxable value **plus** $0 below (prior + $1,000,000), else FMV minus (prior + $1,000,000). | CONFIRMED |
+| 55 | 1% tax above $1M | https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=17043 | "1 percent on that portion of a taxpayer's taxable income in excess of one million dollars"; Prop 63, operative 1/1/2005, never indexed. | CONFIRMED |
+| 56 | CA capital gains | https://www.ftb.ca.gov/file/personal/income-types/capital-gains-and-losses.html | "California does not have a lower rate for capital gains." | CONFIRMED |
+| 57 | IRC 121 | https://www.irs.gov/taxtopics/tc701 | $250,000 / $500,000; ownership and use tests each 24 of the last 60 months. | CONFIRMED |
+| 58 | County DTT | https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=11911 | "$0.55 for each five hundred dollars ($500) or fractional part thereof"; a city may add half of that. | CONFIRMED |
+| 59 | SF transfer tax | https://www.sf.gov/transfer-tax | $2.50 / $3.40 / $3.75 / $11.25 / $27.50 / $30.00 per $500, bracket applies to the entire consideration. | CONFIRMED |
+| 60 | SF Prop H | https://www.sfmta.com/getting-around/muni/parcel | multifamily $249 (≤5,000 sf); +$0.195/sf above; cap $50,000; senior $249/unit off, apply by June 1; FY2027-28→FY2041-42. | CONFIRMED |
+| 61 | SCC typical TRA | https://files.santaclaracounty.gov/exjcpb1521/2026-04/assessment-information-2026-booklet-english-3-23-26-web.pdf | "$1.00, county bonds = $0.0388, school bonds = $0.100, water bonds = $0.010, total = $1.1488" per $100 of assessed value. | CONFIRMED (site wording corrected — components had been quoted 10x too small) |
+| 62 | Reassessment timing for inherited property | same SCC booklet | reassessment "occurs as of the date of the death of the former owner, not on the date of distribution". | CONFIRMED |
+| 63 | Supplemental assessment + appeal window | same SCC booklet | prorated to June 30, separate from the regular bill; 60 days to appeal. | CONFIRMED |
+| 64 | Homeowners' exemption | same SCC booklet | up to $7,000 of assessed value; recording a deed into/out of trust terminates it. | CONFIRMED |
+| 65 | HUD FY2026 3BR FMR | https://www.huduser.gov/portal/datasets/fmr.html | documentation-system pages returned null geography values; the number could not be read. | **NOT CONFIRMED — stays flagged** |
+| 66 | Black-swan drawdown series | https://fred.stlouisfed.org/data/SP500 | FRED now serves only 10 years of daily history (range begins 2016-11-28); the 1929/2008/2000-02 declines are **not** reproducible from the cited link. | **NEW FLAG** |
+| 67 | Treasury par yields | https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026 | 11/24/2026: 3M 4.36 · 1Y 4.59 · 2Y 4.63. 11/25/2026: 3M 4.37 · 1Y 4.56 · 2Y 4.61. | CONFIRMED |
+
+### Irregularities found and fixed this session
+
+1. **Unresolved merge-conflict markers on a live page.** `timeline.html` shipped `<<<<<<< HEAD` /
+   `=======` / `>>>>>>> c165e30 …`; `COORDINATION.md` had two such blocks. Fixed; the newer dashboard
+   page kept (the stub it conflicted with redirected to `pages/timeline.html`, itself a stub back to
+   the root). `scripts/check_site.py` now fails the build on any conflict marker in the tree,
+   validated with a positive control.
+2. **An incorrect "two models disagree" flag, withdrawn.** RTC 63.2(d)'s
+   `factored + max(0, FMV − factored − allowance)` is identically `max(factored, FMV − allowance)`
+   above the cap, which both models implement. The ≈$62,440 vs ≈$54,700 gap is the tax-rate band
+   (1.33% vs 1.1488%) on the same ≈$4.81M taxable value. The genuinely open items (parcel-specific
+   TRA, allowance carry-forward) stay flagged.
+3. **SCC tax-rate components 10x too small.** Booklet states dollars per $100: $1.00 + $0.0388 +
+   $0.100 + $0.010 = $1.1488. Fixed in `index.html`, `scripts/build_model.py`, `sources.md`. No
+   modelled number moved.
+4. **Black-swan drawdown reproducibility (open).** See row 66.
+5. **Effective rate vs typical TRA.** From the owner's rounded billing series the implied all-in rate
+   is 1.32%–1.41% (mean ≈1.345%) versus the 1.1488% typical TRA — roughly $900–$1,180/yr of
+   non-ad-valorem charges. The canonical model carries this as `scc_fixed_charges_annual_base`,
+   the audit model inside its 1.33% band. Neither is parcel-verified; flag stands.
