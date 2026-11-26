@@ -695,8 +695,6 @@ market value over that sum.** Consequences, all recorded on the site:
 - Added a first-screen warning that household-derived rounded series may still re-identify a household, plus failed-refresh status, and linked the new S-C6 proposal to remove household-derived values from public artifacts. The proposal is not implemented because the existing governance queue explicitly requires owner selection first.
 - Files changed and check results are recorded at the end of `research/SOURCE_LOG.md`. Static and privacy tests were run after edits. No claim is made that the site is fully anonymized or that current law was freshly verified.
 - Rebase note: `git pull --rebase origin main` fetched `59be3b0`; `COORDINATION.md` append conflicted because concurrent sessions added the 3d344315 and d7cf2428 logs. Both incoming records and this session's record were preserved; no other session's files were changed. Re-ran validation after resolution.
-- **Status: done (session scope); needs owner review** for S-C6, Git-history purge, and a fresh official-source re-check from a reachable network. No PR/merge result is recorded by this session yet.
-
 ### Session arena/6e9d5e3a log (2026-11-26) — periodic official recheck (Treasury anchor refresh)
 
 - **Claim:** scope `data/model.*`, `scripts/build_model.py`, `app.js` (Treasury default only), root pages citing the Treasury anchor, `sources.md`/`sources.html`, this file. Branch `arena/6e9d5e3a-tinodash2`.
@@ -709,3 +707,7 @@ market value over that sum.** Consequences, all recorded on the site:
 - **Gates:** `check_site.py`, `privacy_check.py` (+ `--selftest`), `node --check` on all JS entrypoints, calculator smoke, decision-lab tests, `verify_sources.py` offline — all pass.
 
 - **Session 3d344315 result (2026-11-26):** PR #36 (https://github.com/kanlerxz87-cyber/TinoDash2/pull/36) squash-merged to `main` as commit `59be3b0`. GitHub Pages legacy build for `59be3b0` reached status `built`; live page https://kanlerxz87-cyber.github.io/TinoDash2/sources.html loads. Items still open for the owner (not blocking): git history purge (owner action), Property B bill reconciliation, rent appraisal, CPA schedules, and the Prop 19 enrolled computation. Flagged items are on the Flagged page.
+- Rebase note: a second `git pull --rebase origin main` fetched `201a0be`; the coordination append conflicted with session `arena/6e9d5e3a-tinodash2`. Its complete verification log and this session's PR #39 merge receipt are both retained.
+- Rebase note: a third `git pull --rebase origin main` fetched `459934a`; the coordination append conflicted with session `arena/3d344315-tinodash2`'s PR #36 receipt. Both that receipt and this session's PR #39 record are retained.
+- **Primary change merged:** PR #39 (https://github.com/kanlerxz87-cyber/TinoDash2/pull/39), merged 2026-11-26 at 13:04 UTC as `ecbc9bf4aa5f627db77ce23f0142b0750c2ceefb`. `Validate site` CI passed on the PR and on `main`; GitHub Pages API reports build status `built` for that commit, and the live landing page was fetched with a cache-busting query and showed the new privacy/freshness notice.
+- **Status: done (session scope); needs owner review** for S-C6, Git-history purge, and a fresh official-source re-check from a reachable network. The online source refresh was not successful; no current-law verification is claimed.
