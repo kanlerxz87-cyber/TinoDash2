@@ -672,13 +672,6 @@ market value over that sum.** Consequences, all recorded on the site:
   reconciliation; rent appraisal; CPA schedules; Assessor confirmation of the Prop 19 enrolled
   computation) — all on the Flagged page. Nothing in this session claims git history is scrubbed.
 
-<<<<<<< HEAD
-### Session arena/d7cf2428-tinodash2 (2026-11-26)
-
-| Task | Status | Owner | Files / Scope | Notes |
-|---|---|---|---|---|
-| Clear non-rounded public aggregate figures that caused static validation warnings | done | arena/d7cf2428-tinodash2 | `companion/estate-pathways/FLAGGED_FOR_REVIEW.html`, `COORDINATION.md` | Rounded mirror-sourced aggregate insurance figures to nearest $10. No household values added. All available checks rerun. |
-=======
 ### Session 3d344315 log (2026-11-26, branch `arena/3d344315-tinodash2`)
 - Found unresolved merge-conflict markers in this file on `main` (left from a prior merge of the e4e062ed claim). Resolved by keeping the completed (`done`) rows and dropping the stale `in progress` rows; no claim text was discarded other than those superseded rows.
 - Re-fetched official anchors directly: IRS "What's new — Estate and gift tax" (2026 basic exclusion $15,000,000 via Public Law 119-21) and FTB 2025 Form 540 booklet (loads; line 62 surcharge confirmed against the FTB 2019 and 2022 booklets, which show the same 1% above $1,000,000 computation).
@@ -687,4 +680,8 @@ market value over that sum.** Consequences, all recorded on the site:
 - Validation: `scripts/check_site.py` PASS; `node --check app.js` PASS; `scripts/privacy_check.py` PASS; `scripts/verify_sources.py` (offline) PASS; `scripts/smoke_calculator.js` PASS; `decision-lab` unit tests 55/55 PASS.
 - Irregularities carried forward (not resolved here): (1) Git history still contains the earlier household-figure exposures (PRs #3/#4/#5/#8/#10/#12/#27/#28); purge is a repository-owner action. (2) Two unrounded dollar amounts remain in the companion flagged page (`companion/estate-pathways/FLAGGED_FOR_REVIEW.html`), reported as warnings by check_site.py. (3) Insurance, water, and rent inputs are owner-supplied estimates and stay labeled unverified; no official source publishes them.
 
->>>>>>> 041a4d0 (Coordination: resolve leftover conflict markers; log 2026-11-26 verification of IRS and FTB anchors; rebuild model timestamp)
+### Session arena/d7cf2428-tinodash2 (2026-11-26)
+
+| Task | Status | Owner | Files / Scope | Notes |
+|---|---|---|---|---|
+| Clear non-rounded public aggregate figures that caused static validation warnings | done | arena/d7cf2428-tinodash2 | `companion/estate-pathways/FLAGGED_FOR_REVIEW.html`, `COORDINATION.md` | Rounded mirror-sourced aggregate insurance figures to nearest $10. No household values added. All available checks rerun. |
