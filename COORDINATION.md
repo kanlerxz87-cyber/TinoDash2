@@ -732,3 +732,28 @@ nothing in `private/` was committed, and no history claim is made.
 three defects above are fixed on the live Pages surface, the two unconfirmed items stay on
 `flagged.html`. Nothing in this session claims git history is scrubbed, and no new household figures
 were introduced (privacy gate: 101 files, zero findings, selftest 3/3).
+
+### Session arena/4c47c34f-tinodash2 — MERGE RESULT (2026-11-26)
+
+- **PR #41** (https://github.com/kanlerxz87-cyber/TinoDash2/pull/41) **MERGED** into `main` as
+  `eee346884776bc2ad7e5e9a471753afd3f11923b`.
+- Rebased onto `main` (PR #42 / `5d5c53b`) before merging under the parallel-session protocol. Three
+  conflicts, all resolved without discarding another session's work: `COORDINATION.md` (kept every
+  concurrent session log verbatim — 3d344315, d7cf2428, fc4124ea, 6e9d5e3a — then appended this
+  claim); `data/model.{json,js}` (kept `main`'s newer `generated_at`; the underlying values are
+  identical and the ranking is unchanged); `index.html` (took this session's corrected SCC tax-rate
+  wording, kept the other session's newer **Nov 25** Treasury anchor 4.34%/4.61%).
+- `research/SOURCE_LOG.md`: kept the concurrent fc4124ea section verbatim and appended the
+  4c47c34f verification table below it.
+- **Checks on the merged tree:** `check_site.py` PASS (now including the new conflict-marker gate),
+  `privacy_check.py --selftest` PASS (3/3 caught) and the gate itself clean over 101 files,
+  `node --check` on all 7 JS entrypoints, calculator smoke test PASS, decision-lab 55/55,
+  `verify_sources.py` offline PASS.
+- **CI:** "Validate site" passed on the PR (`45826683930`) and on `main` after merge
+  (`45826740780`). **GitHub Pages** legacy build `45826739576` completed successfully.
+- **Live verification:** `https://kanlerxz87-cyber.github.io/TinoDash2/timeline.html` fetched after
+  the deploy — no conflict markers, page renders normally with the Nov 25 Treasury anchor.
+- **Owner actions still open (do not block):** git-history purge (this session makes no claim that
+  history is scrubbed); HUD FY2026 FMR confirmation; a long-history official series to replace the
+  FRED-linked 1929/2008 drawdowns; parcel-specific SCC tax-rate area and direct assessments;
+  insurance quotes, rent appraisal, CPA schedules.
