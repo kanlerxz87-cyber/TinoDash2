@@ -707,3 +707,5 @@ market value over that sum.** Consequences, all recorded on the site:
 - **Model effect:** base parking yield (4.5%) is a scenario input, not the anchor, so terminal values did not move. Sell-immediate $54.40M · sell-phased $51.37M · live $16.64M · rent $15.39M — **ranking unchanged**.
 - **Rebase note:** main moved several times during this session (PRs #36, #39). Other sessions' entries were kept verbatim; this entry is appended after them.
 - **Gates:** `check_site.py`, `privacy_check.py` (+ `--selftest`), `node --check` on all JS entrypoints, calculator smoke, decision-lab tests, `verify_sources.py` offline — all pass.
+
+- **Session 3d344315 result (2026-11-26):** PR #36 (https://github.com/kanlerxz87-cyber/TinoDash2/pull/36) squash-merged to `main` as commit `59be3b0`. GitHub Pages legacy build for `59be3b0` reached status `built`; live page https://kanlerxz87-cyber.github.io/TinoDash2/sources.html loads. Items still open for the owner (not blocking): git history purge (owner action), Property B bill reconciliation, rent appraisal, CPA schedules, and the Prop 19 enrolled computation. Flagged items are on the Flagged page.
