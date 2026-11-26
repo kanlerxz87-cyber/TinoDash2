@@ -40,15 +40,15 @@
       <div class="page-header">
         <div class="eyebrow">09 · OFFICIAL SOURCE REGISTER</div>
         <h1>Sources &amp; verification</h1>
-        <p class="lead">Prior direct checks recorded: <strong>November 25, 2026</strong>. An automated refresh was attempted November 26, 2026, but TLS connections to cited official domains failed in this environment; no current claim was re-confirmed in that attempt. The tables below report the previous verification record, not a fresh verification. Re-check official pages before relying on any current-law figure, and at any actual transfer date. <a href="flagged.html#freshness">Refresh status</a> · <a href="taxes.html#enacted-vs-proposed">Enacted vs proposed</a></p>
+        <p class="lead">Prior direct checks recorded: <strong>November 25, 2026</strong>. On November 26, a broad automated refresh failed to fetch the cited sites in this environment, but separate direct spot checks confirmed the IRS 2026 basic exclusion and Treasury's November 25 yield row. Most other claims below remain on their prior verification dates; re-check official pages before relying on them or at any actual transfer date. <a href="#freshness">Refresh status</a> · <a href="flagged.html#freshness">Flagged details</a> · <a href="taxes.html#enacted-vs-proposed">Enacted vs proposed</a></p>
       </div>
 
       <section class="section">
-        <h2>Federal — IRS and Treasury (prior direct fetches, 2026-11-25)</h2>
+        <h2>Federal — prior checks plus selected direct spot checks, 2026-11-26</h2>
         <div class="table-wrap"><table>
           <thead><tr><th>Claim it supports</th><th>Verified value</th><th>Official source</th><th>Used on</th></tr></thead>
           <tbody>
-            <tr id="src-irs-exclusion"><td>2026 federal basic exclusion amount</td><td>$15,000,000 (Public Law 119-21, enacted July 4, 2025; indexed after 2026)</td><td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax">IRS — What's new, estate and gift tax</a></td><td><a href="taxes.html#estate">Estate lane</a></td></tr>
+            <tr id="src-irs-exclusion"><td>2026 federal basic exclusion amount</td><td>$15,000,000 (Public Law 119-21, enacted July 4, 2025; indexed after 2026; direct spot check 2026-11-26)</td><td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax">IRS — What's new, estate and gift tax</a></td><td><a href="taxes.html#estate">Estate lane</a></td></tr>
             <tr><td>Estate-tax filing, portability, top rate</td><td>Form 706 due 9 months (+6-month extension); DSUE election; Rev. Proc. 2022-32 late election; 40% top rate</td><td><a href="https://www.irs.gov/instructions/i706">IRS — Form 706 instructions</a></td><td><a href="timeline.html#transfer">Timeline</a></td></tr>
             <tr><td>2026 annual gift exclusion</td><td>$19,000 per recipient ($194,000 non-citizen spouse)</td><td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax">IRS — What's new / gift tax</a></td><td><a href="taxes.html#estate-math">Gift planning note</a></td></tr>
             <tr><td>Inherited-property basis</td><td>Generally FMV at date of death; consistent-basis rules (IRC 6035)</td><td><a href="https://www.irs.gov/faqs/interest-dividends-other-types-of-income/gifts-inheritances/gifts-inheritances">IRS — Gifts &amp; inheritances FAQ</a></td><td><a href="taxes.html#basis">Basis lane</a></td></tr>
@@ -56,7 +56,7 @@
             <tr><td>Depreciation &amp; recapture</td><td>Unrecaptured §1250 gain at max 25%</td><td><a href="https://www.irs.gov/publications/p544">IRS — Publication 544</a></td><td><a href="taxes.html#recapture">Recapture row</a></td></tr>
             <tr><td>Capital-gain rates &amp; NIIT</td><td>0/15/20% LTCG brackets; 3.8% NIIT</td><td><a href="https://www.irs.gov/taxtopics/tc409">IRS — Topic 409</a> · <a href="https://www.irs.gov/individuals/net-investment-income-tax">NIIT page</a></td><td><a href="taxes.html#income-tax">Income tax</a></td></tr>
             <tr><td>Like-kind exchanges</td><td>Business/investment real property only; 45/180-day windows</td><td><a href="https://www.irs.gov/businesses/small-businesses-self-employed/like-kind-exchanges-real-estate-tax-tips">IRS — §1031 overview</a></td><td><a href="taxes.html#exchange">Exchange item</a></td></tr>
-            <tr id="src-treasury"><td>Treasury par yield curve (parking leg)</td><td>Nov 25, 2026: 3M 4.34% · 1Y 4.56% · 2Y 4.61%</td><td><a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates">U.S. Treasury — daily rates</a> · <a href="https://www.treasurydirect.gov/marketable-securities/treasury-bills/">TreasuryDirect T-bills</a></td><td><a href="black-swan.html#phased">Phased tests</a></td></tr>
+            <tr id="src-treasury"><td>Treasury par yield curve (parking leg)</td><td>Nov 25, 2026: 3M 4.34% · 1Y 4.56% · 2Y 4.61% (direct spot check 2026-11-26)</td><td><a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates">U.S. Treasury — daily rates</a> · <a href="https://www.treasurydirect.gov/marketable-securities/treasury-bills/">TreasuryDirect T-bills</a></td><td><a href="black-swan.html#phased">Phased tests</a></td></tr>
           </tbody>
         </table></div>
       </section>
@@ -111,7 +111,7 @@
 
       <section class="section" id="freshness">
         <h2>Current refresh attempt · 2026-11-26</h2>
-        <div class="alert alert-warn"><strong>Not refreshed.</strong> The online verifier attempted the cited IRS, Treasury, BOE, FTB, California Leginfo, county and city source pages. Every request failed before page content was read with a TLS/SSL connection-closed error. This is an environment/network limitation, not evidence that a law or rate changed. The 2026-11-25 verification log below is retained as a historical record only; no fresh legal verification is claimed. Re-run the online check from an environment that can reach the official pages. <a href="flagged.html#freshness">Flagged action</a></div>
+        <div class="alert alert-warn"><strong>Broad refresh incomplete.</strong> This checkout's automated verifier attempted the cited IRS, Treasury, BOE, FTB, California Leginfo, county and city pages; its requests failed before content was read with TLS/SSL connection-closed errors. Separate direct spot checks by a concurrent session confirmed the IRS 2026 exclusion and Treasury's Nov 25, 2026 yield row; these are marked in the federal table. The remaining legal, county, and city claims retain their prior check dates and have not been broadly refreshed here. Network failure is not evidence of a law or rate change. Re-run the full online check from a reachable environment. <a href="flagged.html#freshness">Flagged action</a></div>
       </section>
 
       <section class="section">
