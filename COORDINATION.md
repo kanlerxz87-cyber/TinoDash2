@@ -696,3 +696,14 @@ market value over that sum.** Consequences, all recorded on the site:
 - Files changed and check results are recorded at the end of `research/SOURCE_LOG.md`. Static and privacy tests were run after edits. No claim is made that the site is fully anonymized or that current law was freshly verified.
 - Rebase note: `git pull --rebase origin main` fetched `59be3b0`; `COORDINATION.md` append conflicted because concurrent sessions added the 3d344315 and d7cf2428 logs. Both incoming records and this session's record were preserved; no other session's files were changed. Re-ran validation after resolution.
 - **Status: done (session scope); needs owner review** for S-C6, Git-history purge, and a fresh official-source re-check from a reachable network. No PR/merge result is recorded by this session yet.
+
+### Session arena/6e9d5e3a log (2026-11-26) — periodic official recheck (Treasury anchor refresh)
+
+- **Claim:** scope `data/model.*`, `scripts/build_model.py`, `app.js` (Treasury default only), root pages citing the Treasury anchor, `sources.md`/`sources.html`, this file. Branch `arena/6e9d5e3a-tinodash2`.
+- **Verified by direct fetch (2026-11-26):**
+  - U.S. Treasury Daily Par Yield Curve, Nov 2026 table — https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202611 . Latest row **11/25/2026: 3M 4.34 · 1Y 4.56 · 2Y 4.61**. Superseded anchor (11/24): 4.36 / 4.59 / 4.63.
+  - IRS "What's new — Estate and gift tax" — https://www.irs.gov/businesses/small-businesses-self-employed/whats-new-estate-and-gift-tax : **$15,000,000** basic exclusion for 2026 (P.L. 119-21) reconfirmed. Same page: Estate Tax Closing Letter user fee rises from $56 to $76 effective Oct 26, 2026 (Treasury Decision 10055) — logged for the timeline review.
+- **Not reachable from this sandbox:** BOE Prop 19 pages (`boe.ca.gov/proptaxes/faqprop19.htm`, `.../prop19.htm`) returned fetch errors. Prop 19 allowance/exclusion values stay as last verified; **re-verify before any decision.**
+- **Model effect:** base parking yield (4.5%) is a scenario input, not the anchor, so terminal values did not move. Sell-immediate $54.40M · sell-phased $51.37M · live $16.64M · rent $15.39M — **ranking unchanged**.
+- **Rebase note:** main moved several times during this session (PRs #36, #39). Other sessions' entries were kept verbatim; this entry is appended after them.
+- **Gates:** `check_site.py`, `privacy_check.py` (+ `--selftest`), `node --check` on all JS entrypoints, calculator smoke, decision-lab tests, `verify_sources.py` offline — all pass.
