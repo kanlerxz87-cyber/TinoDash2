@@ -681,3 +681,9 @@ market value over that sum.** Consequences, all recorded on the site:
 - Remaining items are owner actions (history purge runbook; quotes; bill TRA line; Property B bill
   reconciliation; rent appraisal; CPA schedules; Assessor confirmation of the Prop 19 enrolled
   computation) — all on the Flagged page. Nothing in this session claims git history is scrubbed.
+
+### Session arena/d7cf2428-tinodash2 (2026-11-26)
+
+| Task | Status | Owner | Files / Scope | Notes |
+|---|---|---|---|---|
+| Clear non-rounded public aggregate figures that caused static validation warnings | done | arena/d7cf2428-tinodash2 | `companion/estate-pathways/FLAGGED_FOR_REVIEW.html`, `COORDINATION.md` | Rounded mirror-sourced aggregate insurance figures to nearest $10. No household values added. All available checks rerun. |
