@@ -82,3 +82,11 @@ figures.html only; unrounded values, identifiers and market-area names are block
 in this log identifies a property.
 
 | 37 | RTC 63.2(d) Prop 19 new-taxable-value formula | New taxable value = transferor's factored value immediately prior to transfer (Sec. 110.1) PLUS, where market value at transfer >= factored + adjusted allowance, the excess of market value over that sum (statute text says $1,000,000; adjusted allowance $1,044,586 for 2/16/2025-2/15/2027 per BOE LTA 2025/009). Filing: homeowners' exemption within 1 year; claim within 3 years or before a third-party transfer/occupancy end, whichever earlier; late claims apply from lien date of filing year (subd. (f)(3)) | https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=63.2 | verified-fetch (full text, 3 chunks) |
+
+## Session arena/fc4124ea-tinodash2 (2026-11-26) — freshness and privacy disclosure
+
+- Ran `python3 scripts/verify_sources.py --online`: all online requests failed before reading content with TLS/SSL connection-closed errors. This is a connectivity failure, not evidence that any statute/rate changed; no official claims were re-confirmed on this date. Offline dataset integrity checks passed separately.
+- `git rev-parse --is-shallow-repository` returned `true`; the checkout exposes only base commit `b08e4913a65a5f8fc7bab07b8a0c75f26158037e`. This session did not audit full history and did not perform a history rewrite/purge. Owner action remains necessary for prior exposures, closed PR refs, caches, and forks.
+- Added prominent source-refresh and privacy-risk notices to the landing page; added a current refresh status to the source register and a flagged item for shallow-history limits.
+- Added suggestion S-C6: highest-priority proposal to remove all household-derived figures and property histories from public artifacts, keep private data in local untracked files, and leave only public anchors/empty local calculator online. Not implemented because the site's suggestion queue explicitly requires an owner decision before implementation.
+- No new personal identifiers or unrounded household values were added. Verified static/privacy checks after edits; no new legal/source facts were asserted.
