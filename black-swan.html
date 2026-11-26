@@ -58,7 +58,7 @@
 
       <section class="section" id="phased">
         <h2>The phased path, quantified</h2>
-        <div class="alert alert-info"><strong>Reinvestment risk, beside the headline:</strong> the parking leg is only as good as the yield you can <em>keep</em> rolling. Today's curve (Nov 24, 2026: 3-month 4.36%, 1-year 4.59%, 2-year 4.63%) is attractive; in 2008 the same leg collapsed toward zero within months. Phasing buys crash protection by accepting that yields may reset lower. <a href="sources.html#src-treasury">Treasury daily rates</a></div>
+        <div class="alert alert-info"><strong>Reinvestment risk, beside the headline:</strong> the parking leg is only as good as the yield you can <em>keep</em> rolling. Today's curve (Nov 25, 2026: 3-month 4.34%, 1-year 4.56%, 2-year 4.61%) is attractive; in 2008 the same leg collapsed toward zero within months. Phasing buys crash protection by accepting that yields may reset lower. <a href="sources.html#src-treasury">Treasury daily rates</a></div>
         <div class="table-wrap"><table>
           <thead><tr><th>Test (crash year, severity)</th><th class="num">Lump-sum terminal</th><th class="num">Phase 24 mo</th><th class="num">Phase 30 mo</th><th class="num">Phase 36 mo</th><th class="num">Best phase vs lump</th><th>Anchor / verify</th></tr></thead>
           <tbody id="modelTestRows">
@@ -78,7 +78,7 @@
             <div class="form-grid">
               <label>Investable amount ($)<input id="bsAmount" type="number" min="0" step="10000" value="7141300"><small>2045 base-case investable from the model.</small></label>
               <label>Stock return %<input id="bsStock" type="number" step="0.1" value="7.0"><small>Nominal, pre-tax.</small></label>
-              <label>Parking yield %<input id="bsTreasury" type="number" step="0.01" value="4.5"><small>3M–2Y Treasuries; official Nov 2026 curve spans 4.36–4.63%.</small></label>
+              <label>Parking yield %<input id="bsTreasury" type="number" step="0.01" value="4.5"><small>3M–2Y Treasuries; official Nov 2026 curve spans 4.34–4.61%.</small></label>
               <label>Horizon (years)<input id="bsHorizon" type="number" min="1" max="50" step="1" value="30"></label>
               <label>Custom crash year<input id="bsCrashYear" type="number" min="1" max="50" step="1" placeholder="optional"><small>Added as an extra row when both fields are set.</small></label>
               <label>Custom drawdown %<input id="bsDrawdown" type="number" min="0" max="100" step="1" placeholder="e.g. 60"></label>

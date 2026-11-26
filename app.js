@@ -384,10 +384,10 @@
     $('transferYear').value = '2045';
     $('horizon').value = '30';
     $('phaseMonths').value = '30';
-    $('treasuryYield').value = String(AN.treasury_2yr || 4.63);
+    $('treasuryYield').value = String(AN.treasury_2yr || 4.61);
     const note = $('defaultNote');
     if (note) {
-      note.textContent = 'Defaults: transfer 2045, 30-year horizon, ' + fmt$(P.investable.base) + ' investable (net sale ' + fmt$(P.net_sale_proceeds.base) + ' + planning cash ' + fmt$(P.liquid_cash_placeholder) + '), Treasuries ' + pctFmt((AN.treasury_2yr || 4.63) / 100) + ' (official Nov 24, 2026 curve).';
+      note.textContent = 'Defaults: transfer 2045, 30-year horizon, ' + fmt$(P.investable.base) + ' investable (net sale ' + fmt$(P.net_sale_proceeds.base) + ' + planning cash ' + fmt$(P.liquid_cash_placeholder) + '), Treasuries ' + pctFmt((AN.treasury_2yr || 4.61) / 100) + ' (official Nov 25, 2026 curve).';
     }
   }
 
