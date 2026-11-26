@@ -685,3 +685,14 @@ market value over that sum.** Consequences, all recorded on the site:
 | Task | Status | Owner | Files / Scope | Notes |
 |---|---|---|---|---|
 | Clear non-rounded public aggregate figures that caused static validation warnings | done | arena/d7cf2428-tinodash2 | `companion/estate-pathways/FLAGGED_FOR_REVIEW.html`, `COORDINATION.md` | Rounded mirror-sourced aggregate insurance figures to nearest $10. No household values added. All available checks rerun. |
+
+## Session `arena/fc4124ea-tinodash2` — verification disclosure (2026-11-26)
+
+**Scope:** `index.html`, `sources.html`, `flagged.html`, `suggestions.html`, `research/SOURCE_LOG.md`, `COORDINATION.md`. This is the current Arena-assigned branch; no other branch/worktree was created. Work was limited to accurate source-freshness/privacy status disclosures and a proposed privacy improvement; no household figures or identifiers were added.
+
+- `python3 scripts/verify_sources.py --online` was attempted; each cited official request failed with TLS/SSL connection-closed errors before reading page content. Logged as not re-verified, not as law/rate change.
+- The local repository reports shallow history (`git rev-parse --is-shallow-repository` = true) and only exposes base commit `b08e4913a65a5f8fc7bab07b8a0c75f26158037e`. Full GitHub history, closed PR refs, caches, and forks were not inspected or purged; owner action remains mandatory.
+- Added a first-screen warning that household-derived rounded series may still re-identify a household, plus failed-refresh status, and linked the new S-C6 proposal to remove household-derived values from public artifacts. The proposal is not implemented because the existing governance queue explicitly requires owner selection first.
+- Files changed and check results are recorded at the end of `research/SOURCE_LOG.md`. Static and privacy tests were run after edits. No claim is made that the site is fully anonymized or that current law was freshly verified.
+- Rebase note: `git pull --rebase origin main` fetched `59be3b0`; `COORDINATION.md` append conflicted because concurrent sessions added the 3d344315 and d7cf2428 logs. Both incoming records and this session's record were preserved; no other session's files were changed. Re-ran validation after resolution.
+- **Status: done (session scope); needs owner review** for S-C6, Git-history purge, and a fresh official-source re-check from a reachable network. No PR/merge result is recorded by this session yet.
