@@ -95,6 +95,31 @@ class Scanner(HTMLParser):
 errors = []
 warnings = []
 scanners = {}
+
+# ---------------------------------------------------------------------------
+# Unresolved merge-conflict markers. A conflict committed with markers reached
+# the live site on 2026-11-25 (timeline.html), so this is a hard, build-failing
+# check across every tracked text file, not a warning.
+# ---------------------------------------------------------------------------
+CONFLICT_MARKERS = ("<<<<<<< ", ">>>>>>> ")
+CONFLICT_BAR = "======="
+for path in ROOT.rglob("*"):
+    if not path.is_file():
+        continue
+    rel = path.relative_to(ROOT)
+    if rel.parts and rel.parts[0] in {".git", "node_modules", "__pycache__", "private"}:
+        continue
+    if path.suffix.lower() not in {".html", ".htm", ".js", ".mjs", ".css", ".md", ".py", ".json", ".yml", ".yaml", ".txt", ""}:
+        continue
+    try:
+        text = path.read_text(encoding="utf-8")
+    except (UnicodeDecodeError, OSError):
+        continue
+    for lineno, line in enumerate(text.splitlines(), 1):
+        stripped = line.rstrip()
+        if stripped.startswith(CONFLICT_MARKERS) or stripped == CONFLICT_BAR:
+            errors.append(f"{rel.as_posix()}:{lineno}: unresolved merge-conflict marker: {stripped[:40]!r}")
+
 for page in PAGES:
     parser = Scanner()
     parser.feed(page.read_text(encoding="utf-8"))

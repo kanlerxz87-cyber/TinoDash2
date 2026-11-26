@@ -52,7 +52,7 @@ ANCHORS = {
     "prop19_occupancy_rule": "Family-home exclusion requires the property to have been the transferor's principal residence, the transferee's eligibility, occupancy as the transferee's principal residence, a homeowners'/disabled veterans' exemption application within 1 year, and a claim within 3 years (RTC 63.2).",
     "scc_1pct_base_rate": 0.01,
     "scc_typical_tra_total": 0.011488,
-    "scc_tra_note": "Santa Clara County Assessor Assessment Information booklet example TRA: 1% base + county bonds 0.00388 + school bonds 0.0100 + water bonds 0.0010 = 1.1488% per $100 of assessed value. The parcel's own Tax Rate Area total is published annually in the County Controller-Treasurer 'Compilation of Tax Rates and Information' (parcel-specific; obtain privately).",
+    "scc_tra_note": "Santa Clara County Assessor Assessment Information booklet example TRA, read as dollars per $100 of assessed value (verified in the 2026 booklet on 2026-11-26): base rate 1% = $1.00 + county bonds $0.0388 + school bonds $0.100 + water bonds $0.010 = $1.1488 per $100 (= 1.1488%). The earlier note mis-scaled the school and water components by 10x (they are dollars per $100, not fractions); the 1.1488% total was and remains correct. The parcel's own Tax Rate Area total is published annually in the County Controller-Treasurer 'Compilation of Tax Rates and Information' (parcel-specific; obtain privately).",
     "scc_tra_source": "https://files.santaclaracounty.gov/exjcpb1521/2026-04/assessment-information-2026-booklet-english-3-23-26-web.pdf",
     "scc_rate_book_source": "https://www.sccassessor.org/",
     "scc_fixed_charges_annual_base": 1010,
